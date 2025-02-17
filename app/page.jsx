@@ -1,10 +1,20 @@
 import React from 'react'
-import '@styles/globals.css'
+import Register from './register/page'
+import Login from './login/page'
+import DashBoard from './dashboard/page'
+import Footer from './components/footer'
 
-const Home = () => {
+const General = () => {
   return (
-    <div className=' text-red-900 pt-10 '>Home</div>
+
+   <main>
+
+   Home
+   
+   </main> 
+   
+
   )
 }
 
-export default Home     
+export default General
