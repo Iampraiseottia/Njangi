@@ -1,5 +1,6 @@
 import React from 'react'
-import globalStyle from '../globals.css'
+import globalStyle from '../globals.css' 
+import Link from 'next/link'
 
 const Register = () => {
   return (
@@ -89,7 +90,7 @@ const Register = () => {
           
           <p className='text-center mt-4'>
             Already Have An Account? <br />
-            <span className='text-[#0ef] font-extrabold hover:cursor-pointer hover:underline duration-300'>LOGIN</span>
+            <Link href="/login" className='text-[#0ef] font-extrabold hover:cursor-pointer hover:underline duration-300'>LOGIN</Link>
           </p>
         </div>
       </section>
