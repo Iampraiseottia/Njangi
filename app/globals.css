@@ -19,3 +19,12 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.wrapper{ 
+  box-shadow: 0 0 25px #0ef;
+  /* color: lightseagreen; */
+  background: linear-gradient(135deg, lightseagreen 44%, transparent 30%);
+  border-radius: 10px;
+         
+}
+

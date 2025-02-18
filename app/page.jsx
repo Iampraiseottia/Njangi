@@ -1,15 +1,17 @@
 import React from 'react'
-import Register from './register/page'
-import Login from './login/page'
-import DashBoard from './dashboard/page'
+import globalStyle from './globals.css'
 import Footer from './components/footer'
+import Navbar from './components/navbar'
+
 
 const General = () => {
   return (
 
-   <main>
+   <main >
 
-   Home
+    <Navbar /> 
+
+    <Footer />
    
    </main> 
    
