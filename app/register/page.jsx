@@ -2,6 +2,11 @@ import React from 'react'
 import globalStyle from '../globals.css' 
 import Link from 'next/link'
 
+export const metadata = {
+  title: 'Registration - Njangi Web Application',
+  description: 'SIgn Up in order to acess all the amazing features of this application'
+}
+
 const Register = () => {
   return (
     <main className='flex justify-center items-center w-full min-h-screen bg-gray-800 text-white p-4'>
@@ -81,10 +86,10 @@ const Register = () => {
               />
             </div>
 
-            <button className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center'>
-              Continue ➡️
-            </button>
-          </form>
+            <Link href="/about-you" className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center'>
+              Continue ➡️ 
+            </Link>
+          </form> 
 
           <p className='text-right mt-4 mb-2 font-bold text-lg'>01/05</p>
           
