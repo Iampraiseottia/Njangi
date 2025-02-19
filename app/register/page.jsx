@@ -17,7 +17,7 @@ const Register = () => {
         <div className='w-full lg:w-[45%] p-6 lg:p-12 xl:p-20'>
           <h1 className='text-4xl lg:text-6xl font-extrabold tracking-wide mt-6 lg:mt-10'>WELCOME!!!</h1>
           <br />
-          <p className='text-base lg:text-lg mb-5'>We are delighted and privilege to have you here. Follow the steps made available on the right side of the page to register. If you need any assistance feel free to reach out.</p>
+          <p className='text-base lg:text-lg mb-5'>We are delighted and privilege to have you 🔥 here. Follow the steps made available on the right side of the page to register. If you need any assistance feel free to reach out.</p>
           <br />
           <h1 className='font-extrabold text-2xl lg:text-4xl tracking-wider'>OR</h1>
           <br />
@@ -43,7 +43,7 @@ const Register = () => {
           <br />
           <form className='flex flex-col gap-6 w-full max-w-xl'>
             <div className='flex flex-col gap-2'>
-              <label htmlFor="fullName" className='font-semibold text-lg tracking-wide'>Full Name:</label>
+              <label htmlFor="fullName" className='font-semibold text-lg tracking-wide'>👤 Full Name:</label>
               <input 
                 type="text" 
                 name="fullName" 
@@ -54,7 +54,7 @@ const Register = () => {
             </div>
 
             <div className='flex flex-col gap-2'>
-              <label htmlFor="userName" className='font-semibold text-lg tracking-wide'>User Name:</label>
+              <label htmlFor="userName" className='font-semibold text-lg tracking-wide'>👤 User Name:</label>
               <input 
                 type="text" 
                 name="userName" 
@@ -65,7 +65,7 @@ const Register = () => {
             </div>
 
             <div className='flex flex-col gap-2'>
-              <label htmlFor="email" className='font-semibold text-lg tracking-wide'>Email Address:</label>
+              <label htmlFor="email" className='font-semibold text-lg tracking-wide'>✉️ Email Address:</label>
               <input 
                 type="email" 
                 name="email" 
@@ -76,7 +76,7 @@ const Register = () => {
             </div>
 
             <div className='flex flex-col gap-2'>
-              <label htmlFor="number" className='font-semibold text-lg tracking-wide'>Phone Number:</label>
+              <label htmlFor="number" className='font-semibold text-lg tracking-wide'>📞 Phone Number:</label>
               <input 
                 type="number" 
                 name="number" 
