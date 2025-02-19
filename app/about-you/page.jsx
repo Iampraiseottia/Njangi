@@ -6,7 +6,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 export const metadata = {
 title: 'About You - Njangi Web Application',
-description: 'Lets get to knw you our most special user'
+description: 'Lets get to know you our most special user'
 }
 
 const About_You = () => {
