@@ -22,7 +22,7 @@ return (
     <br />
     
     <p className=' text-[180px]'>💸</p>
- 
+    
   </div>
 
   {/* Registration Page 01 Right Section */}
