@@ -1,6 +1,8 @@
 import React from 'react'
 import globalStyle from '../globals.css' 
 import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
+import { faLock } from '@fortawesome/free-solid-svg-icons'
 
 export const metadata = {
   title: 'Registration - Njangi Web Application',
@@ -76,9 +78,9 @@ const Register = () => {
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
             </div>
-
+ 
             <div className='flex flex-col gap-2'>
-              <label htmlFor="password" className='font-semibold text-lg tracking-wide'>👤 Password:</label>
+              <label htmlFor="password" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faLock} className="werey2 mr-2 text-[#0ef]" /> Password:</label>
               <input 
                 type="password" 
                 name="password" 
@@ -89,7 +91,7 @@ const Register = () => {
             </div>
             
             <div className='flex flex-col gap-2'>
-              <label htmlFor="confirm_password" className='font-semibold text-lg tracking-wide'>👤 Confirm Password:</label>
+              <label htmlFor="confirm_password" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faLock} className="werey2 mr-2 text-[#0ef]" /> Confirm Password:</label>
               <input 
                 type="password" 
                 name="confirm_password" 
@@ -104,7 +106,7 @@ const Register = () => {
             <Link href="/about-you" className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center'>
               Continue ➡️ 
             </Link>
-          </form> 
+          </form>  
 
           <p className='text-right mt-4 mb-2 font-bold text-lg'>01/05</p>
           

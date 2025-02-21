@@ -3,6 +3,12 @@ import globalStyle from '../globals.css'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faUserTie } from '@fortawesome/free-solid-svg-icons'
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { faAddressBook } from '@fortawesome/free-solid-svg-icons'
+
+
+
 
 export const metadata = {
 title: 'Income and Working Status - Njangi Web Application',
@@ -33,7 +39,7 @@ return (
     <br />
     <form className='flex flex-col gap-6 w-full max-w-xl'>
       <div className='flex flex-col gap-2'>
-        <label htmlFor="country" className='font-semibold text-lg tracking-wide'>🏴󠁥󠁳󠁰󠁶󠁿 Occupation:</label>
+        <label htmlFor="country" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faUserTie} className="werey2 mr-2 text-yellow-300" /> Occupation:</label>
         <input 
           type="text" 
           name="Occupation" 
@@ -44,7 +50,7 @@ return (
       </div>
 
       <div className='flex flex-col gap-2'>
-        <label htmlFor="homeAddress" className='font-semibold text-lg tracking-wide'>🌆 Income Stream per Month:</label>
+        <label htmlFor="homeAddress" className='font-semibold text-lg tracking-wide '>🤑 Income Stream per Month:</label>
         <input 
           type="text" 
           name="income_stream" 
@@ -55,7 +61,7 @@ return (
       </div>
 
       <div className='flex flex-col gap-2'>
-        <label htmlFor="email" className='font-semibold text-lg tracking-wide'>🏙️ Place of Work:</label>
+        <label htmlFor="email" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faLocationDot} className="werey2 mr-2 text-yellow-300" /> Place of Work:</label>
         <input 
           type="text" 
           name="work_place" 
@@ -66,7 +72,7 @@ return (
       </div>
 
       <div className='flex flex-col gap-2'>
-        <label htmlFor="work_status" className='font-semibold text-lg tracking-wide '>🏠 Work Status:</label>
+        <label htmlFor="work_status" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faAddressBook} className="werey2 mr-2 text-[#0ef]" /> Work Status:</label>
         <fieldset className=' flex justify-evenly align-middle'>
           <div className=' flex '>
             <input type="radio" checked name="work_status" id="work_status" /> 

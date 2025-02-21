@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faCity } from '@fortawesome/free-solid-svg-icons'
 
 export const metadata = {
 title: 'About You - Njangi Web Application',
@@ -68,7 +69,7 @@ return (
       </div>
 
       <div className='flex flex-col gap-2'>
-        <label htmlFor="email" className='font-semibold text-lg tracking-wide'>🏙️ City:</label>
+        <label htmlFor="email" className='font-semibold text-lg tracking-wide  flex'><FontAwesomeIcon icon={faCity} className="werey2 mr-2 text-[#0ef]" /> City:</label>
         <input 
           type="text" 
           name="city" 

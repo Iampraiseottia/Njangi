@@ -28,6 +28,13 @@ body {
          
 }
 
+.wrapper3{
+  box-shadow: 0 0 25px #0ef;
+  /* color: lightseagreen; */
+  background: linear-gradient(120deg, lightseagreen 49%, transparent 30%);
+  border-radius: 10px;
+}
+
 .werey{
   height: 220px !important;
   width: 220px !important; 
@@ -37,3 +44,4 @@ body {
   height: 20px !important;
   width: 20px !important; 
 }
+

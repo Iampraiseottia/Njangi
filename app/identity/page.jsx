@@ -2,7 +2,7 @@ import React from 'react'
 import globalStyle from '../globals.css'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
-import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faIdCard } from '@fortawesome/free-solid-svg-icons'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 export const metadata = {
@@ -17,7 +17,7 @@ return (
 
 <section className=' w-full max-w-7xl bg-transparent border-2 border-[#0ef] overflow-hidden rounded-lg wrapper my-8 '> 
 
-<h1 className='text-3xl lg:text-5xl font-extrabold tracking-wider mt-6 pt-9 text-center mb-5'>Your Unique Idenity 🔥</h1>
+<h1 className='text-3xl lg:text-5xl font-extrabold tracking-wider mt-6 pt-9 text-center mb-12'>Your Unique Identity 🔥</h1>
 
 
   <div className='flex flex-col lg:flex-row justify-between items-center mt-[-50px]'> 
@@ -26,7 +26,7 @@ return (
     <form className='flex flex-col gap-1 w-full max-w-xl'>
 
       <div className='flex flex-col gap-2'>
-        <label htmlFor="birth_certificate" className='font-semibold text-lg tracking-wide'>🏴󠁥󠁳󠁰󠁶󠁿 Upload Your Birth Certificate:</label>
+        <label htmlFor="birth_certificate" className='font-semibold text-lg tracking-wide'>🚼 Upload Your Birth Certificate:</label>
         <input 
           type="file" 
           name="birth_certificate" 
@@ -37,7 +37,7 @@ return (
       </div> <br />
 
       <div className='flex flex-col gap-2'>
-        <label htmlFor="Identification_Card" className='font-semibold text-lg tracking-wide'>🏴󠁥󠁳󠁰󠁶󠁿 Upload Your Identification Card:</label>
+        <label htmlFor="Identification_Card" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faIdCard} className="werey2 mr-2 text-yellow-300" /> Upload Your Identification Card:</label>
         <input 
           type="file" 
           name="Identification_Card" 
@@ -48,7 +48,7 @@ return (
       </div> <br />
 
       <div className='flex flex-col gap-2'>
-        <label htmlFor="uploaded_pic" className='font-semibold text-lg tracking-wide'>🏴󠁥󠁳󠁰󠁶󠁿 Upload a Photo of Yourself:</label>
+        <label htmlFor="uploaded_pic" className='font-semibold text-lg tracking-wide'>🖼️ Upload a Photo of Yourself:</label>
         <input 
           type="file" 
           name="uploaded_pic" 
@@ -66,7 +66,7 @@ return (
 
        <form className='flex flex-col gap-6 w-full max-w-xl'>
       <div className='flex flex-col gap-2'>
-        <label htmlFor="disability_status" className='font-semibold text-lg tracking-wide'>🏴󠁥󠁳󠁰󠁶󠁿 Do You Have Any Disability?</label>
+        <label htmlFor="disability_status" className='font-semibold text-lg tracking-wide'>🦽 Do You Have Any Disability?</label>
         <input 
           type="text" 
           name="disability_status" 
@@ -77,7 +77,7 @@ return (
       </div>
 
       <div className='flex flex-col gap-2'>
-        <label htmlFor="sickness" className='font-semibold text-lg tracking-wide'>🌆 Are You Suffering of any sickness or disease?</label>
+        <label htmlFor="sickness" className='font-semibold text-lg tracking-wide'>😷 Are You Suffering of any sickness or disease?</label>
         <input 
           type="text" 
           name="sickness" 
@@ -88,7 +88,7 @@ return (
       </div>
 
       <div className='flex flex-col gap-2'>
-        <label htmlFor="camera_pic" className='font-semibold text-lg tracking-wide'>🏴󠁥󠁳󠁰󠁶󠁿 Take a Picture of Yourself:</label>
+        <label htmlFor="camera_pic" className='font-semibold text-lg tracking-wide'>📷 Take a Picture of Yourself:</label>
         <input 
           type="file" 
           name="camera_pic" 
