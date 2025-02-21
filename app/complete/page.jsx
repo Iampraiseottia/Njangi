@@ -6,6 +6,13 @@ import { faPersonHalfDress } from '@fortawesome/free-solid-svg-icons'
 import { faCalendar } from '@fortawesome/free-solid-svg-icons'
 import { faGroupArrowsRotate } from '@fortawesome/free-solid-svg-icons'
 import { faHandHoldingDollar } from '@fortawesome/free-solid-svg-icons'
+import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons'
+import { faCommentDollar } from '@fortawesome/free-solid-svg-icons'
+import { faCoins } from '@fortawesome/free-solid-svg-icons'
+import { faPiggyBank } from '@fortawesome/free-solid-svg-icons'
+import { faBullseye } from '@fortawesome/free-solid-svg-icons'
+
+
 
 
 
@@ -83,7 +90,7 @@ return (
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-black '
              
              >
-              <option value="Your Have you participated in a Njangi group before?"> Have you participated in a Njangi group before? </option>
+              <option value="Your Have you participated in a Njangi group before?">  Select an Option </option>
               <option value="Male">YES</option>
               <option value="Female">NO</option>
 
@@ -97,7 +104,7 @@ return (
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-black '
              
              >
-              <option value="What is your preferred method of payment?"> What is your preferred method of payment? </option>
+              <option value="What is your preferred method of payment?">  Select an Option </option>
               <option value="Male">MTN Mobile Money 💰 </option>
               <option value="Female">ORANGE Mobile Money 💰 </option>
 
@@ -118,7 +125,7 @@ return (
             </div>
 
             <div className='flex flex-col gap-2'>
-              <label htmlFor="primary_njangi_goal" className='font-semibold text-lg tracking-wide'>🎯 What are your primary goals for joining a Njangi Grou? </label>
+              <label htmlFor="primary_njangi_goal" className='font-semibold text-lg tracking-wide'>🎯 What are your primary goals for joining a Njangi Group? </label>
               <input 
                 type="text" 
                 name="primary_njangi_goal" 
@@ -145,14 +152,11 @@ return (
                 type="text" 
                 name="often_check_mails" 
                 id="often_check_mails" 
-                placeholder='How often do you check your messages or emails? ' 
+                placeholder='State often do you check your messages or emails? ' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
             </div>
 
-
-
-           
           </form>  
     </div>
 
@@ -162,119 +166,127 @@ return (
        <form className='flex flex-col gap-6 w-full max-w-xl'>
     
        <div className='flex flex-col gap-2'>
-              <label htmlFor="fullName" className='font-semibold text-lg tracking-wide'>👤 Full Name:</label>
+              <label htmlFor="previous_challenges" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faCircleExclamation} className="werey2 mr-2 text-[gold]" />  What challenges have you faced in previous Njangi groups?</label>
               <input 
                 type="text" 
-                name="fullName" 
-                id="fullName" 
-                placeholder='Your Full Name' 
+                name="previous_challenges" 
+                id="previous_challenges" 
+                placeholder='Name the challenges have you faced in previous Njangi groups?' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
             </div>
 
           
             <div className='flex flex-col gap-2'>
-              <label htmlFor="email" className='font-semibold text-lg tracking-wide'>✉️ Email Address:</label>
-              <input 
-                type="email" 
-                name="email" 
-                id="email" 
-                placeholder='Your Email Address' 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
-              />
+              <label htmlFor="email" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faCommentDollar} className="werey2 mr-2 text-[gold]" /> How likely are you to recommend this Njangi Platform to others?</label>
+              <select name="ever_perticipated" id="ever_perticipated" 
+                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef]  py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-white bg-slate-800 '
+             
+             >
+              <option value="Your Have you participated in a Njangi group before?">  Select an Option </option>
+              <option value="Male">1/10</option>
+              <option value="Female">2/10</option>
+              <option value="Male">3/10</option>
+              <option value="Female">4/10</option>
+              <option value="Male">5/10</option> 
+              <option value="Female">6/10</option>
+              <option value="Male">7/10</option>
+              <option value="Female">8/10</option>
+              <option value="Male">9/10</option>
+              <option value="Female">10/10</option>
+
+             </select>
             </div>
 
             <div className='flex flex-col gap-2'>
-              <label htmlFor="number" className='font-semibold text-lg tracking-wide'>📞 Phone Number:</label>
-              <input 
-                type="number" 
-                name="number" 
-                id="number" 
-                placeholder='Your Phone Number' 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
-              />
-            </div>
- 
-            <div className='flex flex-col gap-2'>
-              <label htmlFor="password" className='font-semibold text-lg tracking-wide '> Password:</label>
-              <input 
-                type="password" 
-                name="password" 
-                id="password" 
-                placeholder='Your Password ' 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
-              />
-            </div>
-            
-            <div className='flex flex-col gap-2'>
-              <label htmlFor="confirm_password" className='font-semibold text-lg tracking-wide flex'> Confirm Password:</label>
-              <input 
-                type="password" 
-                name="confirm_password" 
-                id="confirm_password" 
-                placeholder='Confirm Password ' 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
-              />
-            </div>
-
-            <div className='flex flex-col gap-2'>
-              <label htmlFor="fullName" className='font-semibold text-lg tracking-wide'>👤 Full Name:</label>
+              <label htmlFor="manage_finances" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faCoins} className="werey2 mr-2 text-[gold]" /> How do you typically manage your finances? </label>
               <input 
                 type="text" 
-                name="fullName" 
-                id="fullName" 
-                placeholder='Your Full Name' 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
-              />
-            </div>
-
-            
-
-            <div className='flex flex-col gap-2'>
-              <label htmlFor="email" className='font-semibold text-lg tracking-wide'>✉️ Email Address:</label>
-              <input 
-                type="email" 
-                name="email" 
-                id="email" 
-                placeholder='Your Email Address' 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
-              />
-            </div>
-
-            <div className='flex flex-col gap-2'>
-              <label htmlFor="number" className='font-semibold text-lg tracking-wide'>📞 Phone Number:</label>
-              <input 
-                type="number" 
-                name="number" 
-                id="number" 
-                placeholder='Your Phone Number' 
+                name="manage_finances" 
+                id="manage_finances" 
+                placeholder='e.g., monthly budgeting, tracking expenses' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
             </div>
  
             <div className='flex flex-col gap-2'>
-              <label htmlFor="password" className='font-semibold text-lg tracking-wide flex'> Password:</label>
-              <input 
-                type="password" 
-                name="password" 
-                id="password" 
-                placeholder='Your Password ' 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
-              />
+              <label htmlFor="receive_financial_education" className='font-semibold text-lg tracking-wide '>📗 Would you like to receive educational materials on financial literacy?:</label>
+              <select name="receive_financial_education" id="receive_financial_education" 
+                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef]  py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-white bg-slate-800 '
+             
+             >
+              <option value="Your Have you participated in a Njangi group before?"> Select an Option</option>
+              <option value="Male">YES</option>
+              <option value="Female">NO</option>
+             
+
+             </select>
             </div>
             
             <div className='flex flex-col gap-2'>
-              <label htmlFor="confirm_password" className='font-semibold text-lg tracking-wide flex'> Confirm Password:</label>
+              <label htmlFor="suggestions" className='font-semibold text-lg tracking-wide flex'> 💭 Do you have any suggestions for improving the Njangi experience?</label>
               <input 
-                type="password" 
-                name="confirm_password" 
-                id="confirm_password" 
-                placeholder='Confirm Password ' 
+                type="passwortextd" 
+                name="suggestions" 
+                id="suggestions" 
+                placeholder='State Your Suggestions ' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
+            </div>
+
+            <div className='flex flex-col gap-2'>
+              <label htmlFor="marital_status" className='font-semibold text-lg tracking-wide'>💒 What is your marital status?:</label>
+              <select name="marital_status" id="marital_status" 
+                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef]  py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-white bg-slate-800 '
+             
+             >
+              <option value="Your Have you participated in a Njangi group before?"> Select an Option</option>
+              <option value="Male">Single</option>
+              <option value="Female">Married</option>
+             
+
+             </select>
             </div>
 
    
+ 
+            <div className='flex flex-col gap-2'>
+              <label htmlFor="saving_pecentage" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faPiggyBank} className="werey2 mr-2 text-[#0ef]" /> What percentage of your income do you typically save?</label>
+              <input 
+                type="text" 
+                name="saving_pecentage" 
+                id="saving_pecentage" 
+                placeholder='Your Percentage ' 
+                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
+              />
+            </div>
+            
+            <div className='flex flex-col gap-2'>
+              <label htmlFor="debt_status" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faCircleExclamation} className="werey2 mr-2 text-[#0ef]" /> Are you currently in any debt? </label>
+              <select name="debt_status" id="debt_status" 
+                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef]  py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-white bg-slate-800 '
+             
+             >
+              <option value="Your Have you participated in a Njangi group before?"> Select an Option</option>
+              <option value="Male">YES</option>
+              <option value="Female">NO</option>
+             
+
+             </select>
+            </div>
+
+   
+            <div className='flex flex-col gap-2'>
+              <label htmlFor="motivation_contribution" className='font-semibold text-lg tracking-wide flex'> <FontAwesomeIcon icon={faBullseye} className="werey2 mr-2 text-[#0ef]" />  What motivates you to stay committed to group contributions?</label>
+              <input 
+                type="text" 
+                name="motivation_contribution" 
+                id="motivation_contribution" 
+                placeholder='Your Motivation ' 
+                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
+              />
+            </div>
+            
 
      
     </form>
@@ -283,7 +295,7 @@ return (
     </div>
 
   </div>
-  <Link href="/income" className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-[90%] text-white mb-10 py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center ml-[5%]'>
+  <Link href="/verify" className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-[90%] text-white mb-10 py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center ml-[5%]'>
           Complete Registration ✅
 
       </Link>
