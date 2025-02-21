@@ -3,6 +3,7 @@ import globalStyle from '../globals.css'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 export const metadata = {
 title: 'About You - Njangi Web Application',
@@ -84,7 +85,7 @@ return (
     <p className='text-right mt-4 mb-2 font-bold text-lg'>02/05</p>
     
     <Link href="/register" className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-[90%] text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center'>
-        Go Back 
+       <FontAwesomeIcon icon={faArrowLeft} className='werey2 mr-2' /> Go Back 
       </Link>
      
   </div>
