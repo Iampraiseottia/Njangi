@@ -33,6 +33,18 @@ return (
     <h1 className='text-3xl lg:text-5xl font-extrabold tracking-wider mt-6  text-center mb-5'>Start Your Journey 🔥</h1>
     <br />
     <form className='flex flex-col gap-6 w-full max-w-xl'>
+      
+    <div className='flex flex-col gap-2'>
+        <label htmlFor="userName" className='font-semibold text-lg tracking-wide'>👤 User Name:</label>
+        <input 
+          type="text" 
+          name="userName" 
+          id="userName" 
+          placeholder='Your User Name' 
+          className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
+        />
+      </div>
+
       <div className='flex flex-col gap-2'>
         <label htmlFor="country" className='font-semibold text-lg tracking-wide'>🏴󠁥󠁳󠁰󠁶󠁿 Country:</label>
         <input 

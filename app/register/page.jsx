@@ -53,16 +53,7 @@ const Register = () => {
               />
             </div>
 
-            <div className='flex flex-col gap-2'>
-              <label htmlFor="userName" className='font-semibold text-lg tracking-wide'>👤 User Name:</label>
-              <input 
-                type="text" 
-                name="userName" 
-                id="userName" 
-                placeholder='Your User Name' 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
-              />
-            </div>
+            
 
             <div className='flex flex-col gap-2'>
               <label htmlFor="email" className='font-semibold text-lg tracking-wide'>✉️ Email Address:</label>
@@ -85,6 +76,30 @@ const Register = () => {
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
             </div>
+
+            <div className='flex flex-col gap-2'>
+              <label htmlFor="password" className='font-semibold text-lg tracking-wide'>👤 Password:</label>
+              <input 
+                type="password" 
+                name="password" 
+                id="password" 
+                placeholder='Your Password ' 
+                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
+              />
+            </div>
+            
+            <div className='flex flex-col gap-2'>
+              <label htmlFor="confirm_password" className='font-semibold text-lg tracking-wide'>👤 Confirm Password:</label>
+              <input 
+                type="password" 
+                name="confirm_password" 
+                id="confirm_password" 
+                placeholder='Confirm Password ' 
+                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
+              />
+            </div>
+
+
 
             <Link href="/about-you" className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center'>
               Continue ➡️ 
