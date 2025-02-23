@@ -1,21 +1,53 @@
+
+"use client"
+
 import React from 'react'
+import { useActionState } from 'react'
+
+
 import globalStyle from '../globals.css' 
 import Link from 'next/link'
+
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
 import { faLock } from '@fortawesome/free-solid-svg-icons'
 
-export const metadata = {
-  title: 'Registration - Njangi Web Application',
-  description: 'SIgn Up in order to acess all the amazing features of this application'
-}
+import { CreateUser01Page } from '../actions'
+import { useForm } from '@conform-to/react'
+import { parseWithZod } from '@conform-to/zod'
+
+import { register01Schema } from '../lib/zodSchemas' 
+
+import { metadata } from './metadata'
+
+
 
 const Register = () => {
+
+  const [lastResult, action] = useActionState(CreateUser01Page, undefined)
+
+  const [form, fields] = useForm({
+    lastResult,
+
+    // onValidate({ formData }) {
+    //   parseWithZod(formData, {
+    //     schema: register01Schema
+    //   })
+    // }, 
+
+    // shouldValidate: "onBlur",
+    // shouldRevalidate: "onInput"
+  })
+
+  
+  
   return (
     <main className='flex justify-center items-center w-full min-h-screen bg-gray-800 text-white p-4'>
 
       <section className='flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl bg-transparent border-2 border-[#0ef] overflow-hidden rounded-lg wrapper my-8 '> 
 
         {/* Registration Page 01 Left Section */}
+
         <div className='w-full lg:w-[45%] p-6 lg:p-12 xl:p-20'>
           <h1 className='text-4xl lg:text-6xl font-extrabold tracking-wide mt-6 lg:mt-10'>WELCOME!!!</h1>
           <br />
@@ -43,69 +75,85 @@ const Register = () => {
         <div className='w-full lg:w-[55%] p-6 lg:p-9'>
           <h1 className='text-3xl lg:text-5xl font-extrabold tracking-wider mt-6  text-center mb-5'>SIGN UP</h1>
           <br />
-          <form className='flex flex-col gap-6 w-full max-w-xl'>
+          <form className='flex flex-col gap-6 w-full max-w-xl' id={form.id} onSubmit={form.onSubmit} action={action} >
             <div className='flex flex-col gap-2'>
               <label htmlFor="fullName" className='font-semibold text-lg tracking-wide'>👤 Full Name:</label>
               <input 
                 type="text" 
-                name="fullName" 
+                name={fields.fullName.name}
+                defaultValue={fields.fullName.initialValue} 
                 id="fullName" 
                 placeholder='Your Full Name' 
+                key={fields.fullName.key} 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
+              <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.fullName.errors}</p>
             </div>
 
             
-
             <div className='flex flex-col gap-2'>
               <label htmlFor="email" className='font-semibold text-lg tracking-wide'>✉️ Email Address:</label>
               <input 
                 type="email" 
-                name="email" 
+                defaultValue={fields.email.initialValue}
+                name={fields.email.name} 
+                key={fields.email.key}
                 id="email" 
                 placeholder='Your Email Address' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
+              <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.email.errors}</p> 
+
             </div>
 
             <div className='flex flex-col gap-2'>
-              <label htmlFor="number" className='font-semibold text-lg tracking-wide'>📞 Phone Number:</label>
+              <label htmlFor="phoneNumber" className='font-semibold text-lg tracking-wide'>📞 Phone Number:</label>
               <input 
-                type="number" 
-                name="number" 
-                id="number" 
+                type="text" 
+                name={fields.phoneNumber.name} 
+                key={fields.phoneNumber.key}
+                defaultValue={fields.phoneNumber.initialValue}
+                id="phoneNumber" 
                 placeholder='Your Phone Number' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
+              <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.phoneNumber.errors}</p> 
             </div>
  
             <div className='flex flex-col gap-2'>
               <label htmlFor="password" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faLock} className="werey2 mr-2 text-[#0ef]" /> Password:</label>
               <input 
-                type="password" 
-                name="password" 
+                type="text" 
+                name={fields.password.name} 
+                key={fields.password.key}
+                defaultValue={fields.password.initialValue} 
                 id="password" 
                 placeholder='Your Password ' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
+              <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.password.errors}</p> 
+
             </div>
             
-            <div className='flex flex-col gap-2'>
+            {/* <div className='flex flex-col gap-2'>
               <label htmlFor="confirm_password" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faLock} className="werey2 mr-2 text-[#0ef]" /> Confirm Password:</label>
               <input 
                 type="password" 
-                name="confirm_password" 
+                name={fields.confirm_password.name}
+                key={fields.confirm_password.key}
+                defaultValue={fields.confirm_password.initialValue} 
                 id="confirm_password" 
                 placeholder='Confirm Password ' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
-            </div>
+              <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.confirm_password.errors}</p> 
+
+            </div> */}
 
 
-
-            <Link href="/about-you" className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center'>
+            <button type='submit' className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center'>
               Continue ➡️ 
-            </Link>
+            </button>
           </form>  
 
           <p className='text-right mt-4 mb-2 font-bold text-lg'>01/05</p>
@@ -121,3 +169,4 @@ const Register = () => {
 }
 
 export default Register
+
