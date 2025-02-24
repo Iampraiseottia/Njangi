@@ -2,7 +2,7 @@
 "use client"
 
 import React from 'react'
-import { useActionState } from 'react'
+import { useActionState, useState } from 'react'
 
 
 import globalStyle from '../globals.css' 
@@ -19,6 +19,31 @@ import { parseWithZod } from '@conform-to/zod'
 import { register01Schema } from '../lib/zodSchemas' 
 
 import { metadata } from './metadata'
+
+
+import { db } from '../firebaseConfig'
+import { collection, addDoc } from 'firebase/firestore'
+
+
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebaseConfig";  
+
+
+async function addDataToFireBaseStore(fullName, email, phoneNumber, password) {
+  try{
+    const docRef = await addDoc(collection(db, "registration_data_01"), {
+      fullName: fullName,
+      email: email,
+      phoneNumber: phoneNumber,
+      password: password,
+    });
+    console.log("Document written with ID: ", docRef.id);
+    return true
+  }catch(error){
+    console.error("Error adding document to registration_data_01: ", error);
+    return false
+  }
+}
 
 
 
@@ -39,6 +64,38 @@ const Register = () => {
     // shouldRevalidate: "onInput"
   })
 
+
+
+
+
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
+
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      console.log('User created:', user);
+      
+      // Continue with your Firestore logic here
+      const added = await addDataToFireBaseStore(fullName, email, phoneNumber, password);
+      if (added) {
+        setFullName("");
+        setEmail("");
+        setPhoneNumber("");
+        setPassword("");
+        console.log("Data Added To FireBase Collection Store Successfully");
+      }
+    } catch (error) {
+      console.error("Error creating user:", error);
+    }
+  };
+  
   
   
   return (
@@ -71,11 +128,15 @@ const Register = () => {
           </div>
         </div>
 
+
         {/* Registration Page 01 Right Section */}
         <div className='w-full lg:w-[55%] p-6 lg:p-9'>
           <h1 className='text-3xl lg:text-5xl font-extrabold tracking-wider mt-6  text-center mb-5'>SIGN UP</h1>
           <br />
-          <form className='flex flex-col gap-6 w-full max-w-xl' id={form.id} onSubmit={form.onSubmit} action={action} >
+          <form className='flex flex-col gap-6 w-full max-w-xl' id={form.id} onSubmit={async (e) => {
+                        await form.onSubmit(e);   
+                        await handleSubmit(e); 
+                    }}  action={action} >
             <div className='flex flex-col gap-2'>
               <label htmlFor="fullName" className='font-semibold text-lg tracking-wide'>👤 Full Name:</label>
               <input 
@@ -85,6 +146,8 @@ const Register = () => {
                 id="fullName" 
                 placeholder='Your Full Name' 
                 key={fields.fullName.key} 
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
               <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.fullName.errors}</p>
@@ -95,6 +158,8 @@ const Register = () => {
               <label htmlFor="email" className='font-semibold text-lg tracking-wide'>✉️ Email Address:</label>
               <input 
                 type="email" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 defaultValue={fields.email.initialValue}
                 name={fields.email.name} 
                 key={fields.email.key}
@@ -113,6 +178,8 @@ const Register = () => {
                 name={fields.phoneNumber.name} 
                 key={fields.phoneNumber.key}
                 defaultValue={fields.phoneNumber.initialValue}
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
                 id="phoneNumber" 
                 placeholder='Your Phone Number' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
@@ -124,6 +191,8 @@ const Register = () => {
               <label htmlFor="password" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faLock} className="werey2 mr-2 text-[#0ef]" /> Password:</label>
               <input 
                 type="text" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 name={fields.password.name} 
                 key={fields.password.key}
                 defaultValue={fields.password.initialValue} 
@@ -169,4 +238,5 @@ const Register = () => {
 }
 
 export default Register
+
 
