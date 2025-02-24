@@ -1,18 +1,52 @@
+
+"use client"
+
 import React from 'react'
+import { useActionState, useState } from 'react'
+
+
 import globalStyle from '../globals.css'
 import Link from 'next/link'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { faCity } from '@fortawesome/free-solid-svg-icons'
 
-export const metadata = {
-title: 'About You - Njangi Web Application',
-description: 'Lets get to know you our most special user'
-}
+
+import { metadata } from './metadata'
+
+
+import { CreateUser02AboutYou } from '../actions'
+import { useForm } from '@conform-to/react'
+import { parseWithZod } from '@conform-to/zod'
+
+import { register02AboutYouSchema } from '../lib/zodSchemas' 
+
+
 
 const About_You = () => {
+
+
+ const [lastResult, action] = useActionState(CreateUser02AboutYou, undefined)
+
+  const [form, fields] = useForm({
+    lastResult,
+
+    // onValidate({ formData }) {
+    //   parseWithZod(formData, {
+    //     schema: register01Schema
+    //   })
+    // }, 
+
+    // shouldValidate: "onBlur",
+    // shouldRevalidate: "onInput"
+  })
+
+
+
 return (
+
 <main className='flex justify-center items-center w-full min-h-screen bg-gray-800 text-white p-4'>
 
 
@@ -33,66 +67,89 @@ return (
   <div className='w-full lg:w-[55%] p-6 lg:p-9'>
     <h1 className='text-3xl lg:text-5xl font-extrabold tracking-wider mt-6  text-center mb-5'>Start Your Journey 🔥</h1>
     <br />
-    <form className='flex flex-col gap-6 w-full max-w-xl'>
+    <form className='flex flex-col gap-6 w-full max-w-xl' id={form.id} onSubmit={async (e) => {
+                        await form.onSubmit(e);   
+                        // await handleSubmit(e); 
+                    }}  action={action}>
       
     <div className='flex flex-col gap-2'>
         <label htmlFor="userName" className='font-semibold text-lg tracking-wide'>👤 User Name:</label>
         <input 
           type="text" 
-          name="userName" 
+          name={fields.userName.name} 
+          defaultValue={fields.userName.value}
+          key={fields.userName.value}
           id="userName" 
           placeholder='Your User Name' 
           className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
         />
+              <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.userName.errors}</p> 
+      
       </div>
 
       <div className='flex flex-col gap-2'>
         <label htmlFor="country" className='font-semibold text-lg tracking-wide'>🏴󠁥󠁳󠁰󠁶󠁿 Country:</label>
         <input 
           type="text" 
-          name="country" 
+          name={fields.country.name}
+          key={fields.country.value}
+          defaultValue={fields.country.value} 
           id="country" 
           placeholder='Your country ' 
           className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
         />
+              <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.country.errors}</p> 
+
       </div>
 
       <div className='flex flex-col gap-2'>
-        <label htmlFor="homeAddress" className='font-semibold text-lg tracking-wide'>🌆 State or Region:</label>
+        <label htmlFor="state_Region" className='font-semibold text-lg tracking-wide'>🌆 State or Region:</label>
         <input 
           type="text" 
-          name="homeAddress" 
-          id="homeAddress" 
+          name={fields.state_Region.name}
+          key={fields.state_Region.value} 
+          defaultValue={fields.state_Region.value}
+          id="state_Region" 
           placeholder='Your Home Address / Location ' 
           className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
         />
+              <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.state_Region.errors}</p> 
+
       </div>
 
       <div className='flex flex-col gap-2'>
-        <label htmlFor="email" className='font-semibold text-lg tracking-wide  flex'><FontAwesomeIcon icon={faCity} className="werey2 mr-2 text-[#0ef]" /> City:</label>
+        <label htmlFor="city" className='font-semibold text-lg tracking-wide  flex'><FontAwesomeIcon icon={faCity} className="werey2 mr-2 text-[#0ef]" /> City:</label>
         <input 
           type="text" 
-          name="city" 
+          name={fields.city.name}
+          key={fields.city.value}
+          defaultValue={fields.city.value}
           id="city" 
           placeholder='Your City / Town' 
           className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
         />
+              <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.country.errors}</p> 
+
       </div>
 
       <div className='flex flex-col gap-2'>
-        <label htmlFor="number" className='font-semibold text-lg tracking-wide'>🏠 Home Address:</label>
+        <label htmlFor="homeAddress" className='font-semibold text-lg tracking-wide'>🏠 Home Address:</label>
         <input 
           type="text" 
-          name="homeAddress" 
+          name={fields.homeAddress.name}
+          key={fields.homeAddress.value}
+          defaultValue={fields.homeAddress.value} 
           id="homeAddress" 
           placeholder='Your Home Address / Precise Location' 
           className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
         />
+              <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.homeAddress.errors}</p> 
+
       </div>
 
-      <Link href="/income" className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center'>
+      <button type='submit' className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center'>
         Continue ➡️
-      </Link>
+      </button>
     </form>
 
     <p className='text-right mt-4 mb-2 font-bold text-lg'>02/05</p>

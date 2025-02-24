@@ -181,7 +181,7 @@ const Register = () => {
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
                 id="phoneNumber" 
-                placeholder='Your Phone Number' 
+                placeholder='Your Phone Number eg +237 682394782' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
               <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.phoneNumber.errors}</p> 
