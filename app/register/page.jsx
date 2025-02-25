@@ -11,6 +11,8 @@ import Link from 'next/link'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
 import { faLock } from '@fortawesome/free-solid-svg-icons'
+import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
+import { faPhoneVolume } from '@fortawesome/free-solid-svg-icons'
 
 import { CreateUser01Page } from '../actions'
 import { useForm } from '@conform-to/react'
@@ -21,29 +23,6 @@ import { register01Schema } from '../lib/zodSchemas'
 import { metadata } from './metadata'
 
 
-import { db } from '../firebaseConfig'
-import { collection, addDoc } from 'firebase/firestore'
-
-
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebaseConfig";  
-
-
-async function addDataToFireBaseStore(fullName, email, phoneNumber, password) {
-  try{
-    const docRef = await addDoc(collection(db, "registration_data_01"), {
-      fullName: fullName,
-      email: email,
-      phoneNumber: phoneNumber,
-      password: password,
-    });
-    console.log("Document written with ID: ", docRef.id);
-    return true
-  }catch(error){
-    console.error("Error adding document to registration_data_01: ", error);
-    return false
-  }
-}
 
 
 
@@ -70,32 +49,12 @@ const Register = () => {
 
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
 
 
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-      console.log('User created:', user);
-      
-      // Continue with your Firestore logic here
-      const added = await addDataToFireBaseStore(fullName, email, phoneNumber, password);
-      if (added) {
-        setFullName("");
-        setEmail("");
-        setPhoneNumber("");
-        setPassword("");
-        console.log("Data Added To FireBase Collection Store Successfully");
-      }
-    } catch (error) {
-      console.error("Error creating user:", error);
-    }
-  };
-  
   
   
   return (
@@ -131,11 +90,11 @@ const Register = () => {
 
         {/* Registration Page 01 Right Section */}
         <div className='w-full lg:w-[55%] p-6 lg:p-9'>
-          <h1 className='text-3xl lg:text-5xl font-extrabold tracking-wider mt-6  text-center mb-5'>SIGN UP</h1>
+          <h1 className='text-3xl lg:text-5xl font-extrabold tracking-wider mt-6  text-center mb-5'>SIGN UP 🔥</h1>
           <br />
           <form className='flex flex-col gap-6 w-full max-w-xl' id={form.id} onSubmit={async (e) => {
                         await form.onSubmit(e);   
-                        await handleSubmit(e); 
+                        // await handleSubmit(e); 
                     }}  action={action} >
             <div className='flex flex-col gap-2'>
               <label htmlFor="fullName" className='font-semibold text-lg tracking-wide'>👤 Full Name:</label>
@@ -172,7 +131,21 @@ const Register = () => {
             </div>
 
             <div className='flex flex-col gap-2'>
-              <label htmlFor="phoneNumber" className='font-semibold text-lg tracking-wide'>📞 Phone Number:</label>
+              <label htmlFor="userName" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faCircleUser} className="werey2 mr-2 text-[gold]" /> User Name:</label>
+              <input 
+                type="text" 
+                name={fields.userName.name} 
+                onChange={(e) => setUserName(e.target.value)}
+                value={userName}
+                id="userName" 
+                placeholder='Your User Name' 
+                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
+              />
+              <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.userName.errors}</p> 
+            </div>
+
+            <div className='flex flex-col gap-2'>
+              <label htmlFor="phoneNumber" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faPhoneVolume} className="werey2 mr-2 text-[#0ef]" /> Phone Number:</label>
               <input 
                 type="text" 
                 name={fields.phoneNumber.name} 
@@ -204,29 +177,12 @@ const Register = () => {
 
             </div>
             
-            {/* <div className='flex flex-col gap-2'>
-              <label htmlFor="confirm_password" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faLock} className="werey2 mr-2 text-[#0ef]" /> Confirm Password:</label>
-              <input 
-                type="password" 
-                name={fields.confirm_password.name}
-                key={fields.confirm_password.key}
-                defaultValue={fields.confirm_password.initialValue} 
-                id="confirm_password" 
-                placeholder='Confirm Password ' 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
-              />
-              <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.confirm_password.errors}</p> 
 
-            </div> */}
-
-
-            <button type='submit' className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center'>
-              Continue ➡️ 
+            <button type='submit' className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full hover:from-[#00ffff] hover:via-slate-600 hover:to-[#00ffff]  text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center tracking-wider'>
+              REGISTER    
             </button>
-          </form>  
+          </form>          
 
-          <p className='text-right mt-4 mb-2 font-bold text-lg'>01/05</p>
-          
           <p className='text-center mt-4'>
             Already Have An Account? <br />
             <Link href="/login" className='text-[#0ef] font-extrabold hover:cursor-pointer hover:underline duration-300'>LOGIN</Link>
@@ -238,5 +194,4 @@ const Register = () => {
 }
 
 export default Register
-
 
