@@ -34,11 +34,20 @@ body {
   border-radius: 10px;
 }
 
+.forgot_pass{
+  text-align: right !important;
+}
+
+
 @media (max-width: 650px) {
   .wrapper2{
     /* color: red !important; */
    background: linear-gradient(-135deg, transparent 45%, lightseagreen 30%) !important;
 
+  }
+
+  .registerSec{
+    text-align: right !important;
   }
 }
 

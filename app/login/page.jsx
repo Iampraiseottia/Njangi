@@ -100,25 +100,32 @@ const Login = () => {
               <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.password.errors}</p> 
 
             </div>
-            
 
-            <button type='submit' className=' mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full hover:from-[#00ffff] hover:via-slate-600 hover:to-[#00ffff]  text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center tracking-wider'>
+           <p className=' text-white text-right'>
+            <Link href="/forgot_password" className='  hover:text-[#0ef] mt-[-17px] font-extrabold hover:cursor-pointer hover:underline duration-300'>Forgot Password</Link>
+
+           </p>
+                                
+
+            <button type='submit' className='login_btn1 mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full hover:from-[#00ffff] hover:via-slate-600 hover:to-[#00ffff]  text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center tracking-wider'>
               LOGIN    
             </button>
           </form>          
 
-          <p className='text-center mt-4'>
+          <p className='registerSec text-center mt-4'>
             Don't Yet Have An Account? <br />
             <Link href="/register" className='text-[#0ef] font-extrabold hover:cursor-pointer hover:underline duration-300'>REGISTER</Link>
           </p> 
         </div>
+
+
 
         {/* Registration Page 01 Right Section */}
 
         <div className='w-full lg:w-[45%] p-6 lg:p-12 xl:p-20'>
           <h1 className='text-4xl lg:text-6xl font-extrabold tracking-wide mt-6 lg:mt-10'>WELCOME BACK!!!</h1>
           <br />
-          <p className='text-base lg:text-lg mb-5'>We are delighted and privilege to have you 🔥 here. Follow the steps made available on the right side of the page to register. If you need any assistance feel free to reach out.</p>
+          <p className='text-base lg:text-lg mb-5'>We are delighted to have you 🔥 back. Follow the steps provided to get access to your account and take control of your financial 🤑 freedom. If you need any assistance feel free to reach out.</p>
           <br />
           <h1 className='font-extrabold text-2xl lg:text-4xl tracking-wider'>OR</h1>
           <br />
