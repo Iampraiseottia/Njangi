@@ -1,8 +1,15 @@
+
 import React from 'react'
 
 const Navbar = () => {
   return (
-    <div>Navbar</div>
+    <section className=''>
+      <div className=''>NJANGI</div>
+      <ul className=''>
+        <li>Home</li>
+        
+      </ul>
+    </section>
   )
 }
 
