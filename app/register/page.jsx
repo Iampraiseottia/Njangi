@@ -20,7 +20,6 @@ import { parseWithZod } from '@conform-to/zod'
 
 import { register01Schema } from '../lib/zodSchemas' 
 
-import { metadata } from './metadata'
 
 
 

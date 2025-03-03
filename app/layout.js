@@ -1,10 +1,34 @@
+
 import React from 'react'
 import Head from 'next/head' 
+import { icon } from '@fortawesome/fontawesome-svg-core'
+
+
+import Metadata from './components/Metadata';
+
 
 
 export const metadata = {
-  title: 'Njangi Web Application',
-  description: 'An application created where members to join, create and manage njangi groups with others all over the world.',
+  '/': {
+    title: 'Njangi Web Application',
+    description: 'An application created where members join, create, and manage njangi groups with others all over the world.',
+  },
+  '/dashboard': {
+    title: 'Dashboard - Njangi Web Application',
+    description: 'Manage your njangi groups and track activities on the dashboard.',
+  },
+  icons: {
+    icon: [
+      '/favicon.ico',
+    ],
+    apple: [
+      '/apple-touch-icon.png',
+    ],
+    shortcut: [
+      '/apple-touch-icon.png',
+    ]
+  },
+  manifest: '/site.webmanifest'
 }
 
 export default function RootLayout({ children }) {

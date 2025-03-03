@@ -2,20 +2,30 @@
 "use client"
 
 import React from 'react'
+import { useState } from 'react';
+
 
 import globalStyle from '../globals.css' 
 import Link from 'next/link'
 
-import { metadata } from './metadata'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'; 
 import { faQuestion } from '@fortawesome/free-solid-svg-icons'
 
-import { useState } from 'react';
+
+import Metadata from '../components/Metadata';
+
+
+
 
 const DashBoard = () => {
+
+  const metadata = {
+    title: 'Dashboard - Njangi Web Application',
+    description: 'Manage your njangi groups and track activities on the dashboard.',
+  };
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -42,6 +52,8 @@ const DashBoard = () => {
 
   return (
     <section className=' w-full flex'>
+      
+      <Metadata title={metadata.title} description={metadata.description} />
 
       {/* Dashboard Left Section (Side Bar) */}
 
