@@ -1,6 +1,11 @@
+
 import React from 'react'
+
+
 import globalStyle from '../globals.css'
 import Link from 'next/link'
+
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { faUserTie } from '@fortawesome/free-solid-svg-icons'
@@ -9,11 +14,6 @@ import { faAddressBook } from '@fortawesome/free-solid-svg-icons'
 
 
 
-
-export const metadata = {
-title: 'Income and Working Status - Njangi Web Application',
-description: 'Lets get to know you our most special user'
-}
 
 const Income = () => {
 return (

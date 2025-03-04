@@ -12,11 +12,24 @@ import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'; 
-import { faQuestion } from '@fortawesome/free-solid-svg-icons'
+import { faTasks } from '@fortawesome/free-solid-svg-icons';
+import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons'
+
 
 
 import Metadata from '../components/Metadata';
 
+
+import Profile from '../profile/page'
+import DashboardMain from '../dashboardMain/page'
+import Groups from '../groups/page'
+import About_You from '../about-you/page'
+import Income from '../income/page'
+import Identity from '../identity/page'
+import Survey from '../survey/page'
+import Payment from '../payments/page'
+import Settings from '../settings/page'
+import Logout from '../logout/page'
 
 
 
@@ -27,7 +40,7 @@ const DashBoard = () => {
     description: 'Manage your njangi groups and track activities on the dashboard.',
   };
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -39,17 +52,35 @@ const DashBoard = () => {
   const renderContent = () => {
     switch (activeComponent) {
       case 'dashboard':
-        return <div>Dashboard Content</div>;
+        return <DashboardMain />;
+   
+      case 'groups':
+        return <Groups />;
+      case 'about-you':
+        return <About_You />;
+      case 'income':
+        return <Income />;
+      case 'identity':
+        return <Identity />;
+      case 'survey':
+        return <Survey />;
+      case 'payments':
+        return <Payment />;
       case 'profile':
-        return <div>Profile Content</div>;
+        return <Profile />;
+      case 'notifications':
+        return <Groups />;
       case 'settings':
-        return <div>Settings Content</div>;
+        return <Settings />;
+      case 'logout':
+        return <Logout />;
       default:
-        return <div>Dashboard Content</div>;
+        return <DashboardMain />; 
     }
   };
 
 
+  
   return (
     <section className=' w-full flex'>
       
@@ -70,7 +101,7 @@ const DashBoard = () => {
             onClick={toggleDropdown}
           >
             <div className='flex items-center'>
-              <FontAwesomeIcon icon={faQuestion} className=' h-8 w-8' />  
+              <FontAwesomeIcon icon={faTasks} className=' h-8 w-8' />  
               <h1 className='tracking-wider ml-2'>Complete</h1>
             </div>
             <FontAwesomeIcon icon={faChevronDown} className={`h-5 w-5 ml-2 ease-in-out duration-[250ms] transform transition-transform ${isOpen ? 'rotate-180' : ''}`} />
@@ -90,9 +121,14 @@ const DashBoard = () => {
 
 
 
-        <div onClick={() => setActiveComponent('profile')}  className='mt-4 flex items-center justify-center hover:cursor-pointer ease-in-out duration-300'>
-          <FontAwesomeIcon icon={faHome} className='h-10 w-10' />
+        <div onClick={() => setActiveComponent('groups')}  className='mt-4 flex items-center justify-center hover:cursor-pointer ease-in-out duration-300'>
+          <FontAwesomeIcon icon={faPeopleGroup} className='h-10 w-10' />
           <h1 className='tracking-wider ml-2 mt-[6px]'>Groups</h1> 
+        </div>
+
+          <div  onClick={() => setActiveComponent('profile')} className=' mt-4 mb-4 flex align-middle justify-center hover:cursor-pointer ease-in-out duration-300'>
+          <FontAwesomeIcon icon={faHome} className=' h-8 w-8' />  
+          <h1  className=' tracking-wider ml-2 mt-[3px]'>Profile </h1>
         </div>
 
       </div>

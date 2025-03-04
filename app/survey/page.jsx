@@ -1,6 +1,9 @@
+
 import React from 'react'
+
 import globalStyle from '../globals.css'
 import Link from 'next/link'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
 import { faPersonHalfDress } from '@fortawesome/free-solid-svg-icons'
 import { faCalendar } from '@fortawesome/free-solid-svg-icons'
@@ -16,13 +19,7 @@ import { faBullseye } from '@fortawesome/free-solid-svg-icons'
 
 
 
-
-export const metadata = {
-title: 'Complete REgistration - Njangi Web Application',
-description: 'Lets get to know you our most special user'
-}
-
-const Complete_Registration = () => {
+const Survey = () => {
 return (
 <main className='flex justify-center items-center w-full min-h-screen bg-gray-800 text-white p-4'>
 
@@ -309,4 +306,4 @@ return (
 
 }
 
-export default Complete_Registration
+export default Survey

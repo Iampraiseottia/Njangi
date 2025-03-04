@@ -17,6 +17,22 @@ export const metadata = {
     title: 'Dashboard - Njangi Web Application',
     description: 'Manage your njangi groups and track activities on the dashboard.',
   },
+  '/register': {
+    title: 'Register - Njangi Web Application',
+    description: ' Register and take control of your financial freedom.',
+  },
+  '/profile': {
+    title: 'Profile Management - Njangi Web Application',
+    description: 'Manage your profile.',
+  },
+  '/login': {
+    title: 'Login - Njangi Web Application',
+    description: 'Login and take control of your financial freedom',
+  },
+  '/payment': {
+    title: 'Payments - Njangi Web Application',
+    description: 'Make and Receive Njangi Payments through MTN and Orange Mobile Money Services.',
+  },
   icons: {
     icon: [
       '/favicon.ico',
