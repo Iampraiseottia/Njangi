@@ -21,8 +21,8 @@ import { useForm } from '@conform-to/react';
 
 
 const About_You = () => {
-  const [lastResult, action] = useActionState(CreateUser02AboutYou, undefined);
-  const [form, fields] = useForm({ lastResult });
+  // const [lastResult, action] = useActionState(CreateUser02AboutYou, undefined);
+  // const [form, fields] = useForm({ lastResult });
 
   const [userName, setUserName] = useState("");
   const [country, setCountry] = useState("");
@@ -51,10 +51,10 @@ const About_You = () => {
         <div className='w-full lg:w-[55%] p-6 lg:p-9'>
           <h1 className='text-3xl lg:text-5xl font-extrabold tracking-wider mt-6 text-center mb-5'>Start Your Journey 🔥</h1>
           <br />
-          <form className='flex flex-col gap-6 w-full max-w-xl' id={form.id} onSubmit={async (e) => {
+          <form className='flex flex-col gap-6 w-full max-w-xl'  onSubmit={async (e) => {
             await form.onSubmit(e);   
             // await handleSubmit(e); 
-          }} action={action}>
+          }} action='#'>
             
 
             <div className='flex flex-col gap-2'>
@@ -63,12 +63,12 @@ const About_You = () => {
                 type="text" 
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
-                name={fields.country.name}
+                // name={fields.country.name}
                 id="country" 
                 placeholder='Your country ' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
-              <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.country.errors}</p> 
+              {/* <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.country.errors}</p>  */}
             </div>
 
             <div className='flex flex-col gap-2'>
@@ -76,41 +76,41 @@ const About_You = () => {
               <input 
                 type="text" 
                 name={fields.state_Region.name}
-                value={state_Region}
+                // value={state_Region}
                 onChange={(e) => setStateRegion(e.target.value)}
                 id="state_Region" 
                 placeholder='Your Home Address / Location ' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
-              <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.state_Region.errors}</p> 
+              {/* <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.state_Region.errors}</p>  */}
             </div>
 
             <div className='flex flex-col gap-2'>
               <label htmlFor="city" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faCity} className="werey2 mr-2 text-[#0ef]" /> City:</label>
               <input 
                 type="text" 
-                value={city}
+                // value={city}
                 onChange={(e) => setCity(e.target.value)}
                 name={fields.city.name}
                 id="city" 
                 placeholder='Your City / Town' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
-              <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.city.errors}</p> 
+              {/* <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.city.errors}</p>  */}
             </div>
 
             <div className='flex flex-col gap-2'>
               <label htmlFor="homeAddress" className='font-semibold text-lg tracking-wide'>🏠 Home Address:</label>
               <input 
                 type="text" 
-                value={homeAddress}
+                // value={homeAddress}
                 onChange={(e) => setHomeAddress(e.target.value)}
                 name={fields.homeAddress.name}
                 id="homeAddress" 
                 placeholder='Your Home Address / Precise Location' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
-              <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.homeAddress.errors}</p> 
+              {/* <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.homeAddress.errors}</p>  */}
             </div>
 
             <button type='submit' className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center'>
@@ -130,4 +130,3 @@ const About_You = () => {
 };
 
 export default About_You;
-
