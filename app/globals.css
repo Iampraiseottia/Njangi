@@ -68,3 +68,10 @@ body {
   width: 20px !important; 
 }
 
+
+.dashboard-sidebar-border{
+  border-top-right-radius: 55px !important;
+  border-bottom-right-radius: 55px !important;
+}
+
+
