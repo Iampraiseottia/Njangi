@@ -76,5 +76,10 @@ body {
 
 
 .text-gold {
-  color: gold; /* Adjust as necessary */
+  color: gold; 
 }
+
+.text-gold:hover{
+  color: rgb(186, 159, 2) !important; 
+}
+

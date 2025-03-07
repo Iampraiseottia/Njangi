@@ -13,7 +13,15 @@ export const metadata = {
     title: 'Njangi Web Application',
     description: 'An application created where members join, create, and manage njangi groups with others all over the world.',
   },
+  '/home': {
+    title: 'Njangi Web Application',
+    description: 'An application created where members join, create, and manage njangi groups with others all over the world.',
+  },
   '/dashboard': {
+    title: 'Dashboard - Njangi Web Application',
+    description: 'Manage your njangi groups and track activities on the dashboard.',
+  }, 
+  '/dashboardMain': {
     title: 'Dashboard - Njangi Web Application',
     description: 'Manage your njangi groups and track activities on the dashboard.',
   },
