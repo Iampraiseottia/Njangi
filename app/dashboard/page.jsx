@@ -24,12 +24,7 @@ import Logout from '../logout/page';
 
 
 import {  
-  Users,   
   FileText, 
-  BarChart2, 
-  User, 
-  Settings as SettingsIcon, 
-  LogOut, 
   ChevronDown 
 } from 'lucide-react'; 
 

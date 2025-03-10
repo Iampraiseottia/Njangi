@@ -1,5 +1,12 @@
+
 import React from 'react';
+
 import globalStyle from '../globals.css'; 
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
+
+import { faGear } from '@fortawesome/free-solid-svg-icons';
+
 
 import { 
   Search, 
@@ -16,29 +23,40 @@ import {
 
 const DashboardMain = () => {
   return (
+
     <div className="p-8">
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <div  className='pt-4'>
-          <h1 className="text-4xl font-bold text-gray-800">Welcome!!!,
-            <span className='text-[lightseagreen] text-[42px] '>Ottia Praise</span>
+          <h1 className="text-4xl font-bold text-gray-800">Welcome Back!!!,
+            <span className='text-[lightseagreen] text-[42px] pl-1'>Ottia Praise</span>
           </h1>
         </div>
-        <div className="flex items-center space-x-4">
+
+        <div className="flex items-center space-x-5">
           <div className="relative">
             <input 
               type="text" 
               placeholder="Search..." 
-              className="px-4 py-2 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="px-4 py-2 pl-10 w-96 rounded-lg border border-gray-300 duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-teal-500"
             />
             <Search className="absolute left-3 top-2.5 text-gray-400" size={18} />
           </div>
+
+          {/* Notification  */}
           <div className="relative">
             <Bell className="text-gray-600 cursor-pointer" /> 
-            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">3</span>
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-extrabold">3</span>
           </div>
+
+          {/* User Avatar  */}
           <div className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold">
-            JD
+            OP
+          </div>
+
+          {/* User SEttings  */}
+          <div className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold">
+            <FontAwesomeIcon icon={faGear} className='h-6 w-6' /> 
           </div>
         </div>
       </div>
