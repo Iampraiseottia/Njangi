@@ -15,10 +15,85 @@
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  
   font-family: Arial, Helvetica, sans-serif;
+
+  background-color: white; 
+  color: black; 
+  transition: background-color 0.3s, color 0.3s;
 }
+
+/* Dark Mode Styles */
+body.dark {
+  background-color: black; 
+  color: white; 
+}
+
+.dark .bg-white {
+  background-color: #1f1f1f; 
+}
+
+.dark .border-gray-100 {
+  border-color: white; 
+}
+
+.dark .text-gray-500 {
+  color: white; 
+}
+
+.dark .text-gray-800 {
+  color: white; 
+}
+
+.dark .bg-teal-500 {
+  background-color: lightseagreen; 
+}
+
+
+.dark .text-teal-500 {
+  color: #80cbc4; 
+}
+
+.dark .bg-purple-100 {
+  background-color: #4a148c; 
+}
+
+.dark .text-purple-500 {
+  color: #e1bee7; 
+}
+
+.dark .bg-orange-100 {
+  background-color: #ff5722; 
+}
+
+.dark .text-orange-500 {
+  color: #ffccbc; 
+}
+
+
+.dark .bg-gray-50 {
+  background-color: #424242; 
+}
+
+.dark .text-gray-900 {
+  color: white; 
+}
+
+.dark .bg-gray-50:hover{
+  cursor: pointer !important;
+}
+
+
+.dark .recent-activity-item:hover {
+  background-color: transparent; 
+  cursor: default; 
+}
+
+
+
+
+
+
 
 .wrapper{ 
   box-shadow: 0 0 25px #0ef;

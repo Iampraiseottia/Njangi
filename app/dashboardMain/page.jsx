@@ -1,11 +1,11 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import globalStyle from '../globals.css'; 
+import globalStyle from '../globals.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
 
-import { faGear } from '@fortawesome/free-solid-svg-icons';
+import { faGear, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 
 import { 
@@ -24,6 +24,23 @@ import {
  
 
 const DashboardMain = ({ setActiveComponent }) => {
+
+
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window !== "undefined") {
+      const savedMode = localStorage.getItem('darkMode');
+      return savedMode === 'true'; 
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    document.body.classList.toggle('dark', isDarkMode);
+
+    localStorage.setItem('darkMode', isDarkMode);
+  }, [isDarkMode]);
+
+
   return (
 
     <div className="p-8">
@@ -35,32 +52,52 @@ const DashboardMain = ({ setActiveComponent }) => {
           </h1>
         </div>
 
-        <div className="flex items-center space-x-5">
-          <div className="relative">
-            <input 
-              type="text" 
-              placeholder="Search..." 
-              className="px-4 py-2 pl-10 w-96 rounded-lg border border-gray-300 duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-teal-500"
-            />
-            <Search className="absolute left-3 top-2.5 text-gray-400" size={18} />
-          </div>
+        <div className="flex items-center space-x-5"> 
+        <div className="relative">
+          <input 
+            type="text" 
+            placeholder="Search..." 
+            className={`px-4 py-2 pl-10 w-96 rounded-lg border border-gray-300 duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-teal-500 ${isDarkMode ? 'bg-gray-800 text-black' : 'bg-white text-gray-800'}`}
+          />
+          <Search className="absolute left-3 top-2.5 text-gray-400" size={18} />
+        </div>
 
           {/* Notification  */}
-          <div className="relative cursor-pointer" 
-          // onClick={() => setActiveComponent('notifications')}
+          <div className="relative cursor-pointer ease-in-out duration-100" title='Notifications'
+          // onClick={() => setActiveComponent('notifications')} 
           >
-            <Bell className="text-gray-600 cursor-pointer" /> 
-            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-extrabold">3</span>
+            <Bell className="text-gray-600 cursor-pointer" size={28} />
+            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-extrabold">3</span>
           </div>
 
+
+          {/* User Settings  */}
+          <div onClick={() => setActiveComponent('transactions')} className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold cursor-pointer ease-in-out duration-100" title='Settings'> 
+            <FontAwesomeIcon icon={faGear} className='h-6 w-6' /> 
+          </div>
+
+
           {/* User Avatar  */}
-          <div onClick={() => setActiveComponent('profile')} className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold cursor-pointer">
+          <div onClick={() => setActiveComponent('profile')} className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold cursor-pointer ease-in-out duration-100" title='Profile'>
             OP
           </div>
 
-          {/* User Settings  */}
-          <div onClick={() => setActiveComponent('transactions')} className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold cursor-pointer"> 
-            <FontAwesomeIcon icon={faGear} className='h-6 w-6' /> 
+
+          {/* Light and Dark Mode  */} 
+          <div
+            onClick={() => setIsDarkMode(prevMode => !prevMode)} title='Modes'
+            className={`w-24 h-10 rounded-full bg-teal-500 justify-between flex items-center ${isDarkMode ? 'bg-white' : 'bg-lightseagreen'} transition-colors duration-300 cursor-pointer`}
+          >
+            <div
+              className={`w-[49%] h-full flex items-center justify-center rounded-full transition-transform duration-300 ${isDarkMode ? 'translate-x-full bg-white' : 'bg-teal-500'}`}
+            >
+              <FontAwesomeIcon icon={faMoon} className={`w-7 h-7 ${isDarkMode ? 'text-lightseagreen' : 'text-white'}`} />
+            </div>
+            <div
+              className={`w-[49%] mr-1 h-full flex items-center justify-center rounded-full transition-transform duration-300 ${isDarkMode ? 'bg-teal-500' : 'bg-white'}`}
+            >
+              <FontAwesomeIcon icon={faSun} className={`w-7 h-7 ${isDarkMode ? 'text-white' : 'text-teal-500'}`} />
+            </div>
           </div>
 
         </div>
@@ -141,7 +178,7 @@ const DashboardMain = ({ setActiveComponent }) => {
               { type: 'Contribution', group: 'Education Fund', amount: '+50, 000 francs', date: 'Mar 08, 2025 | 01:29 PM', status: 'pending' }
 
             ].map((activity, index) => (
-              <div key={index} className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-all">
+              <div key={index} className="recent-activity-item flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-all">
                 <div className="flex items-center">
                   <div className={`p-2 rounded-lg ${
                     activity.type === 'Contribution' ? 'bg-green-100 text-green-500' :
@@ -182,7 +219,7 @@ const DashboardMain = ({ setActiveComponent }) => {
               { name: 'Emergency Fund', members: 12, nextCollection: 'Mar 08, 2025', amount: '10, 000 francs after every 3 days' },
               { name: 'Education Fund', members: 6, nextCollection: 'Mar 08, 2025', amount: '2. 000 francs per day' }
             ].map((group, index) => (
-              <div key={index} className="p-3 hover:bg-gray-50 rounded-lg transition-all border border-gray-100 ">
+              <div key={index} className="recent-activity-item p-3 hover:bg-gray-50 rounded-lg transition-all border border-gray-100 ">
                 <div className="flex justify-between items-center">
                   <h3 className="font-medium text-gray-800">{group.name}</h3>
                   <span className="text-[14px] bg-orange-200 text-teal-600 px-4 py-1 rounded-full">{group.amount}</span>
