@@ -19,9 +19,10 @@ const DashboardMain = () => {
     <div className="p-8">
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-800">Dashboard</h1>
-          <p className="text-gray-500">Welcome back, John Doe</p>
+        <div  className='pt-4'>
+          <h1 className="text-4xl font-bold text-gray-800">Welcome!!!,
+            <span className='text-[lightseagreen] text-[42px] '>Ottia Praise</span>
+          </h1>
         </div>
         <div className="flex items-center space-x-4">
           <div className="relative">
@@ -33,7 +34,7 @@ const DashboardMain = () => {
             <Search className="absolute left-3 top-2.5 text-gray-400" size={18} />
           </div>
           <div className="relative">
-            <Bell className="text-gray-600 cursor-pointer" />
+            <Bell className="text-gray-600 cursor-pointer" /> 
             <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">3</span>
           </div>
           <div className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold">
