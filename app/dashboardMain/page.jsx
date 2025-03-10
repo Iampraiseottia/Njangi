@@ -46,21 +46,22 @@ const DashboardMain = ({ setActiveComponent }) => {
           </div>
 
           {/* Notification  */}
-          <div className="relative">
+          <div className="relative cursor-pointer" 
+          // onClick={() => setActiveComponent('notifications')}
+          >
             <Bell className="text-gray-600 cursor-pointer" /> 
             <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-extrabold">3</span>
           </div>
 
           {/* User Avatar  */}
-          <div className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold">
+          <div onClick={() => setActiveComponent('profile')} className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold cursor-pointer">
             OP
           </div>
 
-          {/* User SEttings  */}
-          <div onClick={() => setActiveComponent('setting')} className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold">
+          {/* User Settings  */}
+          <div onClick={() => setActiveComponent('transactions')} className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold cursor-pointer"> 
             <FontAwesomeIcon icon={faGear} className='h-6 w-6' /> 
           </div>
-
 
         </div>
       </div>
@@ -123,37 +124,39 @@ const DashboardMain = ({ setActiveComponent }) => {
       </div>
   
 
-  
+
       {/* Recent Activity and Groups */}
       <div className="grid grid-cols-2 gap-6 mb-8">
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 ">
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 duration-300 ease-in-out hover:shadow-lg">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-semibold text-gray-800">Recent Activity</h2>
-            <span className="text-teal-500 text-sm cursor-pointer">View All</span>
+            <h2 className="text-lg font-semibold text-gray-800">Your Recent Njangi Activity</h2>
+            <span className="text-teal-500 text-sm cursor-pointer" onClick={() => setActiveComponent('transactions')} >View All</span>
           </div>
           <div className="space-y-4">
             {[
-              { type: 'Contribution', group: 'Family Support', amount: '+$100.00', date: 'Today, 2:30 PM', status: 'completed' },
-              { type: 'Withdrawal', group: 'Emergency Fund', amount: '-$250.00', date: 'Yesterday', status: 'completed' },
-              { type: 'Received', group: 'Business Investment', amount: '+$520.00', date: 'Mar 07, 2025', status: 'completed' },
-              { type: 'Contribution', group: 'Education Fund', amount: '+$80.00', date: 'Mar 05, 2025', status: 'pending' }
+              { type: 'Contribution', group: 'Family Support', amount: '+5000 francs', date: 'Today, 2:30 PM', status: 'completed' },
+              { type: 'Received', group: 'Business Investment', amount: '+30,000 francs', date: 'Mar 07, 2025 | 11:15 AM', status: 'completed' },
+              { type: 'Contribution', group: 'Education Fund', amount: '+25,000 francs', date: 'Mar 07, 2025 | 04:53 pM', status: 'pending' },
+              { type: 'Received', group: 'Business Investment', amount: '+200, 000 francs', date: 'Mar 08, 2025 | 9:39 AM', status: 'completed' },
+              { type: 'Contribution', group: 'Education Fund', amount: '+50, 000 francs', date: 'Mar 08, 2025 | 01:29 PM', status: 'pending' }
+
             ].map((activity, index) => (
               <div key={index} className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-all">
                 <div className="flex items-center">
                   <div className={`p-2 rounded-lg ${
                     activity.type === 'Contribution' ? 'bg-green-100 text-green-500' :
-                    activity.type === 'Withdrawal' ? 'bg-red-100 text-red-500' : 'bg-blue-100 text-blue-500'
+                    activity.type === 'received' ? 'bg-red-100 text-red-500' : 'bg-blue-100 text-blue-500'
                   }`}>
                     {activity.type === 'Contribution' ? <PlusCircle size={18} /> : 
-                     activity.type === 'Withdrawal' ? <LogOut size={18} /> : <ArrowRight size={18} />}
+                    <ArrowRight size={18} />}
                   </div>
                   <div className="ml-3">
                     <p className="text-sm font-medium text-gray-800">{activity.type}</p>
-                    <p className="text-xs text-gray-500">{activity.group}</p>
+                    <p className="text-xs text-gray-500">{activity.group}</p> 
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className={`text-sm font-medium ${
+                  <p className={` bg-purple-200 text-teal-600 px-4 py-1 border rounded-xl text-sm font-medium ${
                     activity.amount.startsWith('+') ? 'text-green-500' : 'text-red-500'
                   }`}>{activity.amount}</p>
                   <p className="text-xs text-gray-500">{activity.date}</p>
@@ -163,32 +166,32 @@ const DashboardMain = ({ setActiveComponent }) => {
           </div>
         </div>
         
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 ">
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 duration-300 ease-in-out hover:shadow-lg">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-semibold text-gray-800">Your Groups</h2>
             <div className="flex space-x-2 items-center">
-              <button className="bg-teal-500 text-white px-3 py-1 rounded-lg text-sm flex items-center">
-                <PlusCircle size={16} className="mr-1" /> New Group
+              <button onClick={() => setActiveComponent('groups')} className="bg-teal-500 text-white px-3 py-1 rounded-lg text-sm flex items-center cursor-pointer">
+                View All Groups
               </button>
             </div>
           </div>
           <div className="space-y-4">
             {[
-              { name: 'Family Support', members: 15, nextCollection: 'Mar 15, 2025', amount: '$100/month' },
-              { name: 'Business Investment', members: 8, nextCollection: 'Mar 20, 2025', amount: '$250/month' },
-              { name: 'Emergency Fund', members: 12, nextCollection: 'Mar 25, 2025', amount: '$150/month' },
-              { name: 'Education Fund', members: 6, nextCollection: 'Mar 30, 2025', amount: '$80/month' }
+              { name: 'Family Support', members: 15, nextCollection: 'Mar 07, 2025', amount: '5000 francs per week' },
+              { name: 'Business Investment', members: 8, nextCollection: 'Mar 07, 2025', amount: '25, 000 francs per month' },
+              { name: 'Emergency Fund', members: 12, nextCollection: 'Mar 08, 2025', amount: '10, 000 francs after every 3 days' },
+              { name: 'Education Fund', members: 6, nextCollection: 'Mar 08, 2025', amount: '2. 000 francs per day' }
             ].map((group, index) => (
               <div key={index} className="p-3 hover:bg-gray-50 rounded-lg transition-all border border-gray-100 ">
                 <div className="flex justify-between items-center">
                   <h3 className="font-medium text-gray-800">{group.name}</h3>
-                  <span className="text-xs bg-teal-100 text-teal-600 px-2 py-1 rounded-full">{group.amount}</span>
+                  <span className="text-[14px] bg-orange-200 text-teal-600 px-4 py-1 rounded-full">{group.amount}</span>
                 </div>
                 <div className="flex justify-between mt-2 text-sm text-gray-500">
                   <div className="flex items-center">
                     <Users size={14} className="mr-1" />
                     <span>{group.members} members</span>
-                  </div>
+                  </div> 
                   <div className="flex items-center">
                     <Calendar size={14} className="mr-1" />
                     <span>{group.nextCollection}</span>
@@ -201,10 +204,10 @@ const DashboardMain = ({ setActiveComponent }) => {
       </div>
   
       {/* Upcoming Payments */}
-      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 ">
+      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 duration-300 ease-in-out hover:shadow-lg ">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-lg font-semibold text-gray-800">Upcoming Payments</h2>
-          <span className="text-teal-500 text-sm cursor-pointer">View All</span>
+          <span className="text-teal-500 text-sm cursor-pointer" onClick={() => setActiveComponent('transactions')} >View All</span>
         </div>
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
@@ -219,9 +222,9 @@ const DashboardMain = ({ setActiveComponent }) => {
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               {[
-                { group: 'Family Support', amount: '$100.00', dueDate: 'Mar 15, 2025', status: 'upcoming' },
-                { group: 'Business Investment', amount: '$250.00', dueDate: 'Mar 20, 2025', status: 'upcoming' },
-                { group: 'Emergency Fund', amount: '$150.00', dueDate: 'Mar 25, 2025', status: 'overdue' }
+                { group: 'Family Support', amount: '5000 francs', dueDate: 'Mar 07, 2025', status: 'upcoming' },
+                { group: 'Business Investment', amount: '25, 000 francs', dueDate: 'Mar 07, 2025', status: 'upcoming' },
+                { group: 'Emergency Fund', amount: '2, 000 francs', dueDate: 'Mar 08, 2025', status: 'overdue' }
               ].map((payment, index) => (
                 <tr key={index}>
                   <td className="px-6 py-4 whitespace-nowrap">

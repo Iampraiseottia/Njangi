@@ -41,7 +41,6 @@ body {
 
 @media (max-width: 650px) {
   .wrapper2{
-    /* color: red !important; */
    background: linear-gradient(-135deg, transparent 45%, lightseagreen 30%) !important;
 
   }
