@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 
 import globalStyle from '../globals.css'; 
 
@@ -21,7 +21,9 @@ import {
   Calendar 
 } from 'lucide-react';  
 
-const DashboardMain = () => {
+ 
+
+const DashboardMain = ({ setActiveComponent }) => {
   return (
 
     <div className="p-8">
@@ -55,58 +57,62 @@ const DashboardMain = () => {
           </div>
 
           {/* User SEttings  */}
-          <div className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold">
+          <div onClick={() => setActiveComponent('setting')} className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold">
             <FontAwesomeIcon icon={faGear} className='h-6 w-6' /> 
           </div>
+
+
         </div>
       </div>
   
-      {/* Stats */}
+
+      {/* User Stats */}
       <div className="grid grid-cols-4 gap-6 mb-8">
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+        
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 duration-300 ease-in-out hover:shadow-lg cursor-pointer" onClick={() => setActiveComponent('transactions')} >
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-gray-500 text-sm font-medium">Total Balance</h2>
+            <h2 className="text-gray-500 text-sm font-medium">Total Njangi Contributions</h2>
             <div className="bg-teal-100 p-2 rounded-lg">
-              <DollarSign className="text-teal-500" size={20} />
+              <DollarSign className="text-teal-500" size={20} /> 
             </div>
           </div>
-          <p className="text-3xl font-bold text-gray-800">$2,150.00</p>
+          <p className="text-3xl font-bold text-gray-800">23,750 <span className='text-xl'>Francs</span></p>
           <div className="flex items-center text-sm mt-2 text-green-500">
-            <span>+15% from last month</span>
+            <span>+12% from last month</span>
           </div>
         </div>
         
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 duration-300 ease-in-out hover:shadow-lg cursor-pointer" onClick={() => {setActiveComponent('groups')}} >
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-gray-500 text-sm font-medium">Active Groups</h2>
             <div className="bg-purple-100 p-2 rounded-lg">
               <Users className="text-purple-500" size={20} />
             </div>
           </div>
-          <p className="text-3xl font-bold text-gray-800">6</p>
+          <p className="text-3xl font-bold text-gray-800">9</p>
           <div className="flex items-center text-sm mt-2 text-green-500">
-            <span>+2 new this month</span>
+            <span>+3 new this month</span>
           </div>
         </div>
         
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 duration-300 ease-in-out hover:shadow-lg cursor-pointer" onClick={() => {setActiveComponent('transactions')}}>
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-gray-500 text-sm font-medium">Contributions</h2>
+            <h2 className="text-gray-500 text-sm font-medium">Total Chopped</h2>
             <div className="bg-blue-100 p-2 rounded-lg">
               <CreditCard className="text-blue-500" size={20} />
             </div>
           </div>
-          <p className="text-3xl font-bold text-gray-800">$850.00</p>
-          <div className="flex items-center text-sm mt-2 text-red-500">
-            <span>-5% from last month</span>
+          <p className="text-3xl font-bold text-gray-800">38,900 <span className=' text-xl'>Francs</span></p>
+          <div className="flex items-center text-sm mt-2 text-green-500">
+            <span>+24% from last month</span>
           </div>
         </div>
         
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-          <div className="flex justify-between items-center mb-4">
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 duration-300 ease-in-out hover:shadow-lg cursor-pointer" onClick={() => {setActiveComponent('profile')}}>
+          <div className="flex justify-between items-center mb-4"> 
             <h2 className="text-gray-500 text-sm font-medium">Profile Completion</h2>
             <div className="bg-orange-100 p-2 rounded-lg">
-              <Clipboard className="text-orange-500" size={20} />
+              <Clipboard className="text-orange-500" size={20} /> 
             </div>
           </div>
           <p className="text-3xl font-bold text-gray-800">75%</p>
@@ -116,9 +122,11 @@ const DashboardMain = () => {
         </div>
       </div>
   
+
+  
       {/* Recent Activity and Groups */}
       <div className="grid grid-cols-2 gap-6 mb-8">
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 ">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-semibold text-gray-800">Recent Activity</h2>
             <span className="text-teal-500 text-sm cursor-pointer">View All</span>
@@ -155,7 +163,7 @@ const DashboardMain = () => {
           </div>
         </div>
         
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 ">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-semibold text-gray-800">Your Groups</h2>
             <div className="flex space-x-2 items-center">
@@ -171,7 +179,7 @@ const DashboardMain = () => {
               { name: 'Emergency Fund', members: 12, nextCollection: 'Mar 25, 2025', amount: '$150/month' },
               { name: 'Education Fund', members: 6, nextCollection: 'Mar 30, 2025', amount: '$80/month' }
             ].map((group, index) => (
-              <div key={index} className="p-3 hover:bg-gray-50 rounded-lg transition-all border border-gray-100">
+              <div key={index} className="p-3 hover:bg-gray-50 rounded-lg transition-all border border-gray-100 ">
                 <div className="flex justify-between items-center">
                   <h3 className="font-medium text-gray-800">{group.name}</h3>
                   <span className="text-xs bg-teal-100 text-teal-600 px-2 py-1 rounded-full">{group.amount}</span>
@@ -193,7 +201,7 @@ const DashboardMain = () => {
       </div>
   
       {/* Upcoming Payments */}
-      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 ">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-lg font-semibold text-gray-800">Upcoming Payments</h2>
           <span className="text-teal-500 text-sm cursor-pointer">View All</span>

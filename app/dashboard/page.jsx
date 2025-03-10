@@ -37,7 +37,7 @@ const DashBoard = () => {
   const renderContent = () => {
     switch (activeComponent) {
       case 'dashboardMain':
-        return <DashboardMain />;
+        return <DashboardMain setActiveComponent={setActiveComponent} />;
       case 'groups':
         return <Groups />;
       case 'about-you':
