@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
 import { faPersonHalfDress } from '@fortawesome/free-solid-svg-icons'
-import { faCalendar } from '@fortawesome/free-solid-svg-icons'
+// import { faCalendar } from '@fortawesome/free-solid-svg-icons'
 import { faGroupArrowsRotate } from '@fortawesome/free-solid-svg-icons'
 import { faHandHoldingDollar } from '@fortawesome/free-solid-svg-icons'
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons'
@@ -33,31 +33,10 @@ return (
     {/* Registration Page 01 Left Section */}
     <div className='w-full lg:w-[55%] p-6 lg:p-12 xl:p-20'>
     <form className='flex flex-col gap-6 w-full max-w-xl'>
-            <div className='flex flex-col gap-2'>
-              <label htmlFor="date_of_birth" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faCalendar} className="werey2 mr-2 text-[gold]" /> Date of Birth:</label>
-              <input 
-                type="date" 
-                name="date_of_birth" 
-                id="date_of_birth" 
-                placeholder='Your Data Of Birth' 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
-              />
-            </div>
+            
 
             
 
-            <div className='flex flex-col gap-2'>
-              <label htmlFor="gender" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faPersonHalfDress} className="werey2 mr-2 text-[gold]" /> Gender:</label>
-             <select name="gender" id="gender" 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-black '
-             
-             >
-              <option value="Choose Your Gender">Choose Your Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-
-             </select>
-            </div>
 
             <div className='flex flex-col gap-2'>
               <label htmlFor="number" className='font-semibold text-lg tracking-wide'>👩🏾‍💻 How Did You Hear About Us?</label>

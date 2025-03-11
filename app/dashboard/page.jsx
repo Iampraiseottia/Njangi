@@ -41,7 +41,7 @@ const DashBoard = () => {
       case 'groups':
         return <Groups />;
       case 'about-you':
-        return <About_You />;
+        return <About_You setActiveComponent={setActiveComponent} />;
       case 'income':
         return <Income />;
       case 'identity':

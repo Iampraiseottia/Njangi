@@ -10,7 +10,7 @@ import Link from 'next/link';
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
-import { faUser, faArrowLeft, faCity } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faArrowLeft, faCity, faPersonHalfDress, faCalendar } from '@fortawesome/free-solid-svg-icons';
 
 
 // import { CreateUser02AboutYou } from '../actions';
@@ -20,7 +20,7 @@ import { useForm } from '@conform-to/react';
 
 
 
-const About_You = () => {
+const About_You = ({ setActiveComponent }) => {
   // const [lastResult, action] = useActionState(CreateUser02AboutYou, undefined);
   // const [form, fields] = useForm({ lastResult });
 
@@ -36,7 +36,10 @@ const About_You = () => {
   
 
   return (
-    <main className='flex justify-center items-center w-full min-h-screen bg-gray-800 text-white p-4'>
+    <main className='flex relative justify-center items-center w-full min-h-screen bg-gray-800 text-white p-4'>
+      <p className='dance absolute'></p>
+      <p className=' dance2 absolute'></p>
+
       <section className='flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl bg-transparent border-2 border-[#0ef] overflow-hidden rounded-lg wrapper my-8'> 
         {/* Registration Page 01 Left Section */}
         <div className='w-full lg:w-[45%] p-6 lg:p-12 xl:p-20'>
@@ -56,6 +59,30 @@ const About_You = () => {
             // await handleSubmit(e); 
           }} action='#'>
             
+            <div className='flex flex-col gap-2'>
+              <label htmlFor="date_of_birth" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faCalendar} className="werey2 mr-2 text-[gold]" /> Date of Birth:</label>
+              <input 
+                type="date" 
+                name="date_of_birth" 
+                id="date_of_birth" 
+                placeholder='Your Data Of Birth' 
+                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
+              />
+            </div>
+
+
+            <div className='flex flex-col gap-2'>
+              <label htmlFor="gender" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faPersonHalfDress} className="werey2 mr-2 text-[gold]" /> Gender:</label>
+             <select name="gender" id="gender" 
+                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-black '
+             
+             >
+              <option value="Choose Gender">Choose Your Gender</option>
+              <option value="Male">Male</option> 
+              <option value="Female">Female</option>
+
+             </select>
+            </div>
 
             <div className='flex flex-col gap-2'>
               <label htmlFor="country" className='font-semibold text-lg tracking-wide'>🏴 Country:</label>
@@ -65,7 +92,7 @@ const About_You = () => {
                 onChange={(e) => setCountry(e.target.value)}
                 // name={fields.country.name}
                 id="country" 
-                placeholder='Your country ' 
+                placeholder='Your Country ' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
               {/* <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.country.errors}</p>  */}
@@ -75,11 +102,11 @@ const About_You = () => {
               <label htmlFor="state_Region" className='font-semibold text-lg tracking-wide'>🌆 State or Region:</label>
               <input 
                 type="text" 
-                name={fields.state_Region.name}
-                // value={state_Region}
+                // name={fields.state_Region.name}
+                value={state_Region}
                 onChange={(e) => setStateRegion(e.target.value)}
                 id="state_Region" 
-                placeholder='Your Home Address / Location ' 
+                placeholder='Your State / Region ' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
               {/* <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.state_Region.errors}</p>  */}
@@ -89,11 +116,11 @@ const About_You = () => {
               <label htmlFor="city" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faCity} className="werey2 mr-2 text-[#0ef]" /> City:</label>
               <input 
                 type="text" 
-                // value={city}
+                value={city}
                 onChange={(e) => setCity(e.target.value)}
-                name={fields.city.name}
+                // name={fields.city.name}
                 id="city" 
-                placeholder='Your City / Town' 
+                placeholder='Your Current City / Town' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
               {/* <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.city.errors}</p>  */}
@@ -103,26 +130,21 @@ const About_You = () => {
               <label htmlFor="homeAddress" className='font-semibold text-lg tracking-wide'>🏠 Home Address:</label>
               <input 
                 type="text" 
-                // value={homeAddress}
+                value={homeAddress}
                 onChange={(e) => setHomeAddress(e.target.value)}
-                name={fields.homeAddress.name}
+                // name={fields.homeAddress.name}
                 id="homeAddress" 
-                placeholder='Your Home Address / Precise Location' 
+                placeholder='Your Current Home Address / Precise Location' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
               {/* <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.homeAddress.errors}</p>  */}
-            </div>
+            </div> 
 
-            <button type='submit' className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center'>
-              Continue ➡️
+            <button type='submit' className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center' onClick={() => setActiveComponent('income')} >
+              Submit and Continue ➡️
             </button>
           </form>
 
-          <p className='text-right mt-4 mb-2 font-bold text-lg'>02/05</p>
-          
-          <Link href="/register" className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-[90%] text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center'>
-            <FontAwesomeIcon icon={faArrowLeft} className='werey2 mr-2' /> Go Back 
-          </Link>
         </div>
       </section>
     </main>
@@ -130,3 +152,4 @@ const About_You = () => {
 };
 
 export default About_You;
+
