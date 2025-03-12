@@ -64,9 +64,9 @@ return (
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-black '
              
              >
-              <option value="Your Have you participated in a Njangi group before?">  Select an Option </option>
-              <option value="Male">YES</option>
-              <option value="Female">NO</option>
+              <option className='singleCol' value="Select an Option ">  Select an Option </option>
+              <option className='singleCol' value="YES">YES</option>
+              <option className='singleCol' value="NO">NO</option>
 
              </select>
             </div>
@@ -78,9 +78,9 @@ return (
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-black '
              
              >
-              <option value="What is your preferred method of payment?">  Select an Option </option>
-              <option value="Male">MTN Mobile Money 💰 </option>
-              <option value="Female">ORANGE Mobile Money 💰 </option>
+              <option className='singleCol' value="Select an Option ">  Select an Option </option>
+              <option className='singleCol' value="MTN Mobile Money">MTN Mobile Money 💰 </option>
+              <option className='singleCol' value="ORANGE Mobile Money">ORANGE Mobile Money 💰 </option>
 
              </select>
             </div>
@@ -157,17 +157,17 @@ return (
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef]  py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-white bg-slate-800 '
              
              >
-              <option value="Your Have you participated in a Njangi group before?">  Select an Option </option>
-              <option value="Male">1/10</option>
-              <option value="Female">2/10</option>
-              <option value="Male">3/10</option>
-              <option value="Female">4/10</option>
-              <option value="Male">5/10</option> 
-              <option value="Female">6/10</option>
-              <option value="Male">7/10</option>
-              <option value="Female">8/10</option>
-              <option value="Male">9/10</option>
-              <option value="Female">10/10</option>
+              <option className='singleCol' value="Select an Option ">  Select an Option </option>
+              <option className='singleCol' value="1/10">1/10</option>
+              <option className='singleCol' value="2/10">2/10</option>
+              <option className='singleCol' value="3/10">3/10</option>
+              <option className='singleCol' value="4/10">4/10</option>
+              <option className='singleCol' value="5/10">5/10</option> 
+              <option className='singleCol' value="6/10">6/10</option>
+              <option className='singleCol' value="7/10">7/10</option>
+              <option className='singleCol' value="8/10">8/10</option>
+              <option className='singleCol' value="9/10">9/10</option>
+              <option className='singleCol' value="10/10">10/10</option>
 
              </select>
             </div>
@@ -189,9 +189,9 @@ return (
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef]  py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-white bg-slate-800 '
              
              >
-              <option value="Your Have you participated in a Njangi group before?"> Select an Option</option>
-              <option value="Male">YES</option>
-              <option value="Female">NO</option>
+              <option className='singleCol' value="Select an Option "> Select an Option</option>
+              <option className='singleCol' value="YES">YES</option>
+              <option className='singleCol' value="NO">NO</option>
              
 
              </select>
@@ -200,7 +200,7 @@ return (
             <div className='flex flex-col gap-2'>
               <label htmlFor="suggestions" className='font-semibold text-lg tracking-wide flex'> 💭 Do you have any suggestions for improving the Njangi experience?</label>
               <input 
-                type="passwortextd" 
+                type="TEXT" 
                 name="suggestions" 
                 id="suggestions" 
                 placeholder='State Your Suggestions ' 
@@ -233,19 +233,17 @@ return (
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
             </div>
-            
-
-     
+          
     </form>
-
 
     </div>
 
   </div>
-  <Link href="/verify" className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-[90%] text-white mb-10 py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center ml-[5%]'>
-          Complete Registration ✅
 
-      </Link>
+  <button className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-[90%] text-white mb-10 py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center ml-[5%]'>
+          Complete Survey ✅
+
+      </button>
      
 
  

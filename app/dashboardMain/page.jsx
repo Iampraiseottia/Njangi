@@ -5,7 +5,9 @@ import globalStyle from '../globals.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
 
-import { faGear, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faGear,
+  faSun,
+  faMoon } from '@fortawesome/free-solid-svg-icons';
 
 
 import { 
@@ -120,7 +122,7 @@ const DashboardMain = ({ setActiveComponent }) => {
           </div>
         </div>
         
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 duration-300 ease-in-out hover:shadow-lg cursor-pointer" onClick={() => {setActiveComponent('groups')}} >
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 duration-300 ease-in-out hover:shadow-lg cursor-pointer" onClick={() => {setActiveComponent('groups')}} > 
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-gray-500 text-sm font-medium">Active Groups</h2>
             <div className="bg-purple-100 p-2 rounded-lg">

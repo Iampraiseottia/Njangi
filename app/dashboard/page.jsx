@@ -7,7 +7,12 @@ import globalStyle from '../globals.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
 
-import { faHome, faPeopleGroup, faMoneyBill, faUser, faGear, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faHome, 
+  faPeopleGroup,
+  faMoneyBill,
+  faUser,
+  faGear,
+  faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 import Metadata from '../components/Metadata';
 import Profile from '../profile/page';

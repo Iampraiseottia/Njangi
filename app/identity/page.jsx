@@ -84,7 +84,7 @@ return (
           className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef]  py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-white bg-slate-800 '
         
         >
-        <option value="Your Have you participated in a Njangi group before?" className='singleCol'> Select an Option</option>
+        <option value="Select an Option" className='singleCol'> Select an Option</option>
         <option value="Male" className='singleCol'>Single</option>
         <option className='singleCol' value="Female">Married</option>
         
@@ -109,7 +109,7 @@ return (
             className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef]  py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-white bg-slate-800 '
           
           >
-          <option className='singleCol' value="Are you currently in any debt?"> Select an Option</option>
+          <option className='singleCol' value="Select an Option"> Select an Option</option>
           <option className='singleCol' value="YES">YES</option>
           <option className='singleCol' value="NO">NO</option>
           
