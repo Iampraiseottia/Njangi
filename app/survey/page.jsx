@@ -5,8 +5,6 @@ import globalStyle from '../globals.css'
 import Link from 'next/link'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
-import { faPersonHalfDress } from '@fortawesome/free-solid-svg-icons'
-// import { faCalendar } from '@fortawesome/free-solid-svg-icons'
 import { faGroupArrowsRotate } from '@fortawesome/free-solid-svg-icons'
 import { faHandHoldingDollar } from '@fortawesome/free-solid-svg-icons'
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons'
@@ -210,19 +208,7 @@ return (
               />
             </div>
 
-            <div className='flex flex-col gap-2'>
-              <label htmlFor="marital_status" className='font-semibold text-lg tracking-wide'>💒 What is your marital status?:</label>
-              <select name="marital_status" id="marital_status" 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef]  py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-white bg-slate-800 '
-             
-             >
-              <option value="Your Have you participated in a Njangi group before?"> Select an Option</option>
-              <option value="Male">Single</option>
-              <option value="Female">Married</option>
-             
-
-             </select>
-            </div>
+            
 
    
  
@@ -236,22 +222,7 @@ return (
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
             </div>
-            
-            <div className='flex flex-col gap-2'>
-              <label htmlFor="debt_status" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faCircleExclamation} className="werey2 mr-2 text-[#0ef]" /> Are you currently in any debt? </label>
-              <select name="debt_status" id="debt_status" 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef]  py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-white bg-slate-800 '
-             
-             >
-              <option value="Your Have you participated in a Njangi group before?"> Select an Option</option>
-              <option value="Male">YES</option>
-              <option value="Female">NO</option>
-             
-
-             </select>
-            </div>
-
-   
+              
             <div className='flex flex-col gap-2'>
               <label htmlFor="motivation_contribution" className='font-semibold text-lg tracking-wide flex'> <FontAwesomeIcon icon={faBullseye} className="werey2 mr-2 text-[#0ef]" />  What motivates you to stay committed to group contributions?</label>
               <input 

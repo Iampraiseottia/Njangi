@@ -182,3 +182,8 @@ body.dark {
   left: -50px;
   z-index: -1; 
 }
+
+
+.singleCol{
+  color: black !important;
+}

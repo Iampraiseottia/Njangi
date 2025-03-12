@@ -45,7 +45,7 @@ const DashBoard = () => {
       case 'income':
         return <Income setActiveComponent={setActiveComponent} />;
       case 'identity':
-        return <Identity />;
+        return <Identity setActiveComponent={setActiveComponent} />;  
       case 'survey':
         return <Survey />;
       case 'transactions':

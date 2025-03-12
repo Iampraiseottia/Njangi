@@ -7,11 +7,10 @@ import Link from 'next/link'
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
-import { faIdCard } from '@fortawesome/free-solid-svg-icons'
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faIdCard, faCircleExclamation } from '@fortawesome/free-solid-svg-icons'
 
 
-const Identity = () => {
+const Identity = ({setActiveComponent}) => {
 return (
 <main className='flex justify-center items-center w-full min-h-screen bg-gray-800 text-white p-4'>
 
@@ -62,6 +61,8 @@ return (
     </form>
     </div>
 
+
+
     {/* Registration Page 01 Right Section */}
     <div className='w-full lg:w-[55%] p-6 lg:p-9'>
 
@@ -78,6 +79,20 @@ return (
       </div>
 
       <div className='flex flex-col gap-2'>
+        <label htmlFor="marital_status" className='font-semibold text-lg tracking-wide'>💒 What is your marital status?:</label>
+        <select name="marital_status" id="marital_status" 
+          className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef]  py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-white bg-slate-800 '
+        
+        >
+        <option value="Your Have you participated in a Njangi group before?" className='singleCol'> Select an Option</option>
+        <option value="Male" className='singleCol'>Single</option>
+        <option className='singleCol' value="Female">Married</option>
+        
+
+        </select>
+      </div>
+
+      <div className='flex flex-col gap-2'>
         <label htmlFor="sickness" className='font-semibold text-lg tracking-wide'>😷 Are You Suffering of any sickness or disease?</label>
         <input 
           type="text" 
@@ -87,6 +102,20 @@ return (
           className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
         />
       </div>
+
+       <div className='flex flex-col gap-2'>
+          <label htmlFor="debt_status" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faCircleExclamation} className="werey2 mr-2 text-[#0ef]" /> Are you currently in any debt? </label>
+          <select name="debt_status" id="debt_status" 
+            className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef]  py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-white bg-slate-800 '
+          
+          >
+          <option className='singleCol' value="Are you currently in any debt?"> Select an Option</option>
+          <option className='singleCol' value="YES">YES</option>
+          <option className='singleCol' value="NO">NO</option>
+          
+
+          </select>
+        </div>
 
       <div className='flex flex-col gap-2'>
         <label htmlFor="camera_pic" className='font-semibold text-lg tracking-wide'>📷 Take a Picture of Yourself:</label>
@@ -101,18 +130,10 @@ return (
 
    
 
-      <Link href="/complete" className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center'>
-        Continue ➡️
-      </Link>
+      <button type='submit' className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center' onClick={() => setActiveComponent('survey')} >
+        Submit and Continue ➡️
+      </button>
     </form>
-
-    <p className='text-right mt-4 mb-2 font-bold text-lg'>04/05</p>
-    
-    <Link href="/income" className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-[90%] text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center'>
-              <FontAwesomeIcon icon={faArrowLeft} className='werey2 mr-2' /> Go Back 
-
-      </Link>
-     
 
     </div>
   </div>
