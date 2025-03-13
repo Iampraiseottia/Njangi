@@ -184,7 +184,7 @@ return (
             </div>
  
             <div className='flex flex-col gap-2'>
-              <label htmlFor="receive_financial_education" className='font-semibold text-lg tracking-wide '>📗 Would you like to receive educational materials on financial literacy?:</label>
+              <label htmlFor="receive_financial_education" className='font-semibold text-lg tracking-wide '>📗 Would you like to receive educational materials on financial literacy?</label>
               <select name="receive_financial_education" id="receive_financial_education" 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef]  py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-white bg-slate-800 '
              

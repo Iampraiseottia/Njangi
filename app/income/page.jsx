@@ -81,18 +81,21 @@ return (
         />
       </div>
 
+
       <div className='flex flex-col gap-2'>
-        <label htmlFor="work_status" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faAddressBook} className="werey2 mr-2 text-[#0ef]" /> Work Status:</label>
-        <fieldset className=' flex justify-evenly align-middle'>
-          <div className=' flex '>
-            <input type="radio" checked name="work_status" id="work_status" /> 
-            <h3 className=' ml-3 text-xl tracking-wide'>Employee</h3>
-          </div>
-          <div className=' flex '>
-            <input type="radio" name="work_status" id="work_status" /> 
-            <h3 className=' ml-3 text-xl tracking-wide'>Employer (business person)</h3>
-          </div>
-        </fieldset>
+        <label htmlFor="receive_financial_education" className='font-semibold text-lg tracking-wide '><FontAwesomeIcon icon={faAddressBook} className="werey2 mr-2 text-[#0ef]" /> Employment Status</label>
+        <select name="receive_financial_education" id="receive_financial_education" 
+          className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef]  py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-white bg-slate-800 '
+      
+        >
+        <option className='singleCol' value="Select an Option "> Select an Option</option>
+        <option className='singleCol' value="Employed">Employed</option>
+        <option className='singleCol' value="Self-Employed">Self-Employed</option>
+        <option className='singleCol' value="Unemployed">Unemployed</option>
+        <option className='singleCol' value="Student">Student</option>
+        <option className='singleCol' value="Retired">Retired</option>
+        
+        </select>
       </div>
 
       <div className='flex flex-col gap-2'>

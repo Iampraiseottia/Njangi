@@ -62,7 +62,7 @@ const DashboardMain = ({ setActiveComponent }) => {
             className={`px-4 py-2 pl-10 w-96 rounded-lg border border-gray-300 duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-teal-500 ${isDarkMode ? 'bg-gray-800 text-black' : 'bg-white text-gray-800'}`}
           />
           <Search className="absolute left-3 top-2.5 text-gray-400" size={18} />
-        </div>
+        </div> 
 
           {/* Notification  */}
           <div className="relative cursor-pointer ease-in-out duration-100" title='Notifications'
@@ -74,7 +74,7 @@ const DashboardMain = ({ setActiveComponent }) => {
 
 
           {/* User Settings  */}
-          <div onClick={() => setActiveComponent('transactions')} className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold cursor-pointer ease-in-out duration-100" title='Settings'> 
+          <div onClick={() => setActiveComponent('settings')} className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold cursor-pointer ease-in-out duration-100" title='Settings'> 
             <FontAwesomeIcon icon={faGear} className='h-6 w-6' /> 
           </div>
 

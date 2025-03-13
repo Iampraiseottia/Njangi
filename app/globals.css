@@ -84,11 +84,26 @@ body.dark {
 }
 
 
-.dark .recent-activity-item:hover {
-  background-color: transparent; 
+.dark .recent-activity-item:hover,
+.dark .transaction_list:hover {
+  background-color: transparent !important; 
   cursor: default; 
 }
 
+.dark .transaction_list2{
+  color: black;  
+}
+
+.dark .transaction_list2:hover{
+  color: white;  
+}
+
+
+
+.dark .transaction_list3:hover{
+  color: black;
+  border: 1px solid black;  
+}
 
 
 
