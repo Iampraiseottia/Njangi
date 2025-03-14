@@ -43,7 +43,10 @@ const Register = () => {
   })
 
 
-
+  const metadata = {
+    title: 'Registration - Njangi Web Application',
+    description: 'Register and start enjoying the amazing features if Njangify. ',
+  };
 
 
   const [fullName, setFullName] = useState("");
