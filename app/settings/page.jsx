@@ -25,8 +25,8 @@ const [isDarkMode, setIsDarkMode] = useState(() => {
 
     localStorage.setItem('darkMode', isDarkMode);
   }, [isDarkMode]);
-
-
+ 
+ 
 
 return (
   <div className="p-8">

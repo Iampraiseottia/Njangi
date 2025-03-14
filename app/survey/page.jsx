@@ -19,8 +19,10 @@ import { faBullseye } from '@fortawesome/free-solid-svg-icons'
 
 const Survey = () => {
 return (
-<main className='flex justify-center items-center w-full min-h-screen bg-gray-800 text-white p-4'>
+<main className='flex relative justify-center items-center w-full min-h-screen bg-gray-800 text-white p-4'>
 
+<p className='dance absolute'></p>
+<p className=' dance2 absolute'></p>
 
 <section className=' w-full max-w-7xl bg-transparent border-2 border-[#0ef] overflow-hidden rounded-lg wrapper3 my-8 '> 
 

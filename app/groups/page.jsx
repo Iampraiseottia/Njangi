@@ -10,7 +10,7 @@ import { faGear,
   faMoon } from '@fortawesome/free-solid-svg-icons';
 
 
-const Groups = () => {
+const Groups = ({ setActiveComponent }) => {
 
   const [isDarkMode, setIsDarkMode] = useState(() => {
       if (typeof window !== "undefined") {

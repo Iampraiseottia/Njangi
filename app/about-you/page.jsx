@@ -1,7 +1,8 @@
 
 "use client"
 
-import React, { useState } from 'react';
+import {React, useState, useEffect} from 'react'
+
 import { useActionState } from 'react';
 
 
@@ -17,6 +18,11 @@ import { faUser, faArrowLeft, faCity, faPersonHalfDress, faCalendar } from '@for
 import { useForm } from '@conform-to/react';
 
 
+import { ArrowRight, Bell, Calendar, Search } from 'lucide-react'
+
+import { faGear,
+  faSun,
+  faMoon } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -31,14 +37,29 @@ const About_You = ({ setActiveComponent }) => {
   const [homeAddress, setHomeAddress] = useState("");
 
  
+const [isDarkMode, setIsDarkMode] = useState(() => {
+  if (typeof window !== "undefined") {
+    const savedMode = localStorage.getItem('darkMode');
+    return savedMode === 'true'; 
+  }
+  return false;
+});
 
+useEffect(() => {
+  document.body.classList.toggle('dark', isDarkMode);
+
+  localStorage.setItem('darkMode', isDarkMode);
+}, [isDarkMode]);
 
   
 
   return (
+    
     <main className='flex relative justify-center items-center w-full min-h-screen bg-gray-800 text-white p-4'>
+      
       <p className='dance absolute'></p>
       <p className=' dance2 absolute'></p>
+
 
       <section className='flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl bg-transparent border-2 border-[#0ef] overflow-hidden rounded-lg wrapper my-8'> 
         {/* Registration Page 01 Left Section */}
@@ -47,7 +68,7 @@ const About_You = ({ setActiveComponent }) => {
           <br />
           <p className='text-base lg:text-lg mb-5'>Unlock exclusive rewards 🔥 which awaits you. Get personalized offers just for you just by us getting to know you better. Don't miss out!!!, Your journey starts here..</p>
           <br />
-          <FontAwesomeIcon icon={faUser} className='werey ' />  
+          <FontAwesomeIcon icon={faUser} className='werey ' />   
         </div>
 
         {/* Registration Page 01 Right Section */}

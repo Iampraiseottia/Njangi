@@ -44,7 +44,7 @@ const DashBoard = () => {
       case 'dashboardMain':
         return <DashboardMain setActiveComponent={setActiveComponent} />;
       case 'groups':
-        return <Groups />;
+        return <Groups setActiveComponent={setActiveComponent} />;
       case 'about-you':
         return <About_You setActiveComponent={setActiveComponent} />;
       case 'income':
@@ -52,25 +52,27 @@ const DashBoard = () => {
       case 'identity':
         return <Identity setActiveComponent={setActiveComponent} />;  
       case 'survey':
-        return <Survey />;
+        return <Survey setActiveComponent={setActiveComponent} />;
       case 'transactions':
-        return <Transactions />;
+        return <Transactions setActiveComponent={setActiveComponent} />;
       case 'profile':
-        return <Profile />;
+        return <Profile setActiveComponent={setActiveComponent} />;
       case 'settings':
-        return <Settings />;
-      case 'logout':
+        return <Settings setActiveComponent={setActiveComponent} />;
+      case 'logout': 
         return <Logout />;
       default:
         return <DashboardMain />;
     }
   };
 
+
   const metadata = {
     title: 'Dashboard - Njangi Web Application',
     description: 'Manage your njangi groups and track activities on the dashboard. ',
   };
 
+  
   return (
     <section className='w-full flex'>
       <Metadata title={metadata.title} description={metadata.description} />
