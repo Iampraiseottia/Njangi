@@ -243,7 +243,7 @@ const Profile = () => {
                 
                 <div className="border-t border-gray-200 pt-4 mt-4">
                   <button 
-                    className="text-red-600 hover:text-red-800 text-sm font-medium"
+                    className="text-red-600 hover:text-red-800 text-sm font-medium hover:cursor-pointer duration-300 ease-in-out "
                     disabled={!isEditMode}
                   >
                     Delete Account

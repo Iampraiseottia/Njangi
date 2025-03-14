@@ -19,6 +19,7 @@ import { useForm } from '@conform-to/react'
 import { parseWithZod } from '@conform-to/zod'
 
 import { register01Schema } from '../lib/zodSchemas' 
+import Metadata from '../components/Metadata'
 
 
 
@@ -56,11 +57,13 @@ const Register = () => {
   const [password, setPassword] = useState("");
 
 
-
   
   
   return (
+    
     <main className='flex justify-center items-center w-full min-h-screen bg-gray-800 text-white p-4'>
+
+      <Metadata title={metadata.title} description={metadata.description} />
 
       <section className='flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl bg-transparent border-2 border-[#0ef] overflow-hidden rounded-lg wrapper my-8 '> 
 

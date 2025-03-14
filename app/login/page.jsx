@@ -19,7 +19,7 @@ import { parseWithZod } from '@conform-to/zod'
 
 import { register01Schema } from '../lib/zodSchemas' 
 
-import { metadata } from './metadata'
+import Metadata from '../components/Metadata'
 
 
 
@@ -50,11 +50,17 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
 
+  const metadata = {
+    title: 'Welcome Back | Login - Njangi Web Application',
+    description: 'SIgn In and continue enjoying all the amazing features of this application' 
+}
 
   
   
   return (
     <main className='flex justify-center items-center w-full min-h-screen bg-gray-800 text-white p-4'>
+
+<Metadata title={metadata.title} description={metadata.description} />
 
       <section className='flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl bg-transparent border-2 border-[#0ef] overflow-hidden rounded-lg wrapper2 my-8 '> 
 
