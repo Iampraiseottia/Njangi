@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useRef } from 'react'
 
 import globalStyle from '../globals.css'
 import Link from 'next/link'
@@ -18,7 +18,192 @@ import { faBullseye } from '@fortawesome/free-solid-svg-icons'
 
 
 const Survey = () => {
+
+
+
+  const hear_about_usRef = useRef();
+
+  const onMouseEnterhear_about_usRef = () => {
+    hear_about_usRef.current.focus();
+  }
+
+  const onMouseLeavehear_about_usRef = () => {
+    hear_about_usRef.current.blur();
+  }
+
+
+
+  const level_of_educationRef = useRef();
+  
+  const onMouseEnterlevel_of_educationRef = () => {
+    level_of_educationRef.current.focus();
+  }
+
+  const onMouseLeavelevel_of_educationRef = () => {
+    level_of_educationRef.current.blur();
+  }
+
+
+  const ever_perticipatedRef = useRef();
+
+  const onMouseEnterever_perticipatedRef = () => {
+    ever_perticipatedRef.current.focus();
+  }
+
+  const onMouseLeaveever_perticipatedRef = () =>  {
+    ever_perticipatedRef.current.blur();
+  }
+
+
+
+  const preferred_methodREf = useRef();
+
+  const onMouseEnterpreferred_methodREf = () => {
+    preferred_methodREf.current.focus();
+  }
+
+  const onMouseLeavepreferred_methodREf = () => {
+    preferred_methodREf.current.blur();
+  }
+
+
+
+  const motivation_contributionRef = useRef();
+
+  const onMouseEntermotivation_contributionRef = () => {
+    motivation_contributionRef.current.focus();
+  }
+
+  const onMouseLeavemotivation_contributionRef = () => {
+    motivation_contributionRef.current.blur();
+  }
+
+
+
+  const suggestionsRef = useRef();
+
+  const onMouseEntersuggestionsRef = () => {
+    suggestionsRef.current.focus();
+  }
+
+  const onMouseLeavesuggestionsRef = () => {
+    suggestionsRef.current.blur();
+  }
+
+  
+
+  const receive_financial_educationRef = useRef();
+
+  const onMouseEnterreceive_financial_educationRef = () => {
+    receive_financial_educationRef.current.focus();
+  }
+
+  const onMouseLeavereceive_financial_educationRef = () => {
+    receive_financial_educationRef.current.blur();
+  }
+
+  
+
+  const primary_njangi_goalRef = useRef();
+
+  const onMouseEnterprimary_njangi_goalRef = () => {
+    primary_njangi_goalRef.current.focus();
+  }
+
+  const onMouseLeaveprimary_njangi_goalRef = () => {
+    primary_njangi_goalRef.current.blur();
+  }
+
+
+
+
+  const comfortabilityRef = useRef();
+
+  const onMouseEntercomfortabilityRef = () => {
+    comfortabilityRef.current.focus();
+  }
+
+  const onMouseLeavecomfortabilityRef = () => {
+    comfortabilityRef.current.blur();
+  }
+
+
+
+  const often_check_mailsRef = useRef();
+  
+  const onMouseEnteroften_check_mailsRef = () => { 
+    often_check_mailsRef.current.focus();
+  }
+
+  const onMouseLeaveoften_check_mailsRef = () => {
+    often_check_mailsRef.current.blur();
+  }
+
+
+  const previous_challengesRef = useRef();
+
+  const onMouseEnterprevious_challengesRef = () => {
+    previous_challengesRef.current.focus();
+  }
+
+  const onMouseLeaveprevious_challengesRef = () =>  {
+    previous_challengesRef.current.blur();
+  }
+
+
+
+  const recommend_PlatformRef = useRef();
+
+  const onMouseEnterrecommend_PlatformRef = () => {
+    recommend_PlatformRef.current.focus();
+  }
+
+  const onMouseLeaverecommend_PlatformRef = () => {
+    recommend_PlatformRef.current.blur();
+  }
+
+
+
+  const saving_pecentageRef = useRef();
+
+  const onMouseEntersaving_pecentageRef = () => {
+    saving_pecentageRef.current.focus();
+  }
+
+  const onMouseLeavesaving_pecentageRef = () => {
+    saving_pecentageRef.current.blur();
+  }
+
+  
+
+  const manage_financesREf = useRef();
+
+  const onMouseEntermanage_financesREf = () => {
+    manage_financesREf.current.focus();
+  }
+
+  const onMouseLeavemanage_financesREf = () => {
+    manage_financesREf.current.blur();
+  }
+
+  
+
+  const often_contributionRef = useRef();
+
+  const onMouseEnteroften_contributionRef = () => {
+    often_contributionRef.current.focus();
+  }
+
+  const onMouseLeaveoften_contributionRef = () => {
+    often_contributionRef.current.blur();
+  }
+
+  
+  
+
+
 return (
+
 <main className='flex relative justify-center items-center w-full min-h-screen bg-gray-800 text-white p-4'>
 
 <p className='dance absolute'></p>
@@ -26,24 +211,26 @@ return (
 
 <section className=' w-full max-w-7xl bg-transparent border-2 border-[#0ef] overflow-hidden rounded-lg wrapper3 my-8 '> 
 
-<h1 className='text-3xl lg:text-5xl font-extrabold tracking-wider mt-6 pt-9 text-center mb-12  '>Complete Your Registration 🔥</h1>
+<h1 className='text-3xl lg:text-5xl font-extrabold tracking-wider mt-6 pt-9 text-center mb-12  '>Complete Survey 🔥</h1>
 
 
   <div className='flex flex-col lg:flex-row justify-between items-center mt-[-50px]'> 
     {/* Registration Page 01 Left Section */}
-    <div className='w-full lg:w-[55%] p-6 lg:p-12 xl:p-20'>
+    <div className='w-full lg:w-[55%] p-6 lg:p-12 xl:p-20'> 
     <form className='flex flex-col gap-6 w-full max-w-xl'>
             
 
-            
 
 
             <div className='flex flex-col gap-2'>
-              <label htmlFor="number" className='font-semibold text-lg tracking-wide'>👩🏾‍💻 How Did You Hear About Us?</label>
+              <label htmlFor="hear_about_us" className='font-semibold text-lg tracking-wide'>👩🏾‍💻 How Did You Hear About Us?</label>
               <input 
+              ref={hear_about_usRef}
+            onMouseEnter={onMouseEnterhear_about_usRef}
+            onMouseLeave={onMouseLeavehear_about_usRef}
                 type="text" 
                 name="hear_about_us" 
-                id="number" 
+                id="hear_about_us" 
                 placeholder=' How Did You Hear About Us' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
@@ -52,6 +239,9 @@ return (
             <div className='flex flex-col gap-2'>
               <label htmlFor="level_of_education" className='font-semibold text-lg tracking-wide '>🎓 What is your highest level of education?</label>
               <input 
+              ref={level_of_educationRef}
+            onMouseEnter={onMouseEnterlevel_of_educationRef}
+            onMouseLeave={onMouseLeavelevel_of_educationRef}
                 type="text" 
                 name="level_of_education" 
                 id="level_of_education" 
@@ -64,7 +254,9 @@ return (
               <label htmlFor="ever_perticipated" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faGroupArrowsRotate} className="werey2 mr-2 text-[gold]" />  Have you participated in a Njangi group before? </label>
               <select name="ever_perticipated" id="ever_perticipated" 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-black '
-             
+                ref={ever_perticipatedRef}
+                onMouseEnter={onMouseEnterever_perticipatedRef}
+                onMouseLeave={onMouseLeaveever_perticipatedRef}
              >
               <option className='singleCol' value="Select an Option ">  Select an Option </option>
               <option className='singleCol' value="YES">YES</option>
@@ -75,10 +267,12 @@ return (
 
 
             <div className='flex flex-col gap-2'>
-              <label htmlFor="fullName" className='font-semibold text-lg tracking-wide'>🫰🏾 What is your preferred method of payment?</label>
-              <select name="ever_perticipated" id="ever_perticipated" 
+              <label htmlFor="preferred_method" className='font-semibold text-lg tracking-wide'>🫰🏾 What is your preferred method of payment?</label>
+              <select name="preferred_method" id="preferred_method" 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-black '
-             
+                ref={preferred_methodREf}
+                onMouseEnter={onMouseEnterpreferred_methodREf}
+                onMouseLeave={onMouseLeavepreferred_methodREf}
              >
               <option className='singleCol' value="Select an Option ">  Select an Option </option>
               <option className='singleCol' value="MTN Mobile Money">MTN Mobile Money 💰 </option>
@@ -92,6 +286,9 @@ return (
             <div className='flex flex-col gap-2'>
               <label htmlFor="often_contribution" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faHandHoldingDollar} className="werey2 mr-2 text-[gold]" /> How often can you contribute? </label>
               <input 
+              ref={often_contributionRef}
+            onMouseEnter={onMouseEnteroften_contributionRef}
+            onMouseLeave={onMouseLeaveoften_contributionRef}
                 type="text" 
                 name="often_contribution" 
                 id="often_contribution" 
@@ -100,9 +297,13 @@ return (
               />
             </div>
 
+
             <div className='flex flex-col gap-2'>
               <label htmlFor="primary_njangi_goal" className='font-semibold text-lg tracking-wide'>🎯 What are your primary goals for joining a Njangi Group? </label>
               <input 
+              ref={primary_njangi_goalRef}
+            onMouseEnter={onMouseEnterprimary_njangi_goalRef}
+            onMouseLeave={onMouseLeaveprimary_njangi_goalRef}
                 type="text" 
                 name="primary_njangi_goal" 
                 id="primary_njangi_goal" 
@@ -112,11 +313,14 @@ return (
             </div>
  
             <div className='flex flex-col gap-2'>
-              <label htmlFor="number" className='font-semibold text-lg tracking-wide flex'>#️⃣ How many members are you comfortable with in a Njangi group?</label>
+              <label htmlFor="comfortability" className='font-semibold text-lg tracking-wide flex'>#️⃣ How many members are you comfortable with in a Njangi group?</label>
               <input 
+              ref={comfortabilityRef}
+            onMouseEnter={onMouseEntercomfortabilityRef}
+            onMouseLeave={onMouseLeavecomfortabilityRef}
                 type="number" 
-                name="number" 
-                id="number" 
+                name="comfortability" 
+                id="comfortability" 
                 placeholder='How many members are you comfortable with in a Njangi group? ' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
@@ -125,6 +329,9 @@ return (
             <div className='flex flex-col gap-2'>
               <label htmlFor="often_check_mails" className='font-semibold text-lg tracking-wide flex'>📱 How often do you check your messages or emails? </label>
               <input 
+              ref={often_check_mailsRef}
+            onMouseEnter={onMouseEnteroften_check_mailsRef}
+            onMouseLeave={onMouseLeaveoften_check_mailsRef}
                 type="text" 
                 name="often_check_mails" 
                 id="often_check_mails" 
@@ -144,6 +351,9 @@ return (
        <div className='flex flex-col gap-2'>
               <label htmlFor="previous_challenges" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faCircleExclamation} className="werey2 mr-2 text-[gold]" />  What challenges have you faced in previous Njangi groups?</label>
               <input 
+              ref={previous_challengesRef}
+            onMouseEnter={onMouseEnterprevious_challengesRef}
+            onMouseLeave={onMouseLeaveprevious_challengesRef}
                 type="text" 
                 name="previous_challenges" 
                 id="previous_challenges" 
@@ -155,9 +365,11 @@ return (
           
             <div className='flex flex-col gap-2'>
               <label htmlFor="email" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faCommentDollar} className="werey2 mr-2 text-[gold]" /> How likely are you to recommend this Njangi Platform to others?</label>
-              <select name="ever_perticipated" id="ever_perticipated" 
+              <select name="recommend_Platform" id="recommend_Platform" 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef]  py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-white bg-slate-800 '
-             
+                ref={recommend_PlatformRef}
+                onMouseEnter={onMouseEnterrecommend_PlatformRef}
+                onMouseLeave={onMouseLeaverecommend_PlatformRef}
              >
               <option className='singleCol' value="Select an Option ">  Select an Option </option>
               <option className='singleCol' value="1/10">1/10</option>
@@ -177,6 +389,9 @@ return (
             <div className='flex flex-col gap-2'>
               <label htmlFor="manage_finances" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faCoins} className="werey2 mr-2 text-[gold]" /> How do you typically manage your finances? </label>
               <input 
+              ref={manage_financesREf}
+            onMouseEnter={onMouseEntermanage_financesREf}
+            onMouseLeave={onMouseLeavemanage_financesREf}
                 type="text" 
                 name="manage_finances" 
                 id="manage_finances" 
@@ -189,7 +404,9 @@ return (
               <label htmlFor="receive_financial_education" className='font-semibold text-lg tracking-wide '>📗 Would you like to receive educational materials on financial literacy?</label>
               <select name="receive_financial_education" id="receive_financial_education" 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef]  py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-white bg-slate-800 '
-             
+                ref={receive_financial_educationRef}
+                onMouseEnter={onMouseEnterreceive_financial_educationRef}
+                onMouseLeave={onMouseLeavereceive_financial_educationRef}
              >
               <option className='singleCol' value="Select an Option "> Select an Option</option>
               <option className='singleCol' value="YES">YES</option>
@@ -202,6 +419,9 @@ return (
             <div className='flex flex-col gap-2'>
               <label htmlFor="suggestions" className='font-semibold text-lg tracking-wide flex'> 💭 Do you have any suggestions for improving the Njangi experience?</label>
               <input 
+              ref={suggestionsRef}
+            onMouseEnter={onMouseEntersuggestionsRef}
+            onMouseLeave={onMouseLeavesuggestionsRef}
                 type="TEXT" 
                 name="suggestions" 
                 id="suggestions" 
@@ -217,6 +437,9 @@ return (
             <div className='flex flex-col gap-2'>
               <label htmlFor="saving_pecentage" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faPiggyBank} className="werey2 mr-2 text-[#0ef]" /> What percentage of your income do you typically save?</label>
               <input 
+              ref={saving_pecentageRef}
+            onMouseEnter={onMouseEntersaving_pecentageRef}
+            onMouseLeave={onMouseLeavesaving_pecentageRef}
                 type="text" 
                 name="saving_pecentage" 
                 id="saving_pecentage" 
@@ -228,6 +451,9 @@ return (
             <div className='flex flex-col gap-2'>
               <label htmlFor="motivation_contribution" className='font-semibold text-lg tracking-wide flex'> <FontAwesomeIcon icon={faBullseye} className="werey2 mr-2 text-[#0ef]" />  What motivates you to stay committed to group contributions?</label>
               <input 
+              ref={motivation_contributionRef}
+            onMouseEnter={onMouseEntermotivation_contributionRef}
+            onMouseLeave={onMouseLeavemotivation_contributionRef}
                 type="text" 
                 name="motivation_contribution" 
                 id="motivation_contribution" 

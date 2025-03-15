@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import globalStyle from '../globals.css';
 
@@ -43,6 +43,18 @@ const DashboardMain = ({ setActiveComponent }) => {
   }, [isDarkMode]);
 
 
+  const searchReg = useRef();
+
+  const onMouseEnterSearch = () => {
+    searchReg.current.focus();
+  }
+
+  const onMouseLeaveSearch = () => {
+    searchReg.current.blur();
+  }
+
+
+
   return (
 
     <div className="p-8">
@@ -58,11 +70,15 @@ const DashboardMain = ({ setActiveComponent }) => {
         <div className="relative">
           <input 
             type="text" 
+            ref={searchReg}
+            onMouseEnter={onMouseEnterSearch}
+            onMouseLeave={onMouseLeaveSearch}
             placeholder="Search..." 
             className={`px-4 py-2 pl-10 w-96 rounded-lg border border-gray-300 duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-teal-500 ${isDarkMode ? 'bg-gray-800 text-black' : 'bg-white text-gray-800'}`}
           />
           <Search className="absolute left-3 top-2.5 text-gray-400" size={18} />
         </div> 
+
 
           {/* Notification  */}
           <div className="relative cursor-pointer ease-in-out duration-100" title='Notifications'

@@ -1,7 +1,7 @@
 
 "use client"
 
-import React from 'react'
+import React, { useRef } from 'react'
 import { useActionState, useState } from 'react'
 
 
@@ -55,9 +55,34 @@ const Login = () => {
     description: 'SIgn In and continue enjoying all the amazing features of this application' 
 }
 
+
+
+    const userNameRef = useRef();
+  
+    const onMouseEnteruserNameRef = () => {
+      userNameRef.current.focus();
+    }
+  
+    const onMouseLeaveuserNameRef = () => {
+      userNameRef.current.blur();
+    }
+
+    
+  
+    const passwordRef = useRef();
+  
+    const onMouseEnterpasswordRef = () => {
+      passwordRef.current.focus();
+    }
+  
+    const onMouseLeavepasswordRef = () => {
+      passwordRef.current.blur();
+    }
+
   
   
   return (
+
     <main className='flex justify-center items-center w-full min-h-screen bg-gray-800 text-white p-4'>
 
 <Metadata title={metadata.title} description={metadata.description} />
@@ -77,7 +102,10 @@ const Login = () => {
           
             <div className='flex flex-col gap-2'>
               <label htmlFor="userName" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faCircleUser} className="werey2 mr-2 text-[#0ef]" /> User Name:</label>
-              <input 
+              <input
+              ref={userNameRef}
+          onMouseEnter={onMouseEnteruserNameRef}
+          onMouseLeave={onMouseLeaveuserNameRef} 
                 type="text" 
                 name={fields.userName.name} 
                 onChange={(e) => setUserName(e.target.value)}
@@ -92,7 +120,10 @@ const Login = () => {
  
             <div className='flex flex-col gap-2'>
               <label htmlFor="password" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faLock} className="werey2 mr-2 text-[#0ef]" /> Password:</label>
-              <input 
+              <input
+              ref={passwordRef}
+          onMouseEnter={onMouseEnterpasswordRef}
+          onMouseLeave={onMouseLeavepasswordRef} 
                 type="text" 
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

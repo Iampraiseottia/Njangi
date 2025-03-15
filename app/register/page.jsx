@@ -1,7 +1,7 @@
 
 "use client"
 
-import React from 'react'
+import React, { useRef } from 'react'
 import { useActionState, useState } from 'react'
 
 
@@ -58,6 +58,67 @@ const Register = () => {
 
 
   
+
+      const userNameRef = useRef();
+    
+      const onMouseEnteruserNameRef = () => {
+        userNameRef.current.focus();
+      }
+    
+      const onMouseLeaveuserNameRef = () => {
+        userNameRef.current.blur();
+      }
+  
+      
+    
+      const passwordRef = useRef();
+    
+      const onMouseEnterpasswordRef = () => {
+        passwordRef.current.focus();
+      }
+    
+      const onMouseLeavepasswordRef = () => {
+        passwordRef.current.blur();
+      }
+  
+
+
+
+      const fullNameRef = useRef();
+    
+      const onMouseEnterfullNameRef = () => {
+        fullNameRef.current.focus();
+      }
+    
+      const onMouseLeavefullNameRef = () => {
+        fullNameRef.current.blur();
+      }
+  
+      
+    
+      const emailAddress = useRef();
+    
+      const onMouseEnteremailAddress = () => {
+        emailAddress.current.focus();
+      }
+    
+      const onMouseLeaveemailAddress = () => {
+        emailAddress.current.blur();
+      }
+  
+      
+      
+
+      const phoneNumberRef = useRef();
+    
+      const onMouseEnterphoneNumberRef = () => {
+        phoneNumberRef.current.focus();
+      }
+    
+      const onMouseLeavephoneNumberRef = () => {
+        phoneNumberRef.current.blur();
+      }
+
   
   return (
     
@@ -108,6 +169,9 @@ const Register = () => {
                 name={fields.fullName.name}
                 defaultValue={fields.fullName.initialValue} 
                 id="fullName" 
+                ref={fullNameRef}
+          onMouseEnter={onMouseEnterfullNameRef}
+          onMouseLeave={onMouseLeavefullNameRef} 
                 placeholder='Your Full Name' 
                 key={fields.fullName.key} 
                 value={fullName}
@@ -121,6 +185,9 @@ const Register = () => {
             <div className='flex flex-col gap-2'>
               <label htmlFor="email" className='font-semibold text-lg tracking-wide'>✉️ Email Address:</label>
               <input 
+              ref={emailAddress}
+              onMouseEnter={onMouseEnteremailAddress}
+              onMouseLeave={onMouseLeaveemailAddress} 
                 type="email" 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -142,6 +209,9 @@ const Register = () => {
                 name={fields.userName.name} 
                 onChange={(e) => setUserName(e.target.value)}
                 value={userName}
+                ref={userNameRef}
+          onMouseEnter={onMouseEnteruserNameRef}
+          onMouseLeave={onMouseLeaveuserNameRef} 
                 id="userName" 
                 placeholder='Your User Name' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
@@ -153,6 +223,9 @@ const Register = () => {
               <label htmlFor="phoneNumber" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faPhoneVolume} className="werey2 mr-2 text-[#0ef]" /> Phone Number:</label>
               <input 
                 type="text" 
+                ref={phoneNumberRef}
+          onMouseEnter={onMouseEnterphoneNumberRef}
+          onMouseLeave={onMouseLeavephoneNumberRef} 
                 name={fields.phoneNumber.name} 
                 key={fields.phoneNumber.key}
                 defaultValue={fields.phoneNumber.initialValue}
@@ -171,6 +244,9 @@ const Register = () => {
                 type="text" 
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                ref={passwordRef}
+          onMouseEnter={onMouseEnterpasswordRef}
+          onMouseLeave={onMouseLeavepasswordRef} 
                 name={fields.password.name} 
                 key={fields.password.key}
                 defaultValue={fields.password.initialValue} 

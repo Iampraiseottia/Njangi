@@ -1,7 +1,7 @@
 
 "use client"
 
-import {React, useState, useEffect} from 'react'
+import {React, useState, useEffect, useRef} from 'react'
 
 import { useActionState } from 'react';
 
@@ -37,6 +37,9 @@ const About_You = ({ setActiveComponent }) => {
   const [homeAddress, setHomeAddress] = useState("");
 
  
+
+
+
 const [isDarkMode, setIsDarkMode] = useState(() => {
   if (typeof window !== "undefined") {
     const savedMode = localStorage.getItem('darkMode');
@@ -50,6 +53,79 @@ useEffect(() => {
 
   localStorage.setItem('darkMode', isDarkMode);
 }, [isDarkMode]);
+
+
+
+
+  const DateOfBirthReg = useRef();
+
+  const onMouseEnterDateOfBirthReg = () => {
+    DateOfBirthReg.current.focus();
+  }
+
+  const onMouseLeaveDateOfBirthReg = () => {
+    DateOfBirthReg.current.blur();
+  }
+
+
+
+  const GenderReg = useRef();
+
+  const onMouseEnterGenderReg = () => {
+    GenderReg.current.focus();
+  }
+
+  const onMouseLeaveGenderReg = () => {
+    GenderReg.current.blur();
+  }
+
+
+  const countryReg = useRef();
+
+  const onMouseEntercountryReg = () => {
+    countryReg.current.focus();
+  }
+
+  const onMouseLeavecountryReg = () =>  {
+    countryReg.current.blur();
+  }
+
+
+
+  const state_Region_Ref = useRef();
+
+  const onMouseEnterstate_Region_Ref = () => {
+    state_Region_Ref.current.focus();
+  }
+
+  const onMouseLeavestate_Region_Ref = () => {
+    state_Region_Ref.current.blur();
+  }
+
+
+  const cityRef = useRef();
+
+  const onMouseEntercityRef = () => {
+    cityRef.current.focus();
+  }
+
+  const onMouseLeavecityRef = () => {
+    cityRef.current.blur();
+  }
+
+
+
+  const homeAddressRef = useRef();
+
+  const onMouseEnterhomeAddressRef = () => {
+    homeAddressRef.current.focus();
+  }
+
+  const onMouseLeavehomeAddressRef = () => {
+    homeAddressRef.current.blur();
+  }
+
+
 
   
 
@@ -88,6 +164,9 @@ useEffect(() => {
                 id="date_of_birth" 
                 placeholder='Your Data Of Birth' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
+                ref={DateOfBirthReg}
+                onMouseEnter={onMouseEnterDateOfBirthReg}  
+                onMouseLeave={onMouseLeaveDateOfBirthReg} 
               />
             </div>
 
@@ -96,7 +175,9 @@ useEffect(() => {
               <label htmlFor="gender" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faPersonHalfDress} className="werey2 mr-2 text-[gold]" /> Gender:</label>
              <select name="gender" id="gender" 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-black '
-             
+                ref={GenderReg}
+                onMouseEnter={onMouseEnterGenderReg}
+                onMouseLeave={onMouseLeaveGenderReg}
              >
               <option value="Choose Gender">Choose Your Gender</option>
               <option value="Male">Male</option> 
@@ -111,6 +192,9 @@ useEffect(() => {
                 type="text" 
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
+                ref={countryReg}
+                onMouseEnter={onMouseEntercountryReg}
+                onMouseLeave={onMouseLeavecountryReg}
                 // name={fields.country.name}
                 id="country" 
                 placeholder='Your Country ' 
@@ -125,6 +209,9 @@ useEffect(() => {
                 type="text" 
                 // name={fields.state_Region.name}
                 value={state_Region}
+                ref={state_Region_Ref}
+                onMouseEnter={onMouseEnterstate_Region_Ref}
+                onMouseLeave={onMouseLeavestate_Region_Ref}
                 onChange={(e) => setStateRegion(e.target.value)}
                 id="state_Region" 
                 placeholder='Your State / Region ' 
@@ -137,6 +224,9 @@ useEffect(() => {
               <label htmlFor="city" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faCity} className="werey2 mr-2 text-[#0ef]" /> City:</label>
               <input 
                 type="text" 
+                ref={cityRef}
+                onMouseEnter={onMouseEntercityRef}
+                onMouseLeave={onMouseLeavecityRef} 
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
                 // name={fields.city.name}
@@ -153,6 +243,9 @@ useEffect(() => {
                 type="text" 
                 value={homeAddress}
                 onChange={(e) => setHomeAddress(e.target.value)}
+                ref={homeAddressRef}
+                onMouseEnter={onMouseEnterhomeAddressRef}
+                onMouseLeave={onMouseLeavehomeAddressRef}
                 // name={fields.homeAddress.name}
                 id="homeAddress" 
                 placeholder='Your Current Home Address / Precise Location' 
@@ -173,4 +266,3 @@ useEffect(() => {
 };
 
 export default About_You;
-

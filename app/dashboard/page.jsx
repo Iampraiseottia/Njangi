@@ -72,8 +72,11 @@ const DashBoard = () => {
     description: 'Manage your njangi groups and track activities on the dashboard. ',
   };
 
-  
+ 
+
   return (
+
+
     <section className='w-full flex'>
       <Metadata title={metadata.title} description={metadata.description} />
 
