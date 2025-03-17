@@ -1,4 +1,6 @@
 
+'use client';
+
 import React, { useRef } from 'react'
 
 import globalStyle from '../globals.css'

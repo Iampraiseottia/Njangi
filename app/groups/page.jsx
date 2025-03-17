@@ -1,3 +1,6 @@
+
+'use client';
+
 import {React, useState, useEffect, useRef} from 'react'
 
 import { ArrowRight, Bell, Calendar, PlusCircle, Search } from 'lucide-react'

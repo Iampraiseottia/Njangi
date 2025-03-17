@@ -2,31 +2,34 @@
 "use client"
 
 import {React, useState, useEffect, useRef} from 'react'
+import { useRouter } from 'next/navigation';
 
 import { useActionState } from 'react';
 
 
 import globalStyle from '../globals.css';
-import Link from 'next/link';
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
-import { faUser, faArrowLeft, faCity, faPersonHalfDress, faCalendar } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faCity, faPersonHalfDress, faCalendar } from '@fortawesome/free-solid-svg-icons';
 
 
 // import { CreateUser02AboutYou } from '../actions';
 import { useForm } from '@conform-to/react';
 
 
-import { ArrowRight, Bell, Calendar, Search } from 'lucide-react'
-
-import { faGear,
-  faSun,
-  faMoon } from '@fortawesome/free-solid-svg-icons';
 
 
+const About_You = () => {
 
-const About_You = ({ setActiveComponent }) => {
+  
+  const router = useRouter();
+
+  const handleNavigateToIncome = () => {
+      router.push('/dashboard');
+  };
+
+
   // const [lastResult, action] = useActionState(CreateUser02AboutYou, undefined);
   // const [form, fields] = useForm({ lastResult });
 
@@ -254,7 +257,8 @@ useEffect(() => {
               {/* <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.homeAddress.errors}</p>  */}
             </div> 
 
-            <button type='submit' className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center' onClick={() => setActiveComponent('income')} >
+            <button  type="button" 
+                onClick={handleNavigateToIncome} className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center' >
               Submit and Continue ➡️
             </button>
           </form>
