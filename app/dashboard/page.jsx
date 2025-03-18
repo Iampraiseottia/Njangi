@@ -69,6 +69,8 @@ const DashBoard = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+
+
   const renderContent = () => {
     switch (activeComponent) {
       case 'dashboardMain':
@@ -100,6 +102,18 @@ const DashBoard = () => {
     title: 'Dashboard - Njangi Web Application',
     description: 'Manage your njangi groups and track activities on the dashboard. ',
   };
+
+
+  const handleSearch = (searchTerm) => {
+    if (searchTerm.toLowerCase() === '/identity') {
+      setActiveComponent('identity');
+      // Optionally clear the search input
+      return true; // Indicate the search was handled
+    }
+    // Handle other search terms or return false if not handled
+    return false;
+  };
+
 
   return (
     <section className='w-full relative flex'>

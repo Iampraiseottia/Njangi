@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useRef } from 'react'
-import { useRouter } from 'next/navigation';
+
 
 
 import globalStyle from '../globals.css'
@@ -19,13 +19,8 @@ import { faMoneyBill, faLocationDot, faAddressBook, faUserTie } from '@fortaweso
 
 
 
-const Income = () => {
+const Income = ({setActiveComponent}) => {
 
-  const router = useRouter();
-  
-    const handleNavigateToIncome = () => {
-        router.push('/identity');
-    };
 
 
 
@@ -243,7 +238,7 @@ return (
 
       <button 
         type="button" 
-        onClick={handleNavigateToIncome}
+        onClick={() => setActiveComponent('identity')}
         className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center'
         
       >

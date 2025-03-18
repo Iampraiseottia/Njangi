@@ -2,7 +2,7 @@
 "use client"
 
 import {React, useState, useEffect, useRef} from 'react'
-import { useRouter } from 'next/navigation';
+
 
 import { useActionState } from 'react';
 
@@ -20,14 +20,8 @@ import { useForm } from '@conform-to/react';
 
 
 
-const About_You = () => {
+const About_You = ({ setActiveComponent }) => {
 
-  
-  const router = useRouter();
-
-  const handleNavigateToIncome = () => {
-      router.push('/dashboard');
-  };
 
 
   // const [lastResult, action] = useActionState(CreateUser02AboutYou, undefined);
@@ -257,8 +251,8 @@ useEffect(() => {
               {/* <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.homeAddress.errors}</p>  */}
             </div> 
 
-            <button  type="button" 
-                onClick={handleNavigateToIncome} className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center' >
+            <button  type="submit" 
+                onClick={() => setActiveComponent('income')} className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center' >
               Submit and Continue ➡️
             </button>
           </form>

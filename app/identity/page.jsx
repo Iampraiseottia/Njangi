@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useRef } from 'react'
-import { useRouter } from 'next/navigation';
+
 
 
 import globalStyle from '../globals.css'
@@ -12,14 +12,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faIdCard, faCircleExclamation } from '@fortawesome/free-solid-svg-icons'
 
 
-const Identity = () => {
+const Identity = ({ setActiveComponent }) => {
 
-
-  const router = useRouter();
-  
-    const handleNavigateToIncome = () => {
-        router.push('/survey');
-    };
 
 
 
@@ -264,8 +258,8 @@ return (
    
 
       <button className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center' 
-      type="button" 
-      onClick={handleNavigateToIncome} >
+      type="submit" 
+      onClick={() => setActiveComponent('survey')} >
         Submit and Continue ➡️
       </button>
     </form>
