@@ -2,6 +2,7 @@
 'use client';
 
 import {React, useState, useEffect, useRef} from 'react'
+
 import { ArrowRight, Bell, Calendar, Search } from 'lucide-react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGear, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
@@ -27,9 +28,6 @@ const Transactions = ({ setActiveComponent }) => {
     searchReg.current.focus();
   }
 
-  const onMouseLeaveSearch = () => {
-    searchReg.current.blur();
-  }
   
   return (
     <div className="p-4 md:p-8">
@@ -89,7 +87,6 @@ const Transactions = ({ setActiveComponent }) => {
                 type="text" 
                 ref={searchReg}
                 onMouseEnter={onMouseEnterSearch}
-                onMouseLeave={onMouseLeaveSearch}
                 placeholder="Search transactions" 
                 className="px-4 py-2 pl-10 duration-300 ease-in-out rounded-lg border border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-teal-500 w-full"
               />
@@ -118,7 +115,7 @@ const Transactions = ({ setActiveComponent }) => {
       </div>
       
       {/* Transaction Table - Responsive */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-md ease-in-out duration-300">
+      <div className="bg-white rounded-lg shadow-sm border-2 border-gray-100 overflow-hidden hover:shadow-md ease-in-out duration-300">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">

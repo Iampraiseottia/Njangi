@@ -4,7 +4,6 @@
 import React, { useRef } from 'react'
 
 
-
 import globalStyle from '../globals.css'
 
 
@@ -12,9 +11,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faIdCard, faCircleExclamation } from '@fortawesome/free-solid-svg-icons'
 
 
+
 const Identity = ({ setActiveComponent }) => {
-
-
 
 
     const birth_certificateRef = useRef();
@@ -23,11 +21,6 @@ const Identity = ({ setActiveComponent }) => {
       birth_certificateRef.current.focus();
     }
   
-    const onMouseLeavebirth_certificateRef = () => {
-      birth_certificateRef.current.blur();
-    }
-  
-  
   
     const Identification_CardRef = useRef();
    
@@ -35,31 +28,18 @@ const Identity = ({ setActiveComponent }) => {
       Identification_CardRef.current.focus();
     }
   
-    const onMouseLeaveIdentification_CardRef = () => {
-      Identification_CardRef.current.blur();
-    }
-  
-  
+
     const uploaded_picRef = useRef();
   
     const onMouseEnteruploaded_picRef = () => {
       uploaded_picRef.current.focus();
     }
   
-    const onMouseLeaveuploaded_picRef = () =>  {
-      uploaded_picRef.current.blur();
-    }
-  
-  
   
     const disability_statusRef = useRef();
   
     const onMouseEnterdisability_statusRef = () => {
       disability_statusRef.current.focus();
-    }
-  
-    const onMouseLeavedisability_statusRef = () => {
-      disability_statusRef.current.blur();
     }
   
   
@@ -69,11 +49,6 @@ const Identity = ({ setActiveComponent }) => {
       marital_statusRef.current.focus();
     }
   
-    const onMouseLeavemarital_statusRef = () => {
-      marital_statusRef.current.blur();
-    }
-  
-  
   
     const sicknessRef = useRef();
   
@@ -81,11 +56,6 @@ const Identity = ({ setActiveComponent }) => {
       sicknessRef.current.focus();
     }
   
-    const onMouseLeavesicknessRef = () => {
-      sicknessRef.current.blur();
-    }
-  
-    
   
     const debt_statusRef = useRef();
   
@@ -93,20 +63,11 @@ const Identity = ({ setActiveComponent }) => {
       debt_statusRef.current.focus();
     }
   
-    const onMouseLeavedebt_statusRef = () => {
-      debt_statusRef.current.blur();
-    }
-
-    
   
     const camera_picRef = useRef();
   
     const onMouseEntercamera_picRef = () => {
       camera_picRef.current.focus();
-    }
-  
-    const onMouseLeavecamera_picRef = () => {
-      camera_picRef.current.blur();
     }
 
 
@@ -135,7 +96,6 @@ return (
         <input 
           ref={birth_certificateRef}
           onMouseEnter={onMouseEnterbirth_certificateRef}
-          onMouseLeave={onMouseLeavebirth_certificateRef}
           type="file" 
           name="birth_certificate" 
           id="birth_certificate" 
@@ -149,7 +109,6 @@ return (
         <input 
           ref={Identification_CardRef}
           onMouseEnter={onMouseEnterIdentification_CardRef}
-          onMouseLeave={onMouseLeaveIdentification_CardRef}
           type="file" 
           name="Identification_Card" 
           id="Identification_Card" 
@@ -163,7 +122,6 @@ return (
         <input 
           ref={uploaded_picRef}
           onMouseEnter={onMouseEnteruploaded_picRef}
-          onMouseLeave={onMouseLeaveuploaded_picRef}
           type="file" 
           name="uploaded_pic" 
           id="uploaded_pic" 
@@ -186,7 +144,6 @@ return (
         <input 
           ref={disability_statusRef}
           onMouseEnter={onMouseEnterdisability_statusRef}
-          onMouseLeave={onMouseLeavedisability_statusRef}
           type="text" 
           name="disability_status" 
           id="disability_status" 
@@ -201,7 +158,6 @@ return (
           className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef]  py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-white bg-slate-800 '
           ref={marital_statusRef}
           onMouseEnter={onMouseEntermarital_statusRef}
-          onMouseLeave={onMouseLeavemarital_statusRef}
         >
         <option value="Select an Option" className='singleCol'> Select an Option</option>
         <option value="Male" className='singleCol'>Single</option>
@@ -216,7 +172,6 @@ return (
         <input 
           ref={sicknessRef}
           onMouseEnter={onMouseEntersicknessRef}
-          onMouseLeave={onMouseLeavesicknessRef}
           type="text" 
           name="sickness" 
           id="sickness" 
@@ -231,7 +186,6 @@ return (
             className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef]  py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-white bg-slate-800 '
           ref={debt_statusRef}
           onMouseEnter={onMouseEnterdebt_statusRef}
-          onMouseLeave={onMouseLeavedebt_statusRef} 
           >
           <option className='singleCol' value="Select an Option"> Select an Option</option>
           <option className='singleCol' value="YES">YES</option>
@@ -246,7 +200,6 @@ return (
         <input 
           ref={camera_picRef}
           onMouseEnter={onMouseEntercamera_picRef}
-          onMouseLeave={onMouseLeavecamera_picRef}
           type="file" 
           name="camera_pic" 
           id="camera_pic" 

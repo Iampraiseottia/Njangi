@@ -23,6 +23,11 @@ import { useForm } from '@conform-to/react';
 const About_You = ({ setActiveComponent }) => {
 
 
+  if (!setActiveComponent || typeof setActiveComponent !== "function") {
+    console.error("setActiveComponent is not a function or is undefined.");
+    return null; // Prevent rendering if prop is invalid
+  }
+
 
   // const [lastResult, action] = useActionState(CreateUser02AboutYou, undefined);
   // const [form, fields] = useForm({ lastResult });
@@ -60,20 +65,11 @@ useEffect(() => {
     DateOfBirthReg.current.focus();
   }
 
-  const onMouseLeaveDateOfBirthReg = () => {
-    DateOfBirthReg.current.blur();
-  }
-
-
 
   const GenderReg = useRef();
 
   const onMouseEnterGenderReg = () => {
     GenderReg.current.focus();
-  }
-
-  const onMouseLeaveGenderReg = () => {
-    GenderReg.current.blur();
   }
 
 
@@ -83,20 +79,11 @@ useEffect(() => {
     countryReg.current.focus();
   }
 
-  const onMouseLeavecountryReg = () =>  {
-    countryReg.current.blur();
-  }
-
-
 
   const state_Region_Ref = useRef();
 
   const onMouseEnterstate_Region_Ref = () => {
     state_Region_Ref.current.focus();
-  }
-
-  const onMouseLeavestate_Region_Ref = () => {
-    state_Region_Ref.current.blur();
   }
 
 
@@ -106,10 +93,6 @@ useEffect(() => {
     cityRef.current.focus();
   }
 
-  const onMouseLeavecityRef = () => {
-    cityRef.current.blur();
-  }
-
 
 
   const homeAddressRef = useRef();
@@ -117,11 +100,6 @@ useEffect(() => {
   const onMouseEnterhomeAddressRef = () => {
     homeAddressRef.current.focus();
   }
-
-  const onMouseLeavehomeAddressRef = () => {
-    homeAddressRef.current.blur();
-  }
-
 
 
   
@@ -148,10 +126,10 @@ useEffect(() => {
         <div className='w-full lg:w-[55%] p-6 lg:p-9'>
           <h1 className='text-3xl lg:text-5xl font-extrabold tracking-wider mt-6 text-center mb-5'>Start Your Journey 🔥</h1>
           <br />
-          <form className='flex flex-col gap-6 w-full max-w-xl'  onSubmit={async (e) => {
-            await form.onSubmit(e);   
-            // await handleSubmit(e); 
-          }} action='#'>
+          <form className='flex flex-col gap-6 w-full max-w-xl'  onSubmit={(e) => {
+              e.preventDefault();
+              setActiveComponent("income"); 
+            }} action='#'>
             
             <div className='flex flex-col gap-2'>
               <label htmlFor="date_of_birth" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faCalendar} className="werey2 mr-2 text-[gold]" /> Date of Birth:</label>
@@ -163,7 +141,6 @@ useEffect(() => {
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
                 ref={DateOfBirthReg}
                 onMouseEnter={onMouseEnterDateOfBirthReg}  
-                onMouseLeave={onMouseLeaveDateOfBirthReg} 
               />
             </div>
 
@@ -174,7 +151,6 @@ useEffect(() => {
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-black '
                 ref={GenderReg}
                 onMouseEnter={onMouseEnterGenderReg}
-                onMouseLeave={onMouseLeaveGenderReg}
              >
               <option value="Choose Gender">Choose Your Gender</option>
               <option value="Male">Male</option> 
@@ -191,7 +167,6 @@ useEffect(() => {
                 onChange={(e) => setCountry(e.target.value)}
                 ref={countryReg}
                 onMouseEnter={onMouseEntercountryReg}
-                onMouseLeave={onMouseLeavecountryReg}
                 // name={fields.country.name}
                 id="country" 
                 placeholder='Your Country ' 
@@ -208,7 +183,6 @@ useEffect(() => {
                 value={state_Region}
                 ref={state_Region_Ref}
                 onMouseEnter={onMouseEnterstate_Region_Ref}
-                onMouseLeave={onMouseLeavestate_Region_Ref}
                 onChange={(e) => setStateRegion(e.target.value)}
                 id="state_Region" 
                 placeholder='Your State / Region ' 
@@ -223,7 +197,6 @@ useEffect(() => {
                 type="text" 
                 ref={cityRef}
                 onMouseEnter={onMouseEntercityRef}
-                onMouseLeave={onMouseLeavecityRef} 
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
                 // name={fields.city.name}
@@ -242,7 +215,6 @@ useEffect(() => {
                 onChange={(e) => setHomeAddress(e.target.value)}
                 ref={homeAddressRef}
                 onMouseEnter={onMouseEnterhomeAddressRef}
-                onMouseLeave={onMouseLeavehomeAddressRef}
                 // name={fields.homeAddress.name}
                 id="homeAddress" 
                 placeholder='Your Current Home Address / Precise Location' 
@@ -252,7 +224,7 @@ useEffect(() => {
             </div> 
 
             <button  type="submit" 
-                onClick={() => setActiveComponent('income')} className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center' >
+                 className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center' >
               Submit and Continue ➡️
             </button>
           </form>

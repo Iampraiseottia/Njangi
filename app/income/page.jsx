@@ -4,9 +4,7 @@
 import React, { useRef } from 'react'
 
 
-
 import globalStyle from '../globals.css'
-
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
@@ -15,13 +13,7 @@ import { faMoneyBill, faLocationDot, faAddressBook, faUserTie } from '@fortaweso
 
 
 
-
-
-
-
 const Income = ({setActiveComponent}) => {
-
-
 
 
   const OccupationRef = useRef();
@@ -30,20 +22,11 @@ const Income = ({setActiveComponent}) => {
     OccupationRef.current.focus();
   }
 
-  const onMouseLeaveOccupationRef = () => {
-    OccupationRef.current.blur();
-  }
-
-
 
   const income_streamReg = useRef();
  
   const onMouseEnterincome_streamReg = () => {
     income_streamReg.current.focus();
-  }
-
-  const onMouseLeaveincome_streamReg = () => {
-    income_streamReg.current.blur();
   }
 
 
@@ -53,20 +36,11 @@ const Income = ({setActiveComponent}) => {
     primary_sourceRef.current.focus();
   }
 
-  const onMouseLeaveprimary_sourceRef = () =>  {
-    primary_sourceRef.current.blur();
-  }
-
-
 
   const work_placeRef = useRef();
 
   const onMouseEnterwork_placeRef = () => {
     work_placeRef.current.focus();
-  }
-
-  const onMouseLeavework_placeRef = () => {
-    work_placeRef.current.blur();
   }
 
 
@@ -76,11 +50,6 @@ const Income = ({setActiveComponent}) => {
     receive_financial_educationRef.current.focus();
   }
 
-  const onMouseLeavereceive_financial_educationRef = () => {
-    receive_financial_educationRef.current.blur();
-  }
-
-
 
   const income_changeRef = useRef();
 
@@ -88,11 +57,6 @@ const Income = ({setActiveComponent}) => {
     income_changeRef.current.focus();
   }
 
-  const onMouseLeaveincome_changeRef = () => {
-    income_changeRef.current.blur();
-  }
-
-  
 
   const track_incomeREf = useRef();
 
@@ -100,12 +64,8 @@ const Income = ({setActiveComponent}) => {
     track_incomeREf.current.focus();
   }
 
-  const onMouseLeavetrack_incomeREf = () => {
-    track_incomeREf.current.blur();
-  }
 
-
-
+ 
 
 return (
 <main className='flex justify-center relative items-center w-full min-h-screen bg-gray-800 text-white p-4'>
@@ -136,7 +96,6 @@ return (
         <input
           ref={OccupationRef}
           onMouseEnter={onMouseEnterOccupationRef}
-          onMouseLeave={onMouseLeaveOccupationRef}
           type="text" 
           name="Occupation" 
           id="Occupation" 
@@ -150,7 +109,6 @@ return (
         <input
           ref={income_streamReg}
           onMouseEnter={onMouseEnterincome_streamReg}
-          onMouseLeave={onMouseLeaveincome_streamReg}
           type="text" 
           name="income_stream" 
           id="income_stream" 
@@ -164,7 +122,6 @@ return (
         <input
           ref={primary_sourceRef}
           onMouseEnter={onMouseEnterprimary_sourceRef}
-          onMouseLeave={onMouseLeaveprimary_sourceRef}
           type="text" 
           name="primary_source" 
           id="primary_source" 
@@ -178,7 +135,6 @@ return (
         <input
           ref={work_placeRef}
           onMouseEnter={onMouseEnterwork_placeRef}
-          onMouseLeave={onMouseLeavework_placeRef}
           type="text" 
           name="work_place" 
           id="work_place" 
@@ -194,7 +150,6 @@ return (
           className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef]  py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-white bg-slate-800 '
           ref={receive_financial_educationRef}
           onMouseEnter={onMouseEnterreceive_financial_educationRef}
-          onMouseLeave={onMouseLeavereceive_financial_educationRef}
         >
         <option className='singleCol' value="Select an Option "> Select an Option</option>
         <option className='singleCol' value="Employed">Employed</option>
@@ -211,7 +166,6 @@ return (
         <input
           ref={income_changeRef}
           onMouseEnter={onMouseEnterincome_changeRef}
-          onMouseLeave={onMouseLeaveincome_changeRef}
           type="text" 
           name="income_change" 
           id="income_change" 
@@ -225,7 +179,6 @@ return (
         <input
           ref={track_incomeREf}
           onMouseEnter={onMouseEntertrack_incomeREf}
-          onMouseLeave={onMouseLeavetrack_incomeREf}
           type="text" 
           name="track_income" 
           id="track_income" 

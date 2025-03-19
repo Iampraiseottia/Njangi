@@ -19,8 +19,7 @@ import {
   Users, 
   CreditCard, 
   Clipboard, 
-  PlusCircle, 
-  LogOut, 
+  PlusCircle,  
   ArrowRight, 
   Calendar,
   Menu 
@@ -54,9 +53,7 @@ const DashboardMain = ({ setActiveComponent }) => {
     searchReg.current.focus();
   }
 
-  const onMouseLeaveSearch = () => {
-    searchReg.current.blur();
-  }
+
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -95,7 +92,6 @@ const DashboardMain = ({ setActiveComponent }) => {
               type="text" 
               ref={searchReg}
               onMouseEnter={onMouseEnterSearch}
-              onMouseLeave={onMouseLeaveSearch}
               placeholder="Search..." 
               className={`px-4 py-2 pl-10 w-full md:w-64 lg:w-96 rounded-lg border border-gray-300 duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-teal-500 ${isDarkMode ? 'bg-gray-800 text-black' : 'bg-white text-gray-800'}`}
             />
@@ -148,7 +144,7 @@ const DashboardMain = ({ setActiveComponent }) => {
       {/* User Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6 md:mb-8">
         
-        <div className="bg-white p-4 md:p-6 rounded-lg shadow-sm border border-gray-100 duration-300 ease-in-out hover:shadow-lg cursor-pointer" onClick={() => setActiveComponent('transactions')} >
+        <div className="bg-white p-4 md:p-6 rounded-lg shadow-sm border-2 border-gray-100 duration-300 ease-in-out hover:shadow-lg cursor-pointer" onClick={() => setActiveComponent('transactions')} >
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-gray-500 text-xs sm:text-sm font-medium">Total Njangi Contributions</h2>
             <div className="bg-teal-100 p-1.5 md:p-2 rounded-lg">
@@ -161,7 +157,7 @@ const DashboardMain = ({ setActiveComponent }) => {
           </div>
         </div>
         
-        <div className="bg-white p-4 md:p-6 rounded-lg shadow-sm border border-gray-100 duration-300 ease-in-out hover:shadow-lg cursor-pointer" onClick={() => {setActiveComponent('groups')}} > 
+        <div className="bg-white p-4 md:p-6 rounded-lg shadow-sm border-2 border-gray-100 duration-300 ease-in-out hover:shadow-lg cursor-pointer" onClick={() => {setActiveComponent('groups')}} > 
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-gray-500 text-xs sm:text-sm font-medium">Active Groups</h2>
             <div className="bg-purple-100 p-1.5 md:p-2 rounded-lg">
@@ -174,7 +170,7 @@ const DashboardMain = ({ setActiveComponent }) => {
           </div>
         </div>
         
-        <div className="bg-white p-4 md:p-6 rounded-lg shadow-sm border border-gray-100 duration-300 ease-in-out hover:shadow-lg cursor-pointer" onClick={() => {setActiveComponent('transactions')}}>
+        <div className="bg-white p-4 md:p-6 rounded-lg shadow-sm border-2 border-gray-100 duration-300 ease-in-out hover:shadow-lg cursor-pointer" onClick={() => {setActiveComponent('transactions')}}>
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-gray-500 text-xs sm:text-sm font-medium">Total Chopped</h2>
             <div className="bg-blue-100 p-1.5 md:p-2 rounded-lg">
@@ -187,7 +183,7 @@ const DashboardMain = ({ setActiveComponent }) => {
           </div>
         </div>
         
-        <div className="bg-white p-4 md:p-6 rounded-lg shadow-sm border border-gray-100 duration-300 ease-in-out hover:shadow-lg cursor-pointer" onClick={() => {setActiveComponent('profile')}}>
+        <div className="bg-white p-4 md:p-6 rounded-lg shadow-sm border-2 border-gray-100 duration-300 ease-in-out hover:shadow-lg cursor-pointer" onClick={() => {setActiveComponent('profile')}}>
           <div className="flex justify-between items-center mb-4"> 
             <h2 className="text-gray-500 text-xs sm:text-sm font-medium">Profile Completion</h2>
             <div className="bg-orange-100 p-1.5 md:p-2 rounded-lg">
@@ -205,7 +201,7 @@ const DashboardMain = ({ setActiveComponent }) => {
 
       {/* Recent Activity and Groups */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
-        <div className="bg-white p-4 md:p-6 rounded-lg shadow-sm border border-gray-100 duration-300 ease-in-out hover:shadow-lg">
+        <div className="bg-white p-4 md:p-6 rounded-lg shadow-sm border-2 border-gray-100 duration-300 ease-in-out hover:shadow-lg">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-base md:text-lg font-semibold text-gray-800">Your Recent Njangi Activity</h2>
             <span className="text-teal-500 text-xs md:text-sm cursor-pointer" onClick={() => setActiveComponent('transactions')} >View All</span>
@@ -244,7 +240,7 @@ const DashboardMain = ({ setActiveComponent }) => {
           </div>
         </div>
         
-        <div className="bg-white p-4 md:p-6 rounded-lg shadow-sm border border-gray-100 duration-300 ease-in-out hover:shadow-lg">
+        <div className="bg-white p-4 md:p-6 rounded-lg shadow-sm border-2 border-gray-100 duration-300 ease-in-out hover:shadow-lg">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-base md:text-lg font-semibold text-gray-800">Your Groups</h2>
             <div className="flex space-x-2 items-center">
@@ -282,7 +278,7 @@ const DashboardMain = ({ setActiveComponent }) => {
       </div>
   
       {/* Upcoming Payments */}
-      <div className="bg-white p-4 md:p-6 rounded-lg shadow-sm border border-gray-100 duration-300 ease-in-out hover:shadow-lg">
+      <div className="bg-white p-4 md:p-6 rounded-lg shadow-sm border-2 border-gray-100 duration-300 ease-in-out hover:shadow-lg">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-base md:text-lg font-semibold text-gray-800">Upcoming Payments</h2>
           <span className="text-teal-500 text-xs md:text-sm cursor-pointer" onClick={() => setActiveComponent('transactions')} >View All</span>

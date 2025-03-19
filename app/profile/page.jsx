@@ -20,7 +20,7 @@ const Profile = ({ setActiveComponent }) => {
     password: "Ottia12345",
     talent: "Singing"
     
-  }); 
+  });  
 
   
   const handleChange = (e) => {
@@ -45,9 +45,6 @@ const Profile = ({ setActiveComponent }) => {
     fullName.current.focus();
   }
 
-  const onMouseLeaveFullName = () => {
-    fullName.current.blur();
-  }
 
 
   const userName = useRef();
@@ -56,20 +53,11 @@ const Profile = ({ setActiveComponent }) => {
     userName.current.focus();
   }
 
-  const onMouseLeaveUserName = () => {
-    userName.current.blur();
-  }
-
-
 
   const emailReg = useRef();
 
   const onMouseEnterEmail = () => {
     emailReg.current.focus();
-  }
-
-  const onMouseLeaveEmail = () => {
-    emailReg.current.blur();
   }
 
 
@@ -79,10 +67,6 @@ const Profile = ({ setActiveComponent }) => {
     phoneNumberReg.current.focus();
   }
 
-  const onMouseLeavePhoneNumber = () => {
-    phoneNumberReg.current.blur();
-  }
-
 
   const locationReg = useRef();
 
@@ -90,19 +74,11 @@ const Profile = ({ setActiveComponent }) => {
     locationReg.current.focus();
   }
 
-  const onMouseLLeaveLocation = () => {
-    locationReg.current.blur();
-  }
-
-
+  
   const passwordReg =  useRef();
 
   const onMouseENterPassword = () => {
     passwordReg.current.focus();
-  }
-
-  const onMouseLeavePassword = () => {
-    passwordReg.current.blur();
   }
 
 
@@ -110,10 +86,6 @@ const Profile = ({ setActiveComponent }) => {
 
   const onMOuseEnterAboutMe = () => {
     aboutMeReg.current.focus();
-  }
-
-  const onMouseLeaveAboutMe = () => {
-    aboutMeReg.current.blur();
   }
 
 
@@ -124,10 +96,6 @@ const Profile = ({ setActiveComponent }) => {
     specialTalent.current.focus();
   }
 
-  const onMouseLeaveSpecialTalent = () => {
-    specialTalent.current.blur();
-  }
-
 
 
   return (
@@ -136,7 +104,7 @@ const Profile = ({ setActiveComponent }) => {
       {/* Profile User Info */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6 md:mb-8">
         
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 duration-300 ease-in-out hover:shadow-lg cursor-pointer" onClick={() => setActiveComponent('about-you')} >
+        <div className="bg-white p-6 rounded-lg shadow-sm border-2 border-gray-100 duration-300 ease-in-out hover:shadow-lg cursor-pointer" onClick={() => setActiveComponent('about-you')} >
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-gray-500 text-sm font-medium">About User</h2>
             <div className="bg-teal-100 p-2 rounded-lg">
@@ -149,7 +117,7 @@ const Profile = ({ setActiveComponent }) => {
           </div>
         </div>
         
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 duration-300 ease-in-out hover:shadow-lg cursor-pointer" onClick={() => {setActiveComponent('income')}} > 
+        <div className="bg-white p-6 rounded-lg shadow-sm border-2 border-gray-100 duration-300 ease-in-out hover:shadow-lg cursor-pointer" onClick={() => {setActiveComponent('income')}} > 
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-gray-500 text-sm font-medium">User Income</h2>
             <div className="bg-purple-100 p-2 rounded-lg">
@@ -162,7 +130,7 @@ const Profile = ({ setActiveComponent }) => {
           </div>
         </div>
         
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 duration-300 ease-in-out hover:shadow-lg cursor-pointer" onClick={() => {setActiveComponent('identity')}}>
+        <div className="bg-white p-6 rounded-lg shadow-sm border-2 border-gray-100 duration-300 ease-in-out hover:shadow-lg cursor-pointer" onClick={() => {setActiveComponent('identity')}}>
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-gray-500 text-sm font-medium">User Identity</h2>
             <div className="bg-blue-100 p-2 rounded-lg">
@@ -175,7 +143,7 @@ const Profile = ({ setActiveComponent }) => {
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 duration-300 ease-in-out hover:shadow-lg cursor-pointer" onClick={() => {setActiveComponent('identity')}}>
+        <div className="bg-white p-6 rounded-lg shadow-sm border-2 border-gray-100 duration-300 ease-in-out hover:shadow-lg cursor-pointer" onClick={() => {setActiveComponent('identity')}}>
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-gray-500 text-sm font-medium">Survey Answers</h2>
             <div className="bg-blue-100 p-2 rounded-lg">
@@ -211,7 +179,7 @@ const Profile = ({ setActiveComponent }) => {
   
   <div className="flex flex-col lg:flex-row gap-6">
     {/* Left column - Profile overview */}
-    <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border border-gray-100 w-full lg:w-2/5 ease-in-out duration-300 hover:shadow-lg">
+    <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border-2 border-gray-100 w-full lg:w-2/5 ease-in-out duration-300 hover:shadow-lg">
       <div className="flex flex-col items-center text-center">
         <div className="w-auto h-auto my-3 rounded-full border border-solid border-teal-500 flex items-center justify-center text-white text-3xl font-bold mb-4">
           <img src="/cute.jpg" alt="Profile Image" className="w-36 h-36 sm:w-48 sm:h-48 md:w-60 md:h-60 rounded-full object-cover" />
@@ -223,7 +191,6 @@ const Profile = ({ setActiveComponent }) => {
             name="name"
             value={profileData.name}
             ref={fullName}
-            onMouseLeave={onMouseLeaveFullName}
             onMouseEnter={onMouseEnterFullName} 
             onChange={handleChange}
             className="text-xl font-semibold text-gray-800 focus:border-teal-500 focus:outline-teal-500 ease-in-out duration-300 border-b border-gray-300 mb-1 mt-3 text-center w-full py-1"
@@ -252,7 +219,6 @@ const Profile = ({ setActiveComponent }) => {
                 onChange={handleChange}
                 ref={userName}
                 onMouseEnter={onMouseEnterUserName}
-                onMouseLeave={onMouseLeaveUserName}
                 className="text-gray-800 border-b border-gray-300 w-3/5 py-1 focus:border-teal-500 focus:outline-teal-500 ease-in-out duration-300 px-2"
               />
             ) : (
@@ -271,7 +237,6 @@ const Profile = ({ setActiveComponent }) => {
                 className="text-gray-800 border-b border-gray-300 w-3/5 py-1 focus:border-teal-500 focus:outline-teal-500 ease-in-out duration-300 px-2"
                 ref={emailReg}
                 onMouseEnter={onMouseEnterEmail}
-                onMouseLeave={onMouseLeaveEmail}
               />
             ) : (
               <span className="text-gray-800 break-all">{profileData.email}</span>
@@ -287,7 +252,6 @@ const Profile = ({ setActiveComponent }) => {
                 value={profileData.phone}
                 ref={phoneNumberReg}
                 onMouseEnter={onMouseEnterPhoneNumber}
-                onMouseLeave={onMouseLeavePhoneNumber}
                 onChange={handleChange}
                 className="text-gray-800 border-b border-gray-300 w-3/5 py-1 focus:border-teal-500 focus:outline-teal-500 ease-in-out duration-300 px-2"
               />
@@ -306,7 +270,6 @@ const Profile = ({ setActiveComponent }) => {
                 ref={locationReg}
                 onChange={handleChange}
                 onMouseEnter={onMouseEnterLocation}
-                onMouseLeave={onMouseLLeaveLocation}
                 className="text-gray-800 border-b border-gray-300 w-3/5 py-1 focus:border-teal-500 focus:outline-teal-500 ease-in-out duration-300 px-2"
               />
             ) : (
@@ -324,7 +287,6 @@ const Profile = ({ setActiveComponent }) => {
                 onChange={handleChange}
                 ref={passwordReg}
                 onMouseEnter={onMouseENterPassword}
-                onMouseLeave={onMouseLeavePassword}
                 className="text-gray-800 border-b border-gray-300 w-3/5 py-1 focus:border-teal-500 focus:outline-teal-500 ease-in-out duration-300 px-2"
               />
             ) : (
@@ -337,7 +299,7 @@ const Profile = ({ setActiveComponent }) => {
     
     {/* Right - Bio and Others */}
     <div className="w-full lg:w-3/5">
-      <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border border-gray-100 mb-6 ease-in-out duration-300 hover:shadow-lg">
+      <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border-2 border-gray-100 mb-6 ease-in-out duration-300 hover:shadow-lg">
         <h2 className="text-xl font-semibold text-gray-800 mb-4">About Me</h2>
         
         {isEditMode ? (
@@ -348,7 +310,6 @@ const Profile = ({ setActiveComponent }) => {
             rows="4"
             ref={aboutMeReg}
             onMouseEnter={onMOuseEnterAboutMe}
-            onMouseLeave={onMouseLeaveAboutMe}
             className="w-full border rounded-lg p-2 text-gray-700 py-1 focus:border-teal-500 focus:outline-teal-500 ease-in-out duration-300"
           ></textarea>
         ) : (
@@ -356,7 +317,7 @@ const Profile = ({ setActiveComponent }) => {
         )}
       </div>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border border-gray-100 mb-6 ease-in-out duration-300 hover:shadow-lg">
+      <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border-2 border-gray-100 mb-6 ease-in-out duration-300 hover:shadow-lg">
         <h2 className="text-xl font-semibold text-gray-800 mb-4">Special Talent</h2>
         
         {isEditMode ? (
@@ -367,7 +328,6 @@ const Profile = ({ setActiveComponent }) => {
             rows="4"
             ref={specialTalent}
             onMouseEnter={onMouseEnterSpecialTalent}
-            onMouseLeave={onMouseLeaveSpecialTalent}
             className="w-full border rounded-lg p-2 text-gray-700 py-1 focus:border-teal-500 focus:outline-teal-500 ease-in-out duration-300"
           ></textarea>
         ) : (
@@ -376,7 +336,7 @@ const Profile = ({ setActiveComponent }) => {
       </div>
       
       {/* Account Settings */}
-      <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border border-gray-100 ease-in-out duration-300 hover:shadow-lg">
+      <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border-2 border-gray-100 ease-in-out duration-300 hover:shadow-lg">
         <h2 className="text-xl font-semibold text-gray-800 mb-4">Account Settings</h2>
         
         <div className="space-y-4">
@@ -432,7 +392,6 @@ const Profile = ({ setActiveComponent }) => {
 
 
        
-
     </div>
   );
 };
