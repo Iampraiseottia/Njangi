@@ -11,7 +11,7 @@ import Metadata from '../components/Metadata'
 import Link from 'next/link'
 
 
-const Try_With_Email = () => {
+const Try_With_Phone = () => {
 
 
 const metadata = {
@@ -73,4 +73,4 @@ return (
   )
 }
 
-export default Try_With_Email;
+export default Try_With_Phone;
