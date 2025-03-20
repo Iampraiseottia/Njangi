@@ -4,14 +4,14 @@ import React from 'react'
 import globalStyle from '../globals.css' 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
-import { faPhone } from '@fortawesome/free-solid-svg-icons'
+import { faMessage, faPhoneVolume } from '@fortawesome/free-solid-svg-icons'
 
 import Metadata from '../components/Metadata'
 
 import Link from 'next/link'
 
 
-const Forgot_Password = () => {
+const Try_With_Email = () => {
 
 
 const metadata = {
@@ -33,12 +33,12 @@ return (
         <div className='w-full lg:w-[45%] p-6 lg:p-12 xl:p-20'>
             <h1 className='text-4xl lg:text-4xl font-extrabold tracking-wide mt-6 lg:mt-10'>Forgot Password?</h1>
             <br />
-            <p className='text-base lg:text-lg mb-5'>No worries, enter your email address and regain access to your account so as to continue enjoying the amazing features of NJANGIFY 
+            <p className='text-base lg:text-lg mb-5'>No worries, enter your phone Number and regain access to your account so as to continue enjoying the amazing features of NJANGIFY.
             </p>
             <h1 className='font-extrabold text-2xl lg:text-3xl tracking-wider'>OR</h1> <br /> 
-            <Link href="/try_with_email" className='bg-white text-black py-3 lg:py-3 px-6 lg:px-12 font-bold text-base lg:text-lg duration-300 rounded-md hover:opacity-90 cursor-pointer flex justify-center items-center hover:rounded-[40px]'>
-                <FontAwesomeIcon icon={faPhone} className="werey2 mr-2 text-[#0ef]" />
-                Try With Phone
+            <Link href="/forgot_password" className='bg-white text-black py-3 lg:py-3 px-6 lg:px-12 font-bold text-base lg:text-lg duration-300 rounded-md hover:opacity-90 cursor-pointer flex justify-center items-center hover:rounded-[40px]'>
+                <FontAwesomeIcon icon={faMessage} className="werey2 mr-2 text-[#0ef]" />
+                Try With Email 
             </Link> 
         </div>
 
@@ -49,14 +49,14 @@ return (
           <br />
           <form className='flex flex-col gap-6 w-full max-w-xl' >
             
-            <div className='flex flex-col gap-2'>
-              <label htmlFor="email" className='font-semibold text-lg tracking-wide'>✉️ Email Address:</label>
-              <input 
-                type="email" 
-                id="email" 
-                placeholder='Your Email Address' 
+             <div className='flex flex-col gap-2'>
+                <label htmlFor="phoneNumber" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faPhoneVolume} className="werey2 mr-2 text-[#0ef]" /> Phone Number:</label>
+                <input 
+                type="text" 
+                id="phoneNumber" 
+                placeholder='Your Phone Number eg +237 682394782' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
-              />
+                />
             </div>
 
             <button type='submit' className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full hover:from-[#00ffff] hover:via-slate-600 hover:to-[#00ffff]  text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center tracking-wider'>
@@ -73,4 +73,4 @@ return (
   )
 }
 
-export default Forgot_Password;
+export default Try_With_Email;
