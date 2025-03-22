@@ -19,11 +19,13 @@ import { faHome,
   faClipboard
 } from '@fortawesome/free-solid-svg-icons';
 
+
+import About_User from '../components/about-user'
+
 import Metadata from '../components/Metadata';
 import Profile from '../profile/page';
 import DashboardMain from '../dashboardMain/page';
 import Groups from '../groups/page';
-import About_You from '../about-you/page';
 import Income from '../income/page';
 import Identity from '../identity/page';
 import Survey from '../survey/page';
@@ -78,7 +80,7 @@ const DashBoard = () => {
       case 'groups':
         return <Groups setActiveComponent={setActiveComponent} />;
       case 'about-you':
-        return <About_You setActiveComponent={setActiveComponent} />;
+        return <About_User setActiveComponent={setActiveComponent} />;
       case 'income':
         return <Income setActiveComponent={setActiveComponent} />;
       case 'identity':
