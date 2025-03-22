@@ -1,14 +1,20 @@
 
 "use client"
 
-import React from 'react'
 import Survey_User from '../components/survey-user'
 
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 const Survey = () => {
-  return (
-    <Survey_User />
-  )
+  const router = useRouter();
+  
+  useEffect(() => {
+    router.push('/dashboard?component=survey');
+  }, [router]);
+  
+
+  return null 
 }
 
 export default Survey;

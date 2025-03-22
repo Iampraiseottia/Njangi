@@ -1,13 +1,11 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
-
+import { useSearchParams } from 'next/navigation';
 import globalStyle from '../globals.css'; 
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
-
-import { faHome, 
+import { 
+  faHome, 
   faPeopleGroup,
   faMoneyBill,
   faUser,
@@ -19,9 +17,7 @@ import { faHome,
   faClipboard
 } from '@fortawesome/free-solid-svg-icons';
 
-
 import Metadata from '../components/Metadata';
-
 import About_User from '../components/about-user'
 import Income_User from '../components/income-user'
 import Identity_User from '../components/identity-user'
@@ -30,7 +26,6 @@ import Njangi_Groups from '../components/njangi-groups'
 import All_Transactions from '../components/all-transactions'
 import User_Profile from '../components/user-profile'
 import Settings_Dash from '../components/setting-dash'
-
 import DashboardMain from '../dashboardMain/page';
 import Logout from '../logout/page';   
 
@@ -41,22 +36,89 @@ import {
   ChevronLast
 } from 'lucide-react'; 
 
-
 const DashBoard = () => {
-  
   const [activeComponent, setActiveComponent] = useState('dashboardMain');
   const [isOpen, setIsOpen] = useState(true);
   const [expandedSideBar, setExpandedSideBar] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+  const [metadata, setMetadata] = useState({
+    title: 'Dashboard - Njangi Web Application',
+    description: 'Manage your njangi groups and track activities on the dashboard.',
+  });
   
   const toggleDropdown = () => setIsOpen(!isOpen);
 
+  const searchParams = useSearchParams();
+  const componentParam = searchParams.get('component');
+
+  // Update metadata based on active component
+  const updateMetadata = (component) => {
+    const metadataMap = {
+      'dashboardMain': {
+        title: 'Dashboard - Njangi Web Application',
+        description: 'Manage your njangi groups and track activities on the dashboard.',
+      },
+      'groups': {
+        title: 'Njangi Groups - Njangi Web Application',
+        description: 'View and manage your Njangi groups and memberships.',
+      },
+      'about-you': {
+        title: 'About You - Njangi Web Application',
+        description: 'Complete your personal information for your Njangi profile.',
+      },
+      'income': {
+        title: 'Income Details - Njangi Web Application',
+        description: 'Manage your income information for Njangi financial activities.',
+      },
+      'identity': {
+        title: 'Identity Verification - Njangi Web Application',
+        description: 'Complete identity verification for your Njangi account.',
+      },
+      'survey': {
+        title: 'Survey - Njangi Web Application',
+        description: 'Complete surveys to enhance your Njangi experience.',
+      },
+      'transactions': {
+        title: 'All Transactions - Njangi Web Application',
+        description: 'View and manage all your Njangi financial transactions.',
+      },
+      'profile': {
+        title: 'User Profile - Njangi Web Application',
+        description: 'View and update your Njangi user profile information.',
+      },
+      'settings': {
+        title: 'Settings - Njangi Web Application',
+        description: 'Configure your preferences and account settings.',
+      },
+      'logout': {
+        title: 'Logout - Njangi Web Application',
+        description: 'Securely sign out from your Njangi account.',
+      }
+    };
+
+    setMetadata(metadataMap[component] || metadataMap['dashboardMain']);
+  };
+
+  // Set active component from URL parameter
+  useEffect(() => {
+    if (componentParam) {
+      setActiveComponent(componentParam);
+      updateMetadata(componentParam);
+    }
+  }, [componentParam]);
   
+  // Handle component change
+  const handleComponentChange = (component) => {
+    setActiveComponent(component);
+    updateMetadata(component);
+    if (isMobile && expandedSideBar) setExpandedSideBar(false);
+  };
+  
+  // Handle responsive behavior
   useEffect(() => {
     const handleResize = () => {
       const mobile = window.innerWidth < 768;
       setIsMobile(mobile);
-      
       
       if (mobile && expandedSideBar) {
         setExpandedSideBar(false);
@@ -64,12 +126,9 @@ const DashBoard = () => {
         setExpandedSideBar(true);
       }
     };
-
     
     handleResize();
-    
     window.addEventListener('resize', handleResize);
-    
     
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -99,11 +158,6 @@ const DashBoard = () => {
       default:
         return <DashboardMain />;
     }
-  };
-
-  const metadata = {
-    title: 'Dashboard - Njangi Web Application',
-    description: 'Manage your njangi groups and track activities on the dashboard. ',
   };
 
   return (
@@ -145,10 +199,7 @@ const DashBoard = () => {
         </div>
 
         <div 
-          onClick={() => {
-            setActiveComponent('dashboardMain');
-            if (isMobile && expandedSideBar) setExpandedSideBar(false);
-          }} 
+          onClick={() => handleComponentChange('dashboardMain')} 
           title='Dashboard'
           className={`mb-2 flex items-center px-4 py-2 rounded-lg ease-in-out hover:bg-white hover:text-teal-500 cursor-pointer transition-all ${expandedSideBar ? "mt-[-5px] justify-start" : "mt-[-30px] justify-center"} ${activeComponent === 'dashboardMain' ? 'bg-white text-teal-500' : ''}`}
         >
@@ -174,20 +225,14 @@ const DashBoard = () => {
               <li 
                 title='About You'
                 className={`py-2 pl-4 pr-4 hover:bg-white ease-in-out hover:text-teal-500 cursor-pointer transition-all ${expandedSideBar ? "text-left pl-8" : "text-center"} ${activeComponent === 'about-you' ? 'bg-white text-teal-500' : ''}`} 
-                onClick={() => {
-                  setActiveComponent('about-you');
-                  if (isMobile && expandedSideBar) setExpandedSideBar(false);
-                }}
+                onClick={() => handleComponentChange('about-you')}
               >
                 <FontAwesomeIcon icon={faAddressCard} className={`transition-all ${expandedSideBar ? "h-6 w-6 mr-2" : "w-6 h-6 mx-auto"}`} />
                 <span className={`transition-all ${expandedSideBar ? "inline-block text-[18px]" : "hidden"}`}>{'About You'}</span>
               </li> 
 
               <li 
-                onClick={() => {
-                  setActiveComponent('income');
-                  if (isMobile && expandedSideBar) setExpandedSideBar(false);
-                }} 
+                onClick={() => handleComponentChange('income')} 
                 title='Income' 
                 className={`py-2 pl-4 pr-4 hover:bg-white ease-in-out hover:text-teal-500 cursor-pointer transition-all ${expandedSideBar ? "text-left pl-8" : "text-center"} ${activeComponent === 'income' ? 'bg-white text-teal-500' : ''}`}
               >
@@ -196,10 +241,7 @@ const DashBoard = () => {
               </li>
 
               <li 
-                onClick={() => {
-                  setActiveComponent('identity');
-                  if (isMobile && expandedSideBar) setExpandedSideBar(false);
-                }}
+                onClick={() => handleComponentChange('identity')}
                 title='Identity'
                 className={`py-2 pl-4 pr-4 hover:bg-white ease-in-out hover:text-teal-500 cursor-pointer transition-all ${expandedSideBar ? "text-left pl-8" : "text-center"} ${activeComponent === 'identity' ? 'bg-white text-teal-500' : ''}`}
               >
@@ -208,10 +250,7 @@ const DashBoard = () => {
               </li>
 
               <li 
-                onClick={() => {
-                  setActiveComponent('survey');
-                  if (isMobile && expandedSideBar) setExpandedSideBar(false);
-                }}
+                onClick={() => handleComponentChange('survey')}
                 title='Survey' 
                 className={`py-2 pl-4 pr-4 hover:bg-white ease-in-out hover:text-teal-500 cursor-pointer transition-all ${expandedSideBar ? "text-left pl-8" : "text-center"} ${activeComponent === 'survey' ? 'bg-white text-teal-500' : ''}`}
               >
@@ -223,10 +262,7 @@ const DashBoard = () => {
         </div>
 
         <div 
-          onClick={() => {
-            setActiveComponent('groups');
-            if (isMobile && expandedSideBar) setExpandedSideBar(false);
-          }}  
+          onClick={() => handleComponentChange('groups')}  
           title='Groups'
           className={`mb-2 flex items-center px-4 py-2 ease-in-out rounded-lg hover:bg-white hover:text-teal-500 cursor-pointer transition-all ${expandedSideBar ? "justify-start" : "justify-center"} ${activeComponent === 'groups' ? 'bg-white text-teal-500' : ''}`}
         >
@@ -235,10 +271,7 @@ const DashBoard = () => {
         </div> 
 
         <div 
-          onClick={() => {
-            setActiveComponent('transactions');
-            if (isMobile && expandedSideBar) setExpandedSideBar(false);
-          }}  
+          onClick={() => handleComponentChange('transactions')}  
           title='Transactions'
           className={`mb-2 flex items-center px-4 py-2 ease-in-out rounded-lg hover:bg-white hover:text-teal-500 cursor-pointer transition-all ${expandedSideBar ? "justify-start" : "justify-center"} ${activeComponent === 'transactions' ? 'bg-white text-teal-500' : ''}`}
         >
@@ -247,10 +280,7 @@ const DashBoard = () => {
         </div>
 
         <div 
-          onClick={() => {
-            setActiveComponent('profile');
-            if (isMobile && expandedSideBar) setExpandedSideBar(false);
-          }} 
+          onClick={() => handleComponentChange('profile')} 
           title='Profile'
           className={`mb-2 flex items-center px-4 py-2 rounded-lg hover:bg-white hover:text-teal-500 cursor-pointer transition-all ${expandedSideBar ? "justify-start" : "justify-center"} ${activeComponent === 'profile' ? 'bg-white text-teal-500' : ''}`}
         >
@@ -259,10 +289,7 @@ const DashBoard = () => {
         </div>
 
         <div 
-          onClick={() => {
-            setActiveComponent('settings');
-            if (isMobile && expandedSideBar) setExpandedSideBar(false);
-          }} 
+          onClick={() => handleComponentChange('settings')} 
           title='Settings'
           className={`mb-5 flex items-center px-4 py-2 rounded-lg hover:bg-white hover:text-teal-500 cursor-pointer transition-all ${expandedSideBar ? "justify-start" : "justify-center"} ${activeComponent === 'settings' ? 'bg-white text-teal-500' : ''}`}
         >
@@ -271,10 +298,7 @@ const DashBoard = () => {
         </div>
 
         <div 
-          onClick={() => {
-            setActiveComponent('logout');
-            if (isMobile && expandedSideBar) setExpandedSideBar(false);
-          }} 
+          onClick={() => handleComponentChange('logout')} 
           title='Logout'
           className={`mb-2 mt-[-20px] flex items-center px-4 py-2 rounded-lg hover:bg-white hover:text-teal-500 cursor-pointer transition-all ${expandedSideBar ? "justify-start" : "justify-center"} ${activeComponent === 'logout' ? 'bg-white text-teal-500' : ''}`}
         >
@@ -291,8 +315,7 @@ const DashBoard = () => {
         ></div>
       )}
 
-
-     {/* Dashboard Right Section - Display Each SideBar Header content dynamically */}
+      {/* Dashboard Right Section - Display Each SideBar Header content dynamically */}
       <div 
         className={`transition-all duration-500 min-h-screen ${
           isMobile 
@@ -308,10 +331,9 @@ const DashBoard = () => {
               ? 'calc(100% - 16.67%)' 
               : 'calc(100% - 5%)'
         }}
-          >
+      >
         {renderContent()}
       </div> 
-      
     </section>
   );
 };

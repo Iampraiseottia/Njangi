@@ -1,14 +1,20 @@
 
 "use client"
 
-import React from 'react'
 import Income_User from '../components/income-user'
 
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 const Income = () => {
-  return (
-    <Income_User />
-  )
-}
+  const router = useRouter();
+  
+  useEffect(() => {
+    router.push('/dashboard?component=income');
+  }, [router]);
+  
+
+  return null 
+} 
 
 export default Income;

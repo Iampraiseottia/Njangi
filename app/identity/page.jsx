@@ -1,14 +1,20 @@
 
 "use client"
 
-import React from 'react'
 import Identity_User from '../components/identity-user'
 
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 const Identity_You = () => {
-  return (
-    <Identity_User />
-  )
+  const router = useRouter();
+  
+  useEffect(() => {
+    router.push('/dashboard?component=identity');
+  }, [router]);
+  
+
+  return null 
 }
 
 export default Identity_You;
