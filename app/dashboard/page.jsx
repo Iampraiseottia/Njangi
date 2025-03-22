@@ -21,14 +21,14 @@ import { faHome,
 
 
 import About_User from '../components/about-user'
+import Income_User from '../components/income-user'
+import Identity_User from '../components/identity-user'
+import Survey_User from '../components/survey-user'
 
 import Metadata from '../components/Metadata';
 import Profile from '../profile/page';
 import DashboardMain from '../dashboardMain/page';
 import Groups from '../groups/page';
-import Income from '../income/page';
-import Identity from '../identity/page';
-import Survey from '../survey/page';
 import Transactions from '../transactions/page';
 import Settings from '../settings/page';
 import Logout from '../logout/page';   
@@ -82,11 +82,11 @@ const DashBoard = () => {
       case 'about-you':
         return <About_User setActiveComponent={setActiveComponent} />;
       case 'income':
-        return <Income setActiveComponent={setActiveComponent} />;
+        return <Income_User setActiveComponent={setActiveComponent} />;
       case 'identity':
-        return <Identity setActiveComponent={setActiveComponent} />;  
+        return <Identity_User setActiveComponent={setActiveComponent} />;  
       case 'survey':
-        return <Survey setActiveComponent={setActiveComponent} />;
+        return <Survey_User setActiveComponent={setActiveComponent} />; 
       case 'transactions':
         return <Transactions setActiveComponent={setActiveComponent} />;
       case 'profile':
