@@ -20,17 +20,18 @@ import { faHome,
 } from '@fortawesome/free-solid-svg-icons';
 
 
+import Metadata from '../components/Metadata';
+
 import About_User from '../components/about-user'
 import Income_User from '../components/income-user'
 import Identity_User from '../components/identity-user'
 import Survey_User from '../components/survey-user'
+import Njangi_Groups from '../components/njangi-groups'
+import All_Transactions from '../components/all-transactions'
+import User_Profile from '../components/user-profile'
+import Settings_Dash from '../components/setting-dash'
 
-import Metadata from '../components/Metadata';
-import Profile from '../profile/page';
 import DashboardMain from '../dashboardMain/page';
-import Groups from '../groups/page';
-import Transactions from '../transactions/page';
-import Settings from '../settings/page';
 import Logout from '../logout/page';   
 
 import {  
@@ -78,7 +79,7 @@ const DashBoard = () => {
       case 'dashboardMain':
         return <DashboardMain setActiveComponent={setActiveComponent} />;
       case 'groups':
-        return <Groups setActiveComponent={setActiveComponent} />;
+        return <Njangi_Groups setActiveComponent={setActiveComponent} />;
       case 'about-you':
         return <About_User setActiveComponent={setActiveComponent} />;
       case 'income':
@@ -88,11 +89,11 @@ const DashBoard = () => {
       case 'survey':
         return <Survey_User setActiveComponent={setActiveComponent} />; 
       case 'transactions':
-        return <Transactions setActiveComponent={setActiveComponent} />;
+        return <All_Transactions setActiveComponent={setActiveComponent} />;
       case 'profile':
-        return <Profile setActiveComponent={setActiveComponent} />;
+        return <User_Profile setActiveComponent={setActiveComponent} />;
       case 'settings':
-        return <Settings setActiveComponent={setActiveComponent} />;
+        return <Settings_Dash setActiveComponent={setActiveComponent} />;
       case 'logout': 
         return <Logout />;
       default:
