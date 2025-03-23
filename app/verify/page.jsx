@@ -1,7 +1,7 @@
 
 "use client"
 
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 
 import globalStyle from '../globals.css' 
 import Link from 'next/link'
@@ -108,9 +108,9 @@ const Verify = () => {
               </div>
             </div>
               
-            <button type='submit' className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full hover:from-[#00ffff] hover:via-slate-600 hover:to-[#00ffff]  text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center tracking-wider'>
+            <Link href='/new-password' type='submit' className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full hover:from-[#00ffff] hover:via-slate-600 hover:to-[#00ffff]  text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center tracking-wider'>
               <FontAwesomeIcon icon={faLock} className='mr-1 w-6 h-6' /> VERIFY    
-            </button>
+            </Link>
           </form>          
 
           <p className='text-center mt-4 text-white tracking-wide'>
