@@ -65,23 +65,12 @@ const Register = () => {
         userNameRef.current.focus();
       }
     
-      const onMouseLeaveuserNameRef = () => {
-        userNameRef.current.blur();
-      }
-  
-      
     
       const passwordRef = useRef();
     
       const onMouseEnterpasswordRef = () => {
         passwordRef.current.focus();
       }
-    
-      const onMouseLeavepasswordRef = () => {
-        passwordRef.current.blur();
-      }
-  
-
 
 
       const fullNameRef = useRef();
@@ -90,35 +79,20 @@ const Register = () => {
         fullNameRef.current.focus();
       }
     
-      const onMouseLeavefullNameRef = () => {
-        fullNameRef.current.blur();
-      }
-  
-      
     
       const emailAddress = useRef();
     
       const onMouseEnteremailAddress = () => {
         emailAddress.current.focus();
       }
-    
-      const onMouseLeaveemailAddress = () => {
-        emailAddress.current.blur();
-      }
-  
-      
-      
+
 
       const phoneNumberRef = useRef();
     
       const onMouseEnterphoneNumberRef = () => {
         phoneNumberRef.current.focus();
       }
-    
-      const onMouseLeavephoneNumberRef = () => {
-        phoneNumberRef.current.blur();
-      }
-
+  
   
   return (
     
@@ -171,7 +145,6 @@ const Register = () => {
                 id="fullName" 
                 ref={fullNameRef}
           onMouseEnter={onMouseEnterfullNameRef}
-          onMouseLeave={onMouseLeavefullNameRef} 
                 placeholder='Your Full Name' 
                 key={fields.fullName.key} 
                 value={fullName}
@@ -187,7 +160,6 @@ const Register = () => {
               <input 
               ref={emailAddress}
               onMouseEnter={onMouseEnteremailAddress}
-              onMouseLeave={onMouseLeaveemailAddress} 
                 type="email" 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -211,7 +183,6 @@ const Register = () => {
                 value={userName}
                 ref={userNameRef}
           onMouseEnter={onMouseEnteruserNameRef}
-          onMouseLeave={onMouseLeaveuserNameRef} 
                 id="userName" 
                 placeholder='Your User Name' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
@@ -225,7 +196,6 @@ const Register = () => {
                 type="text" 
                 ref={phoneNumberRef}
           onMouseEnter={onMouseEnterphoneNumberRef}
-          onMouseLeave={onMouseLeavephoneNumberRef} 
                 name={fields.phoneNumber.name} 
                 key={fields.phoneNumber.key}
                 defaultValue={fields.phoneNumber.initialValue}
@@ -246,7 +216,6 @@ const Register = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 ref={passwordRef}
           onMouseEnter={onMouseEnterpasswordRef}
-          onMouseLeave={onMouseLeavepasswordRef} 
                 name={fields.password.name} 
                 key={fields.password.key}
                 defaultValue={fields.password.initialValue} 

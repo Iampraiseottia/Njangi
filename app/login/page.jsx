@@ -45,7 +45,6 @@ const Login = () => {
 
 
 
-
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -63,20 +62,11 @@ const Login = () => {
       userNameRef.current.focus();
     }
   
-    const onMouseLeaveuserNameRef = () => {
-      userNameRef.current.blur();
-    }
 
-    
-  
     const passwordRef = useRef();
   
     const onMouseEnterpasswordRef = () => {
       passwordRef.current.focus();
-    }
-  
-    const onMouseLeavepasswordRef = () => {
-      passwordRef.current.blur();
     }
 
   
@@ -105,7 +95,6 @@ const Login = () => {
               <input
               ref={userNameRef}
           onMouseEnter={onMouseEnteruserNameRef}
-          onMouseLeave={onMouseLeaveuserNameRef} 
                 type="text" 
                 name={fields.userName.name} 
                 onChange={(e) => setUserName(e.target.value)}
@@ -123,7 +112,6 @@ const Login = () => {
               <input
               ref={passwordRef}
           onMouseEnter={onMouseEnterpasswordRef}
-          onMouseLeave={onMouseLeavepasswordRef} 
                 type="text" 
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

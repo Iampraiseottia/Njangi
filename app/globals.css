@@ -124,6 +124,11 @@ body.dark {
   border-radius: 10px;
 }
 
+.wrapper4{
+ box-shadow: 0 0 25px #0ef;
+ border-radius: 10px;
+}
+
 .forgot_pass{
   text-align: right !important;
 }
@@ -202,3 +207,4 @@ body.dark {
 .singleCol{
   color: black !important;
 }
+

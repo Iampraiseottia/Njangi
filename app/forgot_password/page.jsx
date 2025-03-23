@@ -72,7 +72,10 @@ return (
         <div className='w-full lg:w-[55%] p-6 lg:p-9'>
           <h1 className='text-3xl lg:text-5xl font-extrabold tracking-wider mt-6  text-center mb-5'>RESET PASSWORD</h1>
           <br />
-          <form className='flex flex-col gap-6 w-full max-w-xl' id={form.id} action={resetAction} >
+          <form className='flex flex-col gap-6 w-full max-w-xl'  id={form.id} onSubmit={async (e) => {
+                        await form.onSubmit(e);   
+                        // await handleSubmit(e); 
+                    }}  action={resetAction} >
             
             <div className='flex flex-col gap-2'>
               <label htmlFor="email" className='font-semibold text-lg tracking-wide'>✉️ Email Address:</label>
@@ -82,9 +85,11 @@ return (
                 ref={resetEmailRef}
                 name={fields.resetEmail.name} 
                 onMouseEnter={onMouseEnterResetEmailRef}
+                defaultValue={fields.resetEmail.initialValue}
                 onChange={(e) => setResetEmail(e.target.value)}
                 value={resetEmail}
-                placeholder='Your Email Address' 
+                key={fields.resetEmail.key}
+                placeholder='Your Email Address'  
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
               />
               <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.resetEmail.errors}</p> 
@@ -92,7 +97,7 @@ return (
 
             <button type='submit' className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full hover:from-[#00ffff] hover:via-slate-600 hover:to-[#00ffff]  text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center tracking-wider'>
               Reset Password    
-            </button>
+            </button> 
           </form>          
 
           <p className='text-center mt-4 text-white tracking-wide'>
