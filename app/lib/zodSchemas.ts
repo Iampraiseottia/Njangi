@@ -8,9 +8,3 @@ export const register01Schema = z.object({
     phoneNumber: z.string().min(1).max(20),
     password: z.string().min(8).max(20)
 });
-
-
-export const resetVerify = z.object({
-    resetEmail: z.string().min(1).max(30).email(),
-    resetPhoneNumber: z.string().min(1).max(20)
-})

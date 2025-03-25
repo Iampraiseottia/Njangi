@@ -1,19 +1,31 @@
+
 import React from 'react'
+
 import globalStyle from './globals.css'
+
 import Footer from './components/footer'
 import Navbar from './components/navbar'
-import Register from './register/page'
+
+import Metadata from './components/Metadata'
 
 
 const General = () => {
+
+  const metadata = {
+    title: 'Njangi Web Application',
+    description: 'An application created where members join, create, and manage njangi groups with others all over the world.',
+  };
+
+  
   return (
 
-   <main >
+   <main className='w-full' >
 
-    <Register />
-    {/* <Navbar />  */}
+    <Metadata title={metadata.title} description={metadata.description} />
 
-    {/* <Footer /> */}
+    <Navbar /> 
+
+    <Footer />
    
    </main> 
    
