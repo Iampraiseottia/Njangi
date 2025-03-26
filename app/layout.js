@@ -3,7 +3,6 @@ import React from 'react'
 import Head from 'next/head' 
 import { icon } from '@fortawesome/fontawesome-svg-core'
 
-
 import Metadata from './components/Metadata';
 
 

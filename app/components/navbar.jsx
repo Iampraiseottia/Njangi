@@ -1,9 +1,19 @@
 
 import React from 'react'
 import Link from 'next/link'
+
+import { motion } from "motion/react"
+
+
+
 const Navbar = () => {
   return (
-    <section className=' flex justify-evenly items-center w-full bg-[lightseagreen] py-4  '>
+    <motion.section 
+        initial={{opacity: 0, y: 100}}
+        whileInView={{y: 0, opacity: 1}}
+        transition={{duration: 0.7, delay: 0.7}}
+        viewport={{once: true, amount: 0.05}}
+        className=' flex justify-evenly items-center w-full bg-[lightseagreen] py-4  '>
 
       <div className='w-[30%] flex justify-center items-center ml-7 text-center'>
         <img src="/logo3.png" className='w-32 h-28 mr-1' alt="Njangi App Logo" />
@@ -21,7 +31,7 @@ const Navbar = () => {
           Sign Up    
         </Link> 
       </div>
-    </section>
+    </motion.section>
   )
 }
 

@@ -1,6 +1,4 @@
 
-
-
 import React, { Suspense } from 'react';
 
 import DashBoardContent from '../components/dashboardContent'

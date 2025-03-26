@@ -7,6 +7,8 @@ import { ArrowRight, Bell, Calendar, PlusCircle, Search } from 'lucide-react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import { motion } from "motion/react"
+
 import { faGear,
   faSun,
   faMoon } from '@fortawesome/free-solid-svg-icons';
@@ -40,7 +42,12 @@ const Njangi_Groups = ({ setActiveComponent }) => {
     <div className="p-2 sm:p-4 md:p-6 lg:p-8">
 
        {/* Header section with better responsiveness */}
-       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 sm:mb-8">
+       <motion.div 
+        initial={{opacity: 0, y: 100}}
+        whileInView={{y: 0, opacity: 1}}
+        viewport={{once: true, amount: 0.05}}
+        transition={{duration: 0.7, delay: 0.7}}
+        className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 sm:mb-8">
         <div className="pt-2 sm:pt-4 mb-4 sm:mb-0">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">Good Day 👋,
             <span className=" sm:inline text-teal-500 text-2xl sm:text-3xl md:text-4xl sm:pl-1">Ottia Praise</span>
@@ -81,11 +88,16 @@ const Njangi_Groups = ({ setActiveComponent }) => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
 
       {/* Group Main Content */}
-      <div className="p-2 sm:p-4 md:p-6 lg:p-8">
+      <motion.div 
+        initial={{opacity: 0, y: 100}}
+        whileInView={{y: 0, opacity: 1}}
+        transition={{duration: 0.7, delay: 0.7}}
+        viewport={{once: true, amount: 0.05}}
+        className="p-2 sm:p-4 md:p-6 lg:p-8">
         <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 sm:mb-6 text-center">Njangi Groups</h1>
         
         {/* Search & Filter Controls */}
@@ -161,7 +173,7 @@ const Njangi_Groups = ({ setActiveComponent }) => {
             </table>
           </div>
         </div>
-  </div>
+  </motion.div>
 
     </div>
 

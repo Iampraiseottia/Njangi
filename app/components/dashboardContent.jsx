@@ -2,7 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+
 import globalStyle from '../globals.css'; 
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
 import { 
   faHome, 

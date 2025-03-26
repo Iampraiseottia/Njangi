@@ -5,6 +5,8 @@ import React, { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import About_User from '../components/about-user'
 
+import { motion } from "motion/react"
+
 
 const About_You = () => {
   const router = useRouter();

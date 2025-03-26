@@ -17,6 +17,7 @@ import { faUser, faCity, faPersonHalfDress, faCalendar } from '@fortawesome/free
 // import { CreateUser02AboutYou } from '../actions';
 import { useForm } from '@conform-to/react';
 
+import { motion } from "motion/react"
 
 
 
@@ -112,18 +113,31 @@ useEffect(() => {
       <p className=' dance2 absolute'></p>
 
 
-      <section className='flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl bg-transparent border-2 border-[#0ef] overflow-hidden rounded-lg wrapper my-8'> 
+      <motion.section 
+          initial={{opacity: 0, y: 100}}
+          whileInView={{y: 0, opacity: 1}}
+          transition={{duration: 0.5, delay: 0.5}}
+          className='flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl bg-transparent border-2 border-[#0ef] overflow-hidden rounded-lg wrapper my-8'> 
+
         {/* Registration Page 01 Left Section */}
-        <div className='w-full lg:w-[45%] p-6 lg:p-12 xl:p-20'>
+        <motion.div 
+          initial={{opacity: 0, y: 100}}
+          whileInView={{y: 0, opacity: 1}}
+          transition={{duration: 0.7, delay: 0.7}}
+          className='w-full lg:w-[45%] p-6 lg:p-12 xl:p-20'>
           <h1 className='text-4xl lg:text-6xl font-extrabold tracking-wide mt-6 lg:mt-10'>It's All About You!!!</h1>
           <br />
           <p className='text-base lg:text-lg mb-5'>Unlock exclusive rewards 🔥 which awaits you. Get personalized offers just for you just by us getting to know you better. Don't miss out!!!, Your journey starts here..</p>
           <br />
           <FontAwesomeIcon icon={faUser} className='werey ' />   
-        </div>
+        </motion.div>
 
         {/* Registration Page 01 Right Section */}
-        <div className='w-full lg:w-[55%] p-6 lg:p-9'>
+        <motion.div 
+          initial={{opacity: 0, y: 100}}
+          whileInView={{y: 0, opacity: 1}}
+          transition={{duration: 0.7, delay: 0.7}}
+          className='w-full lg:w-[55%] p-6 lg:p-9'>
           <h1 className='text-3xl lg:text-5xl font-extrabold tracking-wider mt-6 text-center mb-5'>Start Your Journey 🔥</h1>
           <br />
           <form className='flex flex-col gap-6 w-full max-w-xl'  onSubmit={(e) => {
@@ -229,8 +243,8 @@ useEffect(() => {
             </button>
           </form>
 
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
     </main>
   );
 };

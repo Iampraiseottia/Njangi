@@ -12,6 +12,9 @@ import { faPhone } from '@fortawesome/free-solid-svg-icons'
 
 import Metadata from '../components/Metadata'
 
+import { motion } from "motion/react"
+
+
 const Forgot_Password = () => {
   const router = useRouter()
   const [email, setEmail] = useState('')
@@ -54,9 +57,18 @@ const Forgot_Password = () => {
     <main className='flex justify-center items-center w-full min-h-screen bg-gray-800 text-white p-4'>
       <Metadata title={metadata.title} description={metadata.description} />
 
-      <section className='flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl bg-transparent border-2 border-[#0ef] overflow-hidden rounded-lg wrapper my-8'> 
+      <motion.section 
+      initial={{opacity: 0, y: 100}}
+      whileInView={{y: 0, opacity: 1}}
+      transition={{duration: 0.5, delay: 0.5}}
+      className='flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl bg-transparent border-2 border-[#0ef] overflow-hidden rounded-lg wrapper my-8'> 
+
         {/* Left Section */}
-        <div className='w-full lg:w-[45%] p-6 lg:p-12 xl:p-20'>
+        <motion.div 
+          initial={{opacity: 0, y: 100}}
+          whileInView={{y: 0, opacity: 1}}
+          transition={{duration: 0.7, delay: 0.7}}
+        className='w-full lg:w-[45%] p-6 lg:p-12 xl:p-20'>
           <h1 className='text-4xl lg:text-4xl font-extrabold tracking-wide mt-6 lg:mt-10'>Forgot Password?</h1>
           <br />
           <p className='text-base lg:text-lg mb-5'>No worries, enter your email address and regain access to your account so as to continue enjoying the amazing features of NJANGIFY</p>
@@ -65,10 +77,15 @@ const Forgot_Password = () => {
             <FontAwesomeIcon icon={faPhone} className="werey2 mr-2 text-[#0ef]" />
             Try With Phone 
           </Link> 
-        </div>
+        </motion.div>
  
+
         {/* Right Section */}
-        <div className='w-full lg:w-[55%] p-6 lg:p-9'>
+        <motion.div 
+        initial={{opacity: 0, y: 100}}
+        whileInView={{y: 0, opacity: 1}}
+        transition={{duration: 0.7, delay: 0.7}}
+        className='w-full lg:w-[55%] p-6 lg:p-9'>
           <h1 className='text-3xl lg:text-5xl font-extrabold tracking-wider mt-6 text-center mb-5'>RESET PASSWORD</h1>
           <br />
           
@@ -103,8 +120,8 @@ const Forgot_Password = () => {
           <p className='text-center mt-4 text-white tracking-wide'>
             Go Back to <Link href="/login" className='text-[#0ef] ml-1 font-extrabold hover:cursor-pointer hover:underline duration-300'>LOGIN</Link>
           </p>
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
     </main>
   )
 }

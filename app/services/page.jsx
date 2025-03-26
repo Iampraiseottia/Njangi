@@ -1,4 +1,8 @@
+
 import React from 'react'
+
+import { motion } from "motion/react"
+
 
 const Services = () => {
   return (
@@ -6,4 +10,4 @@ const Services = () => {
   )
 }
 
-export default Services
+export default Services;

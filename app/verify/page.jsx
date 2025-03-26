@@ -10,6 +10,9 @@ import { faLock } from '@fortawesome/free-solid-svg-icons'
 
 import Metadata from '../components/Metadata'
 
+import { motion } from "motion/react"
+
+
 const Verify = () => {
   const router = useRouter()
   const [error, setError] = useState('')
@@ -90,23 +93,44 @@ const Verify = () => {
     <main className='flex justify-center items-center w-full min-h-screen bg-gray-800 text-white p-4'>
       <Metadata title={metadata.title} description={metadata.description} />
 
-      <section className='sm:w-full md:w-[80%] lg:w-[40%] max-w-7xl bg-transparent border-2 border-[#0ef] overflow-hidden rounded-lg wrapper4 my-8'>
+      <motion.section 
+      initial={{opacity: 0, y: 100}}
+      whileInView={{y: 0, opacity: 1}}
+      transition={{duration: 0.5, delay: 0.5}}
+      className='sm:w-full md:w-[80%] lg:w-[40%] max-w-7xl bg-transparent border-2 border-[#0ef] overflow-hidden rounded-lg wrapper4 my-8'>
+
         <div className='w-full lg:w-[100%] p-6 lg:p-9'>
-          <h1 className='text-3xl lg:text-5xl font-extrabold tracking-wider mt-6 text-center mb-5 flex justify-center items-center'>
+          <motion.h1 
+          initial={{opacity: 0, y: 100}}
+          whileInView={{y: 0, opacity: 1}}
+          transition={{duration: 0.7, delay: 0.7}}
+          className='text-3xl lg:text-5xl font-extrabold tracking-wider mt-6 text-center mb-5 flex justify-center items-center'>
             <img src="/logo3.png" alt="Njangi Logo" className='w-20 h-20 mr-1' />  
             NJANGIFY
-          </h1>
+          </motion.h1>
           <br />
           
           <form onSubmit={handleSubmit} className='flex flex-col gap-6 w-full justify-center align-middle items-center'>
             <div className='ease-in-out transition-all w-full'>
-              <label htmlFor="verification_code" className='text-left text-[22px] font-medium tracking-wider'>Verification Code</label>
+              <motion.label 
+              initial={{opacity: 0, y: 100}}
+              whileInView={{y: 0, opacity: 1}}
+              transition={{duration: 0.7, delay: 0.7}}
+              htmlFor="verification_code" className='text-left text-[22px] font-medium tracking-wider'>Verification Code</motion.label>
               
               {error && (
-                <p className='text-red-500 mt-2 text-center font-medium'>{error}</p>
+                <motion.p 
+                initial={{opacity: 0, y: 100}}
+                whileInView={{y: 0, opacity: 1}}
+                transition={{duration: 0.1, delay: 0.2}}
+                className='text-red-500 my-3 text-center font-medium'>{error}</motion.p>
               )}
               
-              <div className='mt-4 mb-1 flex flex-row justify-center items-center'>
+              <motion.div 
+              initial={{opacity: 0, y: 100}}
+              whileInView={{y: 0, opacity: 1}}
+              transition={{duration: 0.7, delay: 0.7}}
+              className='mt-6 mb-1 flex flex-row justify-center items-center'>
                 {[0, 1, 2, 3].map((index) => (
                   <input 
                     key={index}
@@ -127,22 +151,29 @@ const Verify = () => {
                     }`}
                   />
                 ))}
-              </div>
+              </motion.div>
             </div>
               
-            <button 
+            <motion.button 
+            initial={{opacity: 0, y: 100}}
+            whileInView={{y: 0, opacity: 1}}
+            transition={{duration: 0.7, delay: 0.7}}
               type='submit' 
               className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full hover:from-[#00ffff] hover:via-slate-600 hover:to-[#00ffff] text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center tracking-wider'
             >
               <FontAwesomeIcon icon={faLock} className='mr-1 w-6 h-6' /> VERIFY    
-            </button>
+            </motion.button>
           </form>          
 
-          <p className='text-center mt-4 text-white tracking-wide'>
+          <motion.p 
+          initial={{opacity: 0, y: 100}}
+          whileInView={{y: 0, opacity: 1}}
+          transition={{duration: 0.7, delay: 0.7}}
+          className='text-center mt-4 text-white tracking-wide'>
             Go Back to <Link href="/login" className='text-[#0ef] ml-1 font-extrabold hover:cursor-pointer hover:underline duration-300'>LOGIN</Link>
-          </p>
+          </motion.p>
         </div>
-      </section>
+      </motion.section>
     </main>
   )
 }

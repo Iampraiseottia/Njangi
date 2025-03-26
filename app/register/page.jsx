@@ -17,14 +17,11 @@ import { faPhoneVolume } from '@fortawesome/free-solid-svg-icons'
 import { CreateUser01Page } from '../actions'
 import { useForm } from '@conform-to/react'
 import { parseWithZod } from '@conform-to/zod'
-
 import { register01Schema } from '../lib/zodSchemas' 
+
 import Metadata from '../components/Metadata'
 
-
-
-
-
+import { motion } from "motion/react"
 
 const Register = () => {
 
@@ -100,11 +97,19 @@ const Register = () => {
 
       <Metadata title={metadata.title} description={metadata.description} />
 
-      <section className='flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl bg-transparent border-2 border-[#0ef] overflow-hidden rounded-lg wrapper my-8 '> 
-
+      <motion.section 
+      initial={{opacity: 0, y: 100}}
+      whileInView={{y: 0, opacity: 1}}
+      transition={{duration: 0.5, delay: 0.5}}
+      className='flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl bg-transparent border-2 border-[#0ef] overflow-hidden rounded-lg wrapper my-8 '> 
+        
         {/* Registration Page 01 Left Section */}
 
-        <div className='w-full lg:w-[45%] p-6 lg:p-12 xl:p-20'>
+        <motion.div 
+        initial={{opacity: 0, y: 100}}
+        whileInView={{y: 0, opacity: 1}}
+        transition={{duration: 0.7, delay: 0.7}}
+           className='w-full lg:w-[45%] p-6 lg:p-12 xl:p-20'>
           <h1 className='text-4xl lg:text-6xl font-extrabold tracking-wide mt-6 lg:mt-10'>WELCOME!!!</h1>
           <br />
           <p className='text-base lg:text-lg mb-5'>We are delighted and privilege to have you 🔥 here. Follow the steps made available on the right side of the page to register. If you need any assistance feel free to reach out.</p>
@@ -125,11 +130,15 @@ const Register = () => {
               Continue With Facebook
             </button>
           </div>
-        </div>
+        </motion.div>
 
 
         {/* Registration Page 01 Right Section */}
-        <div className='w-full lg:w-[55%] p-6 lg:p-9'>
+        <motion.div
+        initial={{opacity: 0, y: 100}}
+        whileInView={{y: 0, opacity: 1}}
+        transition={{duration: 0.7, delay: 0.7}}
+         className='w-full lg:w-[55%] p-6 lg:p-9'>
           <h1 className='text-3xl lg:text-5xl font-extrabold tracking-wider mt-6  text-center mb-5'>SIGN UP 🔥</h1>
           <br />
           <form className='flex flex-col gap-6 w-full max-w-xl' id={form.id} onSubmit={async (e) => {
@@ -182,7 +191,7 @@ const Register = () => {
                 onChange={(e) => setUserName(e.target.value)}
                 value={userName}
                 ref={userNameRef}
-          onMouseEnter={onMouseEnteruserNameRef}
+                onMouseEnter={onMouseEnteruserNameRef}
                 id="userName" 
                 placeholder='Your User Name' 
                 className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
@@ -195,7 +204,7 @@ const Register = () => {
               <input 
                 type="text" 
                 ref={phoneNumberRef}
-          onMouseEnter={onMouseEnterphoneNumberRef}
+                onMouseEnter={onMouseEnterphoneNumberRef}
                 name={fields.phoneNumber.name} 
                 key={fields.phoneNumber.key}
                 defaultValue={fields.phoneNumber.initialValue}
@@ -237,8 +246,8 @@ const Register = () => {
             Already Have An Account? <br />
             <Link href="/login" className='text-[#0ef] font-extrabold hover:cursor-pointer hover:underline duration-300'>LOGIN</Link>
           </p>
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
     </main>
   )
 }

@@ -15,6 +15,7 @@ import { faCoins } from '@fortawesome/free-solid-svg-icons'
 import { faPiggyBank } from '@fortawesome/free-solid-svg-icons'
 import { faBullseye } from '@fortawesome/free-solid-svg-icons'
 
+import { motion } from "motion/react"
 
 
 
@@ -133,17 +134,27 @@ return (
 
 <main className='flex relative justify-center items-center w-full min-h-screen bg-gray-800 text-white p-4'>
 
-<p className='dance absolute'></p>
-<p className=' dance2 absolute'></p>
+  <p className='dance absolute'></p>
+  <p className=' dance2 absolute'></p>
 
-<section className=' w-full max-w-7xl bg-transparent border-2 border-[#0ef] overflow-hidden rounded-lg wrapper3 my-8 '> 
+ <motion.section 
+  initial={{opacity: 0, y: 100}}
+  whileInView={{y: 0, opacity: 1}}
+  transition={{duration: 0.5, delay: 0.5}}
+  className=' w-full max-w-7xl bg-transparent border-2 border-[#0ef] overflow-hidden rounded-lg wrapper3 my-8 '> 
 
-<h1 className='text-3xl lg:text-5xl font-extrabold tracking-wider mt-6 pt-9 text-center mb-12  '>Complete Survey 🔥</h1>
+  <h1 className='text-3xl lg:text-5xl font-extrabold tracking-wider mt-6 pt-9 text-center mb-12  '>Complete Survey 🔥</h1>
 
 
   <div className='flex flex-col lg:flex-row justify-between items-center mt-[-50px]'> 
+
     {/* Registration Page 01 Left Section */}
-    <div className='w-full lg:w-[55%] p-6 lg:p-12 xl:p-20'> 
+    <motion.div 
+      initial={{opacity: 0, y: 100}}
+      viewport={{once: true, amount: 0.05}}
+      whileInView={{y: 0, opacity: 1}}
+      transition={{duration: 0.7, delay: 0.7}}
+      className='w-full lg:w-[55%] p-6 lg:p-12 xl:p-20'> 
     <form className='flex flex-col gap-6 w-full max-w-xl'>
 
       <div className='flex flex-col gap-2'>
@@ -257,11 +268,16 @@ return (
         </div>
 
       </form>  
-    </div>
+    </motion.div>
 
 
     {/* Registration Page 01 Right Section */}
-    <div className='w-full lg:w-[45%] p-6 lg:p-9'>
+    <motion.div 
+      initial={{opacity: 0, y: 100}}
+      whileInView={{y: 0, opacity: 1}}
+      transition={{duration: 0.7, delay: 0.7}}
+      viewport={{once: true, amount: 0.05}}
+      className='w-full lg:w-[45%] p-6 lg:p-9'>
 
       <form className='flex flex-col gap-6 w-full max-w-xl'>
     
@@ -374,7 +390,7 @@ return (
           
     </form>
 
-    </div>
+    </motion.div>
 
   </div>
 
@@ -382,10 +398,8 @@ return (
           Complete Survey ✅
 
       </button>
-     
-
  
-</section>
+</motion.section>
 </main>
 
 )
