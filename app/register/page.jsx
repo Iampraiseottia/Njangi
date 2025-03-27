@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLock } from '@fortawesome/free-solid-svg-icons'
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
 import { faPhoneVolume } from '@fortawesome/free-solid-svg-icons'
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 
 import { CreateUser01Page } from '../actions'
 import { useForm } from '@conform-to/react'
@@ -22,6 +23,9 @@ import { register01Schema } from '../lib/zodSchemas'
 import Metadata from '../components/Metadata'
 
 import { motion } from "motion/react"
+
+import { useRouter } from 'next/navigation'
+
 
 const Register = () => {
 
@@ -56,41 +60,120 @@ const Register = () => {
 
   
 
-      const userNameRef = useRef();
-    
-      const onMouseEnteruserNameRef = () => {
-        userNameRef.current.focus();
-      }
-    
-    
-      const passwordRef = useRef();
-    
-      const onMouseEnterpasswordRef = () => {
-        passwordRef.current.focus();
-      }
+  const userNameRef = useRef();
+
+  const onMouseEnteruserNameRef = () => {
+    userNameRef.current.focus();
+  }
 
 
-      const fullNameRef = useRef();
-    
-      const onMouseEnterfullNameRef = () => {
-        fullNameRef.current.focus();
-      }
-    
-    
-      const emailAddress = useRef();
-    
-      const onMouseEnteremailAddress = () => {
-        emailAddress.current.focus();
-      }
+  const passwordRef = useRef();
+
+  const onMouseEnterpasswordRef = () => {
+    passwordRef.current.focus();
+  }
 
 
-      const phoneNumberRef = useRef();
-    
-      const onMouseEnterphoneNumberRef = () => {
-        phoneNumberRef.current.focus();
-      }
+  const fullNameRef = useRef();
+
+  const onMouseEnterfullNameRef = () => {
+    fullNameRef.current.focus();
+  }
+
+
+  const emailAddress = useRef();
+
+  const onMouseEnteremailAddress = () => {
+    emailAddress.current.focus();
+  }
+
+
+  const phoneNumberRef = useRef();
+
+  const onMouseEnterphoneNumberRef = () => {
+    phoneNumberRef.current.focus();
+  }
+
+  const confirmPasswordRef = useRef();
+
+  const onMouseEnterConfirmPasswordRef = () => {
+    confirmPasswordRef.current.focus();
+  }
+
+
+
+  const router = useRouter()
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [errors, setErrors] = useState({
+    password: '',
+    confirmPassword: ''
+  })
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+
+  const validatePassword = (password) => {
+    const errors = []
+
+    if (password.length < 8) {
+      errors.push('Password must be at least 8 characters long')
+    }
+
+    if (!/[A-Z]/.test(password)) {
+      errors.push('Password must contain at least one uppercase letter')
+    }
+
+    if (!/[a-z]/.test(password)) {
+      errors.push('Password must contain at least one lowercase letter')
+    }
+
+    if (!/[0-9]/.test(password)) {
+      errors.push('Password must contain at least one number')
+    }
+
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      errors.push('Password must contain at least one special character')
+    }
+
+    return errors
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    setErrors({ password: '', confirmPassword: '' })
+
+    const passwordErrors = validatePassword(password)
+    if (passwordErrors.length > 0) {
+      setErrors(prev => ({
+        ...prev, 
+        password: passwordErrors.join('. ')
+      }))
+      return
+    }
+
+    if (password !== confirmPassword) {
+      setErrors(prev => ({
+        ...prev, 
+        confirmPassword: 'Passwords do not match'
+      }))
+      return
+    }
+
+    router.push('/dashboard')
+  }
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword)
+  }
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword)
+  }
   
-  
+
+
+
+
   return (
     
     <main className='flex justify-center items-center w-full min-h-screen bg-gray-800 text-white p-4'>
@@ -114,7 +197,7 @@ const Register = () => {
           <br />
           <p className='text-base lg:text-lg mb-5'>We are delighted and privilege to have you 🔥 here. Follow the steps made available on the right side of the page to register. If you need any assistance feel free to reach out.</p>
           <br />
-          <h1 className='font-extrabold text-2xl lg:text-4xl tracking-wider'>OR</h1>
+          <h1 className='font-extrabold text-2xl lg:text-4xl tracking-wider my-10'>OR</h1>
           <br />
           <div className='flex flex-col gap-4'>
             <button className='bg-white text-black py-3 lg:py-4 px-6 lg:px-12 font-bold text-base lg:text-lg duration-300 rounded-md hover:opacity-70 cursor-pointer flex justify-center items-center'>
@@ -143,7 +226,7 @@ const Register = () => {
           <br />
           <form className='flex flex-col gap-6 w-full max-w-xl' id={form.id} onSubmit={async (e) => {
                         await form.onSubmit(e);   
-                        // await handleSubmit(e); 
+                        await handleSubmit(e); 
                     }}  action={action} >
             <div className='flex flex-col gap-2'>
               <label htmlFor="fullName" className='font-semibold text-lg tracking-wide'>👤 Full Name:</label>
@@ -158,9 +241,9 @@ const Register = () => {
                 key={fields.fullName.key} 
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
+                className={`w-full text-base bg-transparent rounded-xl border-2 outline-none border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white  ${fields.fullName.errors ? 'border-red-700 focus:border-red-500 focus:ring-red-500 ' : 'focus:ring-[#0ef] '}`}
               />
-              <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.fullName.errors}</p>
+              <p className='text-[16px] text-red-500 font-bold tracking-wide text-right'>{fields.fullName.errors}</p>
             </div>
 
             
@@ -177,9 +260,9 @@ const Register = () => {
                 key={fields.email.key}
                 id="email" 
                 placeholder='Your Email Address' 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
+                className={`w-full text-base bg-transparent rounded-xl outline-none border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white  ${fields.email.errors ? 'border-red-700 focus:border-red-500 focus:ring-red-500 ' : 'focus:ring-[#0ef] '}`}
               />
-              <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.email.errors}</p> 
+              <p className='text-[16px] text-red-500 font-bold tracking-wide text-right'>{fields.email.errors}</p> 
 
             </div>
 
@@ -194,9 +277,9 @@ const Register = () => {
                 onMouseEnter={onMouseEnteruserNameRef}
                 id="userName" 
                 placeholder='Your User Name' 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
+                className={`w-full text-base bg-transparent rounded-xl border-2 outline-none border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white  ${fields.userName.errors ? 'border-red-700 focus:border-red-500 focus:ring-red-500 ' : 'focus:ring-[#0ef] '}`}
               />
-              <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.userName.errors}</p> 
+              <p className='text-[16px] text-red-500 font-bold tracking-wide text-right'>{fields.userName.errors}</p> 
             </div>
 
             <div className='flex flex-col gap-2'>
@@ -212,35 +295,92 @@ const Register = () => {
                 onChange={(e) => setPhoneNumber(e.target.value)}
                 id="phoneNumber" 
                 placeholder='Your Phone Number eg +237 682394782' 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
+                className={`w-full text-base bg-transparent rounded-xl border-2 outline-none border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white  ${fields.phoneNumber.errors ? 'border-red-700 focus:border-red-500 focus:ring-red-500 ' : 'focus:ring-[#0ef] '}`}
               />
-              <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.phoneNumber.errors}</p> 
-            </div>
+              <p className='text-[16px] text-red-500 font-bold tracking-wide text-right'>{fields.phoneNumber.errors}</p> 
+            </div> 
  
             <div className='flex flex-col gap-2'>
-              <label htmlFor="password" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faLock} className="werey2 mr-2 text-[#0ef]" /> Password:</label>
-              <input 
-                type="text" 
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                ref={passwordRef}
-          onMouseEnter={onMouseEnterpasswordRef}
-                name={fields.password.name} 
-                key={fields.password.key}
-                defaultValue={fields.password.initialValue} 
-                id="password" 
-                placeholder='Your Password ' 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
-              />
-              <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.password.errors}</p> 
-
+              <label htmlFor="password" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faLock} className="werey2 mr-2 text-[#0ef]" /> Password:</label> 
+              <div 
+                className='mt-4 mb-1 relative'>
+                <input
+                  type={showPassword ? "text" : "password"} 
+                  ref={passwordRef}
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  onMouseEnter={onMouseEnterpasswordRef}
+                  id="password" 
+                  placeholder='Your Password'
+                  className={`w-full text-base bg-transparent outline-none focus:outline-none rounded-xl border-2 ${
+                    errors.password ? 'border-red-500' : 'border-[#0ef]'
+                  } py-3 px-4 focus:ring-1 focus:ring-[#0ef] duration-300 placeholder-white pr-10`}
+                />
+                <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className='absolute right-4 top-1/2 transform -translate-y-1/2 text-[#0ef] hover:text-white'
+                > 
+                  <FontAwesomeIcon 
+                    icon={showPassword ? faEyeSlash : faEye} 
+                    className='w-5 h-5'
+                  />
+                </button>
+              </div>
+              {errors.password && (
+                <motion.p 
+                initial={{opacity: 0, y: 100}}
+                whileInView={{y: 0, opacity: 1}}
+                transition={{duration: 0.2, delay: 0.2}}
+                viewport={{once: true}}
+                className='text-red-500 text-sm mt-3'>{errors.password}</motion.p>
+              )}
             </div>
-            
 
+
+            <div className='flex flex-col gap-2'>
+              <label htmlFor="confirm_password" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faLock} className="werey2 mr-2 text-[#0ef]" />Confirm Password:</label> 
+              <div 
+                className='mt-4 mb-1 relative'>
+                <input 
+                  type={showConfirmPassword ? "text" : "password"} 
+                  ref={confirmPasswordRef}
+                  name="confirm_password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  onMouseEnter={onMouseEnterConfirmPasswordRef}
+                  id="confirm_password" 
+                  placeholder='Confirm Your New Password'
+                  className={`w-full text-base bg-transparent rounded-xl border-2 ${
+                    errors.confirmPassword ? 'border-red-500' : 'border-[#0ef]'
+                  } py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white pr-10`}
+                />
+                <button
+                  type="button"
+                  onClick={toggleConfirmPasswordVisibility}
+                  className='absolute right-4 top-1/2 transform -translate-y-1/2 text-[#0ef] hover:text-white'>
+                  <FontAwesomeIcon 
+                    icon={showConfirmPassword ? faEyeSlash : faEye} 
+                    className='w-5 h-5'
+                  />
+                </button>
+              </div>
+              {errors.confirmPassword && (
+                <motion.p 
+                initial={{opacity: 0, y: 100}}
+                whileInView={{y: 0, opacity: 1}}
+                transition={{duration: 0.2, delay: 0.2}}
+                viewport={{once: true}}
+                className='text-red-500 text-sm mt-3 text-right'>{errors.confirmPassword}</motion.p>
+              )}
+            </div>
+             
+ 
             <button type='submit' className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full hover:from-[#00ffff] hover:via-slate-600 hover:to-[#00ffff]  text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center tracking-wider'>
               REGISTER    
             </button>
-          </form>          
+          </form>           
 
           <p className='text-center mt-4'>
             Already Have An Account? <br />

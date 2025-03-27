@@ -103,6 +103,80 @@ useEffect(() => {
   }
 
 
+
+  const [errors, setErrors] = useState({});
+
+  const [formData, setFormData] = useState({
+    dateOfBirth: "",
+    gender: "",
+    country: "",
+    stateRegion: "",
+    city: "",
+    homeAddress: ""
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    //  Date of Birth validation
+    if (!formData.dateOfBirth) {
+      newErrors.dateOfBirth = "Date of Birth is required";
+    } else {
+      const birthDate = new Date(formData.dateOfBirth);
+      const today = new Date();
+      const age = today.getFullYear() - birthDate.getFullYear();
+      const monthDiff = today.getMonth() - birthDate.getMonth();
+      
+      if (age < 18 || (age === 18 && monthDiff < 0)) {
+        newErrors.dateOfBirth = "You must be at least 18 years old";
+      }
+    }
+
+    // Gender validation
+    if (!formData.gender || formData.gender === "Choose Gender") {
+      newErrors.gender = "Please select a gender";
+    }
+
+    // Country validation
+    if (!formData.country || formData.country.trim().length < 2) {
+      newErrors.country = "Please enter a valid country";
+    }
+
+    // State/Region validation
+    if (!formData.stateRegion || formData.stateRegion.trim().length < 2) {
+      newErrors.stateRegion = "Please enter a valid state or region";
+    }
+
+    // City validation
+    if (!formData.city || formData.city.trim().length < 2) {
+      newErrors.city = "Please enter a valid city";
+    }
+
+    // Home Address validation
+    if (!formData.homeAddress || formData.homeAddress.trim().length < 5) {
+      newErrors.homeAddress = "Please enter a valid home address";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  
+   const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    if (validateForm()) {
+      setActiveComponent("income");
+    }
+  };
   
 
   return (
@@ -119,7 +193,7 @@ useEffect(() => {
           transition={{duration: 0.5, delay: 0.5}}
           className='flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl bg-transparent border-2 border-[#0ef] overflow-hidden rounded-lg wrapper my-8'> 
 
-        {/* Registration Page 01 Left Section */}
+        {/* About User Component Left Section */}
         <motion.div 
           initial={{opacity: 0, y: 100}}
           whileInView={{y: 0, opacity: 1}}
@@ -132,7 +206,7 @@ useEffect(() => {
           <FontAwesomeIcon icon={faUser} className='werey ' />   
         </motion.div>
 
-        {/* Registration Page 01 Right Section */}
+        {/* About User Component Right Section */}
         <motion.div 
           initial={{opacity: 0, y: 100}}
           whileInView={{y: 0, opacity: 1}}
@@ -140,102 +214,160 @@ useEffect(() => {
           className='w-full lg:w-[55%] p-6 lg:p-9'>
           <h1 className='text-3xl lg:text-5xl font-extrabold tracking-wider mt-6 text-center mb-5'>Start Your Journey 🔥</h1>
           <br />
-          <form className='flex flex-col gap-6 w-full max-w-xl'  onSubmit={(e) => {
-              e.preventDefault();
-              setActiveComponent("income"); 
-            }} action='#'>
+          <form className='flex flex-col gap-6 w-full max-w-xl'  onSubmit={handleSubmit} >
             
             <div className='flex flex-col gap-2'>
-              <label htmlFor="date_of_birth" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faCalendar} className="werey2 mr-2 text-[gold]" /> Date of Birth:</label>
+              <label htmlFor="dateOfBirth" className='font-semibold text-lg tracking-wide flex'>
+                <FontAwesomeIcon icon={faCalendar} className="werey2 mr-2 text-[gold]" /> Date of Birth:
+              </label>
               <input 
-                type="date" 
-                name="date_of_birth" 
-                id="date_of_birth" 
-                placeholder='Your Data Of Birth' 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
+                type="date"  
+                name="dateOfBirth" 
+                id="dateOfBirth" 
+                value={formData.dateOfBirth}
+                onChange={handleInputChange}
                 ref={DateOfBirthReg}
-                onMouseEnter={onMouseEnterDateOfBirthReg}  
+                onMouseEnter={onMouseEnterDateOfBirthReg}
+                className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 placeholder-white 
+                  ${errors.dateOfBirth ? 'border-red-500 focus:ring-red-500' : 'border-[#0ef] focus:ring-[#0ef]'}`}
               />
+              {errors.dateOfBirth && (
+                <motion.p 
+                initial={{opacity: 0, y: 100}}
+                whileInView={{y: 0, opacity: 1}}
+                transition={{duration: 0.2, delay: 0.2}}
+                viewport={{once: true, amount: 0.05}}
+                className='text-[16px] text-red-500 text-right font-bold tracking-wide'>{errors.dateOfBirth}</motion.p>
+              )}
             </div>
 
 
             <div className='flex flex-col gap-2'>
-              <label htmlFor="gender" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faPersonHalfDress} className="werey2 mr-2 text-[gold]" /> Gender:</label>
-             <select name="gender" id="gender" 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-black '
+              <label htmlFor="gender" className='font-semibold text-lg tracking-wide flex'>
+                <FontAwesomeIcon icon={faPersonHalfDress} className="werey2 mr-2 text-[gold]" /> Gender:
+              </label>
+              <select 
+                name="gender" 
+                id="gender"
+                value={formData.gender}
+                onChange={handleInputChange}
                 ref={GenderReg}
                 onMouseEnter={onMouseEnterGenderReg}
-             >
-              <option value="Choose Gender">Choose Your Gender</option>
-              <option value="Male">Male</option> 
-              <option value="Female">Female</option>
-
-             </select>
+                className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 text-white 
+                  ${errors.gender ? 'border-red-500 focus:ring-red-500' : 'border-[#0ef] focus:ring-[#0ef]'}`}
+              >
+                <option value="Choose Gender" className='text-black'>Choose Your Gender</option>
+                <option value="Male" className='text-black'>Male</option> 
+                <option value="Female" className='text-black'>Female</option>
+              </select>
+              {errors.gender && (
+                <motion.p 
+                initial={{opacity: 0, y: 100}}
+                whileInView={{y: 0, opacity: 1}}
+                transition={{duration: 0.2, delay: 0.2}}
+                viewport={{once: true, amount: 0.05}}
+                className='text-[16px] text-red-500 text-right font-bold tracking-wide'>{errors.gender}</motion.p>
+              )}
             </div>
 
             <div className='flex flex-col gap-2'>
               <label htmlFor="country" className='font-semibold text-lg tracking-wide'>🏴 Country:</label>
               <input 
                 type="text" 
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
+                name="country"
+                id="country" 
+                value={formData.country}
+                onChange={handleInputChange}
                 ref={countryReg}
                 onMouseEnter={onMouseEntercountryReg}
-                // name={fields.country.name}
-                id="country" 
-                placeholder='Your Country ' 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
+                placeholder='Your Country' 
+                className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 placeholder-white 
+                  ${errors.country ? 'border-red-500 focus:ring-red-500' : 'border-[#0ef] focus:ring-[#0ef]'}`}
               />
-              {/* <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.country.errors}</p>  */}
+              {errors.country && (
+                <motion.p 
+                initial={{opacity: 0, y: 100}}
+                whileInView={{y: 0, opacity: 1}}
+                transition={{duration: 0.2, delay: 0.2}}
+                viewport={{once: true, amount: 0.05}}
+                className='text-[16px] text-red-500 text-right font-bold tracking-wide'>{errors.country}</motion.p>
+              )}
             </div>
 
             <div className='flex flex-col gap-2'>
-              <label htmlFor="state_Region" className='font-semibold text-lg tracking-wide'>🌆 State or Region:</label>
+              <label htmlFor="stateRegion" className='font-semibold text-lg tracking-wide'>🌆 State or Region:</label>
               <input 
                 type="text" 
-                // name={fields.state_Region.name}
-                value={state_Region}
+                name="stateRegion"
+                id="stateRegion" 
+                value={formData.stateRegion}
+                onChange={handleInputChange}
                 ref={state_Region_Ref}
                 onMouseEnter={onMouseEnterstate_Region_Ref}
-                onChange={(e) => setStateRegion(e.target.value)}
-                id="state_Region" 
-                placeholder='Your State / Region ' 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
+                placeholder='Your State / Region' 
+                className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 placeholder-white 
+                  ${errors.stateRegion ? 'border-red-500 focus:ring-red-500' : 'border-[#0ef] focus:ring-[#0ef]'}`}
               />
-              {/* <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.state_Region.errors}</p>  */}
+              {errors.stateRegion && (
+                <motion.p 
+                initial={{opacity: 0, y: 100}}
+                whileInView={{y: 0, opacity: 1}}
+                transition={{duration: 0.2, delay: 0.2}}
+                viewport={{once: true, amount: 0.05}}
+                className='text-[16px] text-red-500 text-right font-bold tracking-wide'>{errors.stateRegion}</motion.p>
+              )}
             </div>
 
             <div className='flex flex-col gap-2'>
-              <label htmlFor="city" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faCity} className="werey2 mr-2 text-[#0ef]" /> City:</label>
+              <label htmlFor="city" className='font-semibold text-lg tracking-wide flex'>
+                <FontAwesomeIcon icon={faCity} className="werey2 mr-2 text-[#0ef]" /> City:
+              </label>
               <input 
                 type="text" 
+                name="city"
+                id="city" 
+                value={formData.city}
+                onChange={handleInputChange}
                 ref={cityRef}
                 onMouseEnter={onMouseEntercityRef}
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                // name={fields.city.name}
-                id="city" 
                 placeholder='Your Current City / Town' 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
+                className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 placeholder-white 
+                  ${errors.city ? 'border-red-500 focus:ring-red-500' : 'border-[#0ef] focus:ring-[#0ef]'}`}
               />
-              {/* <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.city.errors}</p>  */}
+              {errors.city && (
+                <motion.p 
+                initial={{opacity: 0, y: 100}}
+                whileInView={{y: 0, opacity: 1}}
+                transition={{duration: 0.2, delay: 0.2}}
+                viewport={{once: true, amount: 0.05}}
+                className='text-[16px] text-red-500 text-right font-bold tracking-wide'>{errors.city}</motion.p>
+              )}
             </div>
 
             <div className='flex flex-col gap-2'>
               <label htmlFor="homeAddress" className='font-semibold text-lg tracking-wide'>🏠 Home Address:</label>
               <input 
                 type="text" 
-                value={homeAddress}
-                onChange={(e) => setHomeAddress(e.target.value)}
+                name="homeAddress"
+                id="homeAddress" 
+                value={formData.homeAddress}
+                onChange={handleInputChange}
                 ref={homeAddressRef}
                 onMouseEnter={onMouseEnterhomeAddressRef}
-                // name={fields.homeAddress.name}
-                id="homeAddress" 
                 placeholder='Your Current Home Address / Precise Location' 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
+                className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 placeholder-white 
+                  ${errors.homeAddress ? 'border-red-500 focus:ring-red-500' : 'border-[#0ef] focus:ring-[#0ef]'}`}
               />
-              {/* <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.homeAddress.errors}</p>  */}
+              {errors.homeAddress && (
+                <motion.p 
+                initial={{opacity: 0, y: 100}}
+                whileInView={{y: 0, opacity: 1}}
+                transition={{duration: 0.2, delay: 0.2}}
+                viewport={{once: true, amount: 0.05}}
+                className='text-[16px] text-red-500 text-right font-bold tracking-wide'>{errors.homeAddress}</motion.p>
+              )}
             </div> 
+
 
             <button  type="submit" 
                  className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center' >

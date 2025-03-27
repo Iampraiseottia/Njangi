@@ -110,7 +110,7 @@ const Login = () => {
                 value={userName}
                 id="userName" 
                 placeholder='Your User Name' 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
+                className={`w-full text-base bg-transparent rounded-xl outline-none border-2 border-[#0ef] py-3 px-4 focus:ring-1  duration-300 placeholder-white  ${fields.userName.errors ? 'border-red-700 focus:border-red-700 focus:ring-red-700 ' : 'focus:ring-[#0ef] '}`}
               />
               <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.userName.errors}</p> 
             </div>
@@ -129,11 +129,11 @@ const Login = () => {
                 defaultValue={fields.password.initialValue} 
                 id="password" 
                 placeholder='Your Password ' 
-                className='w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white'
+                className={`w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white  ${fields.password.errors ? 'border-red-700 focus:border-red-700 focus:ring-red-700 ' : 'focus:ring-[#0ef] '}`}
               />
-              <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.password.errors}</p> 
+              <p className={`text-[16px] text-red-700 font-bold tracking-wide text-right`}>{fields.password.errors}</p> 
 
-            </div>
+            </div> 
 
            <p className=' text-white text-right'>
             <Link href="/forgot_password" className='  hover:text-[#0ef] mt-[-17px] font-extrabold hover:cursor-pointer hover:underline duration-300'>Forgot Password</Link>
