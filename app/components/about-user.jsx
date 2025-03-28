@@ -76,21 +76,21 @@ useEffect(() => {
 
   const countryReg = useRef();
 
-  const onMouseEntercountryReg = () => {
+  const onMouseEnterCountryReg = () => {
     countryReg.current.focus();
   }
 
 
   const state_Region_Ref = useRef();
 
-  const onMouseEnterstate_Region_Ref = () => {
+  const onMouseEnterStateRegion_Ref = () => {
     state_Region_Ref.current.focus();
   }
 
 
   const cityRef = useRef();
 
-  const onMouseEntercityRef = () => {
+  const onMouseEnterCityRef = () => {
     cityRef.current.focus();
   }
 
@@ -98,7 +98,7 @@ useEffect(() => {
 
   const homeAddressRef = useRef();
 
-  const onMouseEnterhomeAddressRef = () => {
+  const onMouseEnterHomeAddressRef = () => {
     homeAddressRef.current.focus();
   }
 
@@ -229,9 +229,12 @@ useEffect(() => {
                 ref={DateOfBirthReg}
                 onMouseEnter={onMouseEnterDateOfBirthReg}
                 className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 placeholder-white 
-                  ${errors.dateOfBirth ? 'border-red-500 focus:ring-red-500' : 'border-[#0ef] focus:ring-[#0ef]'}`}
+                ${formData.dateOfBirth && formData.dateOfBirth.trim().length >= 3 
+                  ? 'border-green-500 focus:ring-green-500' 
+                  : 'border-[#0ef] focus:ring-[#0ef]'} 
+                ${errors.dateOfBirth ? 'border-red-500 focus:ring-red-500' : 'border-[#0ef] focus:ring-[#0ef]'}`}
               />
-              {errors.dateOfBirth && (
+              {errors.dateOfBirth  && !(formData.dateOfBirth && formData.dateOfBirth.trim().length >= 3) && (
                 <motion.p 
                 initial={{opacity: 0, y: 100}}
                 whileInView={{y: 0, opacity: 1}}
@@ -254,13 +257,16 @@ useEffect(() => {
                 ref={GenderReg}
                 onMouseEnter={onMouseEnterGenderReg}
                 className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 text-white 
-                  ${errors.gender ? 'border-red-500 focus:ring-red-500' : 'border-[#0ef] focus:ring-[#0ef]'}`}
+                ${formData.gender && formData.gender.trim().length >= 3 
+                  ? 'border-green-500 focus:ring-green-500' 
+                  : 'border-[#0ef] focus:ring-[#0ef]'} 
+                ${errors.gender ? 'border-red-500 focus:ring-red-500' : 'border-[#0ef] focus:ring-[#0ef]'}`}
               >
                 <option value="Choose Gender" className='text-black'>Choose Your Gender</option>
                 <option value="Male" className='text-black'>Male</option> 
                 <option value="Female" className='text-black'>Female</option>
               </select>
-              {errors.gender && (
+              {errors.gender  && !(formData.gender && formData.gender.trim().length >= 3) && (
                 <motion.p 
                 initial={{opacity: 0, y: 100}}
                 whileInView={{y: 0, opacity: 1}}
@@ -279,12 +285,15 @@ useEffect(() => {
                 value={formData.country}
                 onChange={handleInputChange}
                 ref={countryReg}
-                onMouseEnter={onMouseEntercountryReg}
+                onMouseEnter={onMouseEnterCountryReg}
                 placeholder='Your Country' 
                 className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 placeholder-white 
-                  ${errors.country ? 'border-red-500 focus:ring-red-500' : 'border-[#0ef] focus:ring-[#0ef]'}`}
+                ${formData.country && formData.country.trim().length >= 3 
+                  ? 'border-green-500 focus:ring-green-500' 
+                  : 'border-[#0ef] focus:ring-[#0ef]'} 
+                ${errors.country ? 'border-red-500 focus:ring-red-500' : 'border-[#0ef] focus:ring-[#0ef]'}`}
               />
-              {errors.country && (
+              {errors.country  && !(formData.country && formData.country.trim().length >= 3) && (
                 <motion.p 
                 initial={{opacity: 0, y: 100}}
                 whileInView={{y: 0, opacity: 1}}
@@ -303,12 +312,15 @@ useEffect(() => {
                 value={formData.stateRegion}
                 onChange={handleInputChange}
                 ref={state_Region_Ref}
-                onMouseEnter={onMouseEnterstate_Region_Ref}
+                onMouseEnter={onMouseEnterStateRegion_Ref}
                 placeholder='Your State / Region' 
                 className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 placeholder-white 
-                  ${errors.stateRegion ? 'border-red-500 focus:ring-red-500' : 'border-[#0ef] focus:ring-[#0ef]'}`}
+                ${formData.stateRegion && formData.stateRegion.trim().length >= 3 
+                  ? 'border-green-500 focus:ring-green-500' 
+                  : 'border-[#0ef] focus:ring-[#0ef]'} 
+                ${errors.stateRegion ? 'border-red-500 focus:ring-red-500' : 'border-[#0ef] focus:ring-[#0ef]'}`}
               />
-              {errors.stateRegion && (
+              {errors.stateRegion  && !(formData.stateRegion && formData.stateRegion.trim().length >= 3) && (
                 <motion.p 
                 initial={{opacity: 0, y: 100}}
                 whileInView={{y: 0, opacity: 1}}
@@ -329,12 +341,15 @@ useEffect(() => {
                 value={formData.city}
                 onChange={handleInputChange}
                 ref={cityRef}
-                onMouseEnter={onMouseEntercityRef}
+                onMouseEnter={onMouseEnterCityRef}
                 placeholder='Your Current City / Town' 
                 className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 placeholder-white 
-                  ${errors.city ? 'border-red-500 focus:ring-red-500' : 'border-[#0ef] focus:ring-[#0ef]'}`}
+                ${formData.city && formData.city.trim().length >= 3 
+                  ? 'border-green-500 focus:ring-green-500' 
+                  : 'border-[#0ef] focus:ring-[#0ef]'} 
+                ${errors.city ? 'border-red-500 focus:ring-red-500' : 'border-[#0ef] focus:ring-[#0ef]'}`}
               />
-              {errors.city && (
+              {errors.city  && !(formData.city && formData.city.trim().length >= 3) && (
                 <motion.p 
                 initial={{opacity: 0, y: 100}}
                 whileInView={{y: 0, opacity: 1}}
@@ -353,12 +368,15 @@ useEffect(() => {
                 value={formData.homeAddress}
                 onChange={handleInputChange}
                 ref={homeAddressRef}
-                onMouseEnter={onMouseEnterhomeAddressRef}
+                onMouseEnter={onMouseEnterHomeAddressRef}
                 placeholder='Your Current Home Address / Precise Location' 
                 className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 placeholder-white 
-                  ${errors.homeAddress ? 'border-red-500 focus:ring-red-500' : 'border-[#0ef] focus:ring-[#0ef]'}`}
+                ${formData.homeAddress && formData.homeAddress.trim().length >= 3 
+                  ? 'border-green-500 focus:ring-green-500' 
+                  : 'border-[#0ef] focus:ring-[#0ef]'} 
+                ${errors.homeAddress ? 'border-red-500 focus:ring-red-500' : 'border-[#0ef] focus:ring-[#0ef]'}`}
               />
-              {errors.homeAddress && (
+              {errors.homeAddress  && !(formData.homeAddress && formData.homeAddress.trim().length >= 3) && (
                 <motion.p 
                 initial={{opacity: 0, y: 100}}
                 whileInView={{y: 0, opacity: 1}}
@@ -368,9 +386,8 @@ useEffect(() => {
               )}
             </div> 
 
-
             <button  type="submit" 
-                 className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center' >
+              className='mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center' >
               Submit and Continue ➡️
             </button>
           </form>

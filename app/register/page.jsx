@@ -62,35 +62,35 @@ const Register = () => {
 
   const userNameRef = useRef();
 
-  const onMouseEnteruserNameRef = () => {
+  const onMouseEnterUserNameRef = () => {
     userNameRef.current.focus();
   }
 
 
   const passwordRef = useRef();
 
-  const onMouseEnterpasswordRef = () => {
+  const onMouseEnterPasswordRef = () => {
     passwordRef.current.focus();
   }
 
 
   const fullNameRef = useRef();
 
-  const onMouseEnterfullNameRef = () => {
+  const onMouseEnterFullNameRef = () => {
     fullNameRef.current.focus();
   }
 
 
   const emailAddress = useRef();
 
-  const onMouseEnteremailAddress = () => {
+  const onMouseEnterEmailAddress = () => {
     emailAddress.current.focus();
   }
 
 
   const phoneNumberRef = useRef();
 
-  const onMouseEnterphoneNumberRef = () => {
+  const onMouseEnterPhoneNumberRef = () => {
     phoneNumberRef.current.focus();
   }
 
@@ -236,7 +236,7 @@ const Register = () => {
                 defaultValue={fields.fullName.initialValue} 
                 id="fullName" 
                 ref={fullNameRef}
-          onMouseEnter={onMouseEnterfullNameRef}
+          onMouseEnter={onMouseEnterFullNameRef}
                 placeholder='Your Full Name' 
                 key={fields.fullName.key} 
                 value={fullName}
@@ -251,7 +251,7 @@ const Register = () => {
               <label htmlFor="email" className='font-semibold text-lg tracking-wide'>✉️ Email Address:</label>
               <input 
               ref={emailAddress}
-              onMouseEnter={onMouseEnteremailAddress}
+              onMouseEnter={onMouseEnterEmailAddress}
                 type="email" 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -274,7 +274,7 @@ const Register = () => {
                 onChange={(e) => setUserName(e.target.value)}
                 value={userName}
                 ref={userNameRef}
-                onMouseEnter={onMouseEnteruserNameRef}
+                onMouseEnter={onMouseEnterUserNameRef}
                 id="userName" 
                 placeholder='Your User Name' 
                 className={`w-full text-base bg-transparent rounded-xl border-2 outline-none border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white  ${fields.userName.errors ? 'border-red-700 focus:border-red-500 focus:ring-red-500 ' : 'focus:ring-[#0ef] '}`}
@@ -287,7 +287,7 @@ const Register = () => {
               <input 
                 type="text" 
                 ref={phoneNumberRef}
-                onMouseEnter={onMouseEnterphoneNumberRef}
+                onMouseEnter={onMouseEnterPhoneNumberRef}
                 name={fields.phoneNumber.name} 
                 key={fields.phoneNumber.key}
                 defaultValue={fields.phoneNumber.initialValue}
@@ -310,7 +310,7 @@ const Register = () => {
                   name="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  onMouseEnter={onMouseEnterpasswordRef}
+                  onMouseEnter={onMouseEnterPasswordRef}
                   id="password" 
                   placeholder='Your Password'
                   className={`w-full text-base bg-transparent outline-none focus:outline-none rounded-xl border-2 ${

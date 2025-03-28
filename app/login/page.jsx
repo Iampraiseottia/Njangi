@@ -59,14 +59,14 @@ const Login = () => {
 
     const userNameRef = useRef();
   
-    const onMouseEnteruserNameRef = () => {
+    const onMouseEnterUserNameRef = () => {
       userNameRef.current.focus();
     }
   
 
     const passwordRef = useRef();
   
-    const onMouseEnterpasswordRef = () => {
+    const onMouseEnterPasswordRef = () => {
       passwordRef.current.focus();
     }
 
@@ -103,7 +103,7 @@ const Login = () => {
               <label htmlFor="userName" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faCircleUser} className="werey2 mr-2 text-[#0ef]" /> User Name:</label>
               <input
               ref={userNameRef}
-          onMouseEnter={onMouseEnteruserNameRef}
+          onMouseEnter={onMouseEnterUserNameRef}
                 type="text" 
                 name={fields.userName.name} 
                 onChange={(e) => setUserName(e.target.value)}
@@ -120,7 +120,7 @@ const Login = () => {
               <label htmlFor="password" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faLock} className="werey2 mr-2 text-[#0ef]" /> Password:</label>
               <input
               ref={passwordRef}
-          onMouseEnter={onMouseEnterpasswordRef}
+          onMouseEnter={onMouseEnterPasswordRef}
                 type="text" 
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
