@@ -76,7 +76,7 @@ const DashMain = ({ setActiveComponent }) => {
          }
        }}
        viewport={{
-         once: true, // Only animate when scrolling down
+         once: true, 
          amount: 0.1
        }}
       className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 gap-4">
