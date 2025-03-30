@@ -9,7 +9,6 @@ import Navbar from './components/navbar'
 
 import Metadata from './components/Metadata'
 
-
 const General = () => {
 
   const metadata = {
@@ -29,7 +28,6 @@ const General = () => {
     <Footer />
    
    </main> 
-   
 
   )
 }

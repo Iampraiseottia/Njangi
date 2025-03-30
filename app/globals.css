@@ -210,3 +210,185 @@ body.dark {
   color: black !important;
 }
 
+
+
+/* LOADER  */
+
+#fountainG{
+	position:relative;
+	width:162px;
+	height:20px;
+	margin:auto;
+}
+
+.fountainG{
+	position:absolute;
+	top:0;
+	background-color:rgba(0,0,0,0.95);
+	width:20px;
+	height:20px;
+	animation-name:bounce_fountainG;
+		-o-animation-name:bounce_fountainG;
+		-ms-animation-name:bounce_fountainG;
+		-webkit-animation-name:bounce_fountainG;
+		-moz-animation-name:bounce_fountainG;
+	animation-duration:2.08s;
+		-o-animation-duration:2.08s;
+		-ms-animation-duration:2.08s;
+		-webkit-animation-duration:2.08s;
+		-moz-animation-duration:2.08s;
+	animation-iteration-count:infinite;
+		-o-animation-iteration-count:infinite;
+		-ms-animation-iteration-count:infinite;
+		-webkit-animation-iteration-count:infinite;
+		-moz-animation-iteration-count:infinite;
+	animation-direction:normal;
+		-o-animation-direction:normal;
+		-ms-animation-direction:normal;
+		-webkit-animation-direction:normal;
+		-moz-animation-direction:normal;
+	transform:scale(.3);
+		-o-transform:scale(.3);
+		-ms-transform:scale(.3);
+		-webkit-transform:scale(.3);
+		-moz-transform:scale(.3);
+	border-radius:13px;
+		-o-border-radius:13px;
+		-ms-border-radius:13px;
+		-webkit-border-radius:13px;
+		-moz-border-radius:13px;
+}
+
+#fountainG_1{
+	left:0;
+	animation-delay:0.83s;
+		-o-animation-delay:0.83s;
+		-ms-animation-delay:0.83s;
+		-webkit-animation-delay:0.83s;
+		-moz-animation-delay:0.83s;
+}
+
+#fountainG_2{
+	left:20px;
+	animation-delay:1.04s;
+		-o-animation-delay:1.04s;
+		-ms-animation-delay:1.04s;
+		-webkit-animation-delay:1.04s;
+		-moz-animation-delay:1.04s;
+}
+
+#fountainG_3{
+	left:40px;
+	animation-delay:1.25s;
+		-o-animation-delay:1.25s;
+		-ms-animation-delay:1.25s;
+		-webkit-animation-delay:1.25s;
+		-moz-animation-delay:1.25s;
+}
+
+#fountainG_4{
+	left:61px;
+	animation-delay:1.46s;
+		-o-animation-delay:1.46s;
+		-ms-animation-delay:1.46s;
+		-webkit-animation-delay:1.46s;
+		-moz-animation-delay:1.46s;
+}
+
+#fountainG_5{
+	left:81px;
+	animation-delay:1.66s;
+		-o-animation-delay:1.66s;
+		-ms-animation-delay:1.66s;
+		-webkit-animation-delay:1.66s;
+		-moz-animation-delay:1.66s;
+}
+
+#fountainG_6{
+	left:101px;
+	animation-delay:1.87s;
+		-o-animation-delay:1.87s;
+		-ms-animation-delay:1.87s;
+		-webkit-animation-delay:1.87s;
+		-moz-animation-delay:1.87s;
+}
+
+#fountainG_7{
+	left:121px;
+	animation-delay:2.08s;
+		-o-animation-delay:2.08s;
+		-ms-animation-delay:2.08s;
+		-webkit-animation-delay:2.08s;
+		-moz-animation-delay:2.08s;
+}
+
+#fountainG_8{
+	left:142px;
+	animation-delay:2.29s;
+		-o-animation-delay:2.29s;
+		-ms-animation-delay:2.29s;
+		-webkit-animation-delay:2.29s;
+		-moz-animation-delay:2.29s;
+}
+
+
+
+@keyframes bounce_fountainG{
+	0%{
+	transform:scale(1);
+		background-color:rgb(0,0,0);
+	}
+
+	100%{
+	transform:scale(.3);
+		background-color:rgb(255,255,255);
+	}
+}
+
+@-o-keyframes bounce_fountainG{
+	0%{
+	-o-transform:scale(1);
+		background-color:rgb(0,0,0);
+	}
+
+	100%{
+	-o-transform:scale(.3);
+		background-color:rgb(255,255,255);
+	}
+}
+
+@-ms-keyframes bounce_fountainG{
+	0%{
+	-ms-transform:scale(1);
+		background-color:rgb(0,0,0);
+	}
+
+	100%{
+	-ms-transform:scale(.3);
+		background-color:rgb(255,255,255);
+	}
+}
+
+@-webkit-keyframes bounce_fountainG{
+	0%{
+	-webkit-transform:scale(1);
+		background-color:rgb(0,0,0);
+	}
+
+	100%{
+	-webkit-transform:scale(.3);
+		background-color:rgb(255,255,255);
+	}
+}
+
+@-moz-keyframes bounce_fountainG{
+	0%{
+	-moz-transform:scale(1);
+		background-color:rgb(0,0,0);
+	}
+
+	100%{
+	-moz-transform:scale(.3);
+		background-color:rgb(255,255,255);
+	}
+}

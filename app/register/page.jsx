@@ -1,19 +1,24 @@
 
 "use client"
 
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useActionState, useState } from 'react'
 
+import { useRouter } from 'next/navigation'
 
 import globalStyle from '../globals.css' 
 import Link from 'next/link'
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
-import { faLock } from '@fortawesome/free-solid-svg-icons'
-import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
-import { faPhoneVolume } from '@fortawesome/free-solid-svg-icons'
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
+import { 
+  faLock ,
+  faCircleUser,
+  faPhoneVolume,
+  faEyeSlash,
+  faEye
+} from '@fortawesome/free-solid-svg-icons'
+
 
 import { CreateUser01Page } from '../actions'
 import { useForm } from '@conform-to/react'
@@ -24,7 +29,6 @@ import Metadata from '../components/Metadata'
 
 import { motion } from "motion/react"
 
-import { useRouter } from 'next/navigation'
 
 
 const Register = () => {
@@ -44,6 +48,9 @@ const Register = () => {
     // shouldRevalidate: "onInput"
   })
 
+  const [formSubmitted, setFormSubmitted] = useState(false)
+  const [formIsValid, setFormIsValid] = useState(false)
+  const router = useRouter()
 
   const metadata = {
     title: 'Registration - Njangi Web Application',
@@ -102,7 +109,6 @@ const Register = () => {
 
 
 
-  const router = useRouter()
   const [confirmPassword, setConfirmPassword] = useState('')
   const [errors, setErrors] = useState({
     password: '',
@@ -159,7 +165,7 @@ const Register = () => {
       return
     }
 
-    router.push('/dashboard')
+    setFormSubmitted(true);
   }
 
   const togglePasswordVisibility = () => {
@@ -170,6 +176,27 @@ const Register = () => {
     setShowConfirmPassword(!showConfirmPassword)
   }
   
+
+// Check if all form fields are valid
+useEffect(() => {
+  if (formSubmitted) {
+    const isValid = 
+      fullName.trim().length >= 6 &&
+      email.includes('@') &&
+      email.includes('.') &&
+      userName.trim().length >= 5 &&
+      phoneNumber.trim().length >= 14 &&
+      password.trim().length >= 8 &&
+      password === confirmPassword &&
+      validatePassword(password).length === 0;
+      
+    if (isValid) {
+      setFormIsValid(true);
+      // Redirect to dashboard after successful validation
+      router.push('/dashboard');
+    }
+  }
+}, [formSubmitted, fullName, email, userName, phoneNumber, password, confirmPassword, router]);
 
 
 
@@ -189,10 +216,10 @@ const Register = () => {
         {/* Registration Page 01 Left Section */}
 
         <motion.div 
-        initial={{opacity: 0, y: 100}}
-        whileInView={{y: 0, opacity: 1}}
-        transition={{duration: 0.7, delay: 0.7}}
-           className='w-full lg:w-[45%] p-6 lg:p-12 xl:p-20'>
+          initial={{opacity: 0, y: 100}}
+          whileInView={{y: 0, opacity: 1}}
+          transition={{duration: 0.7, delay: 0.7}}
+          className='w-full lg:w-[45%] p-6 lg:p-12 xl:p-20'>
           <h1 className='text-4xl lg:text-6xl font-extrabold tracking-wide mt-6 lg:mt-10'>WELCOME!!!</h1>
           <br />
           <p className='text-base lg:text-lg mb-5'>We are delighted and privilege to have you 🔥 here. Follow the steps made available on the right side of the page to register. If you need any assistance feel free to reach out.</p>
@@ -218,16 +245,16 @@ const Register = () => {
 
         {/* Registration Page 01 Right Section */}
         <motion.div
-        initial={{opacity: 0, y: 100}}
-        whileInView={{y: 0, opacity: 1}}
-        transition={{duration: 0.7, delay: 0.7}}
-         className='w-full lg:w-[55%] p-6 lg:p-9'>
+          initial={{opacity: 0, y: 100}}
+          whileInView={{y: 0, opacity: 1}}
+          transition={{duration: 0.7, delay: 0.7}}
+          className='w-full lg:w-[55%] p-6 lg:p-9'>
           <h1 className='text-3xl lg:text-5xl font-extrabold tracking-wider mt-6  text-center mb-5'>SIGN UP 🔥</h1>
           <br />
           <form className='flex flex-col gap-6 w-full max-w-xl' id={form.id} onSubmit={async (e) => {
-                        await form.onSubmit(e);   
-                        await handleSubmit(e); 
-                    }}  action={action} >
+            await form.onSubmit(e);   
+            await handleSubmit(e); }}  action={action} >
+
             <div className='flex flex-col gap-2'>
               <label htmlFor="fullName" className='font-semibold text-lg tracking-wide'>👤 Full Name:</label>
               <input 
@@ -236,12 +263,18 @@ const Register = () => {
                 defaultValue={fields.fullName.initialValue} 
                 id="fullName" 
                 ref={fullNameRef}
-          onMouseEnter={onMouseEnterFullNameRef}
-                placeholder='Your Full Name' 
+                onMouseEnter={onMouseEnterFullNameRef}
+                placeholder='Your Full Name, minimum of 2 names' 
                 key={fields.fullName.key} 
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                className={`w-full text-base bg-transparent rounded-xl border-2 outline-none border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white  ${fields.fullName.errors ? 'border-red-700 focus:border-red-500 focus:ring-red-500 ' : 'focus:ring-[#0ef] '}`}
+                className={`w-full text-base bg-transparent rounded-xl border-2 outline-none  py-3 px-4 focus:ring-1  focus:outline-none duration-300 placeholder-white  
+                ${fields.fullName.errors && fullName.trim().length >= 6 
+                  ? 'border-green-500 focus:ring-green-500' 
+                  : 'border-[#0ef] focus:ring-[#0ef]'} 
+                ${fields.fullName.errors && fullName.trim().length < 6  
+                  ? 'border-red-500 focus:ring-red-500'
+                  : 'border-[#0ef] focus:ring-[#0ef]'}`} 
               />
               <p className='text-[16px] text-red-500 font-bold tracking-wide text-right'>{fields.fullName.errors}</p>
             </div>
@@ -260,7 +293,13 @@ const Register = () => {
                 key={fields.email.key}
                 id="email" 
                 placeholder='Your Email Address' 
-                className={`w-full text-base bg-transparent rounded-xl outline-none border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white  ${fields.email.errors ? 'border-red-700 focus:border-red-500 focus:ring-red-500 ' : 'focus:ring-[#0ef] '}`}
+                className={`w-full text-base bg-transparent rounded-xl outline-none border-2 py-3 px-4 focus:ring-1  focus:outline-none duration-300 placeholder-white  
+                ${fields.email.errors && email.trim().length >= 7 
+                  ? 'border-green-500 focus:ring-green-500' 
+                  : 'border-[#0ef] focus:ring-[#0ef]'} 
+                ${fields.email.errors && email.trim().length < 7  
+                  ? 'border-red-500 focus:ring-red-500'
+                  : 'border-[#0ef] focus:ring-[#0ef]'}`}
               />
               <p className='text-[16px] text-red-500 font-bold tracking-wide text-right'>{fields.email.errors}</p> 
 
@@ -276,8 +315,14 @@ const Register = () => {
                 ref={userNameRef}
                 onMouseEnter={onMouseEnterUserNameRef}
                 id="userName" 
-                placeholder='Your User Name' 
-                className={`w-full text-base bg-transparent rounded-xl border-2 outline-none border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white  ${fields.userName.errors ? 'border-red-700 focus:border-red-500 focus:ring-red-500 ' : 'focus:ring-[#0ef] '}`}
+                placeholder='Your User Name e.g John123' 
+                className={`w-full text-base bg-transparent rounded-xl border-2 outline-none py-3 px-4 focus:ring-1 focus:outline-none duration-300 placeholder-white  
+                ${fields.userName.errors && userName.trim().length >= 5 
+                  ? 'border-green-500 focus:ring-green-500' 
+                  : 'border-[#0ef] focus:ring-[#0ef]'} 
+                ${fields.userName.errors && userName.trim().length < 5  
+                  ? 'border-red-500 focus:ring-red-500'
+                  : 'border-[#0ef] focus:ring-[#0ef]'}`}
               />
               <p className='text-[16px] text-red-500 font-bold tracking-wide text-right'>{fields.userName.errors}</p> 
             </div>
@@ -294,12 +339,18 @@ const Register = () => {
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
                 id="phoneNumber" 
-                placeholder='Your Phone Number eg +237 682394782' 
-                className={`w-full text-base bg-transparent rounded-xl border-2 outline-none border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white  ${fields.phoneNumber.errors ? 'border-red-700 focus:border-red-500 focus:ring-red-500 ' : 'focus:ring-[#0ef] '}`}
+                placeholder='Your Phone Number eg +237 688296810' 
+                className={`w-full text-base bg-transparent rounded-xl border-2 outline-none py-3 px-4 focus:outline-none duration-300 placeholder-white 
+                ${fields.phoneNumber.errors && phoneNumber.trim().length >= 14 
+                  ? 'border-green-500 focus:ring-green-500' 
+                  : 'border-[#0ef] focus:ring-[#0ef]'} 
+                ${fields.phoneNumber.errors && phoneNumber.trim().length < 14  
+                  ? 'border-red-500 focus:ring-red-500'
+                  : 'border-[#0ef] focus:ring-[#0ef]'}`}
               />
               <p className='text-[16px] text-red-500 font-bold tracking-wide text-right'>{fields.phoneNumber.errors}</p> 
             </div> 
- 
+
             <div className='flex flex-col gap-2'>
               <label htmlFor="password" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faLock} className="werey2 mr-2 text-[#0ef]" /> Password:</label> 
               <div 
@@ -313,9 +364,14 @@ const Register = () => {
                   onMouseEnter={onMouseEnterPasswordRef}
                   id="password" 
                   placeholder='Your Password'
-                  className={`w-full text-base bg-transparent outline-none focus:outline-none rounded-xl border-2 ${
-                    errors.password ? 'border-red-500' : 'border-[#0ef]'
-                  } py-3 px-4 focus:ring-1 focus:ring-[#0ef] duration-300 placeholder-white pr-10`}
+                  className={`w-full text-base bg-transparent outline-none focus:outline-none rounded-xl border-2 
+                    ${fields.password.errors && password.trim().length >= 8 
+                      ? 'border-green-500 focus:ring-green-500' 
+                      : 'border-[#0ef] focus:ring-[#0ef]'} 
+                    ${fields.password.errors && password.trim().length < 8  
+                      ? 'border-red-500 focus:ring-red-500'
+                      : 'border-[#0ef] focus:ring-[#0ef]'}
+                    py-3 px-4 focus:ring-1  duration-300 placeholder-white pr-10`}
                 />
                 <button
                   type="button"
@@ -330,11 +386,11 @@ const Register = () => {
               </div>
               {errors.password && (
                 <motion.p 
-                initial={{opacity: 0, y: 100}}
-                whileInView={{y: 0, opacity: 1}}
-                transition={{duration: 0.2, delay: 0.2}}
-                viewport={{once: true}}
-                className='text-red-500 text-sm mt-3'>{errors.password}</motion.p>
+                  initial={{opacity: 0, y: 100}}
+                  whileInView={{y: 0, opacity: 1}}
+                  transition={{duration: 0.2, delay: 0.2}}
+                  viewport={{once: true}}
+                  className='text-red-500 text-sm mt-3'>{errors.password}</motion.p>
               )}
             </div>
 
@@ -352,9 +408,14 @@ const Register = () => {
                   onMouseEnter={onMouseEnterConfirmPasswordRef}
                   id="confirm_password" 
                   placeholder='Confirm Your New Password'
-                  className={`w-full text-base bg-transparent rounded-xl border-2 ${
-                    errors.confirmPassword ? 'border-red-500' : 'border-[#0ef]'
-                  } py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white pr-10`}
+                  className={`w-full text-base bg-transparent rounded-xl border-2 
+                  ${fields.confirmPassword.errors && confirmPassword.trim().length >= 8 
+                    ? 'border-green-500 focus:ring-green-500' 
+                    : 'border-[#0ef] focus:ring-[#0ef]'} 
+                  ${fields.confirmPassword.errors && confirmPassword.trim().length < 8  
+                    ? 'border-red-500 focus:ring-red-500' 
+                    : 'border-[#0ef] focus:ring-[#0ef]'}
+                  py-3 px-4 focus:ring-1 focus:outline-none duration-300 placeholder-white pr-10`}
                 />
                 <button
                   type="button"
@@ -368,11 +429,11 @@ const Register = () => {
               </div>
               {errors.confirmPassword && (
                 <motion.p 
-                initial={{opacity: 0, y: 100}}
-                whileInView={{y: 0, opacity: 1}}
-                transition={{duration: 0.2, delay: 0.2}}
-                viewport={{once: true}}
-                className='text-red-500 text-sm mt-3 text-right'>{errors.confirmPassword}</motion.p>
+                  initial={{opacity: 0, y: 100}}
+                  whileInView={{y: 0, opacity: 1}}
+                  transition={{duration: 0.2, delay: 0.2}}
+                  viewport={{once: true}}
+                  className='text-red-500 text-sm mt-3 text-right'>{errors.confirmPassword}</motion.p>
               )}
             </div>
              
@@ -392,5 +453,4 @@ const Register = () => {
   )
 }
 
-export default Register
-
+export default Register;
