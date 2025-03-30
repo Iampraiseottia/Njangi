@@ -1,17 +1,17 @@
-
 "use client"
 
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { useActionState, useState } from 'react'
 
+import { useRouter } from 'next/navigation'
 
 import globalStyle from '../globals.css' 
 import Link from 'next/link'
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
-import { faLock } from '@fortawesome/free-solid-svg-icons'
-import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
+import { faLock, faCircleUser, faEyeSlash,
+  faEye } from '@fortawesome/free-solid-svg-icons'
 
 import { CreateUser01Page } from '../actions'
 import { useForm } from '@conform-to/react'
@@ -70,13 +70,91 @@ const Login = () => {
       passwordRef.current.focus();
     }
 
+
+   const [formSubmitted, setFormSubmitted] = useState(false)
+    const [formIsValid, setFormIsValid] = useState(false)
+    const router = useRouter()
   
+    const [showPassword, setShowPassword] = useState(false)
+    
+    const togglePasswordVisibility = () => {
+      setShowPassword(!showPassword)
+    }
+
+
+      const [errors, setErrors] = useState({
+        password: ''
+      })
+    
+  const validatePassword = (password) => {
+    const errors = []
+
+    if (password.length < 8) {
+      errors.push('Password must be at least 8 characters long')
+    }
+
+    if (!/[A-Z]/.test(password)) {
+      errors.push('Password must contain at least one uppercase letter')
+    }
+
+    if (!/[a-z]/.test(password)) {
+      errors.push('Password must contain at least one lowercase letter')
+    }
+
+    if (!/[0-9]/.test(password)) {
+      errors.push('Password must contain at least one number')
+    }
+
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      errors.push('Password must contain at least one special character')
+    }
+
+    return errors
+  }
+    
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    setErrors({ password: '', confirmPassword: '' })
+
+    const passwordErrors = validatePassword(password)
+    if (passwordErrors.length > 0) {
+      setErrors(prev => ({
+        ...prev, 
+        password: passwordErrors.join('. ')
+      }))
+      return
+    }
+
+    setFormSubmitted(true);
+  }
+
+  
+    
+  useEffect(() => {
+    if (formSubmitted) {
+      const isValid = 
+        userName.trim().length >= 5 &&
+        password.trim().length >= 8;
+        
+      if (isValid) {
+        setFormIsValid(true);
+        router.push('/dashboard');
+      }
+    }
+  }, [formSubmitted, userName, password, router]);
+  
+  
+  
+  
+    
   
   return (
 
     <main className='flex justify-center items-center w-full min-h-screen bg-gray-800 text-white p-4'>
 
-<Metadata title={metadata.title} description={metadata.description} />
+      <Metadata title={metadata.title} description={metadata.description} />
 
       <motion.section 
       initial={{opacity: 0, y: 100}}
@@ -96,44 +174,74 @@ const Login = () => {
           <br />
           <form className='flex flex-col gap-6 w-full max-w-xl' id={form.id} onSubmit={async (e) => {
                         await form.onSubmit(e);    
-                        // await handleSubmit(e); 
+                        await handleSubmit(e); 
                     }}  action={action} >
           
-            <div className='flex flex-col gap-2'>
+            <div className='flex flex-col gap-2'> 
               <label htmlFor="userName" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faCircleUser} className="werey2 mr-2 text-[#0ef]" /> User Name:</label>
-              <input
-              ref={userNameRef}
-          onMouseEnter={onMouseEnterUserNameRef}
+              <input 
+                ref={userNameRef}
+                onMouseEnter={onMouseEnterUserNameRef}
                 type="text" 
                 name={fields.userName.name} 
                 onChange={(e) => setUserName(e.target.value)}
                 value={userName}
                 id="userName" 
                 placeholder='Your User Name' 
-                className={`w-full text-base bg-transparent rounded-xl outline-none border-2 border-[#0ef] py-3 px-4 focus:ring-1  duration-300 placeholder-white  ${fields.userName.errors ? 'border-red-700 focus:border-red-700 focus:ring-red-700 ' : 'focus:ring-[#0ef] '}`}
+                className={`w-full text-base bg-transparent rounded-xl outline-none border-2 border-[#0ef] py-3 px-4 focus:ring-1  duration-300 placeholder-white
+                ${fields.userName.errors && userName.trim().length >= 5 
+                  ? 'border-green-500 focus:ring-green-500' 
+                  : 'border-[#0ef] focus:ring-[#0ef]'} 
+                ${fields.userName.errors && userName.trim().length < 5  
+                  ? 'border-red-500 focus:ring-red-500'
+                  : 'border-[#0ef] focus:ring-[#0ef]'}`}
               />
               <p className='text-[16px] text-red-700 font-bold tracking-wide text-right'>{fields.userName.errors}</p> 
             </div>
           
- 
-            <div className='flex flex-col gap-2'>
-              <label htmlFor="password" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faLock} className="werey2 mr-2 text-[#0ef]" /> Password:</label>
-              <input
-              ref={passwordRef}
-          onMouseEnter={onMouseEnterPasswordRef}
-                type="text" 
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                name={fields.password.name} 
-                key={fields.password.key}
-                defaultValue={fields.password.initialValue} 
-                id="password" 
-                placeholder='Your Password ' 
-                className={`w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white  ${fields.password.errors ? 'border-red-700 focus:border-red-700 focus:ring-red-700 ' : 'focus:ring-[#0ef] '}`}
-              />
-              <p className={`text-[16px] text-red-700 font-bold tracking-wide text-right`}>{fields.password.errors}</p> 
 
-            </div> 
+            <div className='flex flex-col gap-2'>
+              <label htmlFor="password" className='font-semibold text-lg tracking-wide flex'><FontAwesomeIcon icon={faLock} className="werey2 mr-2 text-[#0ef]" /> Password:</label> 
+              <div 
+                className='mt-4 mb-1 relative'>
+                <input
+                  type={showPassword ? "text" : "password"} 
+                  ref={passwordRef}
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  onMouseEnter={onMouseEnterPasswordRef}
+                  id="password" 
+                  placeholder='Your Password'
+                  className={`w-full text-base bg-transparent outline-none focus:outline-none rounded-xl border-2 
+                  ${fields.password.errors && password.trim().length >= 8 
+                    ? 'border-green-500 focus:ring-green-500' 
+                    : 'border-[#0ef] focus:ring-[#0ef]'} 
+                  ${fields.password.errors && password.trim().length < 8  
+                    ? 'border-red-500 focus:ring-red-500'
+                    : 'border-[#0ef] focus:ring-[#0ef]'}
+                    py-3 px-4 focus:ring-1  duration-300 placeholder-white pr-10`}
+                />
+                <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className='absolute right-4 top-1/2 transform -translate-y-1/2 text-[#0ef] hover:text-white'
+                > 
+                  <FontAwesomeIcon 
+                    icon={showPassword ? faEyeSlash : faEye} 
+                    className='w-5 h-5'
+                  />
+                </button>
+              </div>
+              {fields.password.errors && (
+                <motion.p 
+                  initial={{opacity: 0, y: 100}}
+                  whileInView={{y: 0, opacity: 1}}
+                  transition={{duration: 0.2, delay: 0.2}}
+                  viewport={{once: true}}
+                  className='text-red-500 text-sm mt-3'>{fields.password.errors}</motion.p>
+              )} 
+            </div>
 
            <p className=' text-white text-right'>
             <Link href="/forgot_password" className='  hover:text-[#0ef] mt-[-17px] font-extrabold hover:cursor-pointer hover:underline duration-300'>Forgot Password</Link>
@@ -190,4 +298,3 @@ const Login = () => {
 }
 
 export default Login
-

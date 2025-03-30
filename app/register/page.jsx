@@ -177,7 +177,6 @@ const Register = () => {
   }
   
 
-// Check if all form fields are valid
 useEffect(() => {
   if (formSubmitted) {
     const isValid = 
@@ -192,7 +191,6 @@ useEffect(() => {
       
     if (isValid) {
       setFormIsValid(true);
-      // Redirect to dashboard after successful validation
       router.push('/dashboard');
     }
   }
@@ -365,12 +363,12 @@ useEffect(() => {
                   id="password" 
                   placeholder='Your Password'
                   className={`w-full text-base bg-transparent outline-none focus:outline-none rounded-xl border-2 
-                    ${fields.password.errors && password.trim().length >= 8 
-                      ? 'border-green-500 focus:ring-green-500' 
-                      : 'border-[#0ef] focus:ring-[#0ef]'} 
-                    ${fields.password.errors && password.trim().length < 8  
-                      ? 'border-red-500 focus:ring-red-500'
-                      : 'border-[#0ef] focus:ring-[#0ef]'}
+                  ${fields.password.errors && password.trim().length >= 8 
+                    ? 'border-green-500 focus:ring-green-500' 
+                    : 'border-[#0ef] focus:ring-[#0ef]'} 
+                  ${fields.password.errors && password.trim().length < 8  
+                    ? 'border-red-500 focus:ring-red-500'
+                    : 'border-[#0ef] focus:ring-[#0ef]'}
                     py-3 px-4 focus:ring-1  duration-300 placeholder-white pr-10`}
                 />
                 <button
