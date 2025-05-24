@@ -10,7 +10,6 @@ import {
   faHome,
   faPeopleGroup,
   faMoneyBill,
-  faUser,
   faRightFromBracket,
   faAddressCard,
   faMoneyCheckDollar,
@@ -25,13 +24,13 @@ import Identity_User from "./identity-user";
 import Survey_User from "./survey-user";
 import Njangi_Groups from "./njangi-groups";
 import All_Transactions from "./all-transactions";
-import User_Profile from "./user-profile";
 import Logout from "../logout/page";
 import DashMain from "./dashMain";
 
 import { FileText, ChevronDown, ChevronFirst, ChevronLast } from "lucide-react";
 
 const DashBoardContent = () => {
+
   const [activeComponent, setActiveComponent] = useState("dashboardMain");
   const [isOpen, setIsOpen] = useState(true);
   const [expandedSideBar, setExpandedSideBar] = useState(true);
@@ -80,10 +79,6 @@ const DashBoardContent = () => {
       transactions: {
         title: "All Transactions - Njangi Web Application",
         description: "View and manage all your Njangi financial transactions.",
-      },
-      profile: {
-        title: "User Profile - Njangi Web Application",
-        description: "View and update your Njangi user profile information.",
       },
 
       logout: {
@@ -145,8 +140,6 @@ const DashBoardContent = () => {
         return <Survey_User setActiveComponent={setActiveComponent} />;
       case "transactions":
         return <All_Transactions setActiveComponent={setActiveComponent} />;
-      case "profile":
-        return <User_Profile setActiveComponent={setActiveComponent} />;
       case "logout":
         return <Logout />;
       default:
@@ -422,31 +415,9 @@ const DashBoardContent = () => {
         </div>
 
         <div
-          onClick={() => handleComponentChange("profile")}
-          title="Profile"
-          className={`mb-2 flex items-center px-4 py-2 rounded-lg hover:bg-white hover:text-teal-500 cursor-pointer transition-all ${
-            expandedSideBar ? "justify-start" : "justify-center"
-          } ${activeComponent === "profile" ? "bg-white text-teal-500" : ""}`}
-        >
-          <FontAwesomeIcon
-            icon={faUser}
-            className={`transition-all ${
-              expandedSideBar ? "h-6 w-6" : "w-6 h-6"
-            }`}
-          />
-          <span
-            className={`ml-3 overflow-hidden transition-all ${
-              expandedSideBar ? "w-auto opacity-100" : "w-0 opacity-0"
-            }`}
-          >
-            Profile
-          </span>
-        </div>
-
-        <div
           onClick={() => handleComponentChange("logout")}
           title="Logout"
-          className={`mb-2 mt-[-20px] flex items-center px-4 py-2 rounded-lg hover:bg-white hover:text-teal-500 cursor-pointer transition-all ${
+          className={`mb-2 mt-[0px] flex items-center px-4 py-2 rounded-lg hover:bg-white hover:text-teal-500 cursor-pointer transition-all ${
             expandedSideBar ? "justify-start" : "justify-center"
           } ${activeComponent === "logout" ? "bg-white text-teal-500" : ""}`}
         >

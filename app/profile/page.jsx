@@ -1,20 +1,19 @@
+"use client";
 
-"use client"
+import About_User from "../components/about-user";
 
-import User_Profile from '../components/user-profile'
-
-import React, { useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const Profile = () => {
+  
   const router = useRouter();
-  
-  useEffect(() => {
-    router.push('/dashboard?component=profile');
-  }, [router]);
-  
 
-  return null 
-}
+  useEffect(() => {
+    router.push("/dashboard?component=about-user");
+  }, [router]);
+
+  return null;
+};
 
 export default Profile;
