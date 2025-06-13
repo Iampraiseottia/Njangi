@@ -10,6 +10,8 @@ import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 
 import navLogo from "/public/icons/logo.png";
+import AnimatedImageRight from "/public/shapes/main-slider-shape-1-2.png";
+import AnimatedImageLeft from "/public/shapes/main-slider-shape-1-1.png";
 
 const Hero = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -59,16 +61,28 @@ const Hero = () => {
       viewport={{ once: true }}
       className="min-h-[40vh] sm:min-h-[50vh] md:min-h-[70vh] lg:min-h-[97vh] relative bg-gray-950 text-white w-full"
     >
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/hero/hero-bg.png"
-          alt="Background"
-          fill
-          style={{ objectFit: "cover" }}
-          quality={100}
-          className="opacity-20 object-top lg:object-center"
-          priority
-        />
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <motion.div
+          className="w-full h-full"
+          animate={{
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <Image
+            src="/hero/hero-bg2.jpg"
+            alt="Background"
+            fill
+            style={{ objectFit: "cover" }}
+            quality={100}
+            className="opacity-20 object-top lg:object-center"
+            priority
+          />
+        </motion.div>
       </div>
 
       <div className="relative z-10">
@@ -193,7 +207,7 @@ const Hero = () => {
             <div className="hidden xl:flex items-center space-x-3 xl:space-x-5 -mr-40 header-mid2">
               <Link
                 href="/register"
-                className={`bg-white text-violet-800 font-bold ease-in-out cursor-pointer rounded hover:rounded-3xl hover:text-[purple] hover:bg-yellow-300 transition duration-300 tracking-wider 
+                className={`bg-white text-violet-800 font-extrabold ease-in-out cursor-pointer rounded hover:rounded-3xl hover:text-[purple] hover:bg-yellow-300 transition duration-300 tracking-wider 
                 ${
                   isScrolled
                     ? "py-2 px-4 xl:py-3 xl:px-14 text-sm xl:text-2xl "
@@ -288,10 +302,9 @@ const Hero = () => {
               </Link>
 
               <div className="flex items-center justify-between mt-4">
-                
                 <Link
                   href="/register"
-                  className="bg-white text-purple-800 font-bold py-2 px-6 hover:text-[violet] rounded hover:bg-yellow-300 transition duration-300"
+                  className="bg-white text-purple-800 font-extrabold py-2 px-6 hover:text-[violet] rounded hover:bg-yellow-300 transition duration-300"
                 >
                   REGISTER
                 </Link>
@@ -306,41 +319,57 @@ const Hero = () => {
           ${isScrolled ? "mt-24" : "mt-8 md:mt-12 lg:mt-16"}`}
         >
           {/* Text Content */}
-          <div className="w-full md:w-1/2 mb-8 md:mb-0 mt-0 sm:mt-0 md:-mt-5 lg:-mt-10">
+          <div className="w-full md:w-1/2 mb-8 md:mb-0 mt-0 sm:mt-0 md:-mt-5 lg:-mt-10 z-10 ">
             <p className="text-yellow-500 text-xl md:text-2xl mb-3 md:mb-6 lg:mb-8 font-semibold">
-              Speak Hope for the Homeless
+              Improve Your Finance Through Njangi
             </p>
 
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6 lg:mb-10">
-              Donate to children & senior citizens of Cameroon 🇨🇲
+              Join Other Verified Njangi Members In A Unique Community 🇨🇲
             </h1>
 
             <p className="text-gray-300 mb-6 md:mb-8 lg:mb-10 text-sm sm:text-base md:text-lg max-w-2xl mr-2">
-              Involves donating to aids and campaigns which includes medical
-              cases, education, drinking water, shelters, extreme cases and
-              especially food supplies to those in desperate need in all parts
-              and regions of cameroon. Play a crucial role in impacting fellow
-              citizen/humans life and bring light in to their worlds.
+              Connect with verified Njangi members in an exclusive Cameroonian
+              community. Share, grow, and prosper together in a unique financial
+              and social network. Experience transparent and trusted
+              interactions, fostering a supportive environment for collective
+              advancement. Join us to unlock new opportunities and strengthen
+              your financial journey.
             </p>
 
             <div className="flex flex-wrap gap-3 md:gap-4">
               <Link
-                href="/donate-payment"
-                className="bg-teal-600 font-semibold border border-teal-600 hover:bg-teal-700 text-white text-sm sm:text-base md:text-lg lg:text-xl cursor-pointer ease-in-out duration-300 py-2 px-6 md:py-2 md:px-10 lg:py-3 lg:px-14 rounded-full transition"
-              >
-                Donate Now
+                href="/register"
+                className="bg-purple-600 font-semibold border border-[violet] hover:bg-white hover:text-purple-700 hover:font-extrabold tracking-wide text-white text-sm sm:text-base md:text-lg lg:text-xl cursor-pointer ease-in-out duration-300 py-2 px-6 md:py-2 md:px-10  lg:py-3 lg:px-14 rounded-full transition"
+              > 
+                Sign In
               </Link>
               <Link
                 href="/register"
-                className="bg-transparent font-semibold border border-teal-600 hover:opacity-80 text-white text-sm sm:text-base md:text-lg lg:text-xl cursor-pointer ease-in-out duration-300 py-2 px-6 md:py-2 md:px-10 lg:py-3 lg:px-14 rounded-full transition"
+                className="bg-transparent font-semibold border border-[violet] hover:opacity-80 text-white text-sm sm:text-base md:text-lg lg:text-xl cursor-pointer ease-in-out duration-300 py-2 px-6 md:py-2 md:px-10 lg:py-3 lg:px-14 rounded-full transition"
               >
-                Register To View All Your Donations
+                Don't Have an Account? Sign Up
               </Link>
             </div>
           </div>
 
           {/* Image Cards - Hidden on small screens, visible from medium screens up */}
-          <div className="hidden md:flex flex-col md:flex-row flex-wrap gap-4 lg:gap-6 justify-center md:justify-end md:w-1/2"></div>
+          <div className="">
+            <Image
+              src={AnimatedImageLeft}
+              className=" absolute left-0 top-32 -z-10 animate-bounceLeft"
+              height={100}
+              width={150}
+              alt="Hero Image 1"
+            />
+            <Image
+              src={AnimatedImageRight}
+              className="absolute right-0 bottom-32 animate-bounceRight "
+              height={120}
+              width={150}
+              alt="Hero Image 2"
+            />
+          </div> 
         </div>
       </div>
     </motion.div>

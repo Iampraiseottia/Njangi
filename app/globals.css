@@ -399,3 +399,41 @@ body.dark {
     background-color: rgb(255, 255, 255);
   }
 }
+
+
+
+
+
+/* Home Page */
+
+@keyframes bounceLeft {
+  0%, 100% {
+    transform: translateX(20%);
+    animation-timing-function: cubic-bezier(0.8,0,1,1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0,0,0.2,1);
+  }
+}
+
+.animate-bounceLeft {
+  animation: bounceLeft 4s infinite; 
+}
+
+
+@keyframes bounceRight {
+  0%, 100% {
+    transform: translateX(-25%);
+    animation-timing-function: cubic-bezier(0.8,0,1,1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0,0,0.2,1);
+  }
+}
+
+.animate-bounceRight {
+  animation: bounceRight 4s infinite;
+}
+
