@@ -154,7 +154,7 @@ const Hero = () => {
                 href="/service"
                 className="hover:text-yellow-200 text-white text-lg xl:text-[22px] font-semibold"
               >
-                Services
+                Service
               </Link>
               <Link
                 href="/faqs"
@@ -169,26 +169,26 @@ const Hero = () => {
                 <div className="absolute hidden bg-white w-60 border-t-2 border-t-purple-600 -ml-1 h-auto py-5 transition-all group-hover:block p-2 rounded shadow-lg">
                   <Link
                     href="/blog"
-                    className="block py-2 text-slate-800 pl-2 ease-in-out duration-200 text-[16px] xl:text-[18px] hover:text-lg xl:hover:text-xl hover:text-teal-600 font-semibold tracking-wide"
+                    className="block py-2 text-slate-800 pl-2 ease-in-out duration-200 text-[16px] xl:text-[18px] hover:text-lg xl:hover:text-xl hover:text-purple-600 font-semibold tracking-wide"
                   >
                     Blog
                   </Link>
 
                   <Link
                     href="/our-team"
-                    className="block py-2 text-slate-800 pl-2 ease-in-out duration-200 text-[16px] xl:text-[18px] hover:text-lg xl:hover:text-xl hover:text-teal-600 font-semibold tracking-wide"
+                    className="block py-2 text-slate-800 pl-2 ease-in-out duration-200 text-[16px] xl:text-[18px] hover:text-lg xl:hover:text-xl hover:text-purple-600 font-semibold tracking-wide"
                   >
                     Our Team
                   </Link>
                   <Link
                     href="/privacy-policy"
-                    className="block py-2 text-slate-800 pl-2 ease-in-out duration-200 text-[16px] xl:text-[18px] hover:text-lg xl:hover:text-xl hover:text-teal-600 font-semibold tracking-wide"
+                    className="block py-2 text-slate-800 pl-2 ease-in-out duration-200 text-[16px] xl:text-[18px] hover:text-lg xl:hover:text-xl hover:text-purple-600 font-semibold tracking-wide"
                   >
                     Privacy Policy
                   </Link>
                   <Link
                     href="/terms-conditions"
-                    className="block py-2 text-slate-800 pl-2 ease-in-out duration-200 text-[16px] xl:text-[18px] hover:text-lg xl:hover:text-xl hover:text-teal-600 font-semibold tracking-wide"
+                    className="block py-2 text-slate-800 pl-2 ease-in-out duration-200 text-[16px] xl:text-[18px] hover:text-lg xl:hover:text-xl hover:text-purple-600 font-semibold tracking-wide"
                   >
                     Terms-Condition
                   </Link>
@@ -238,10 +238,10 @@ const Hero = () => {
                 About
               </Link>
               <Link
-                href="/services"
+                href="/service"
                 className="hover:text-yellow-200 text-white text-xl font-semibold"
               >
-                Services
+                Service
               </Link>
               <Link
                 href="/faqs"

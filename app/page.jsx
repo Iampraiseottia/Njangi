@@ -11,7 +11,7 @@ import Metadata from "./components/Metadata";
 
 const General = () => {
   const metadata = {
-    title: "Njangi Web Application | NJANGIFY",
+    title: "Welcome | Njangi Web Application | NJANGIFY",
     description:
       "An application created where members join, create, and manage njangi groups with others all over the world.",
   };
