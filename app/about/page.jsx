@@ -1,11 +1,10 @@
 import React from "react";
 
-import { motion } from "motion/react";
-
-import Metadata from "../components/Metadata"; 
+import Metadata from "../components/Metadata";
 
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import Default_Hero from "../components/Default_Hero";
 
 const About = () => {
   const metadata = {
@@ -18,8 +17,13 @@ const About = () => {
     <main className="bg-[#f7f7f7]">
       <Metadata title={metadata.title} description={metadata.description} />
 
-      <Navbar />
+      {/* Navigation  */}
+      <Navbar />  
 
+      {/* Hero Section */}
+      <Default_Hero  title="About Us" firstDescription="Home" MainDescription="About Us" /> 
+
+      {/* Footer */}
       <Footer />
     </main>
   );

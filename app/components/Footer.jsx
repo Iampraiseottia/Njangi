@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { motion } from "motion/react"
-
 import globalStyle from '../globals.css' 
 
 
