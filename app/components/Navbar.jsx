@@ -10,6 +10,9 @@ import { usePathname } from "next/navigation";
 
 import navLogo from "/public/icons/logo.png";
 
+import globalStyle from '../globals.css' 
+
+
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(

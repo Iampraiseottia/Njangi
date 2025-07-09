@@ -86,12 +86,12 @@ const Hero = () => {
       </div>
 
       <div className="relative z-10">
-        {/* Sticky Header */}
+        {/* Sticky Header */} 
         <nav
           className={`py-4 w-full z-50 transition-all duration-300 
           ${
             isScrolled
-              ? "fixed top-0 left-0 bg-purple-500 shadow-lg text-black py-3 sm:py-7"
+              ? "fixed top-0 left-0 bg-purple-600 shadow-lg text-black py-3 sm:py-7"
               : "pt-7 md:pt-12"
           }`}
         >
