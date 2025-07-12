@@ -86,7 +86,7 @@ const Hero = () => {
       </div>
 
       <div className="relative z-10">
-        {/* Sticky Header */} 
+        {/* Sticky Header */}
         <nav
           className={`py-4 w-full z-50 transition-all duration-300 
           ${
@@ -341,7 +341,7 @@ const Hero = () => {
               <Link
                 href="/register"
                 className="bg-purple-600 font-semibold border border-[violet] hover:bg-white hover:text-purple-700 hover:font-extrabold tracking-wide text-white text-sm sm:text-base md:text-lg lg:text-xl cursor-pointer ease-in-out duration-300 py-2 px-6 md:py-2 md:px-10  lg:py-3 lg:px-14 rounded-full transition"
-              > 
+              >
                 Sign In
               </Link>
               <Link
@@ -353,23 +353,23 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Image Cards - Hidden on small screens, visible from medium screens up */}
+          {/* Image Cards Animation */}
           <div className="">
             <Image
               src={AnimatedImageLeft}
-              className=" absolute left-0 top-32 -z-10 animate-bounceLeft"
+              className="absolute left-0 top-32 -z-10 animate-bounceLeft w-10 h-10 sm:w-[150px] sm:h-[100px]"
               height={100}
               width={150}
               alt="Hero Image 1"
             />
             <Image
               src={AnimatedImageRight}
-              className="absolute right-0 bottom-32 animate-bounceRight "
+              className="absolute right-0 bottom-32 animate-bounceRight w-10 h-10 sm:w-[150px] sm:h-[120px]"
               height={120}
               width={150}
               alt="Hero Image 2"
             />
-          </div> 
+          </div>
         </div>
       </div>
     </motion.div>

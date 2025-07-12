@@ -20,7 +20,7 @@ const Footer = () => {
         <div className="absolute inset-0 bg-gray-900 opacity-90 z-0"></div>
 
         {/* Background image */}
-        <div className="absolute inset-0 z-0 opacity-90"> 
+        <div className="absolute inset-0 z-0 opacity-90">
           <Image
             src="/shapes/footer-bg-1-1.png"
             alt="World Map Background"
@@ -36,13 +36,13 @@ const Footer = () => {
         {/* Main content  */}
         <div className="relative mx-auto z-10 container px-4 sm:px-6 lg:px-8 xl:px-12 py-8 sm:py-12 md:py-12 lg:py-12 pt-12 sm:pt-12 md:pt-12 lg:pt-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
-            {/* Company Info & Newsletter  */} 
+            {/* Company Info & Newsletter  */}
             <div className="sm:col-span-2 lg:col-span-1">
               <div className="flex items-center justify-center sm:justify-start gap-1 mb-4 sm:mb-6 -mt-10">
-                <Image 
+                <Image
                   src={navLogo}
                   alt="NJANGIFY Logo"
-                  width={70} 
+                  width={70}
                   height={60}
                   className="h-auto transition-all duration-300 w-16 sm:w-18 md:w-20"
                 />
@@ -79,33 +79,37 @@ const Footer = () => {
                 <li>
                   <Link
                     href="/about"
-                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block"
+                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block relative group"
                   >
                     About Us
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/service"
-                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block"
+                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block relative group"
                   >
                     Our Services
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/our-team"
-                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block"
+                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block relative group"
                   >
                     Meet The Team
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/contact"
-                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block"
+                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block relative group"
                   >
                     Contact
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
               </ul>
@@ -120,33 +124,37 @@ const Footer = () => {
                 <li>
                   <Link
                     href="/"
-                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block"
+                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block relative group"
                   >
                     Home
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/register"
-                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block"
+                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block relative group"
                   >
                     Register
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/faqs"
-                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block"
+                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block relative group"
                   >
                     FAQs
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/blog"
-                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block"
+                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block relative group"
                   >
                     Our Blog
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
               </ul>
@@ -170,9 +178,10 @@ const Footer = () => {
                   </div>
                   <a
                     href="mailto:njangify@gmail.com"
-                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base break-all"
+                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base break-all relative group"
                   >
                     njangify@gmail.com
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </a>
                 </div>
 
@@ -183,9 +192,10 @@ const Footer = () => {
                   </div>
                   <a
                     href="tel:+237682777879"
-                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base"
+                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base relative group"
                   >
                     +237 682 777 879
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </a>
                 </div>
               </div>
@@ -242,7 +252,7 @@ const Footer = () => {
 
             {/* Copyright */}
             <p className="text-gray-400 text-xs sm:text-sm text-center sm:text-right order-1 sm:order-2 leading-relaxed mb-2 ">
-              © Copyright 2025 | NJANGIFY .
+              © Copyright 2025 | NJANGIFY
             </p>
           </div>
         </div>
