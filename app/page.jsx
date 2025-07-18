@@ -6,6 +6,7 @@ import globalStyle from "./globals.css";
 
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
+import AboutUs from "./components/AboutUs";
 
 import Metadata from "./components/Metadata";
 
@@ -20,8 +21,11 @@ const General = () => {
     <main className="bg-[#f7f7f7]">
       <Metadata title={metadata.title} description={metadata.description} />
 
-      {/* Hero SEction */}
+      {/* Hero Section */}
       <Hero />
+
+      {/* About Us */}
+      <AboutUs />
 
       <Footer />
     </main>
