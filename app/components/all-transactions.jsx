@@ -61,15 +61,7 @@ const All_Transactions = ({ setActiveComponent }) => {
             </span>
           </div>
 
-          {/* User Settings */}
-          <div
-            onClick={() => setActiveComponent("settings")}
-            className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold cursor-pointer ease-in-out duration-100"
-            title="Settings"
-          >
-            <FontAwesomeIcon icon={faGear} className="h-5 w-5 md:h-6 md:w-6" />
-          </div>
-
+         
           {/* User Avatar */}
           <div
             onClick={() => setActiveComponent("profile")}

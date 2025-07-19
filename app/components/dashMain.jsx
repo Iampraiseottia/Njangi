@@ -123,10 +123,6 @@ const DashMain = ({ setActiveComponent }) => {
           </div>
 
 
-          {/* User Settings  */}
-          <div onClick={() => setActiveComponent('settings')} className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold cursor-pointer ease-in-out duration-100" title='Settings'> 
-            <FontAwesomeIcon icon={faGear} className='h-6 w-6' /> 
-          </div>
 
 
           {/* User Avatar  */}

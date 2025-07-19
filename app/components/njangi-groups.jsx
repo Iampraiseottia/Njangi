@@ -61,10 +61,6 @@ const Njangi_Groups = ({ setActiveComponent }) => {
             <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-extrabold">3</span>
           </div>
 
-          {/* User Settings */}
-          <div onClick={() => setActiveComponent('settings')} className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold cursor-pointer ease-in-out duration-100" title="Settings"> 
-            <FontAwesomeIcon icon={faGear} className="h-4 w-4 md:h-5 md:w-5" /> 
-          </div>
 
           {/* User Avatar */}
           <div onClick={() => setActiveComponent('profile')} className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold cursor-pointer ease-in-out duration-100" title="Profile">
