@@ -1,12 +1,7 @@
-import React from 'react'
-
-import { motion } from "motion/react"
-
+import React from "react";
 
 const FAQs = () => {
-  return (
-    <div>FAQs</div>
-  )
-}
+  return <div>FAQs</div>;
+};
 
 export default FAQs;
