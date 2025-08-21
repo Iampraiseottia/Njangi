@@ -16,6 +16,8 @@ import AnimatedImageLeft from "/public/shapes/main-slider-shape-1-1.png";
 const Hero = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const [windowWidth, setWindowWidth] = useState(0);
+
   const [isScrolled, setIsScrolled] = useState(false);
 
   // Handle window resize
@@ -47,6 +49,10 @@ const Hero = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+  }, []);
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
   }, []);
 
   const toggleMobileMenu = () => {
@@ -89,11 +95,11 @@ const Hero = () => {
         {/* Sticky Header */}
         <nav
           className={`py-4 w-full z-50 transition-all duration-300 
-          ${
-            isScrolled
-              ? "fixed top-0 left-0 bg-purple-600 shadow-lg text-black py-3 sm:py-7"
-              : "pt-7 md:pt-12"
-          }`}
+  ${
+    isScrolled
+      ? "fixed top-0 left-0  bg-gray-900 shadow-lg text-black py-2 sm:py-5"
+      : "pt-7 md:pt-12"
+  }`}
         >
           <div className="container mx-[5%] header-mid px-4 sm:px-6 flex justify-between items-center">
             {/* Logo Section */}
@@ -108,7 +114,7 @@ const Hero = () => {
                     className={`h-auto transition-all duration-300 
                     ${
                       isScrolled
-                        ? "w-[60px] md:w-[99px]"
+                        ? "w-[60px] md:w-[90px]"
                         : "w-[60px] md:w-[70px]"
                     }`}
                   />
@@ -203,18 +209,18 @@ const Hero = () => {
               </Link>
             </div>
 
-            {/* Desktop Right Section - Donate Button & Language */}
+            {/* Desktop Right Section  */}
             <div className="hidden xl:flex items-center space-x-3 xl:space-x-5 -mr-40 header-mid2">
               <Link
                 href="/register"
-                className={`bg-white text-violet-800 font-extrabold ease-in-out cursor-pointer rounded hover:rounded-3xl hover:text-[purple] hover:bg-yellow-300 transition duration-300 tracking-wider 
+                className={`bg-white text-blue-800 font-extrabold ease-in-out cursor-pointer rounded hover:rounded-3xl hover:text-blue-800 hover:bg-yellow-300 transition duration-300 tracking-wider 
                 ${
                   isScrolled
-                    ? "py-2 px-4 xl:py-3 xl:px-14 text-sm xl:text-2xl "
-                    : "py-2 px-4 xl:py-4 xl:px-9 text-sm xl:text-xl"
+                    ? "py-2 px-4 xl:py-2 xl:px-14 text-sm xl:text-xl"
+                    : "py-2 px-4 xl:py-2 xl:px-9 text-sm xl:text-xl"
                 }`}
               >
-                REGISTER
+                Become a Member
               </Link>
             </div>
           </div>
@@ -340,15 +346,15 @@ const Hero = () => {
             <div className="flex flex-wrap gap-3 md:gap-4">
               <Link
                 href="/register"
-                className="bg-purple-600 font-semibold border border-[violet] hover:bg-white hover:text-purple-700 hover:font-extrabold tracking-wide text-white text-sm sm:text-base md:text-lg lg:text-xl cursor-pointer ease-in-out duration-300 py-2 px-6 md:py-2 md:px-10  lg:py-3 lg:px-14 rounded-full transition"
+                className="bg-transparent font-semibold border border-white hover:bg-white hover:text-blue-700 hover:font-extrabold tracking-wide text-white text-sm sm:text-base md:text-lg lg:text-xl cursor-pointer ease-in-out duration-300 py-2 px-6 md:py-2 md:px-10  lg:py-3 lg:px-14 rounded-full transition"
               >
-                Sign In
+                Login
               </Link>
               <Link
                 href="/register"
-                className="bg-transparent font-semibold border border-[violet] hover:opacity-80 text-white text-sm sm:text-base md:text-lg lg:text-xl cursor-pointer ease-in-out duration-300 py-2 px-6 md:py-2 md:px-10 lg:py-3 lg:px-14 rounded-full transition"
+                className="bg-transparent font-semibold border border-white hover:bg-white hover:text-blue-700 hover:font-extrabold tracking-wide text-white text-sm sm:text-base md:text-lg lg:text-xl cursor-pointer ease-in-out duration-300 py-2 px-6 md:py-2 md:px-10  lg:py-3 lg:px-14 rounded-full transition"
               >
-                Don't Have an Account? Sign Up
+                Register
               </Link>
             </div>
           </div>

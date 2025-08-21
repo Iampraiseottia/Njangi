@@ -24,7 +24,7 @@ const General = () => {
       {/* Hero Section */}
       <Hero />
 
-      {/* About Us */}
+      {/* About Us */} 
       <AboutUs />
 
       <Footer />
