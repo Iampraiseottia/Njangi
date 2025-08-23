@@ -74,7 +74,7 @@ const Hero = () => {
             scale: [1, 1.2, 1],
           }}
           transition={{
-            duration: 15,
+            duration: 9,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -94,12 +94,12 @@ const Hero = () => {
       <div className="relative z-10">
         {/* Sticky Header */}
         <nav
-          className={`py-4 w-full z-50 transition-all duration-300 
-  ${
-    isScrolled
-      ? "fixed top-0 left-0  bg-gray-900 shadow-lg text-black py-2 sm:py-5"
-      : "pt-7 md:pt-12"
-  }`}
+          className={`py-4 w-full z-50 transition-all duration-300
+          ${
+            isScrolled
+              ? "fixed top-0 left-0  bg-gray-900 shadow-lg text-black py-2 sm:py-5"
+              : "pt-7 md:pt-12"
+          }`}
         >
           <div className="container mx-[5%] header-mid px-4 sm:px-6 flex justify-between items-center">
             {/* Logo Section */}
@@ -114,16 +114,16 @@ const Hero = () => {
                     className={`h-auto transition-all duration-300 
                     ${
                       isScrolled
-                        ? "w-[60px] md:w-[90px]"
-                        : "w-[60px] md:w-[70px]"
+                        ? "w-[60px] md:w-[70px]"
+                        : "w-[60px] md:w-[90px]"
                     }`}
                   />
                   <span
                     className={`ml-2 md:ml-3 tracking-wider font-extrabold transition-all duration-300 text-white
                     ${
                       isScrolled
-                        ? "text-xl md:text-[40px]"
-                        : "text-2xl md:text-3xl"
+                        ? "text-xl md:text-3xl"
+                        : "text-2xl md:text-[40px]"
                     }`}
                   >
                     NJANGIFY

@@ -421,6 +421,20 @@ body.dark {
   animation: bounceLeft 4s infinite; 
 }
 
+@keyframes bounceLeftMoney {
+  0%, 100% {
+    transform: translateX(10%);
+    animation-timing-function: cubic-bezier(0.8,0,1,1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0,0,0.2,1);
+  }
+}
+
+.animate-bounceLeftMoney {
+  animation: bounceLeftMoney 3s infinite; 
+}
 
 @keyframes bounceRight {
   0%, 100% {
