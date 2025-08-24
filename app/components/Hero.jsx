@@ -91,7 +91,7 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      <div className="relative z-10">
+      <div className="relative z-50">
         {/* Sticky Header */}
         <nav
           className={`py-4 w-full z-50 transition-all duration-300

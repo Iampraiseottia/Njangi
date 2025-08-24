@@ -436,6 +436,7 @@ body.dark {
   animation: bounceLeftMoney 3s infinite; 
 }
 
+
 @keyframes bounceRight {
   0%, 100% {
     transform: translateX(-25%);
@@ -474,4 +475,5 @@ body.dark {
   animation: fadeInUp 0.6s ease-out 0.2s forwards;
   opacity: 0;
 }
+
 
