@@ -172,29 +172,29 @@ const Hero = () => {
                 <button className="hover:text-yellow-200 text-white text-lg xl:text-[22px] ease-in-out duration-300 font-semibold flex items-center">
                   Pages <ChevronDown className="ml-1 w-4 h-4 xl:w-5 xl:h-5" />
                 </button>
-                <div className="absolute hidden bg-white w-60 border-t-2 border-t-purple-600 -ml-1 h-auto py-5 transition-all group-hover:block p-2 rounded shadow-lg">
+                <div className="absolute hidden bg-white w-60 border-t-2 border-t-blue-600 -ml-1 h-auto py-5 transition-all group-hover:block p-2 rounded shadow-lg">
                   <Link
                     href="/blog"
-                    className="block py-2 text-slate-800 pl-2 ease-in-out duration-200 text-[16px] xl:text-[18px] hover:text-lg xl:hover:text-xl hover:text-purple-600 font-semibold tracking-wide"
+                    className="block py-2 text-slate-800 pl-2 ease-in-out duration-200 text-[16px] xl:text-[18px] hover:text-lg xl:hover:text-xl hover:text-blue-600 font-semibold tracking-wide"
                   >
                     Blog
                   </Link>
 
                   <Link
                     href="/our-team"
-                    className="block py-2 text-slate-800 pl-2 ease-in-out duration-200 text-[16px] xl:text-[18px] hover:text-lg xl:hover:text-xl hover:text-purple-600 font-semibold tracking-wide"
+                    className="block py-2 text-slate-800 pl-2 ease-in-out duration-200 text-[16px] xl:text-[18px] hover:text-lg xl:hover:text-xl hover:text-blue-600 font-semibold tracking-wide"
                   >
                     Our Team
                   </Link>
                   <Link
                     href="/privacy-policy"
-                    className="block py-2 text-slate-800 pl-2 ease-in-out duration-200 text-[16px] xl:text-[18px] hover:text-lg xl:hover:text-xl hover:text-purple-600 font-semibold tracking-wide"
+                    className="block py-2 text-slate-800 pl-2 ease-in-out duration-200 text-[16px] xl:text-[18px] hover:text-lg xl:hover:text-xl hover:text-blue-600 font-semibold tracking-wide"
                   >
                     Privacy Policy
                   </Link>
                   <Link
                     href="/terms-conditions"
-                    className="block py-2 text-slate-800 pl-2 ease-in-out duration-200 text-[16px] xl:text-[18px] hover:text-lg xl:hover:text-xl hover:text-purple-600 font-semibold tracking-wide"
+                    className="block py-2 text-slate-800 pl-2 ease-in-out duration-200 text-[16px] xl:text-[18px] hover:text-lg xl:hover:text-xl hover:text-blue-600 font-semibold tracking-wide"
                   >
                     Terms-Condition
                   </Link>
@@ -213,7 +213,7 @@ const Hero = () => {
             <div className="hidden xl:flex items-center space-x-3 xl:space-x-5 -mr-40 header-mid2">
               <Link
                 href="/register"
-                className={`bg-white text-blue-800 font-extrabold ease-in-out cursor-pointer rounded hover:rounded-3xl hover:text-blue-800 hover:bg-yellow-300 transition duration-300 tracking-wider 
+                className={`bg-white text-blue-500 font-extrabold ease-in-out cursor-pointer rounded hover:rounded-3xl hover:text-blue-500 hover:bg-yellow-300 transition duration-300 tracking-wider 
                 ${
                   isScrolled
                     ? "py-2 px-4 xl:py-2 xl:px-14 text-sm xl:text-xl"
@@ -310,7 +310,7 @@ const Hero = () => {
               <div className="flex items-center justify-between mt-4">
                 <Link
                   href="/register"
-                  className="bg-white text-purple-800 font-extrabold py-2 px-6 hover:text-[violet] rounded hover:bg-yellow-300 transition duration-300"
+                  className="bg-white text-blue-800 font-extrabold py-2 px-6 hover:text-[violet] rounded hover:bg-yellow-300 transition duration-300"
                 >
                   REGISTER
                 </Link>

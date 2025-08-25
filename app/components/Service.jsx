@@ -20,7 +20,7 @@ const Service = () => {
       <div className="relative z-10 container mx-auto px-4 py-16 lg:py-24">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in-up">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-cyan-500 mb-6">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-blue-500 mb-6">
             -- WHAT WE ARE OFFERING --
           </h1>
           <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">

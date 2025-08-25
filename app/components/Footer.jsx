@@ -62,9 +62,9 @@ const Footer = () => {
                 <input
                   type="email"
                   placeholder="Enter Email"
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white rounded-md text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 text-sm sm:text-base"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white rounded-md text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
                 />
-                <button className="absolute right-1 sm:right-2 top-1/2 transform -translate-y-1/2 bg-cyan-500 p-1.5 sm:p-2 rounded-md hover:bg-cyan-600 transition-colors">
+                <button className="absolute right-1 sm:right-2 top-1/2 transform -translate-y-1/2 bg-blue-500 p-1.5 sm:p-2 rounded-md hover:bg-blue-600 transition-colors">
                   <Send className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                 </button>
               </div>
@@ -79,37 +79,37 @@ const Footer = () => {
                 <li>
                   <Link
                     href="/about"
-                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block relative group"
+                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base inline-block relative group"
                   >
                     About Us
-                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/service"
-                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block relative group"
+                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base inline-block relative group"
                   >
                     Our Services
-                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/our-team"
-                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block relative group"
+                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base inline-block relative group"
                   >
                     Meet The Team
-                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/contact"
-                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block relative group"
+                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base inline-block relative group"
                   >
                     Contact
-                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
               </ul>
@@ -124,37 +124,37 @@ const Footer = () => {
                 <li>
                   <Link
                     href="/"
-                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block relative group"
+                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base inline-block relative group"
                   >
                     Home
-                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/register"
-                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block relative group"
+                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base inline-block relative group"
                   >
                     Register
-                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/faqs"
-                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block relative group"
+                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base inline-block relative group"
                   >
                     FAQs
-                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/blog"
-                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base inline-block relative group"
+                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base inline-block relative group"
                   >
                     Our Blog
-                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
               </ul>
@@ -173,29 +173,29 @@ const Footer = () => {
 
                 {/* Email */}
                 <div className="flex items-center justify-center sm:justify-start gap-3">
-                  <div className="bg-cyan-500 p-1.5 sm:p-2 rounded-full flex-shrink-0">
+                  <div className="bg-blue-500 p-1.5 sm:p-2 rounded-full flex-shrink-0">
                     <Mail className="text-white h-3 w-3 sm:h-4 sm:w-4" />
                   </div>
                   <a
                     href="mailto:njangify@gmail.com"
-                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base break-all relative group"
+                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base break-all relative group"
                   >
                     njangify@gmail.com
-                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </a>
                 </div>
 
                 {/* Phone */}
                 <div className="flex items-center justify-center sm:justify-start gap-3">
-                  <div className="bg-cyan-500 p-1.5 sm:p-2 rounded-full flex-shrink-0">
+                  <div className="bg-blue-500 p-1.5 sm:p-2 rounded-full flex-shrink-0">
                     <Phone className="text-white h-3 w-3 sm:h-4 sm:w-4" />
                   </div>
                   <a
                     href="tel:+237682777879"
-                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm sm:text-base relative group"
+                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base relative group"
                   >
                     +237 682 777 879
-                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </a>
                 </div>
               </div>

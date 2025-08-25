@@ -2,21 +2,17 @@
 
 import React from "react";
 
-import { motion } from "motion/react"
+import { motion } from "motion/react";
 
 import Image from "next/image";
 
-import heroImage from "/public/background/hero-bg.jpg"
+import heroImage from "/public/background/hero-bg.jpg";
 
-const Default_Hero = ({
-  title,
-  firstDescription,
-  MainDescription,
-}) => {
+const Default_Hero = ({ title, firstDescription, MainDescription }) => {
   return (
     <section className="relative overflow-hidden">
       {/* Background Image */}
-      <div className={`relative h-72 w-full`}> 
+      <div className={`relative h-72 w-full`}>
         <Image
           src={heroImage}
           alt="Hero background"
@@ -49,7 +45,7 @@ const Default_Hero = ({
             {firstDescription}
           </span>
           <span className="text-white">&gt;</span>
-          <span className="text-[cyan] font-medium">{MainDescription}</span>
+          <span className="text-[blue] font-medium">{MainDescription}</span>
         </motion.div>
       </div>
     </section>

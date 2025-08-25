@@ -115,33 +115,53 @@ const AboutUs = () => {
           {/* Left Content */}
           <motion.div className="space-y-6 sm:space-y-8 order-2 lg:order-1">
             <div className="space-y-4 sm:space-y-6">
-              <div className="inline-block">
-                <span className="text-cyan-500 text-xs sm:text-sm font-semibold tracking-wide uppercase border-b-2 border-cyan-500 pb-1">
+              <motion.div
+                initial={{ opacity: 0, y: 100 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className="inline-block"
+              >
+                <span className="text-blue-500 text-xs sm:text-sm font-semibold tracking-wide uppercase border-b-2 border-blue-500 pb-1">
                   -- WELCOME TO NJANGIFY
                 </span>
-              </div>
+              </motion.div>
 
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                With <span className="text-cyan-500">Njangify</span> Your
+              <motion.h1
+                initial={{ opacity: 0, y: 100 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight"
+              >
+                With <span className="text-blue-500">Njangify</span> Your
                 <br />
                 <span className="text-indigo-900">Dreams Come's True</span>
-              </h1>
+              </motion.h1>
 
-              <p className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed max-w-lg">
+              <motion.p
+                initial={{ opacity: 0, y: 100 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed max-w-lg"
+              >
                 Join the most trusted digital Njangi platform in Cameroon. Save
                 together, grow together, and achieve your financial goals with
                 our innovative rotating savings and credit association system.
-              </p>
+              </motion.p>
             </div>
 
             {/* Features */}
-            <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <motion.div
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6"
+            >
               <motion.div
                 className="flex items-center space-x-3"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.04 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-500 flex-shrink-0" />
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 flex-shrink-0" />
                 <span className="text-gray-700 font-medium text-sm sm:text-base">
                   Quick Setup Process
                 </span>
@@ -149,10 +169,10 @@ const AboutUs = () => {
 
               <motion.div
                 className="flex items-center space-x-3"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.04 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-500 flex-shrink-0" />
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 flex-shrink-0" />
                 <span className="text-gray-700 font-medium text-sm sm:text-base">
                   Finance Support
                 </span>
@@ -160,10 +180,10 @@ const AboutUs = () => {
 
               <motion.div
                 className="flex items-center space-x-3"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.04 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-500 flex-shrink-0" />
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 flex-shrink-0" />
                 <span className="text-gray-700 font-medium text-sm sm:text-base">
                   Reliable and Secure
                 </span>
@@ -171,31 +191,40 @@ const AboutUs = () => {
 
               <motion.div
                 className="flex items-center space-x-3"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.04 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-500 flex-shrink-0" />
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 flex-shrink-0" />
                 <span className="text-gray-700 font-medium text-sm sm:text-base">
                   Follow Up Members
                 </span>
               </motion.div>
             </motion.div>
 
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
               <Link
                 href="/register"
-                className="group border-2 border-cyan-500 text-cyan-500 px-4 sm:px-8 py-2 sm:py-3 rounded-lg hover:bg-cyan-500 hover:text-white transition-all duration-300 font-medium inline-flex items-center space-x-2 text-sm sm:text-base"
+                className="group border-2 border-blue-500 text-blue-500 px-4 sm:px-8 py-2 sm:py-3 rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-300 font-medium inline-flex items-center space-x-2 text-sm sm:text-base"
               >
                 <span>JOIN A NJANGI</span>
                 <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* Right Content */}
           <div className="relative order-1 lg:order-2">
             {/* Experience Badge */}
-            <div className="absolute top-4 sm:top-8 left-4 sm:left-8 z-10 bg-cyan-500 text-white p-3 sm:p-6 rounded-lg shadow-lg">
+            <motion.div
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="absolute top-4 sm:top-8 left-4 sm:left-8 z-10 bg-blue-500 text-white p-3 sm:p-6 rounded-lg shadow-lg"
+            >
               <div className="flex items-center justify-center w-8 h-8 sm:w-12 sm:h-12 bg-white bg-opacity-20 rounded-full mx-auto mb-2 sm:mb-4">
                 <Calendar className="w-4 h-4 sm:w-6 sm:h-6" />
               </div>
@@ -205,10 +234,15 @@ const AboutUs = () => {
                   Years of Experience
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Main Image */}
-            <div className="relative bg-white rounded-lg shadow-lg overflow-hidden">
+            <motion.div
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="relative bg-white rounded-lg shadow-lg overflow-hidden"
+            >
               <div className="w-full h-[300px] sm:h-[400px] lg:h-[500px] relative">
                 <Image
                   alt="Years of Experience"
@@ -219,9 +253,14 @@ const AboutUs = () => {
                   priority
                 />
               </div>
-            </div>
+            </motion.div>
 
-            <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 lg:bottom-0 lg:right-0 w-32 h-24 sm:w-40 sm:h-28 lg:w-48 lg:h-36 bg-white rounded-lg shadow-lg overflow-hidden transform translate-x-2 sm:translate-x-4 translate-y-2 sm:translate-y-4 border-2 sm:border-4 border-cyan-500 animate-bounceLeftMoney mr-8 mb-3">
+            <motion.div
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 lg:bottom-0 lg:right-0 w-32 h-24 sm:w-40 sm:h-28 lg:w-48 lg:h-36 bg-white rounded-lg shadow-lg overflow-hidden transform translate-x-2 sm:translate-x-4 translate-y-2 sm:translate-y-4 border-2 sm:border-4 border-blue-500 animate-bounceLeftMoney mr-8 mb-3"
+            >
               <Image
                 alt="Calculation"
                 className="w-full h-full object-cover"
@@ -229,7 +268,7 @@ const AboutUs = () => {
                 fill
                 sizes="(max-width: 768px) 150px, 200px"
               />
-            </div>
+            </motion.div>
           </div>
         </div>
       </motion.div>
