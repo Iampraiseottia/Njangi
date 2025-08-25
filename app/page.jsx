@@ -7,6 +7,7 @@ import globalStyle from "./globals.css";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import AboutUs from "./components/AboutUs";
+import Service from "./components/Service";
 
 import Metadata from "./components/Metadata";
 
@@ -26,6 +27,9 @@ const General = () => {
 
       {/* About Us */} 
       <AboutUs />
+
+      {/* Services */}
+      <Service />
 
       <Footer />
     </main>
