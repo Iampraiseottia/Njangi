@@ -8,6 +8,11 @@ import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import AboutUs from "./components/AboutUs";
 import Service from "./components/Service";
+import Testimonials from "./components/Testimonials";
+import Our_Team from "./components/Our_Team";
+import Blog from "./components/Blog";
+import Contact from "./components/Contact";
+import FAQs from "./components/FAQs"
 
 import Metadata from "./components/Metadata";
 
@@ -30,6 +35,21 @@ const General = () => {
 
       {/* Services */}
       <Service />
+
+      {/* Testimonial */}
+      <Testimonials />
+
+      {/* Our Team */}
+      <Our_Team />
+
+      {/* Frequently Asked Questions */} 
+      <FAQs />
+
+      {/* Our Blog */}
+      <Blog />
+
+       {/* Contact */}
+      <Contact />
 
       <Footer />
     </main>

@@ -163,6 +163,12 @@ const Hero = () => {
                 Service
               </Link>
               <Link
+                href="/testimonials"
+                className="hover:text-yellow-200 text-white text-lg xl:text-[22px] font-semibold"
+              >
+                Testimonials
+              </Link>
+              <Link
                 href="/faqs"
                 className="hover:text-yellow-200 text-white text-lg xl:text-[22px] font-semibold"
               >
@@ -248,6 +254,12 @@ const Hero = () => {
                 className="hover:text-yellow-200 text-white text-xl font-semibold"
               >
                 Service
+              </Link>
+              <Link
+                href="/testimonials"
+                className="hover:text-yellow-200 text-white text-xl font-semibold"
+              >
+                Testimonials
               </Link>
               <Link
                 href="/faqs"
