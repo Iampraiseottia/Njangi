@@ -326,24 +326,44 @@ const Hero = () => {
         >
           {/* Text Content */}
           <div className="w-full md:w-1/2 mb-8 md:mb-0 mt-0 sm:mt-0 md:-mt-5 lg:-mt-10 z-10 ">
-            <p className="text-yellow-500 text-xl md:text-2xl mb-3 md:mb-6 lg:mb-8 font-semibold">
+            <motion.p
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="text-yellow-500 text-xl md:text-2xl mb-3 md:mb-6 lg:mb-8 font-semibold"
+            >
               Improve Your Finance Through Njangi
-            </p>
+            </motion.p>
 
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6 lg:mb-10">
+            <motion.h1
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6 lg:mb-10"
+            >
               Join Other Verified Njangi Members In A Unique Community 🇨🇲
-            </h1>
+            </motion.h1>
 
-            <p className="text-gray-300 mb-6 md:mb-8 lg:mb-10 text-sm sm:text-base md:text-lg max-w-2xl mr-2">
+            <motion.p
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="text-gray-300 mb-6 md:mb-8 lg:mb-10 text-sm sm:text-base md:text-lg max-w-2xl mr-2"
+            >
               Connect with verified Njangi members in an exclusive Cameroonian
               community. Share, grow, and prosper together in a unique financial
               and social network. Experience transparent and trusted
               interactions, fostering a supportive environment for collective
               advancement. Join us to unlock new opportunities and strengthen
               your financial journey.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-wrap gap-3 md:gap-4">
+            <motion.div
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="flex flex-wrap gap-3 md:gap-4"
+            >
               <Link
                 href="/register"
                 className="bg-transparent font-semibold border border-white hover:bg-white hover:text-blue-700 hover:font-extrabold tracking-wide text-white text-sm sm:text-base md:text-lg lg:text-xl cursor-pointer ease-in-out duration-300 py-2 px-6 md:py-2 md:px-10  lg:py-3 lg:px-14 rounded-full transition"
@@ -356,14 +376,14 @@ const Hero = () => {
               >
                 Register
               </Link>
-            </div>
+            </motion.div>
           </div>
 
-          {/* Image Cards Animation */}
+          {/* Image Cards */}
           <div className="">
             <Image
               src={AnimatedImageLeft}
-              className="absolute left-0 top-32 -z-10 animate-bounceLeft w-10 h-10 sm:w-[150px] sm:h-[100px]"
+              className="absolute left-0 top-32 -z-10 animate-bounceLeft w-10 h-10 sm:w-[150px] sm:h-[100px]" 
               height={100}
               width={150}
               alt="Hero Image 1"

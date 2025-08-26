@@ -2,7 +2,10 @@ import React from "react";
 import Image from "next/image";
 
 import service_img from "/public/services/Service.png";
+
 import { DollarSign } from "lucide-react";
+
+import { motion } from "framer-motion";
 
 const Service = () => {
   return (
@@ -20,19 +23,34 @@ const Service = () => {
       <div className="relative z-10 container mx-auto px-4 py-16 lg:py-24">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in-up">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-blue-500 mb-6">
+          <motion.h1
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="text-2xl md:text-3xl lg:text-4xl font-bold text-blue-500 mb-6"
+          >
             -- WHAT WE ARE OFFERING --
-          </h1>
-          <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
+          >
             Experience very smooth and efficient njangi system while watching
             your finances move to another level with NJANGIFY .
-          </p>
+          </motion.p>
         </div>
 
         {/* Main Content */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Image Section */}
-          <div className="relative animate-slide-in-left">
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="relative animate-slide-in-left"
+          >
             <div className="relative bg-white rounded-2xl overflow-hidden shadow-xl transform hover:scale-[1.03] transition-transform duration-500">
               <div className="aspect-[4/3] relative">
                 <Image
@@ -47,10 +65,15 @@ const Service = () => {
             {/* Decorative elements */}
             <div className="absolute -top-4 -left-4 w-24 h-24 bg-yellow-400 rounded-full opacity-20 animate-pulse"></div>
             <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-500 rounded-full opacity-10 animate-pulse-delayed"></div>
-          </div>
+          </motion.div>
 
           {/* Features Section */}
-          <div className="space-y-8 animate-slide-in-right">
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="space-y-8 animate-slide-in-right"
+          >
             <div className="flex items-start space-x-4 group hover:transform hover:translate-x-2 transition-all duration-300">
               <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-blue-400/25 transition-shadow duration-300">
                 <DollarSign />
@@ -124,7 +147,7 @@ const Service = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </main>

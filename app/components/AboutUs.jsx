@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { Play, CheckCircle, ArrowRight, Calendar } from "lucide-react";
+import { CheckCircle, ArrowRight, Calendar } from "lucide-react";
 
 import years_experience from "/public/about/about.png";
 import calculation from "/public/about/about-1-2.jpg";
