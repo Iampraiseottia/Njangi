@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { CheckCircle, ArrowRight, Calendar } from "lucide-react";
 
@@ -13,35 +13,35 @@ import { motion } from "framer-motion";
 
 const AboutUs = () => {
   return (
-    <div className="min-h-screen bg-gray-50 relative overflow-hidden pt-16 md:pt-20 lg:pt-24">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-700 relative overflow-hidden pt-16 md:pt-20 lg:pt-24"> 
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="hidden md:block absolute top-16 sm:top-20 left-4 sm:left-10 opacity-10 transform rotate-12"
+          className="hidden md:block absolute top-16 sm:top-20 left-4 sm:left-10 opacity-10 dark:opacity-20 transform rotate-12"
           animate={{ rotate: [12, 18, 12], scale: [1, 1.1, 1] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         >
-          <div className="w-12 h-6 sm:w-16 sm:h-8 bg-red-800 rounded"></div>
+          <div className="w-12 h-6 sm:w-16 sm:h-8 bg-red-800 dark:bg-red-600 rounded"></div>
         </motion.div>
 
         <motion.div
-          className="hidden md:block absolute top-24 sm:top-32 left-8 sm:left-20 opacity-10 transform -rotate-6"
+          className="hidden md:block absolute top-24 sm:top-32 left-8 sm:left-20 opacity-10 dark:opacity-20 transform -rotate-6"
           animate={{ rotate: [-6, 6, -6], scale: [1, 0.9, 1] }}
           transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <div className="w-16 h-8 sm:w-20 sm:h-10 bg-green-800 rounded"></div>
+          <div className="w-16 h-8 sm:w-20 sm:h-10 bg-green-800 dark:bg-green-600 rounded"></div>
         </motion.div>
 
         <motion.div
-          className="hidden lg:block absolute top-32 sm:top-40 left-16 sm:left-32 opacity-10 transform rotate-45"
+          className="hidden lg:block absolute top-32 sm:top-40 left-16 sm:left-32 opacity-10 dark:opacity-20 transform rotate-45"
           animate={{ rotate: [45, 60, 45] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <div className="w-10 h-5 sm:w-12 sm:h-6 bg-purple-800 rounded"></div>
+          <div className="w-10 h-5 sm:w-12 sm:h-6 bg-purple-800 dark:bg-purple-600 rounded"></div>
         </motion.div>
 
         <motion.div
-          className="hidden lg:block absolute bottom-32 sm:bottom-52 left-0 opacity-10 transform rotate-12"
+          className="hidden lg:block absolute bottom-32 sm:bottom-52 left-0 opacity-10 dark:opacity-20 transform rotate-12"
           animate={{
             x: [0, 30, 0],
             rotate: [12, 0, 12],
@@ -58,17 +58,17 @@ const AboutUs = () => {
         </motion.div>
 
         <motion.div
-          className="hidden md:block absolute bottom-16 sm:bottom-20 left-4 sm:left-8 opacity-10 transform -rotate-12"
+          className="hidden md:block absolute bottom-16 sm:bottom-20 left-4 sm:left-8 opacity-10 dark:opacity-20 transform -rotate-12"
           animate={{ rotate: [-12, -6, -12], y: [0, -5, 0] }}
           transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <div className="w-12 h-6 sm:w-14 sm:h-7 bg-yellow-800 rounded"></div>
+          <div className="w-12 h-6 sm:w-14 sm:h-7 bg-yellow-800 dark:bg-yellow-600 rounded"></div>
         </motion.div>
       </div>
 
       {/* Curved decorative elements */}
       <motion.div
-        className="absolute top-0 right-0 w-48 h-48 sm:w-64 sm:h-64 lg:w-96 lg:h-96 opacity-20"
+        className="absolute top-0 right-0 w-48 h-48 sm:w-64 sm:h-64 lg:w-96 lg:h-96 opacity-20 dark:opacity-30"
         animate={{ rotate: [0, 360] }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       >
@@ -77,19 +77,21 @@ const AboutUs = () => {
             d="M300 0 Q400 100 400 200 Q300 300 200 300 Q100 200 200 100 Q300 0 300 0"
             fill="none"
             stroke="rgb(6, 182, 212)"
+            className="dark:stroke-cyan-400"
             strokeWidth="2"
           />
           <path
             d="M320 20 Q420 120 420 220 Q320 320 220 320 Q120 220 220 120 Q320 20 320 20"
             fill="none"
             stroke="rgb(6, 182, 212)"
+            className="dark:stroke-cyan-400"
             strokeWidth="1.5"
           />
         </svg>
       </motion.div>
 
       <motion.div
-        className="absolute bottom-0 right-0 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 opacity-30"
+        className="absolute bottom-0 right-0 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 opacity-30 dark:opacity-40"
         animate={{ scale: [1, 1.1, 1] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       >
@@ -98,12 +100,14 @@ const AboutUs = () => {
             d="M0 200 Q100 100 200 200"
             fill="none"
             stroke="rgb(6, 182, 212)"
+            className="dark:stroke-cyan-400"
             strokeWidth="3"
           />
           <path
             d="M20 200 Q100 120 180 200"
             fill="none"
             stroke="rgb(6, 182, 212)"
+            className="dark:stroke-cyan-400"
             strokeWidth="2"
           />
         </svg>
@@ -121,7 +125,7 @@ const AboutUs = () => {
                 transition={{ duration: 0.5, delay: 0.5 }}
                 className="inline-block"
               >
-                <span className="text-blue-500 text-xs sm:text-sm font-semibold tracking-wide uppercase border-b-2 border-blue-500 pb-1">
+                <span className="text-blue-500 dark:text-blue-400 text-xs sm:text-sm font-semibold tracking-wide uppercase border-b-2 border-blue-500 dark:border-blue-400 pb-1">
                   -- WELCOME TO NJANGIFY
                 </span>
               </motion.div>
@@ -130,18 +134,18 @@ const AboutUs = () => {
                 initial={{ opacity: 0, y: 100 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight"
               >
-                With <span className="text-blue-500">Njangify</span> Your
+                With <span className="text-blue-500 dark:text-blue-400">Njangify</span> Your
                 <br />
-                <span className="text-indigo-900">Dreams Come's True</span>
+                <span className="text-indigo-900 dark:text-indigo-300">Dreams Come's True</span>
               </motion.h1>
 
               <motion.p
                 initial={{ opacity: 0, y: 100 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed max-w-lg"
+                className="text-gray-600 dark:text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed max-w-lg"
               >
                 Join the most trusted digital Njangi platform in Cameroon. Save
                 together, grow together, and achieve your financial goals with
@@ -161,8 +165,8 @@ const AboutUs = () => {
                 whileHover={{ scale: 1.04 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 flex-shrink-0" />
-                <span className="text-gray-700 font-medium text-sm sm:text-base">
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 dark:text-blue-400 flex-shrink-0" />
+                <span className="text-gray-700 dark:text-gray-300 font-medium text-sm sm:text-base">
                   Quick Setup Process
                 </span>
               </motion.div>
@@ -172,8 +176,8 @@ const AboutUs = () => {
                 whileHover={{ scale: 1.04 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 flex-shrink-0" />
-                <span className="text-gray-700 font-medium text-sm sm:text-base">
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 dark:text-blue-400 flex-shrink-0" />
+                <span className="text-gray-700 dark:text-gray-300 font-medium text-sm sm:text-base">
                   Finance Support
                 </span>
               </motion.div>
@@ -183,8 +187,8 @@ const AboutUs = () => {
                 whileHover={{ scale: 1.04 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 flex-shrink-0" />
-                <span className="text-gray-700 font-medium text-sm sm:text-base">
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 dark:text-blue-400 flex-shrink-0" />
+                <span className="text-gray-700 dark:text-gray-300 font-medium text-sm sm:text-base">
                   Reliable and Secure
                 </span>
               </motion.div>
@@ -194,8 +198,8 @@ const AboutUs = () => {
                 whileHover={{ scale: 1.04 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 flex-shrink-0" />
-                <span className="text-gray-700 font-medium text-sm sm:text-base">
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 dark:text-blue-400 flex-shrink-0" />
+                <span className="text-gray-700 dark:text-gray-300 font-medium text-sm sm:text-base">
                   Follow Up Members
                 </span>
               </motion.div>
@@ -208,13 +212,13 @@ const AboutUs = () => {
             >
               <Link
                 href="/register"
-                className="group border-2 border-blue-500 text-blue-500 px-4 sm:px-8 py-2 sm:py-3 rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-300 font-medium inline-flex items-center space-x-2 text-sm sm:text-base"
+                className="group border-2 border-blue-500 dark:border-blue-400 text-blue-500 dark:text-blue-400 px-4 sm:px-8 py-2 sm:py-3 rounded-lg hover:bg-blue-500 dark:hover:bg-blue-400 hover:text-white dark:hover:text-gray-900 transition-all duration-300 font-medium inline-flex items-center space-x-2 text-sm sm:text-base"
               >
                 <span>JOIN A NJANGI</span>
                 <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
-          </motion.div>
+          </motion.div> 
 
           {/* Right Content */}
           <div className="relative order-1 lg:order-2">
@@ -223,9 +227,9 @@ const AboutUs = () => {
               initial={{ opacity: 0, y: 100 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="absolute top-4 sm:top-8 left-4 sm:left-8 z-10 bg-blue-500 text-white p-3 sm:p-6 rounded-lg shadow-lg"
+              className="absolute top-4 sm:top-8 left-4 sm:left-8 z-10 bg-blue-500 dark:bg-blue-600 text-white p-3 sm:p-6 rounded-lg shadow-lg dark:shadow-gray-800"
             >
-              <div className="flex items-center justify-center w-8 h-8 sm:w-12 sm:h-12 bg-white bg-opacity-20 rounded-full mx-auto mb-2 sm:mb-4">
+              <div className="flex items-center justify-center w-8 h-8 sm:w-12 sm:h-12 bg-white bg-opacity-20 dark:bg-black dark:bg-opacity-20 rounded-full mx-auto mb-2 sm:mb-4">
                 <Calendar className="w-4 h-4 sm:w-6 sm:h-6" />
               </div>
               <div className="text-center">
@@ -241,12 +245,12 @@ const AboutUs = () => {
               initial={{ opacity: 0, y: 100 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="relative bg-white rounded-lg shadow-lg overflow-hidden"
+              className="relative bg-white dark:bg-gray-800 rounded-lg shadow-lg dark:shadow-gray-800 overflow-hidden"
             >
               <div className="w-full h-[300px] sm:h-[400px] lg:h-[500px] relative">
                 <Image
                   alt="Years of Experience"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover dark:opacity-90"
                   src={years_experience}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -259,11 +263,11 @@ const AboutUs = () => {
               initial={{ opacity: 0, y: 100 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 lg:bottom-0 lg:right-0 w-32 h-24 sm:w-40 sm:h-28 lg:w-48 lg:h-36 bg-white rounded-lg shadow-lg overflow-hidden transform translate-x-2 sm:translate-x-4 translate-y-2 sm:translate-y-4 border-2 sm:border-4 border-blue-500 animate-bounceLeftMoney mr-8 mb-3"
+              className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 lg:bottom-0 lg:right-0 w-32 h-24 sm:w-40 sm:h-28 lg:w-48 lg:h-36 bg-white dark:bg-gray-800 rounded-lg shadow-lg dark:shadow-gray-800 overflow-hidden transform translate-x-2 sm:translate-x-4 translate-y-2 sm:translate-y-4 border-2 sm:border-4 border-blue-500 dark:border-blue-400 animate-bounceLeftMoney mr-8 mb-3"
             >
               <Image
                 alt="Calculation"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover dark:opacity-90"
                 src={calculation}
                 fill
                 sizes="(max-width: 768px) 150px, 200px"
