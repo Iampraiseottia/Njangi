@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 
 const AboutUs = () => {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-700 relative overflow-hidden pt-16 md:pt-20 lg:pt-24"> 
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-700 relative overflow-hidden pt-16 md:pt-20 lg:pt-24">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -136,9 +136,15 @@ const AboutUs = () => {
                 transition={{ duration: 0.5, delay: 0.5 }}
                 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight"
               >
-                With <span className="text-blue-500 dark:text-blue-400">Njangify</span> Your
+                With{" "}
+                <span className="text-blue-500 dark:text-blue-400">
+                  Njangify
+                </span>{" "}
+                Your
                 <br />
-                <span className="text-indigo-900 dark:text-indigo-300">Dreams Come's True</span>
+                <span className="text-indigo-900 dark:text-indigo-300">
+                  Dreams Come's True
+                </span>
               </motion.h1>
 
               <motion.p
@@ -218,7 +224,7 @@ const AboutUs = () => {
                 <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
-          </motion.div> 
+          </motion.div>
 
           {/* Right Content */}
           <div className="relative order-1 lg:order-2">
