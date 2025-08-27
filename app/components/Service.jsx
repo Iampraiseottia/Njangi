@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 
 const Service = () => {
   return (
-    <main className="relative overflow-hidden bg-gray-100 dark:bg-gray-800">
+    <main className="relative overflow-hidden bg-gray-200 dark:bg-gray-700">
       {/* Background Pattern */}
       <div className="absolute inset-0">
         <div className="absolute top-10 right-10 w-16 h-10 bg-blue-200/30 dark:bg-blue-400/20 rounded transform rotate-12 animate-float"></div>

@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 
 const AboutUs = () => {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-700 relative overflow-hidden pt-16 md:pt-20 lg:pt-24">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-800 relative overflow-hidden pt-16 md:pt-20 lg:pt-24">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -256,7 +256,7 @@ const AboutUs = () => {
               <div className="w-full h-[300px] sm:h-[400px] lg:h-[500px] relative">
                 <Image
                   alt="Years of Experience"
-                  className="w-full h-full object-cover dark:opacity-90"
+                  className="w-full h-full object-cover dark:opacity-90 hover:scale-105 transition-transform duration-200" 
                   src={years_experience}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
