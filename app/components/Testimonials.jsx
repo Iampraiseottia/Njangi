@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, Quote, ChevronLeft, ChevronRight, Users } from "lucide-react";
@@ -8,6 +10,7 @@ import testimony3 from "/public/testimonials/testimony3.jpeg";
 import testimony4 from "/public/testimonials/testimony4.jpeg";
 import testimony5 from "/public/testimonials/testimony5.jpeg";
 import testimony6 from "/public/testimonials/testimony6.jpeg";
+
 import Image from "next/image";
 
 const Testimonials = () => {
