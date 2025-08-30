@@ -95,11 +95,11 @@ const Hero = () => {
         {/* Sticky Header */}
         <nav
           className={`py-4 w-full z-50 transition-all duration-300
-          ${
-            isScrolled
-              ? "fixed top-0 left-0  bg-gray-900 shadow-lg text-black py-2 sm:py-5"
-              : "pt-7 md:pt-12"
-          }`}
+  ${
+    isScrolled
+      ? "fixed top-0 left-0 bg-white dark:bg-gray-900 shadow-lg text-black dark:text-white py-2 sm:py-5"
+      : "pt-7 md:pt-12"
+  }`}
         >
           <div className="container mx-[5%] header-mid px-4 sm:px-6 flex justify-between items-center">
             {/* Logo Section */}
@@ -119,12 +119,12 @@ const Hero = () => {
                     }`}
                   />
                   <span
-                    className={`ml-2 md:ml-3 tracking-wider font-extrabold transition-all duration-300 text-white
-                    ${
-                      isScrolled
-                        ? "text-xl md:text-3xl"
-                        : "text-2xl md:text-[40px]"
-                    }`}
+                    className={`ml-2 md:ml-3 tracking-wider font-extrabold transition-all duration-300 
+  ${
+    isScrolled
+      ? "text-xl md:text-3xl text-black dark:text-white"
+      : "text-2xl md:text-[40px] text-white"
+  }`}
                   >
                     NJANGIFY
                   </span>
@@ -136,7 +136,8 @@ const Hero = () => {
             <div className="xl:hidden">
               <button
                 onClick={toggleMobileMenu}
-                className="p-2 focus:outline-none text-white mr-4"
+                className={`p-2 focus:outline-none mr-4 
+                  ${isScrolled ? "text-black dark:text-white" : "text-white"}`}
               >
                 {mobileMenuOpen ? <X size={30} /> : <Menu size={30} />}
               </button>
@@ -146,36 +147,55 @@ const Hero = () => {
             <div className="hidden xl:flex space-x-4 xl:space-x-9 ease-in-out duration-300">
               <Link
                 href="/"
-                className="text-[gold] text-lg xl:text-2xl font-semibold "
+                className={` text-lg xl:text-2xl font-semibold ${
+                  isScrolled ? "text-blue-700 dark:text-blue-700" : "text-[gold]"
+                } `}
               >
                 Home
               </Link>
               <Link
                 href="/about"
-                className="hover:text-yellow-200 text-white text-lg xl:text-[22px] font-semibold"
+                className={`hover:text-yellow-200 text-lg xl:text-[22px] font-semibold
+                  ${
+                    isScrolled ? "text-gray-700 dark:text-white" : "text-white"
+                  }`}
               >
                 About
               </Link>
               <Link
                 href="/service"
-                className="hover:text-yellow-200 text-white text-lg xl:text-[22px] font-semibold"
+                className={`hover:text-yellow-200 text-lg xl:text-[22px] font-semibold
+                  ${
+                    isScrolled ? "text-gray-700 dark:text-white" : "text-white"
+                  }`}
               >
                 Service
               </Link>
               <Link
                 href="/testimonials"
-                className="hover:text-yellow-200 text-white text-lg xl:text-[22px] font-semibold"
+                className={`hover:text-yellow-200 text-lg xl:text-[22px] font-semibold
+                  ${
+                    isScrolled ? "text-gray-700 dark:text-white" : "text-white"
+                  }`}
               >
                 Testimonials
               </Link>
               <Link
                 href="/faqs"
-                className="hover:text-yellow-200 text-white text-lg xl:text-[22px] font-semibold"
+                className={`hover:text-yellow-200 text-lg xl:text-[22px] font-semibold
+                  ${
+                    isScrolled ? "text-gray-700 dark:text-white" : "text-white"
+                  }`}
               >
                 FAQs
               </Link>
               <div className="relative group z-10">
-                <button className="hover:text-yellow-200 text-white text-lg xl:text-[22px] ease-in-out duration-300 font-semibold flex items-center">
+                <button
+                  className={`hover:text-yellow-200 text-lg xl:text-[22px] ease-in-out duration-300 font-semibold flex items-center
+                  ${
+                    isScrolled ? "text-gray-700 dark:text-white" : "text-white"
+                  }`}
+                >
                   Pages <ChevronDown className="ml-1 w-4 h-4 xl:w-5 xl:h-5" />
                 </button>
                 <div className="absolute hidden bg-white w-60 border-t-2 border-t-blue-600 -ml-1 h-auto py-5 transition-all group-hover:block p-2 rounded shadow-lg">
@@ -209,7 +229,8 @@ const Hero = () => {
 
               <Link
                 href="contact-us"
-                className="hover:text-yellow-200 text-white text-lg xl:text-[22px] font-semibold"
+                className={`hover:text-yellow-200 text-lg xl:text-[22px] font-semibold
+  ${isScrolled ? "text-gray-700 dark:text-white" : "text-white"}`}
               >
                 Contact
               </Link>
@@ -219,7 +240,7 @@ const Hero = () => {
             <div className="hidden xl:flex items-center space-x-3 xl:space-x-5 -mr-40 header-mid2">
               <Link
                 href="/register"
-                className={`bg-white text-blue-500 font-extrabold ease-in-out cursor-pointer rounded hover:rounded-3xl hover:text-blue-500 hover:bg-yellow-300 transition duration-300 tracking-wider 
+                className={`bg-blue-600  text-white font-extrabold ease-in-out cursor-pointer rounded hover:rounded-3xl hover:text-blue-500 hover:bg-yellow-300 transition duration-300 tracking-wider 
                 ${
                   isScrolled
                     ? "py-2 px-4 xl:py-2 xl:px-14 text-sm xl:text-xl"
@@ -235,35 +256,54 @@ const Hero = () => {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div
-            className={`xl:hidden bg-gray-900 p-4 z-50 w-full ${
-              isScrolled ? "fixed top-16" : "absolute"
+            className={`xl:hidden p-4 z-50 w-full ${
+              isScrolled
+                ? "fixed top-16 bg-white dark:bg-gray-900 shadow-lg"
+                : "absolute bg-gray-900"
             }`}
           >
             <div className="flex flex-col space-y-4">
-              <Link href="/" className="text-yellow-500 text-xl font-semibold">
+              <Link
+                href="/"
+                className={`text-xl font-semibold ${
+                  isScrolled ? "text-blue-700 dark:text-blue-700" : "text-[gold]"
+                }`}
+              >
                 Home
               </Link>
               <Link
                 href="/about"
-                className="hover:text-yellow-200 text-white text-xl font-semibold"
+                className={`hover:text-yellow-200 text-xl font-semibold 
+                  ${
+                    isScrolled ? "text-gray-900 dark:text-white" : "text-white"
+                  }`}
               >
                 About
               </Link>
               <Link
                 href="/service"
-                className="hover:text-yellow-200 text-white text-xl font-semibold"
+                className={`hover:text-yellow-200 text-xl font-semibold 
+                  ${
+                    isScrolled ? "text-gray-900 dark:text-white" : "text-white"
+                  }`}
               >
                 Service
               </Link>
               <Link
                 href="/testimonials"
-                className="hover:text-yellow-200 text-white text-xl font-semibold"
+                className={`hover:text-yellow-200 text-xl font-semibold 
+                  ${
+                    isScrolled ? "text-gray-900 dark:text-white" : "text-white"
+                  }`}
               >
                 Testimonials
               </Link>
               <Link
                 href="/faqs"
-                className="hover:text-yellow-200 text-white text-xl font-semibold"
+                className={`hover:text-yellow-200 text-xl font-semibold 
+                  ${
+                    isScrolled ? "text-gray-900 dark:text-white" : "text-white"
+                  }`}
               >
                 FAQs
               </Link>
@@ -275,7 +315,10 @@ const Hero = () => {
                       .getElementById("mobilePages")
                       .classList.toggle("hidden")
                   }
-                  className="hover:text-yellow-200 text-white text-xl font-semibold flex items-center justify-between w-full"
+                  className={`hover:text-yellow-200 text-xl font-semibold flex items-center justify-between w-full
+                  ${
+                    isScrolled ? "text-gray-900 dark:text-white" : "text-white"
+                  }`}
                 >
                   Pages <ChevronDown className="ml-1 w-5 h-5" />
                 </button>
@@ -314,7 +357,10 @@ const Hero = () => {
 
               <Link
                 href="contact-us"
-                className="hover:text-yellow-400 text-white text-xl font-semibold"
+                className={`hover:text-yellow-200 text-xl font-semibold 
+                  ${
+                    isScrolled ? "text-gray-900 dark:text-white" : "text-white"
+                  }`}
               >
                 Contact
               </Link>
@@ -322,7 +368,7 @@ const Hero = () => {
               <div className="flex items-center justify-between mt-4">
                 <Link
                   href="/register"
-                  className="bg-white text-blue-800 font-extrabold py-2 px-6 hover:text-[violet] rounded hover:bg-yellow-300 transition duration-300"
+                  className="bg-blue-800 text-white font-extrabold py-2 px-6 hover:text-[violet] rounded hover:bg-yellow-300 transition duration-300"
                 >
                   REGISTER
                 </Link>
@@ -377,7 +423,7 @@ const Hero = () => {
               className="flex flex-wrap gap-3 md:gap-4"
             >
               <Link
-                href="/register"
+                href="/login"
                 className="bg-transparent font-semibold border border-white hover:bg-white hover:text-blue-700 hover:font-extrabold tracking-wide text-white text-sm sm:text-base md:text-lg lg:text-xl cursor-pointer ease-in-out duration-300 py-2 px-6 md:py-2 md:px-10  lg:py-3 lg:px-14 rounded-full transition"
               >
                 Login
@@ -395,7 +441,7 @@ const Hero = () => {
           <div className="">
             <Image
               src={AnimatedImageLeft}
-              className="absolute left-0 top-32 -z-10 animate-bounceLeft w-10 h-10 sm:w-[150px] sm:h-[100px]" 
+              className="absolute left-0 top-32 -z-10 animate-bounceLeft w-10 h-10 sm:w-[150px] sm:h-[100px]"
               height={100}
               width={150}
               alt="Hero Image 1"
