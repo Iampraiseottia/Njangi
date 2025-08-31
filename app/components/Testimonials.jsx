@@ -296,46 +296,7 @@ const Testimonials = () => {
             ))}
           </motion.div>
 
-          {/* Stats Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16"
-          >
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
-                10K+
-              </div>
-              <div className="text-gray-600 dark:text-gray-400 text-sm">
-                Active Members
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-green-600 dark:text-green-400 mb-2">
-                500M+
-              </div>
-              <div className="text-gray-600 dark:text-gray-400 text-sm">
-                XAF
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-yellow-600 dark:text-yellow-400 mb-2">
-                1,200+
-              </div>
-              <div className="text-gray-600 dark:text-gray-400 text-sm">
-                Active Groups
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">
-                98%
-              </div>
-              <div className="text-gray-600 dark:text-gray-400 text-sm">
-                Success Rate
-              </div>
-            </div>
-          </motion.div>
+          
         </div>
       </div>
     </main>

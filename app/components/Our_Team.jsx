@@ -217,7 +217,7 @@ const Our_Team = () => {
           <motion.h1
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
             className="text-2xl md:text-3xl lg:text-4xl font-bold text-blue-500 dark:text-blue-400 mb-6"
           >
             -- OUR AWESOME TEAM --
