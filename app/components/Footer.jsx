@@ -1,14 +1,22 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
-import { Mail, Phone, Send } from "lucide-react";
-
-import Facebook from "/public/icons/fb.png";
-import Youtube from "/public/icons/tweeter.png";
-import Instagram from "/public/icons/ig.png";
-import LinkedIn from "/public/icons/linkedin.png";
+import {
+  Mail,
+  Phone,
+  Send,
+  Facebook,
+  Twitter,
+  Linkedin,
+  Instagram,
+} from "lucide-react"; 
 
 import navLogo from "/public/icons/logo.png";
+import footerImg from "/public/shapes/worldwide-bg-1-1.png";
+
+import { motion, AnimatePresence } from "framer-motion";
 
 import globalStyle from "../globals.css";
 
@@ -22,7 +30,7 @@ const Footer = () => {
         {/* Background image */}
         <div className="absolute inset-0 z-0 opacity-90">
           <Image
-            src="/shapes/footer-bg-1-1.png"
+            src={footerImg}
             alt="World Map Background"
             fill={true}
             style={{ objectFit: "cover" }}
@@ -31,14 +39,19 @@ const Footer = () => {
         </div>
 
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/95 via-purple-900/95 to-indigo-800/85"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-500/95 via-gray-700/95  to-gray-500/85"></div>
 
         {/* Main content  */}
         <div className="relative mx-auto z-10 container px-4 sm:px-6 lg:px-8 xl:px-12 py-8 sm:py-12 md:py-12 lg:py-12 pt-12 sm:pt-12 md:pt-12 lg:pt-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
             {/* Company Info & Newsletter  */}
             <div className="sm:col-span-2 lg:col-span-1">
-              <div className="flex items-center justify-center sm:justify-start gap-1 mb-4 sm:mb-6 -mt-10">
+              <motion.div
+                initial={{ opacity: 0, y: 100 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="flex items-center justify-center sm:justify-start gap-1 mb-4 sm:mb-6 -mt-10"
+              >
                 <Image
                   src={navLogo}
                   alt="NJANGIFY Logo"
@@ -49,16 +62,20 @@ const Footer = () => {
                 <span className="text-white text-xl sm:text-2xl font-bold">
                   NJANGIFY
                 </span>
-              </div>
+              </motion.div>
 
-              <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed text-center sm:text-left">
+              <motion.p  initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }} className="text-gray-200 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed text-center sm:text-left">
                 It enables users to join, and create njangi groups, enhancing
                 financial growth and fostering community collaboration for
                 effective finances and wealth-building.
-              </p>
+              </motion.p>
 
               {/* Newsletter signup */}
-              <div className="relative max-w-sm mx-auto sm:mx-0">
+              <motion.div  initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }} className="relative max-w-sm mx-auto sm:mx-0">
                 <input
                   type="email"
                   placeholder="Enter Email"
@@ -67,101 +84,80 @@ const Footer = () => {
                 <button className="absolute right-1 sm:right-2 top-1/2 transform -translate-y-1/2 bg-blue-500 p-1.5 sm:p-2 rounded-md hover:bg-blue-600 transition-colors">
                   <Send className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                 </button>
-              </div>
+              </motion.div>
             </div>
 
             {/* Explore Links */}
-            <div className="text-center sm:text-left sm:ml-20">
+            <motion.div  initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }} className="text-center sm:text-left sm:ml-20">
               <h4 className="text-white text-lg sm:text-xl font-semibold mb-4 sm:mb-6">
                 Explore
               </h4>
-              <ul className="space-y-2 sm:space-y-3">
+
+              <ul className="footer-links">
                 <li>
-                  <Link
-                    href="/about"
-                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base inline-block relative group"
-                  >
+                  <Link href="/about" className="footer-link">
                     About Us
-                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="/service"
-                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base inline-block relative group"
-                  >
+                  <Link href="/service" className="footer-link">
                     Our Services
-                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="/our-team"
-                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base inline-block relative group"
-                  >
-                    Meet The Team
-                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
+                  <Link href="/our-team" className="footer-link">
+                    Meet Our Team
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="/contact"
-                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base inline-block relative group"
-                  >
+                  <Link href="/contact" className="footer-link">
                     Contact
-                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
               </ul>
-            </div>
+            </motion.div>
 
             {/* Explore Links (Secondary) */}
-            <div className="text-center sm:text-left">
+            <motion.div   initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }} className="text-center sm:text-left">
               <h4 className="text-white text-lg sm:text-xl font-semibold mb-4 sm:mb-6">
                 Quick Links
               </h4>
-              <ul className="space-y-2 sm:space-y-3">
+              <ul className="space-y-2 sm:space-y-3 footer-links">
                 <li>
-                  <Link
-                    href="/"
-                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base inline-block relative group"
-                  >
+                  <Link href="/" className="footer-link">
                     Home
                     <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="/register"
-                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base inline-block relative group"
-                  >
+                  <Link href="/register" className="footer-link">
                     Register
                     <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="/faqs"
-                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base inline-block relative group"
-                  >
+                  <Link href="/faqs" className="footer-link">
                     FAQs
                     <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="/blog"
-                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base inline-block relative group"
-                  >
+                  <Link href="/blog" className="footer-link">
                     Our Blog
                     <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
               </ul>
-            </div>
+            </motion.div>
 
             {/* Get In Touch - Full width on mobile, centered content */}
-            <div className="sm:col-span-2 lg:col-span-1">
+            <motion.div  initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }} className="sm:col-span-2 lg:col-span-1">
               <h4 className="text-white text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-center sm:text-left">
                 Get In Touch
               </h4>
@@ -199,62 +195,48 @@ const Footer = () => {
                   </a>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Divider  */}
           <hr className="border-gray-700 my-6 sm:my-8 md:my-10" />
 
           {/* Footer Bottom  */}
-          <div className="flex flex-col gap-2 space-y-4 sm:space-y-0 sm:flex-row sm:justify-between sm:items-center">
+          <motion.div  initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }} className="flex flex-col gap-2 space-y-4 sm:space-y-0 sm:flex-row sm:justify-between sm:items-center">
             <div className="flex justify-center sm:justify-start gap-3 sm:gap-4 order-2 sm:order-1 mt-2">
               <Link
                 href="#"
-                className="bg-white p-2 sm:p-2.5 rounded-md hover:bg-gray-700 transition-colors"
+                className="bg-white p-2 sm:p-2.5 rounded-md transition-colors hover:scale-[1.03] hover:rounded-full hover:bg-gray-100 text-xl font-bold "
               >
-                <Image
-                  src={Facebook}
-                  alt="Facebook Icon"
-                  className="w-4 h-4 sm:w-5 sm:h-5"
-                />
+                <Facebook className="w-4 h-4 sm:w-5 sm:h-5 text-blue-700 hover:scale-[1.03] hover:rounded-full hover:bg-white text-xl font-bold " />
               </Link>
               <Link
                 href="#"
-                className="bg-white p-2 sm:p-2.5 rounded-md hover:bg-gray-700 transition-colors"
+                className="bg-white p-2 sm:p-2.5 rounded-md transition-all ease-in-out hover:scale-[1.03] hover:rounded-full hover:bg-gray-100 text-xl font-bold "
               >
-                <Image
-                  src={Youtube}
-                  alt="Youtube Icon"
-                  className="w-4 h-4 sm:w-5 sm:h-5"
-                />
+                <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-blue-700" />
               </Link>
               <Link
                 href="#"
-                className="bg-white p-2 sm:p-2.5 rounded-md hover:bg-gray-700 transition-colors"
+                className="bg-white p-2 sm:p-2.5 rounded-md transition-colors hover:scale-[1.03] hover:rounded-full hover:bg-gray-100 text-xl font-bold "
               >
-                <Image
-                  src={Instagram}
-                  alt="Instagram Icon"
-                  className="w-4 h-4 sm:w-5 sm:h-5"
-                />
+                <Instagram className="w-4 h-4 sm:w-5 sm:h-5 text-blue-700 hover:scale-[1.03] hover:rounded-full hover:bg-white text-xl font-bold " />
               </Link>
               <Link
                 href="#"
-                className="bg-white p-2 sm:p-2.5 rounded-md hover:bg-gray-700 transition-colors"
+                className="bg-white p-2 sm:p-2.5 rounded-md transition-colors hover:scale-[1.03] hover:rounded-full hover:bg-gray-100 text-xl font-bold "
               >
-                <Image
-                  src={LinkedIn}
-                  alt="LinkedIn Icon"
-                  className="w-4 h-4 sm:w-5 sm:h-5"
-                />
+                <Twitter className="w-4 h-4 sm:w-5 sm:h-5 text-blue-700 hover:scale-[1.03] hover:rounded-full hover:bg-white text-xl font-bold " />
               </Link>
             </div>
 
             {/* Copyright */}
-            <p className="text-gray-400 text-xs sm:text-sm text-center sm:text-right order-1 sm:order-2 leading-relaxed mb-2 ">
+            <p className="text-gray-200 text-xs sm:text-sm text-center sm:text-right order-1 sm:order-2 leading-relaxed mb-2 ">
               © Copyright 2025 | NJANGIFY
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
     </footer>
