@@ -22,7 +22,7 @@ import globalStyle from "../globals.css";
 
 const Footer = () => {
   return (
-    <footer className="relative mt-8 sm:mt-10 md:mt-10 lg:mt-10 z-40">
+    <footer className="relative z-40">
       <div className="pt-12 sm:pt-14 md:pt-14 lg:pt-14">
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-gray-900 opacity-90 z-0"></div>
