@@ -95,11 +95,11 @@ const Hero = () => {
         {/* Sticky Header */}
         <nav
           className={`py-4 w-full z-50 transition-all duration-300
-  ${
-    isScrolled
-      ? "fixed top-0 left-0 bg-white dark:bg-gray-900 shadow-lg text-black dark:text-white py-2 sm:py-5"
-      : "pt-7 md:pt-12"
-  }`}
+        ${
+          isScrolled
+            ? "fixed top-0 left-0 bg-white dark:bg-gray-900 shadow-lg text-black dark:text-white py-2 sm:py-5"
+            : "pt-7 md:pt-12"
+        }`}
         >
           <div className="container mx-[5%] header-mid px-4 sm:px-6 flex justify-between items-center">
             {/* Logo Section */}
@@ -120,11 +120,11 @@ const Hero = () => {
                   />
                   <span
                     className={`ml-2 md:ml-3 tracking-wider font-extrabold transition-all duration-300 
-  ${
-    isScrolled
-      ? "text-xl md:text-3xl text-black dark:text-white"
-      : "text-2xl md:text-[40px] text-white"
-  }`}
+                  ${
+                    isScrolled
+                      ? "text-xl md:text-3xl text-black dark:text-white"
+                      : "text-2xl md:text-[40px] text-white"
+                  }`}
                   >
                     NJANGIFY
                   </span>
@@ -148,7 +148,9 @@ const Hero = () => {
               <Link
                 href="/"
                 className={` text-lg xl:text-2xl font-semibold ${
-                  isScrolled ? "text-blue-700 dark:text-blue-700" : "text-[gold]"
+                  isScrolled
+                    ? "text-blue-700 dark:text-blue-700"
+                    : "text-[gold]"
                 } `}
               >
                 Home
@@ -266,7 +268,9 @@ const Hero = () => {
               <Link
                 href="/"
                 className={`text-xl font-semibold ${
-                  isScrolled ? "text-blue-700 dark:text-blue-700" : "text-[gold]"
+                  isScrolled
+                    ? "text-blue-700 dark:text-blue-700"
+                    : "text-[gold]"
                 }`}
               >
                 Home

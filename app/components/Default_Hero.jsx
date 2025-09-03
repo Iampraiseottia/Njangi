@@ -7,6 +7,7 @@ import { motion } from "motion/react";
 import Image from "next/image";
 
 import heroImage from "/public/background/hero-bg.jpg";
+import Link from "next/link";
 
 const Default_Hero = ({ title, firstDescription, MainDescription }) => {
   return (
@@ -41,11 +42,11 @@ const Default_Hero = ({ title, firstDescription, MainDescription }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <span className="text-white hover:text-purple-300 transition-colors cursor-pointer">
+          <Link href="/" className="text-white hover:text-purple-300 transition-colors cursor-pointer">
             {firstDescription}
-          </span>
+          </Link>
           <span className="text-white">&gt;</span>
-          <span className="text-[blue] font-medium">{MainDescription}</span>
+          <span className="text-[gold] font-medium">{MainDescription}</span> 
         </motion.div>
       </div>
     </section>
