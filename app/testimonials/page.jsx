@@ -7,9 +7,7 @@ import Metadata from "../components/Metadata";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Default_Hero from "../components/Default_Hero";
-import AboutUs from "../components/AboutUs";
 import Testimonials from "../components/Testimonials";
-import Our_Team from "../components/Our_Team";
 import Blog from "../components/Blog";
 
 import globalStyle from "../globals.css";

@@ -144,10 +144,10 @@ const Navbar = () => {
                 href="/"
                 className={`text-lg xl:text-2xl font-semibold transition-colors duration-300 ${
                   isActiveLink("/")
-                    ? "text-blue-700 dark:text-[gold]"
+                    ? "text-blue-600 dark:text-blue-500"
                     : isScrolled
-                    ? "text-gray-700 dark:text-white hover:text-yellow-200"
-                    : "text-black dark:text-white hover:text-yellow-200"
+                    ? "text-gray-700 dark:text-white hover:text-blue-300"
+                    : "text-black dark:text-white hover:text-blue-300"
                 }`}
               >
                 Home
@@ -156,10 +156,10 @@ const Navbar = () => {
                 href="/about"
                 className={`text-lg xl:text-[22px] font-semibold transition-colors duration-300 ${
                   isActiveLink("/about")
-                    ? "text-blue-700 dark:text-[gold]"
+                    ? "text-blue-700 dark:text-blue-500"
                     : isScrolled
-                    ? "text-gray-700 dark:text-white hover:text-yellow-200"
-                    : "text-black dark:text-white hover:text-yellow-200"
+                    ? "text-gray-700 dark:text-white hover:text-blue-300"
+                    : "text-black dark:text-white hover:text-blue-300"
                 }`}
               >
                 About
@@ -168,10 +168,10 @@ const Navbar = () => {
                 href="/service"
                 className={`text-lg xl:text-[22px] font-semibold transition-colors duration-300 ${
                   isActiveLink("/service")
-                    ? "text-blue-700 dark:text-[gold]"
+                    ? "text-blue-700 dark:text-blue-500"
                     : isScrolled
-                    ? "text-gray-700 dark:text-white hover:text-yellow-200"
-                    : "text-black dark:text-white hover:text-yellow-200"
+                    ? "text-gray-700 dark:text-white hover:text-blue-300"
+                    : "text-black dark:text-white hover:text-blue-300"
                 }`}
               >
                 Service
@@ -180,10 +180,10 @@ const Navbar = () => {
                 href="/testimonials"
                 className={`text-lg xl:text-[22px] font-semibold transition-colors duration-300 ${
                   isActiveLink("/testimonials")
-                    ? "text-blue-700 dark:text-[gold]"
+                    ? "text-blue-700 dark:text-blue-500"
                     : isScrolled
-                    ? "text-gray-700 dark:text-white hover:text-yellow-200"
-                    : "text-black dark:text-white hover:text-yellow-200"
+                    ? "text-gray-700 dark:text-white hover:text-blue-300"
+                    : "text-black dark:text-white hover:text-blue-300"
                 }`}
               >
                 Testimonials
@@ -192,10 +192,10 @@ const Navbar = () => {
                 href="/faqs"
                 className={`text-lg xl:text-[22px] font-semibold transition-colors duration-300 ${
                   isActiveLink("/faqs")
-                    ? "text-blue-700 dark:text-[gold]"
+                    ? "text-blue-700 dark:text-blue-500"
                     : isScrolled
-                    ? "text-gray-700 dark:text-white hover:text-yellow-200"
-                    : "text-black dark:text-white hover:text-yellow-200"
+                    ? "text-gray-700 dark:text-white hover:text-blue-300"
+                    : "text-black dark:text-white hover:text-blue-300"
                 }`}
               >
                 FAQs
@@ -204,10 +204,10 @@ const Navbar = () => {
                 <button
                   className={`text-lg xl:text-[22px] ease-in-out duration-300 font-semibold flex items-center transition-colors ${
                     isPagesActive()
-                      ? "text-blue-700 dark:text-[gold]"
+                      ? "text-blue-700 dark:text-blue-500"
                       : isScrolled
-                      ? "text-gray-700 dark:text-white hover:text-yellow-200"
-                      : "text-black dark:text-white hover:text-yellow-200"
+                      ? "text-gray-700 dark:text-white hover:text-blue-300"
+                      : "text-black dark:text-white hover:text-blue-300"
                   }`}
                 >
                   Pages <ChevronDown className="ml-1 w-4 h-4 xl:w-5 xl:h-5" />
@@ -260,10 +260,10 @@ const Navbar = () => {
                 href="/contact-us"
                 className={`text-lg xl:text-[22px] font-semibold transition-colors duration-300 ${
                   isActiveLink("/contact-us")
-                    ? "text-blue-700 dark:text-[gold]"
+                    ? "text-blue-700 dark:text-blue-500"
                     : isScrolled
-                    ? "text-gray-700 dark:text-white hover:text-yellow-200"
-                    : "text-black dark:text-white hover:text-yellow-200"
+                    ? "text-gray-700 dark:text-white hover:text-blue-300"
+                    : "text-black dark:text-white hover:text-blue-300"
                 }`}
               >
                 Contact
@@ -301,10 +301,10 @@ const Navbar = () => {
                 href="/"
                 className={`text-xl font-semibold transition-colors duration-300 ${
                   isActiveLink("/")
-                    ? "text-blue-700 dark:text-[gold]"
+                    ? "text-blue-700 dark:text-blue-500"
                     : isScrolled
-                    ? "text-gray-900 dark:text-white hover:text-yellow-200"
-                    : "text-[gold] hover:text-yellow-200"
+                    ? "text-gray-900 dark:text-white hover:text-blue-200"
+                    : "text-[gold] hover:text-yellblue"
                 }`}
               >
                 Home
@@ -313,10 +313,10 @@ const Navbar = () => {
                 href="/about"
                 className={`text-xl font-semibold transition-colors duration-300 ${
                   isActiveLink("/about")
-                    ? "text-blue-700 dark:text-[gold]"
+                    ? "text-blue-700 dark:text-blue-500"
                     : isScrolled
-                    ? "text-gray-900 dark:text-white hover:text-yellow-200"
-                    : "text-white hover:text-yellow-200"
+                    ? "text-gray-900 dark:text-white hover:text-blue-200"
+                    : "text-white hover:text-yellblue"
                 }`}
               >
                 About
@@ -325,10 +325,10 @@ const Navbar = () => {
                 href="/service"
                 className={`text-xl font-semibold transition-colors duration-300 ${
                   isActiveLink("/service")
-                    ? "text-blue-700 dark:text-[gold]"
+                    ? "text-blue-700 dark:text-blue-500"
                     : isScrolled
-                    ? "text-gray-900 dark:text-white hover:text-yellow-200"
-                    : "text-white hover:text-yellow-200"
+                    ? "text-gray-900 dark:text-white hover:text-blue-200"
+                    : "text-white hover:text-yellblue"
                 }`}
               >
                 Service
@@ -337,10 +337,10 @@ const Navbar = () => {
                 href="/testimonials"
                 className={`text-xl font-semibold transition-colors duration-300 ${
                   isActiveLink("/testimonials")
-                    ? "text-blue-700 dark:text-[gold]"
+                    ? "text-blue-700 dark:text-blue-500"
                     : isScrolled
-                    ? "text-gray-900 dark:text-white hover:text-yellow-200"
-                    : "text-white hover:text-yellow-200"
+                    ? "text-gray-900 dark:text-white hover:text-blue-200"
+                    : "text-white hover:text-yellblue"
                 }`}
               >
                 Testimonials
@@ -349,10 +349,10 @@ const Navbar = () => {
                 href="/faqs"
                 className={`text-xl font-semibold transition-colors duration-300 ${
                   isActiveLink("/faqs")
-                    ? "text-blue-700 dark:text-[gold]"
+                    ? "text-blue-700 dark:text-blue-500"
                     : isScrolled
-                    ? "text-gray-900 dark:text-white hover:text-yellow-200"
-                    : "text-white hover:text-yellow-200"
+                    ? "text-gray-900 dark:text-white hover:text-blue-200"
+                    : "text-white hover:text-yellblue"
                 }`}
               >
                 FAQs
@@ -367,10 +367,10 @@ const Navbar = () => {
                   }
                   className={`text-xl font-semibold flex items-center justify-between w-full transition-colors duration-300 ${
                     isPagesActive()
-                      ? "text-blue-700 dark:text-[gold]"
+                      ? "text-blue-700 dark:text-blue-500"
                       : isScrolled
-                      ? "text-gray-900 dark:text-white hover:text-yellow-200"
-                      : "text-white hover:text-yellow-200"
+                      ? "text-gray-900 dark:text-white hover:text-blue-200"
+                      : "text-white hover:text-yellblue"
                   }`}
                 >
                   Pages <ChevronDown className="ml-1 w-5 h-5" />
@@ -426,10 +426,10 @@ const Navbar = () => {
                 href="/contact-us"
                 className={`text-xl font-semibold transition-colors duration-300 ${
                   isActiveLink("/contact-us")
-                    ? "text-blue-700 dark:text-[gold]"
+                    ? "text-blue-700 dark:text-blue-500"
                     : isScrolled
-                    ? "text-gray-900 dark:text-white hover:text-yellow-200"
-                    : "text-white hover:text-yellow-200"
+                    ? "text-gray-900 dark:text-white hover:text-blue-200"
+                    : "text-white hover:text-yellblue"
                 }`}
               >
                 Contact

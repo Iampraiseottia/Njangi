@@ -10,7 +10,7 @@ import AboutUs from "./components/AboutUs";
 import Service from "./components/Service";
 import Testimonials from "./components/Testimonials";
 import Our_Team from "./components/Our_Team";
-import Blog from "./components/Blog";
+import Blog from "./components/Blog"; 
 import Contact from "./components/Contact";
 import FAQs from "./components/FAQs";
 
