@@ -11,7 +11,9 @@ import Link from "next/link";
 
 const Default_Hero = ({ title, firstDescription, MainDescription }) => {
   return (
-    <section className="relative overflow-hidden">
+    <motion.section initial={{ opacity: 0, y: 100 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }} className="relative overflow-hidden">
       {/* Background Image */}
       <div className={`relative h-72 w-full`}>
         <Image
@@ -49,7 +51,7 @@ const Default_Hero = ({ title, firstDescription, MainDescription }) => {
           <span className="text-[gold] font-medium">{MainDescription}</span> 
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
