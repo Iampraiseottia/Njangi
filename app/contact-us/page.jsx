@@ -8,14 +8,13 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar"; 
 import Default_Hero from "../components/Default_Hero";
 import FAQs from "../components/FAQs";
-import Our_Team from "../components/Our_Team";
 import Contact from "../components/Contact";
 
 import globalStyle from "../globals.css";
 
-const OurTeam = () => {
+const Contact_Us = () => {
   const metadata = {
-    title: "Our Team | Njangi Web Application | NJANGIFY",
+    title: "Contact Us| Njangi Web Application | NJANGIFY",
     description:
       "An application created where members join, create, and manage njangi groups with others all over the world.",
   };
@@ -29,7 +28,7 @@ const OurTeam = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll); 
   }, []);
 
   const scrollToTop = () => {
@@ -48,16 +47,18 @@ const OurTeam = () => {
 
       {/* Hero Section */}
       <Default_Hero
-        title="Our Amazing Team"
+        title="Contact Us"
         firstDescription="Home"
-        MainDescription="Our Team"
+        MainDescription="Contact"
       />
 
-     {/* Our Team */}
-      <Our_Team />
 
       {/* Contact */}
       <Contact />
+
+     {/* FAQs */}
+      <FAQs />
+
 
       {/* Footer */}
       <Footer />
@@ -90,4 +91,4 @@ const OurTeam = () => {
   );
 };
 
-export default OurTeam;
+export default Contact_Us;
