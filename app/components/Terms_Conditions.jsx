@@ -9,6 +9,8 @@ import {
   Scale,
 } from "lucide-react";
 
+import Link from "next/link";
+
 const Terms_Conditions = () => {
   const sections = [
     {
@@ -51,7 +53,7 @@ const Terms_Conditions = () => {
       title: "Legal Compliance",
       icon: Scale,
       content:
-        "Users must comply with all applicable local, state, national, and international laws and regulations. NJANGIFY reserves the right to terminate accounts that violate these terms or engage in fraudulent activities.",
+        "Users must comply with all applicable local, state, national, and international laws and regulations. NJANGIFY reserves the right to terminate accounts that violate these terms or engage in fraudulent activities. Users who don't meet up willl end in prison likely",
     },
   ];
 
@@ -146,7 +148,7 @@ const Terms_Conditions = () => {
                 variants={itemVariants}
                 initial={{ opacity: 0, y: 100 }}
                 whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.5 }}  
+                transition={{ duration: 0.5, delay: 0.5 }}
                 className="bg-white dark:bg-gray-800 rounded-2xl p-8 md:p-12 shadow-xl dark:shadow-gray-800 hover:shadow-2xl dark:hover:shadow-gray-700 transition-shadow duration-300 group"
               >
                 <div className="flex flex-col md:flex-row md:items-start gap-6">
@@ -221,13 +223,14 @@ const Terms_Conditions = () => {
             don't hesitate to contact our support team. We're here to help you
             understand your rights and responsibilities.
           </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-50 transition-colors duration-300 shadow-lg"
-          >
-            Contact Support
-          </motion.button>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              href="/contact-us"
+              className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-50 transition-colors duration-300 shadow-lg"
+            >
+              Contact Support
+            </Link>
+          </motion.div>
         </motion.div>
 
         {/* Footer Note */}
