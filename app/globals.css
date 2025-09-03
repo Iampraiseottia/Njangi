@@ -564,7 +564,6 @@ body.dark {
   animation-delay: 2s;
 }
 
-
 /* Footer  */
 
 .footer-links {
@@ -612,11 +611,11 @@ body.dark {
   position: absolute;
   left: -15px;
   top: 50%;
-  transform: translateY(-50%); 
+  transform: translateY(-50%);
   width: 0;
   height: 2px;
   background: gold;
-  transition: width 0.3s ease; 
+  transition: width 0.3s ease;
 }
 
 .footer-link:hover {
@@ -627,4 +626,10 @@ body.dark {
 
 .footer-link:hover::before {
   width: 12px;
+}
+
+/* FAQ */
+.faqImage {
+  border-top-left-radius: 30% !important;
+  border-bottom-right-radius: 30% !important;
 }
