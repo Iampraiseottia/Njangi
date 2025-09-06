@@ -3,6 +3,8 @@
 ## Overview
 NJANGI is a web application that digitizes traditional African rotating savings groups (tontines/njangi). The platform enables users to create, join, and manage community savings groups online while maintaining the cultural and social aspects of traditional savings circles.
 
+## Hosted Link
+[https://njangi-nu.vercel.app/]
 
 ## Key Features
 
