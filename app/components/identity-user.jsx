@@ -85,7 +85,7 @@ const Identity_User = ({ setActiveComponent }) => {
         </h1>
 
         <div className="flex flex-col lg:flex-row justify-between items-center mt-[-50px]">
-          {/* Registration Page 01 Left Section */}
+          {/* Left Section */}
           <motion.div
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -192,7 +192,7 @@ const Identity_User = ({ setActiveComponent }) => {
             </form>
           </motion.div>
 
-          {/* Registration Page 01 Right Section */}
+          {/* Right Section */}
           <motion.div
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ y: 0, opacity: 1 }}

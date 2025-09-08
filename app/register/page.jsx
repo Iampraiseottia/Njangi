@@ -29,6 +29,7 @@ import Metadata from "../components/Metadata";
 import { motion } from "motion/react";
 
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 import facebook from "/public/icons/facebook.png";
 import github from "/public/icons/github.png";
@@ -217,9 +218,9 @@ const Register = () => {
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl bg-transparent border-2 border-blue-600  overflow-hidden rounded-lg wrapper my-8 "
+          className="flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl bg-transparent border-2 border-blue-600  overflow-hidden rounded-lg wrapper my-16 "
         >
-          {/* Registration Page 01 Left Section */}
+          {/* Left Section */}
 
           <motion.div
             initial={{ opacity: 0, y: 100 }}
@@ -569,6 +570,10 @@ const Register = () => {
           </motion.div>
         </motion.section>
       </div>
+
+      {/* Footer  */}
+      <Footer />
+
     </main>
   );
 };

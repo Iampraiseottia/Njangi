@@ -122,7 +122,7 @@ const Survey_User = () => {
         </h1>
 
         <div className="flex flex-col lg:flex-row justify-between items-center mt-[-50px]">
-          {/* Registration Page 01 Left Section */}
+          {/*  Left Section */}
           <motion.div
             initial={{ opacity: 0, y: 100 }}
             viewport={{ once: true, amount: 0.05 }}
@@ -304,7 +304,7 @@ const Survey_User = () => {
             </form>
           </motion.div>
 
-          {/* Registration Page 01 Right Section */}
+          {/*  Right Section */}
           <motion.div
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ y: 0, opacity: 1 }}
