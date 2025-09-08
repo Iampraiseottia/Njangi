@@ -140,7 +140,7 @@ const Login = () => {
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
-        className="flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl bg-transparent border-2 border-[#0ef] overflow-hidden rounded-lg wrapper2 my-8 "
+        className="flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl bg-transparent border-2 border-blue-600  overflow-hidden rounded-lg wrapper2 my-8 "
       >
         {/* Registration Page 01 Left Section */}
 
@@ -170,7 +170,7 @@ const Login = () => {
               >
                 <FontAwesomeIcon
                   icon={faCircleUser}
-                  className="werey2 mr-2 text-[#0ef]"
+                  className="werey2 mr-2 text-blue-600 "
                 />{" "}
                 User Name:
               </label>
@@ -183,16 +183,16 @@ const Login = () => {
                 value={userName}
                 id="userName"
                 placeholder="Your User Name"
-                className={`w-full text-base bg-transparent rounded-xl outline-none border-2 border-[#0ef] py-3 px-4 focus:ring-1  duration-300 placeholder-white
+                className={`w-full text-base bg-transparent rounded-xl outline-none border-2 border-blue-600  py-3 px-4 focus:ring-1  duration-300 placeholder-white
                 ${
                   fields.userName.errors && userName.trim().length >= 5
                     ? "border-green-500 focus:ring-green-500"
-                    : "border-[#0ef] focus:ring-[#0ef]"
+                    : "border-blue-600  focus:ring-blue-600 "
                 } 
                 ${
                   fields.userName.errors && userName.trim().length < 5
                     ? "border-red-500 focus:ring-red-500"
-                    : "border-[#0ef] focus:ring-[#0ef]"
+                    : "border-blue-600  focus:ring-blue-600 "
                 }`}
               />
               <p className="text-[16px] text-red-700 font-bold tracking-wide text-right">
@@ -207,7 +207,7 @@ const Login = () => {
               >
                 <FontAwesomeIcon
                   icon={faLock}
-                  className="werey2 mr-2 text-[#0ef]"
+                  className="werey2 mr-2 text-blue-600 "
                 />{" "}
                 Password:
               </label>
@@ -225,19 +225,19 @@ const Login = () => {
                   ${
                     fields.password.errors && password.trim().length >= 8
                       ? "border-green-500 focus:ring-green-500"
-                      : "border-[#0ef] focus:ring-[#0ef]"
+                      : "border-blue-600  focus:ring-blue-600 "
                   } 
                   ${
                     fields.password.errors && password.trim().length < 8
                       ? "border-red-500 focus:ring-red-500"
-                      : "border-[#0ef] focus:ring-[#0ef]"
+                      : "border-blue-600  focus:ring-blue-600 "
                   }
                     py-3 px-4 focus:ring-1  duration-300 placeholder-white pr-10`}
                 />
                 <button
                   type="button"
                   onClick={togglePasswordVisibility}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[#0ef] hover:text-white"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-blue-600  hover:text-white"
                 >
                   <FontAwesomeIcon
                     icon={showPassword ? faEyeSlash : faEye}
@@ -261,7 +261,7 @@ const Login = () => {
             <p className=" text-white text-right">
               <Link
                 href="/forgot_password"
-                className="  hover:text-[#0ef] mt-[-17px] font-extrabold hover:cursor-pointer hover:underline duration-300"
+                className="  hover:text-blue-600  mt-[-17px] font-extrabold hover:cursor-pointer hover:underline duration-300"
               >
                 Forgot Password
               </Link>
@@ -269,7 +269,7 @@ const Login = () => {
 
             <button
               type="submit"
-              className="login_btn1 mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full hover:from-[#00ffff] hover:via-slate-600 hover:to-[#00ffff]  text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center tracking-wider"
+              className="login_btn1 mt-3 bg-gradient-to-r from-blue-600  via-slate-700 to-blue-600  w-full hover:from-blue-500  hover:via-slate-600 hover:to-blue-500   text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center tracking-wider"
             >
               LOGIN
             </button>
@@ -279,7 +279,7 @@ const Login = () => {
             Don't Yet Have An Account? <br />
             <Link
               href="/register"
-              className="text-[#0ef] font-extrabold hover:cursor-pointer hover:underline duration-300"
+              className="text-blue-600  font-extrabold hover:cursor-pointer hover:underline duration-300"
             >
               REGISTER
             </Link>

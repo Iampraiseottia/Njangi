@@ -78,7 +78,7 @@ const Identity_User = ({ setActiveComponent }) => {
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
-        className="w-full max-w-7xl bg-transparent border-2 border-[#0ef] overflow-hidden rounded-lg wrapper my-8"
+        className="w-full max-w-7xl bg-transparent border-2 border-blue-600  overflow-hidden rounded-lg wrapper my-8"
       >
         <h1 className="text-3xl lg:text-5xl font-extrabold tracking-wider mt-6 pt-9 text-center mb-12">
           Your Unique Identity 🔥
@@ -124,7 +124,7 @@ const Identity_User = ({ setActiveComponent }) => {
                     </button>
                   </div>
                 </div>
-                <div className="w-full text-base bg-transparent h-56 rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300"></div>
+                <div className="w-full text-base bg-transparent h-56 rounded-xl border-2 border-blue-600  py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300"></div>
               </div>{" "}
               <br />
               <div className="flex flex-col gap-3">
@@ -155,7 +155,7 @@ const Identity_User = ({ setActiveComponent }) => {
                     </button>
                   </div>
                 </div>
-                <div className="w-full text-base bg-transparent h-60 rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300"></div>
+                <div className="w-full text-base bg-transparent h-60 rounded-xl border-2 border-blue-600  py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300"></div>
               </div>{" "}
               <br />
               <div className="flex flex-col gap-3">
@@ -186,7 +186,7 @@ const Identity_User = ({ setActiveComponent }) => {
                     </button>
                   </div>
                 </div>
-                <div className="w-full text-base bg-transparent h-60 rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300"></div>
+                <div className="w-full text-base bg-transparent h-60 rounded-xl border-2 border-blue-600  py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300"></div>
               </div>{" "}
               <br />
             </form>
@@ -217,7 +217,7 @@ const Identity_User = ({ setActiveComponent }) => {
                   value={formData.disability_status}
                   onChange={handleInputChange}
                   placeholder="If none , type NO but If YES, Name them "
-                  className="w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white"
+                  className="w-full text-base bg-transparent rounded-xl border-2 border-blue-600  py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300 placeholder-white"
                 />
               </div>
 
@@ -231,7 +231,7 @@ const Identity_User = ({ setActiveComponent }) => {
                 <select
                   name="marital_status"
                   id="marital_status"
-                  className="w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-white bg-slate-800"
+                  className="w-full text-base bg-transparent rounded-xl border-2 border-blue-600  py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300 text-white bg-slate-800"
                   ref={marital_statusRef}
                   value={formData.marital_status}
                   onChange={handleInputChange}
@@ -265,7 +265,7 @@ const Identity_User = ({ setActiveComponent }) => {
                   value={formData.sickness}
                   onChange={handleInputChange}
                   placeholder="If none , type NO but If YES, Name them  "
-                  className="w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white"
+                  className="w-full text-base bg-transparent rounded-xl border-2 border-blue-600  py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300 placeholder-white"
                 />
               </div>
 
@@ -276,14 +276,14 @@ const Identity_User = ({ setActiveComponent }) => {
                 >
                   <FontAwesomeIcon
                     icon={faCircleExclamation}
-                    className="werey2 mr-2 text-[#0ef]"
+                    className="werey2 mr-2 text-blue-600 "
                   />{" "}
                   Are you currently in any debt?
                 </label>
                 <select
                   name="debt_status"
                   id="debt_status"
-                  className="w-full text-base bg-transparent rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 text-white bg-slate-800"
+                  className="w-full text-base bg-transparent rounded-xl border-2 border-blue-600  py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300 text-white bg-slate-800"
                   ref={debt_statusRef}
                   value={formData.debt_status}
                   onChange={handleInputChange}
@@ -316,12 +316,12 @@ const Identity_User = ({ setActiveComponent }) => {
                   id="camera_pic"
                   onChange={handleInputChange}
                   placeholder="Upload Your Birth Certificate"
-                  className="w-full text-base bg-transparent h-52 md:h-80 rounded-xl border-2 border-[#0ef] py-3 px-4 focus:ring-1 focus:ring-[#0ef] focus:outline-none duration-300 placeholder-white"
+                  className="w-full text-base bg-transparent h-52 md:h-80 rounded-xl border-2 border-blue-600  py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300 placeholder-white"
                 />
               </div>
 
               <button
-                className="mt-3 bg-gradient-to-r from-[#0ef] via-slate-700 to-[#0ef] w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center"
+                className="mt-3 bg-gradient-to-r from-blue-600  via-slate-700 to-blue-600  w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center"
                 type="button"
                 onClick={() => setActiveComponent("survey")}
               >

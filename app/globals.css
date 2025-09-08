@@ -63,11 +63,11 @@ body.dark {
 }
 
 .dark .bg-teal-500 {
-  background-color: lightseagreen;
+  background-color: #2563EB;
 }
 
 .dark .text-teal-500 {
-  color: #80cbc4;
+  color: #534ee0;
 }
 
 .dark .bg-purple-100 {
@@ -126,24 +126,24 @@ body.dark {
   background: transparent;
 }
 
-/* Dark Mode End  */
+/* Dark Mode End */
 
 .wrapper {
-  box-shadow: 0 0 25px #0ef;
-  background: linear-gradient(127deg, lightseagreen 49%, transparent 30%);
+  box-shadow: 1px 2px 4px #2563EB;
+  background: linear-gradient(127deg, #2563EB 49%, transparent 30%);
   border-radius: 10px;
 }
 
 .wrapper2 {
-  background: linear-gradient(-135deg, lightseagreen 45%, transparent 30%);
-  box-shadow: 0 0 25px #0ef;
+  background: linear-gradient(-135deg, #2563EB 45%, transparent 30%);
+  box-shadow: 1px 2px 4px #2563EB;
   border-radius: 10px;
 }
 
 .wrapper4 {
-  box-shadow: 0 0 25px #0ef;
+  box-shadow: 1px 2px 4px #2563EB;
   border-radius: 10px;
-}
+} 
 
 .forgot_pass {
   text-align: right !important;
@@ -154,7 +154,7 @@ body.dark {
     background: linear-gradient(
       -135deg,
       transparent 45%,
-      lightseagreen 30%
+      #2563EB 30%
     ) !important;
   }
 
@@ -164,8 +164,8 @@ body.dark {
 }
 
 .wrapper3 {
-  box-shadow: 0 0 25px #0ef;
-  background: linear-gradient(120deg, lightseagreen 49%, transparent 30%);
+  box-shadow: 1px 2px 4px #2563EB;
+  background: linear-gradient(120deg, #2563EB 49%, transparent 30%);
   border-radius: 10px;
 }
 
