@@ -48,15 +48,13 @@ const Register = () => {
 
   const [form, fields] = useForm({
     lastResult,
-
-    // onValidate({ formData }) {
-    //   parseWithZod(formData, {
-    //     schema: register01Schema
-    //   })
-    // },
-
-    // shouldValidate: "onBlur",
-    // shouldRevalidate: "onInput"
+    onValidate({ formData }) {
+      return parseWithZod(formData, {
+        schema: register01Schema,
+      });
+    },
+    shouldValidate: "onBlur",
+    shouldRevalidate: "onInput",
   });
 
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -74,50 +72,157 @@ const Register = () => {
   const [userName, setUserName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  // on-typing validation states
+  const [fieldValidation, setFieldValidation] = useState({
+    fullName: { isValid: null, hasInteracted: false },
+    email: { isValid: null, hasInteracted: false },
+    userName: { isValid: null, hasInteracted: false },
+    phoneNumber: { isValid: null, hasInteracted: false },
+    password: { isValid: null, hasInteracted: false },
+    confirmPassword: { isValid: null, hasInteracted: false },
+  });
 
   const userNameRef = useRef();
-
   const onMouseEnterUserNameRef = () => {
     userNameRef.current.focus();
   };
 
   const passwordRef = useRef();
-
   const onMouseEnterPasswordRef = () => {
     passwordRef.current.focus();
   };
 
   const fullNameRef = useRef();
-
   const onMouseEnterFullNameRef = () => {
     fullNameRef.current.focus();
   };
 
   const emailAddress = useRef();
-
   const onMouseEnterEmailAddress = () => {
     emailAddress.current.focus();
   };
 
   const phoneNumberRef = useRef();
-
   const onMouseEnterPhoneNumberRef = () => {
     phoneNumberRef.current.focus();
   };
 
   const confirmPasswordRef = useRef();
-
   const onMouseEnterConfirmPasswordRef = () => {
     confirmPasswordRef.current.focus();
   };
 
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({
     password: "",
     confirmPassword: "",
   });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  // ON TyPing validation
+  const validateField = (fieldName, value) => {
+  try {
+    switch (fieldName) {
+      case "fullName":
+        register01Schema.shape.fullName.parse(value);
+        return true;
+      case "email":
+        register01Schema.shape.email.parse(value);
+        return true;
+      case "userName":
+        register01Schema.shape.userName.parse(value);
+        return true;
+      case "phoneNumber":
+        // Custom phone number validation to match schema
+        if (!value) return false;
+        
+        const cleaned = value.replace(/[\s-]/g, '');
+        const internationalFormat = /^\+237\d{9}$/;
+        const localFormat = /^\d{9}$/;
+        
+        return internationalFormat.test(cleaned) || localFormat.test(cleaned);
+      case "password":
+        register01Schema.shape.password.parse(value);
+        return true;
+      case "confirmPassword":
+        return value === password && value.length >= 8;
+      default:
+        return false;
+    }
+  } catch (error) {
+    return false;
+  }
+};
+
+  // Get border color class based on validation state
+  const getBorderColor = (fieldName, fieldValue) => {
+    const field = fieldValidation[fieldName];
+
+    if (!field.hasInteracted) {
+      return "dark:border-yellow-100 border-slate-700 focus:ring-slate-800 dark:focus:ring-yellow-100";
+    }
+
+    // If user has interacted, show validation colors
+    if (field.isValid === true) {
+      return "border-green-500 focus:ring-green-500";
+    } else if (field.isValid === false) {
+      return "border-red-500 focus:ring-red-500";
+    }
+
+    return "dark:border-yellow-100 border-slate-700 focus:ring-slate-800 dark:focus:ring-yellow-100";
+  };
+
+  // Input changes with on-typing validation
+  const handleInputChange = (fieldName, value) => {
+    switch (fieldName) {
+      case "fullName":
+        setFullName(value);
+        break;
+      case "email":
+        setEmail(value);
+        break;
+      case "userName":
+        setUserName(value);
+        break;
+      case "phoneNumber":
+        setPhoneNumber(value);
+        break;
+      case "password":
+        setPassword(value);
+        break;
+      case "confirmPassword":
+        setConfirmPassword(value);
+        break;
+    }
+
+    // Validate the field in on-typing
+    const isValid = validateField(fieldName, value);
+
+    setFieldValidation((prev) => ({
+      ...prev,
+      [fieldName]: {
+        isValid: value.length > 0 ? isValid : null,
+        hasInteracted: true,
+      },
+    }));
+
+    // Confirm password Validation
+    if (fieldName === "password" && confirmPassword.length > 0) {
+      const confirmPasswordValid = validateField(
+        "confirmPassword",
+        confirmPassword
+      );
+      setFieldValidation((prev) => ({
+        ...prev,
+        confirmPassword: {
+          isValid: confirmPasswordValid,
+          hasInteracted: prev.confirmPassword.hasInteracted,
+        },
+      }));
+    }
+  };
 
   const validatePassword = (password) => {
     const errors = [];
@@ -178,33 +283,41 @@ const Register = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
-  useEffect(() => {
-    if (formSubmitted) {
-      const isValid =
-        fullName.trim().length >= 6 &&
-        email.includes("@") &&
-        email.includes(".") &&
-        userName.trim().length >= 5 &&
-        phoneNumber.trim().length >= 14 &&
-        password.trim().length >= 8 &&
-        password === confirmPassword &&
-        validatePassword(password).length === 0;
+ useEffect(() => {
+  if (formSubmitted) {
+    const isPhoneValid = () => {
+      if (!phoneNumber) return false;
+      const cleaned = phoneNumber.replace(/[\s-]/g, '');
+      const internationalFormat = /^\+237\d{9}$/;
+      const localFormat = /^\d{9}$/;
+      return internationalFormat.test(cleaned) || localFormat.test(cleaned);
+    };
 
-      if (isValid) {
-        setFormIsValid(true);
-        router.push("/dashboard");
-      }
+    const isValid =
+      fullName.trim().length >= 6 &&
+      email.includes("@") &&
+      email.includes(".") &&
+      userName.trim().length >= 5 &&
+      isPhoneValid() &&
+      password.trim().length >= 8 &&
+      password === confirmPassword &&
+      validatePassword(password).length === 0;
+
+    if (isValid) {
+      setFormIsValid(true);
+      router.push("/dashboard");
     }
-  }, [
-    formSubmitted,
-    fullName,
-    email,
-    userName,
-    phoneNumber,
-    password,
-    confirmPassword,
-    router,
-  ]);
+  }
+}, [
+  formSubmitted,
+  fullName,
+  email,
+  userName,
+  phoneNumber,
+  password,
+  confirmPassword,
+  router,
+]);
 
   return (
     <main>
@@ -221,7 +334,6 @@ const Register = () => {
           className="flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl bg-transparent border-2 border-blue-600  overflow-hidden rounded-lg wrapper my-16 "
         >
           {/* Left Section */}
-
           <motion.div
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -314,18 +426,13 @@ const Register = () => {
                   placeholder="Your Full Name, minimum of 2 names"
                   key={fields.fullName.key}
                   value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                  className={`w-full text-base bg-transparent rounded-xl border-2 outline-none py-3 px-4 focus:ring-1  focus:outline-none duration-300 dark:placeholder-gray-300 placeholder-slate-400 text-black dark:text-white
-                ${
-                  fields.fullName.errors && fullName.trim().length >= 6
-                    ? "border-green-500 focus:ring-green-500"
-                    : "dark:border-yellow-100 border-slate-700 focus:ring-slate-800 dark:focus:ring-yellow-100"
-                } 
-                ${
-                  fields.fullName.errors && fullName.trim().length < 6
-                    ? " dark:border-yellow-100 border-slate-700 focus:ring-slate-800 dark:focus:ring-yellow-100 "
-                    : "border-red-500 focus:ring-red-500"
-                }`}
+                  onChange={(e) =>
+                    handleInputChange("fullName", e.target.value)
+                  }
+                  className={`w-full text-base bg-transparent rounded-xl border-2 outline-none py-3 px-4 focus:ring-1  focus:outline-none duration-300 dark:placeholder-gray-300 placeholder-slate-400 text-black dark:text-white ${getBorderColor(
+                    "fullName",
+                    fullName
+                  )}`}
                 />
                 <p className="text-[16px] text-red-500 font-bold tracking-wide text-right">
                   {fields.fullName.errors}
@@ -345,23 +452,16 @@ const Register = () => {
                   onMouseEnter={onMouseEnterEmailAddress}
                   type="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => handleInputChange("email", e.target.value)}
                   defaultValue={fields.email.initialValue}
                   name={fields.email.name}
                   key={fields.email.key}
                   id="email"
                   placeholder="Your Email Address"
-                  className={`w-full text-base bg-transparent rounded-xl outline-none border-2 py-3 px-4 focus:ring-1  focus:outline-none duration-300 dark:placeholder-gray-400  
-                ${
-                  fields.email.errors && email.trim().length >= 7
-                    ? "border-green-500 focus:ring-green-500"
-                    : "dark:border-yellow-100 border-slate-700 focus:ring-slate-800 dark:focus:ring-yellow-100 "
-                } 
-                ${
-                  fields.email.errors && email.trim().length < 7
-                    ? "border-red-500 focus:ring-red-500"
-                    : "dark:border-yellow-100 border-slate-700 focus:ring-slate-800 dark:focus:ring-yellow-100 "
-                }`}
+                  className={`w-full text-base bg-transparent rounded-xl outline-none border-2 py-3 px-4 focus:ring-1  focus:outline-none duration-300 dark:placeholder-gray-400 ${getBorderColor(
+                    "email",
+                    email
+                  )}`}
                 />
                 <p className="text-[16px] text-red-500 font-bold tracking-wide text-right">
                   {fields.email.errors}
@@ -379,23 +479,16 @@ const Register = () => {
                 <input
                   type="text"
                   name={fields.userName.name}
-                  onChange={(e) => setUserName(e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange("userName", e.target.value)
+                  }
                   value={userName}
                   ref={userNameRef}
                   onMouseEnter={onMouseEnterUserNameRef}
                   id="userName"
                   placeholder="Your User Name e.g John123"
-                  className={`w-full text-base bg-transparent rounded-xl border-2 outline-none py-3 px-4 focus:ring-1 focus:outline-none duration-300 dark:placeholder-gray-400  
-                ${
-                  fields.userName.errors && userName.trim().length >= 5
-                    ? "border-green-500 focus:ring-green-500"
-                    : "dark:border-yellow-100 border-slate-700 focus:ring-slate-800 dark:focus:ring-yellow-100 "
-                } 
-                ${
-                  fields.userName.errors && userName.trim().length < 5
-                    ? "border-red-500 focus:ring-red-500"
-                    : "dark:border-yellow-100 border-slate-700 focus:ring-slate-800 dark:focus:ring-yellow-100 "
-                }`}
+                  className={`w-full text-base bg-transparent rounded-xl border-2 outline-none py-3 px-4 focus:ring-1 focus:outline-none duration-300 dark:placeholder-gray-400 
+                  ${getBorderColor("userName", userName)}`}
                 />
                 <p className="text-[16px] text-red-500 font-bold tracking-wide text-right">
                   {fields.userName.errors}
@@ -411,27 +504,22 @@ const Register = () => {
                   Phone Number:
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   ref={phoneNumberRef}
                   onMouseEnter={onMouseEnterPhoneNumberRef}
                   name={fields.phoneNumber.name}
                   key={fields.phoneNumber.key}
                   defaultValue={fields.phoneNumber.initialValue}
                   value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange("phoneNumber", e.target.value)
+                  }
                   id="phoneNumber"
-                  placeholder="Your Phone Number eg +237 688296810"
-                  className={`w-full text-base bg-transparent rounded-xl border-2 outline-none py-3 px-4 focus:outline-none duration-300 dark:placeholder-gray-400 
-                ${
-                  fields.phoneNumber.errors && phoneNumber.trim().length >= 14
-                    ? "border-green-500 focus:ring-green-500"
-                    : "dark:border-yellow-100 border-slate-700 focus:ring-slate-800 dark:focus:ring-yellow-100 "
-                } 
-                ${
-                  fields.phoneNumber.errors && phoneNumber.trim().length < 14
-                    ? "border-red-500 focus:ring-red-500"
-                    : "dark:border-yellow-100 border-slate-700 focus:ring-slate-800 dark:focus:ring-yellow-100 "
-                }`}
+                  placeholder="Your Phone Number eg +237688296810"
+                  className={`w-full text-base bg-transparent rounded-xl border-2 outline-none py-3 px-4 focus:outline-none duration-300 dark:placeholder-gray-400 ${getBorderColor(
+                    "phoneNumber",
+                    phoneNumber
+                  )}`}
                 />
                 <p className="text-[16px] text-red-500 font-bold tracking-wide text-right">
                   {fields.phoneNumber.errors}
@@ -452,22 +540,16 @@ const Register = () => {
                     ref={passwordRef}
                     name="password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("password", e.target.value)
+                    }
                     onMouseEnter={onMouseEnterPasswordRef}
                     id="password"
                     placeholder="Your Password"
-                    className={`w-full text-base bg-transparent outline-none focus:outline-none rounded-xl border-2 
-                  ${
-                    fields.password.errors && password.trim().length >= 8
-                      ? "border-green-500 focus:ring-green-500"
-                      : "dark:border-yellow-100 border-slate-700 focus:ring-slate-800 dark:focus:ring-yellow-100 "
-                  } 
-                  ${
-                    fields.password.errors && password.trim().length < 8
-                      ? "border-red-500 focus:ring-red-500"
-                      : "dark:border-yellow-100 border-slate-700 focus:ring-slate-800 dark:focus:ring-yellow-100 "
-                  }
-                    py-3 px-4 focus:ring-1  duration-300 dark:placeholder-gray-300 pr-10`}
+                    className={`w-full text-base bg-transparent outline-none focus:outline-none rounded-xl border-2 py-3 px-4 focus:ring-1  duration-300 dark:placeholder-gray-300 pr-10 ${getBorderColor(
+                      "password",
+                      password
+                    )}`}
                   />
                   <button
                     type="button"
@@ -507,24 +589,16 @@ const Register = () => {
                     ref={confirmPasswordRef}
                     name="confirm_password"
                     value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("confirmPassword", e.target.value)
+                    }
                     onMouseEnter={onMouseEnterConfirmPasswordRef}
                     id="confirm_password"
                     placeholder="Confirm Your New Password"
-                    className={`w-full text-base bg-transparent rounded-xl border-2 
-                  ${
-                    fields.confirmPassword.errors &&
-                    confirmPassword.trim().length >= 8
-                      ? "border-green-500 focus:ring-green-500"
-                      : "dark:border-yellow-100 border-slate-700 focus:ring-slate-800 dark:focus:ring-yellow-100 "
-                  } 
-                  ${
-                    fields.confirmPassword.errors &&
-                    confirmPassword.trim().length < 8
-                      ? "border-red-500 focus:ring-red-500"
-                      : "dark:border-yellow-100 border-slate-700 focus:ring-slate-800 dark:focus:ring-yellow-100 "
-                  }
-                  py-3 px-4 focus:ring-1 focus:outline-none duration-300 dark:placeholder-gray-300 pr-10`}
+                    className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 dark:placeholder-gray-300 pr-10 ${getBorderColor(
+                      "confirmPassword", 
+                      confirmPassword
+                    )}`}
                   />
                   <button
                     type="button"
@@ -573,7 +647,6 @@ const Register = () => {
 
       {/* Footer  */}
       <Footer />
-
     </main>
   );
 };

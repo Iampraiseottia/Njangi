@@ -135,7 +135,7 @@ const Income_User = ({ setActiveComponent }) => {
         transition={{ duration: 0.5, delay: 0.5 }}
         className="flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl bg-transparent border-2 border-blue-600  overflow-hidden rounded-lg wrapper my-8 "
       >
-        {/* Registration Page 01 Left Section */}
+        {/* Left Section */}
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -158,7 +158,7 @@ const Income_User = ({ setActiveComponent }) => {
           <p className=" text-[180px]">💸</p>
         </motion.div>
 
-        {/* Registration Page 01 Right Section */}
+        {/*  Right Section */}
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ y: 0, opacity: 1 }}
