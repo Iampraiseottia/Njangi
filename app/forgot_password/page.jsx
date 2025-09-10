@@ -13,6 +13,12 @@ import Metadata from "../components/Metadata";
 
 import { motion } from "motion/react";
 
+
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import { Mail } from "lucide-react";
+
+
 const Forgot_Password = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -52,14 +58,18 @@ const Forgot_Password = () => {
   };
 
   return (
-    <main className="flex justify-center items-center w-full min-h-screen bg-gray-800 text-white p-4">
+ <main>
       <Metadata title={metadata.title} description={metadata.description} />
 
-      <motion.section
-        initial={{ opacity: 0, y: 100 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
-        className="flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl bg-transparent border-2 border-blue-600  overflow-hidden rounded-lg wrapper my-8"
+      {/* Navbar */}
+      <Navbar />
+
+      <div className="flex justify-center items-center w-full min-h-[70vh] dark:bg-gray-700 dark:text-white bg-gray-100 text-gray-900 p-4">
+        <motion.section
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl bg-transparent border-2 border-blue-600  overflow-hidden rounded-lg wrapper my-16"
       >
         {/* Left Section */}
         <motion.div
@@ -68,15 +78,15 @@ const Forgot_Password = () => {
           transition={{ duration: 0.7, delay: 0.7 }}
           className="w-full lg:w-[45%] p-6 lg:p-12 xl:p-20"
         >
-          <h1 className="text-4xl lg:text-4xl font-extrabold tracking-wide mt-6 lg:mt-10">
+          <h1 className="text-4xl lg:text-4xl font-extrabold tracking-wide mt-6 lg:mt-10 text-white ">
             Forgot Password?
           </h1>
           <br />
-          <p className="text-base lg:text-lg mb-5">
+          <p className="text-base lg:text-lg mb-5 text-white">
             No worries, enter your email address and regain access to your
             account so as to continue enjoying the amazing features of NJANGIFY
           </p>
-          <h1 className="font-extrabold text-2xl lg:text-3xl tracking-wider">
+          <h1 className="font-extrabold text-2xl lg:text-3xl tracking-wider text-white">
             OR
           </h1>{" "}
           <br />
@@ -111,8 +121,9 @@ const Forgot_Password = () => {
             <div className="ease-in-out transition-all w-full">
               <label
                 htmlFor="email"
-                className="text-left text-[22px] font-medium tracking-wider"
+                className="text-left text-[22px] font-bold tracking-wider flex items-center"
               >
+                <Mail className="text-[gold] mr-3 ml-2 " />
                 Email Address
               </label>
 
@@ -127,7 +138,7 @@ const Forgot_Password = () => {
                   placeholder="Enter Your Email Address"
                   className={`w-full text-base bg-transparent rounded-xl border-2 ${
                     error ? "border-red-500" : "border-blue-600 "
-                  } py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300 placeholder-white`}
+                  } py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300 placeholder-gray-500 dark:placeholder-white`}
                 />
               </div>
               {error && (
@@ -149,13 +160,17 @@ const Forgot_Password = () => {
             Go Back to{" "}
             <Link
               href="/login"
-              className="text-blue-600  ml-1 font-extrabold hover:cursor-pointer hover:underline duration-300"
+              className="text-blue-600 ml-1 font-extrabold hover:cursor-pointer hover:underline duration-300 dark:text-gray-300 hover:text-blue-500"
             >
               LOGIN
             </Link>
           </p>
         </motion.div>
       </motion.section>
+       </div>
+
+      {/* Footer  */}
+      <Footer />
     </main>
   );
 };

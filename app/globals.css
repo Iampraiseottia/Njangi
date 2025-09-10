@@ -129,14 +129,14 @@ body.dark {
 /* Dark Mode End */
 
 .wrapper {
-  box-shadow: 1px 2px 4px #2563EB;
+  box-shadow: 1px 2px 3px #2563EB;
   background: linear-gradient(127deg, #2563EB 49%, transparent 30%);
   border-radius: 10px;
 }
 
 .wrapper2 {
   background: linear-gradient(-135deg, #2563EB 45%, transparent 30%);
-  box-shadow: 1px 2px 4px #2563EB;
+  box-shadow: 1px 2px 3px #2563EB;
   border-radius: 10px;
 }
 
@@ -164,7 +164,7 @@ body.dark {
 }
 
 .wrapper3 {
-  box-shadow: 1px 2px 4px #2563EB;
+  box-shadow: 1px 2px 3px #2563EB;
   background: linear-gradient(120deg, #2563EB 49%, transparent 30%);
   border-radius: 10px;
 }
