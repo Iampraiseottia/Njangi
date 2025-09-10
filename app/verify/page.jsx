@@ -89,7 +89,7 @@ const Verify = () => {
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="sm:w-full md:w-[80%] lg:w-[40%] max-w-7xl bg-transparent border-[1px] border-blue-600  overflow-hidden rounded-lg wrapper4 my-8 bg-slate-300 dark:bg-slate-600 "
+          className="sm:w-full md:w-[80%] lg:w-[40%] max-w-7xl bg-transparent border-2 border-blue-600 overflow-hidden rounded-lg wrapper4 my-8 bg-slate-300 "
         >
           <div className="w-full lg:w-[100%] p-6 lg:p-9">
             <motion.h1
@@ -156,7 +156,7 @@ const Verify = () => {
                         codeErrors[index]
                           ? "border-red-500"
                           : "border-blue-600 "
-                      } py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300 placeholder-white dark:placeholder-slate-400 ${
+                      } py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300 placeholder-slate-500 dark:placeholder-slate-400 ${
                         index < 3 ? "mr-3" : ""
                       }`}
                     />
