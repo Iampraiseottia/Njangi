@@ -18,15 +18,15 @@ import Footer from "../components/Footer";
 const Verify = () => {
   const router = useRouter();
   const [error, setError] = useState("");
-  const [codeValues, setCodeValues] = useState(["", "", "", ""]);
-  const [codeErrors, setCodeErrors] = useState([false, false, false, false]);
+  const [codeValues, setCodeValues] = useState(["", "", "", "", "", ""]);
+  const [codeErrors, setCodeErrors] = useState([false, false, false, false, false, false]);
 
   const metadata = {
     title: "Verify | Njangi Web Application",
     description: "Enter code sent to gain access to your account",
   };
 
-  const codeRefs = [useRef(), useRef(), useRef(), useRef()];
+  const codeRefs = [useRef(), useRef(), useRef(), useRef(), useRef(), useRef()];
 
   const onMouseEnterCode = (index) => {
     codeRefs[index].current.focus();
@@ -49,7 +49,7 @@ const Verify = () => {
     newCodeErrors[index] = false;
     setCodeErrors(newCodeErrors);
 
-    if (value.length === 1 && index < 3) {
+    if (value.length === 1 && index < 5) {
       codeRefs[index + 1].current.focus();
     }
   };
@@ -66,7 +66,7 @@ const Verify = () => {
     const isEmpty = codeValues.some((val) => val === "");
 
     if (isEmpty) {
-      setError("Please enter all 4 digits of the verification code");
+      setError("Please enter all 6 digits of the verification code");
 
       const newCodeErrors = codeValues.map((val) => val === "");
       setCodeErrors(newCodeErrors);
@@ -89,7 +89,7 @@ const Verify = () => {
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="sm:w-full md:w-[80%] lg:w-[40%] max-w-7xl bg-transparent border-2 border-blue-600 overflow-hidden rounded-lg wrapper4 my-8 bg-slate-300 "
+          className="sm:w-full md:w-[80%] lg:w-[50%] max-w-7xl bg-transparent border-2 border-blue-600 overflow-hidden rounded-lg wrapper4 my-8 bg-slate-300 "
         >
           <div className="w-full lg:w-[100%] p-6 lg:p-9">
             <motion.h1
@@ -139,7 +139,7 @@ const Verify = () => {
                   transition={{ duration: 0.7, delay: 0.7 }}
                   className="mt-6 mb-1 flex flex-row justify-center items-center"
                 >
-                  {[0, 1, 2, 3].map((index) => (
+                  {[0, 1, 2, 3, 4, 5].map((index) => (
                     <input
                       key={index}
                       type="text"
@@ -157,7 +157,7 @@ const Verify = () => {
                           ? "border-red-500"
                           : "border-blue-600 "
                       } py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300 placeholder-slate-500 dark:placeholder-slate-400 ${
-                        index < 3 ? "mr-3" : ""
+                        index < 5 ? "mr-3" : ""
                       }`}
                     />
                   ))}

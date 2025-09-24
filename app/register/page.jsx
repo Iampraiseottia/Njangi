@@ -11,13 +11,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faLock,
-  faCircleUser,
-  faPhoneVolume,
-  faEyeSlash,
-  faEye,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
 
 import { CreateUser01Page } from "../actions";
 import { useForm } from "@conform-to/react";
@@ -123,55 +117,52 @@ const Register = () => {
 
   // ON TyPing validation
   const validateField = (fieldName, value) => {
-  try {
-    switch (fieldName) {
-      case "fullName":
-        register01Schema.shape.fullName.parse(value);
-        return true;
-      case "email":
-        register01Schema.shape.email.parse(value);
-        return true;
-      case "userName":
-        register01Schema.shape.userName.parse(value);
-        return true;
-      case "phoneNumber":
-        // Custom phone number validation to match schema
-        if (!value) return false;
-        
-        const cleaned = value.replace(/[\s-]/g, '');
-        const internationalFormat = /^\+237\d{9}$/;
-        const localFormat = /^\d{9}$/;
-        
-        return internationalFormat.test(cleaned) || localFormat.test(cleaned);
-      case "password":
-        register01Schema.shape.password.parse(value);
-        return true;
-      case "confirmPassword":
-        return value === password && value.length >= 8;
-      default:
-        return false;
+    try {
+      switch (fieldName) {
+        case "fullName":
+          register01Schema.shape.fullName.parse(value);
+          return true;
+        case "email":
+          register01Schema.shape.email.parse(value);
+          return true;
+        case "userName":
+          register01Schema.shape.userName.parse(value);
+          return true;
+        case "phoneNumber":
+          if (!value) return false;
+
+          const cleaned = value.replace(/[\s-]/g, "");
+          const cmrFormat = /^\d{9}$/;
+
+          return cmrFormat.test(cleaned);
+        case "password":
+          register01Schema.shape.password.parse(value);
+          return true;
+        case "confirmPassword":
+          return value === password && value.length >= 8;
+        default:
+          return false;
+      }
+    } catch (error) {
+      return false;
     }
-  } catch (error) {
-    return false;
-  }
-};
+  };
 
   // Get border color class based on validation state
   const getBorderColor = (fieldName, fieldValue) => {
     const field = fieldValidation[fieldName];
 
     if (!field.hasInteracted) {
-      return "dark:border-yellow-100 border-slate-700 focus:ring-slate-800 dark:focus:ring-yellow-100";
+      return "dark:border-[#d1ce89] border-slate-700 focus:ring-slate-800 dark:focus:ring-[#d1ce89]";
     }
 
-    // If user has interacted, show validation colors
     if (field.isValid === true) {
       return "border-green-500 focus:ring-green-500";
     } else if (field.isValid === false) {
       return "border-red-500 focus:ring-red-500";
     }
 
-    return "dark:border-yellow-100 border-slate-700 focus:ring-slate-800 dark:focus:ring-yellow-100";
+    return "dark:border-[#d1ce89] border-slate-700 focus:ring-slate-800 dark:focus:ring-[#d1ce89]";
   };
 
   // Input changes with on-typing validation
@@ -283,41 +274,40 @@ const Register = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
- useEffect(() => {
-  if (formSubmitted) {
-    const isPhoneValid = () => {
-      if (!phoneNumber) return false;
-      const cleaned = phoneNumber.replace(/[\s-]/g, '');
-      const internationalFormat = /^\+237\d{9}$/;
-      const localFormat = /^\d{9}$/;
-      return internationalFormat.test(cleaned) || localFormat.test(cleaned);
-    };
+  useEffect(() => {
+    if (formSubmitted) {
+      const isPhoneValid = () => {
+        if (!phoneNumber) return false;
+        const cleaned = phoneNumber.replace(/[\s-]/g, "");
+        const cmrFormat = /^\d{9}$/;
+        return cmrFormat.test(cleaned);
+      };
 
-    const isValid =
-      fullName.trim().length >= 6 &&
-      email.includes("@") &&
-      email.includes(".") &&
-      userName.trim().length >= 5 &&
-      isPhoneValid() &&
-      password.trim().length >= 8 &&
-      password === confirmPassword &&
-      validatePassword(password).length === 0;
+      const isValid =
+        fullName.trim().length >= 6 &&
+        email.includes("@") &&
+        email.includes(".") &&
+        userName.trim().length >= 5 &&
+        isPhoneValid() &&
+        password.trim().length >= 8 &&
+        password === confirmPassword &&
+        validatePassword(password).length === 0;
 
-    if (isValid) {
-      setFormIsValid(true);
-      router.push("/dashboard");
+      if (isValid) {
+        setFormIsValid(true);
+        router.push("/verify-email");
+      }
     }
-  }
-}, [
-  formSubmitted,
-  fullName,
-  email,
-  userName,
-  phoneNumber,
-  password,
-  confirmPassword,
-  router,
-]);
+  }, [
+    formSubmitted,
+    fullName,
+    email,
+    userName,
+    phoneNumber,
+    password,
+    confirmPassword,
+    router,
+  ]);
 
   return (
     <main>
@@ -411,7 +401,7 @@ const Register = () => {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="fullName"
-                  className="font-semibold text-xl tracking-wide flex items-center"
+                  className="font-semibold text-xl tracking-wide flex items-center text-white"
                 >
                   <UserIcon className="w-10 h-6 mr-2 text-[gold] font-extrabold " />{" "}
                   Full Name:
@@ -429,7 +419,7 @@ const Register = () => {
                   onChange={(e) =>
                     handleInputChange("fullName", e.target.value)
                   }
-                  className={`w-full text-base bg-transparent rounded-xl border-2 outline-none py-3 px-4 focus:ring-1  focus:outline-none duration-300 dark:placeholder-gray-300 placeholder-slate-400 text-black dark:text-white ${getBorderColor(
+                  className={`w-full text-base bg-transparent rounded-xl border-2 outline-none py-3 px-4 focus:ring-1  focus:outline-none duration-300 dark:placeholder-gray-300 placeholder-slate-400 text-white dark:text-white ${getBorderColor(
                     "fullName",
                     fullName
                   )}`}
@@ -442,7 +432,7 @@ const Register = () => {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="email"
-                  className="font-semibold text-lg tracking-wide flex items-center"
+                  className="font-semibold text-lg tracking-wide flex items-center text-white"
                 >
                   <Mail className="w-10 h-6 mr-2 text-[gold] font-extrabold " />{" "}
                   Email Address:
@@ -458,7 +448,7 @@ const Register = () => {
                   key={fields.email.key}
                   id="email"
                   placeholder="Your Email Address"
-                  className={`w-full text-base bg-transparent rounded-xl outline-none border-2 py-3 px-4 focus:ring-1  focus:outline-none duration-300 dark:placeholder-gray-400 ${getBorderColor(
+                  className={`w-full text-base bg-transparent rounded-xl outline-none border-2 py-3 px-4 focus:ring-1  focus:outline-none duration-300 dark:placeholder-gray-400 text-white ${getBorderColor(
                     "email",
                     email
                   )}`}
@@ -471,7 +461,7 @@ const Register = () => {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="userName"
-                  className="font-semibold text-lg tracking-wide flex items-center"
+                  className="font-semibold text-lg tracking-wide flex items-center text-gray-800 dark:text-white "
                 >
                   <UserCircle className="w-10 h-6 mr-2 text-[gold] font-extrabold " />{" "}
                   User Name:
@@ -487,7 +477,7 @@ const Register = () => {
                   onMouseEnter={onMouseEnterUserNameRef}
                   id="userName"
                   placeholder="Your User Name e.g John123"
-                  className={`w-full text-base bg-transparent rounded-xl border-2 outline-none py-3 px-4 focus:ring-1 focus:outline-none duration-300 dark:placeholder-gray-400 
+                  className={`w-full text-base bg-transparent rounded-xl border-2 outline-none py-3 px-4 focus:ring-1 focus:outline-none duration-300 dark:placeholder-gray-400 text-gray-300 
                   ${getBorderColor("userName", userName)}`}
                 />
                 <p className="text-[16px] text-red-500 font-bold tracking-wide text-right">
@@ -515,7 +505,7 @@ const Register = () => {
                     handleInputChange("phoneNumber", e.target.value)
                   }
                   id="phoneNumber"
-                  placeholder="Your Phone Number eg +237688296810"
+                  placeholder="Your Phone Number eg 688296810"
                   className={`w-full text-base bg-transparent rounded-xl border-2 outline-none py-3 px-4 focus:outline-none duration-300 dark:placeholder-gray-400 ${getBorderColor(
                     "phoneNumber",
                     phoneNumber
@@ -596,7 +586,7 @@ const Register = () => {
                     id="confirm_password"
                     placeholder="Confirm Your New Password"
                     className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 dark:placeholder-gray-300 pr-10 ${getBorderColor(
-                      "confirmPassword", 
+                      "confirmPassword",
                       confirmPassword
                     )}`}
                   />
@@ -626,7 +616,7 @@ const Register = () => {
 
               <button
                 type="submit"
-                className="mt-3 bg-gradient-to-r from-blue-600  via-yellow-700 to-blue-600  w-full hover:from-blue-500  hover:via-yellow-600 hover:to-blue-500   text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center tracking-wider"
+                className="mt-3 bg-gradient-to-r from-blue-600  via-[#8c8803] to-blue-600  w-full hover:from-blue-500  hover:via-[#c1bb21] hover:to-blue-500   text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center tracking-wider"
               >
                 REGISTER
               </button>

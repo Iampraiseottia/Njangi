@@ -235,7 +235,7 @@ const Login = () => {
                 >
                   <FontAwesomeIcon
                     icon={faCircleUser}
-                    className="werey2 mr-2 text-blue-600 "
+                    className="werey2 mr-2 text-white mt-1"
                   />{" "}
                   User Name:
                 </label>
@@ -264,7 +264,7 @@ const Login = () => {
                 >
                   <FontAwesomeIcon
                     icon={faLock}
-                    className="werey2 mr-2 text-blue-600 "
+                    className="werey2 mr-2 text-white mt-1"
                   />{" "}
                   Password:
                 </label>
@@ -307,7 +307,7 @@ const Login = () => {
               <p className="text-black dark:text-white text-right">
                 <Link
                   href="/forgot_password"
-                  className="hover:text-blue-600 mt-[-17px] font-extrabold hover:cursor-pointer hover:underline duration-300"
+                  className="hover:text-blue-400 mt-[-17px] font-extrabold hover:cursor-pointer hover:underline duration-300"
                 >
                   Forgot Password
                 </Link>
@@ -315,7 +315,7 @@ const Login = () => {
 
               <button
                 type="submit"
-                className="mt-3 bg-gradient-to-r from-blue-600 via-yellow-700 to-blue-600 w-full hover:from-blue-500 hover:via-yellow-600 hover:to-blue-500 text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center tracking-wider"
+                className="mt-3 bg-gradient-to-r from-blue-600 via-[#8c8803] to-blue-600 w-full hover:from-blue-500 hover:via-[#c1bb21] hover:to-blue-500 text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center tracking-wider"
               >
                 LOGIN
               </button>
@@ -325,7 +325,7 @@ const Login = () => {
               Don't Yet Have An Account? <br />
               <Link
                 href="/register"
-                className="text-blue-600 font-extrabold hover:cursor-pointer hover:underline duration-300"
+                className="text-blue-600 font-extrabold hover:cursor-pointer hover:underline duration-300 dark:text-white" 
               >
                 REGISTER
               </Link>

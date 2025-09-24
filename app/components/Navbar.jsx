@@ -132,7 +132,7 @@ const Navbar = () => {
               <button
                 onClick={toggleMobileMenu}
                 className={`p-2 focus:outline-none mr-4 
-                  ${isScrolled ? "text-black dark:text-white" : "text-white"}`}
+                  ${isScrolled ? "text-black dark:text-white" : "text-black dark:text-white"}`}
               >
                 {mobileMenuOpen ? <X size={30} /> : <Menu size={30} />}
               </button>
@@ -293,7 +293,7 @@ const Navbar = () => {
             className={`xl:hidden p-4 z-50 w-full ${
               isScrolled
                 ? "fixed top-16 bg-white dark:bg-gray-900 shadow-lg"
-                : "absolute bg-gray-900"
+                : "absolute dark:bg-gray-900 bg-white text-black dark:text-white"
             }`}
           >
             <div className="flex flex-col space-y-4">
@@ -304,7 +304,7 @@ const Navbar = () => {
                     ? "text-blue-700 dark:text-blue-500"
                     : isScrolled
                     ? "text-gray-900 dark:text-white hover:text-blue-200"
-                    : "text-[gold] hover:text-yellblue"
+                    : "text-black dark:text-white hover:text-[gold]"
                 }`}
               >
                 Home
@@ -312,11 +312,11 @@ const Navbar = () => {
               <Link
                 href="/about"
                 className={`text-xl font-semibold transition-colors duration-300 ${
-                  isActiveLink("/about")
+                  isActiveLink("/about") 
                     ? "text-blue-700 dark:text-blue-500"
                     : isScrolled
                     ? "text-gray-900 dark:text-white hover:text-blue-200"
-                    : "text-white hover:text-yellblue"
+                    : "text-black dark:text-white hover:text-[gold]"
                 }`}
               >
                 About
@@ -328,7 +328,7 @@ const Navbar = () => {
                     ? "text-blue-700 dark:text-blue-500"
                     : isScrolled
                     ? "text-gray-900 dark:text-white hover:text-blue-200"
-                    : "text-white hover:text-yellblue"
+                    : "text-black dark:text-white hover:text-[gold]"
                 }`}
               >
                 Service
@@ -340,7 +340,7 @@ const Navbar = () => {
                     ? "text-blue-700 dark:text-blue-500"
                     : isScrolled
                     ? "text-gray-900 dark:text-white hover:text-blue-200"
-                    : "text-white hover:text-yellblue"
+                    : "text-black dark:text-white hover:text-[gold]"
                 }`}
               >
                 Testimonials
@@ -352,7 +352,7 @@ const Navbar = () => {
                     ? "text-blue-700 dark:text-blue-500"
                     : isScrolled
                     ? "text-gray-900 dark:text-white hover:text-blue-200"
-                    : "text-white hover:text-yellblue"
+                    : "text-black dark:text-white hover:text-[gold]"
                 }`}
               >
                 FAQs
@@ -370,21 +370,21 @@ const Navbar = () => {
                       ? "text-blue-700 dark:text-blue-500"
                       : isScrolled
                       ? "text-gray-900 dark:text-white hover:text-blue-200"
-                      : "text-white hover:text-yellblue"
+                      : "text-black dark:text-white hover:text-[gold] "
                   }`}
                 >
                   Pages <ChevronDown className="ml-1 w-5 h-5" />
                 </button>
                 <div
                   id="mobilePages"
-                  className="hidden bg-gray-800 mt-2 p-2 rounded"
+                  className="hidden dark:bg-gray-800 bg-white mt-2 p-2 rounded"
                 >
                   <Link
                     href="/blog"
                     className={`block py-2 transition-colors duration-300 ${
                       isActiveLink("/blog")
-                        ? "text-yellow-500"
-                        : "text-white hover:text-yellow-500"
+                        ? "text-blue-500 "
+                        : "text-black hover:text-blue-500 dark:text-white "
                     }`}
                   >
                     Blog
@@ -393,8 +393,8 @@ const Navbar = () => {
                     href="/our-team"
                     className={`block py-2 transition-colors duration-300 ${
                       isActiveLink("/our-team")
-                        ? "text-yellow-500"
-                        : "text-white hover:text-yellow-500"
+                        ? "text-blue-500 "
+                        : "text-black hover:text-blue-500 dark:text-white "
                     }`}
                   >
                     Our Team
@@ -403,8 +403,8 @@ const Navbar = () => {
                     href="/privacy-policy"
                     className={`block py-2 transition-colors duration-300 ${
                       isActiveLink("/privacy-policy")
-                        ? "text-yellow-500"
-                        : "text-white hover:text-yellow-500"
+                        ? "text-blue-500 "
+                        : "text-black hover:text-blue-500 dark:text-white "
                     }`}
                   >
                     Privacy Policy
@@ -413,8 +413,8 @@ const Navbar = () => {
                     href="/terms-conditions"
                     className={`block py-2 transition-colors duration-300 ${
                       isActiveLink("/terms-conditions")
-                        ? "text-yellow-500"
-                        : "text-white hover:text-yellow-500"
+                        ? "text-blue-500 "
+                        : "text-black hover:text-blue-500 dark:text-white "
                     }`}
                   >
                     Terms-Condition
@@ -429,17 +429,17 @@ const Navbar = () => {
                     ? "text-blue-700 dark:text-blue-500"
                     : isScrolled
                     ? "text-gray-900 dark:text-white hover:text-blue-200"
-                    : "text-white hover:text-yellblue"
+                    : "text-black dark:text-white hover:text-[gold]"
                 }`}
               >
-                Contact
+                Contact 
               </Link>
 
               <div className="flex items-center justify-between mt-4">
                 <Link
                   href="/register"
                   className="bg-blue-800 text-white font-extrabold py-2 px-6 hover:text-[violet] rounded hover:bg-yellow-300 transition duration-300"
-                >
+                > 
                   REGISTER
                 </Link>
               </div>

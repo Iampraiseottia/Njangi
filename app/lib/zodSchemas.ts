@@ -8,18 +8,19 @@ export const register01Schema = z.object({
   email: z
     .string()
     .min(7, "Email is required").regex(
-      /[$]/,
-      "Password must contain at least one special character"
+      /[@]/,
+      "Email must contain at least one special character"
     )
     .max(30, "Email must not exceed 30 characters")
     .email("Invalid email format"),
   userName: z
     .string()
     .min(5, "Username is required, Should be mixed with numbers")
-    .max(12, "Username must not exceed 12 characters"),
+    .max(12, "Username must not exceed 12 characters")
+    .regex(/[0-9]/, "Password must contain at least one number"),
   phoneNumber: z
     .string()
-    .min(15, "Phone Number is must be in the form +237674417286 or 674417286")
+    .min(9, "Phone Number is must be in the form 674417286")
     .max(15, "Phone number must not exceed 14 characters"),
   password: z
     .string()

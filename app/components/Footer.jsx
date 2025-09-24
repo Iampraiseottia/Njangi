@@ -134,8 +134,8 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/register" className="footer-link">
-                    Register
+                  <Link href="/login" className="footer-link">
+                    Login
                     <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-1000 ease-out"></span>
                   </Link>
                 </li>
