@@ -51,8 +51,6 @@ const Register = () => {
     shouldRevalidate: "onInput",
   });
 
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formIsValid, setFormIsValid] = useState(false);
   const router = useRouter();
 
   const metadata = {
@@ -242,8 +240,6 @@ const Register = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-
     setErrors({ password: "", confirmPassword: "" });
 
     const passwordErrors = validatePassword(password);
@@ -252,6 +248,7 @@ const Register = () => {
         ...prev,
         password: passwordErrors.join(". "),
       }));
+      e.preventDefault();
       return;
     }
 
@@ -260,10 +257,9 @@ const Register = () => {
         ...prev,
         confirmPassword: "Passwords do not match",
       }));
+      e.preventDefault();
       return;
     }
-
-    setFormSubmitted(true);
   };
 
   const togglePasswordVisibility = () => {
@@ -275,39 +271,14 @@ const Register = () => {
   };
 
   useEffect(() => {
-    if (formSubmitted) {
-      const isPhoneValid = () => {
-        if (!phoneNumber) return false;
-        const cleaned = phoneNumber.replace(/[\s-]/g, "");
-        const cmrFormat = /^\d{9}$/;
-        return cmrFormat.test(cleaned);
-      };
-
-      const isValid =
-        fullName.trim().length >= 6 &&
-        email.includes("@") &&
-        email.includes(".") &&
-        userName.trim().length >= 5 &&
-        isPhoneValid() &&
-        password.trim().length >= 8 &&
-        password === confirmPassword &&
-        validatePassword(password).length === 0;
-
-      if (isValid) {
-        setFormIsValid(true);
-        router.push("/verify-email");
-      }
+    // Check if the form submission was successful and the email is available
+    if (lastResult && lastResult.status !== "error" && email) {
+      router.push(`/verify-email?email=${encodeURIComponent(email)}`);
+    } else if (lastResult && lastResult.status === "error") {
+      console.error("Server Action Error:", lastResult.error);
+    } else if (lastResult && lastResult.submission) {
     }
-  }, [
-    formSubmitted,
-    fullName,
-    email,
-    userName,
-    phoneNumber,
-    password,
-    confirmPassword,
-    router,
-  ]);
+  }, [lastResult, email, router]);
 
   return (
     <main>
@@ -335,9 +306,9 @@ const Register = () => {
             </h1>
             <br />
             <p className="text-base lg:text-xl mb-5 text-white">
-              We are delighted and privilege to have you 🔥 here. Follow the
-              steps made available on the right side of the page to register. If
-              you need any assistance feel free to reach out.
+              We are delighted and privilege to have you here. Follow the steps
+              made available on the right side of the page to register. If you
+              need any assistance feel free to reach out.
             </p>
             <br />
             <h1 className="font-extrabold text-2xl lg:text-4xl tracking-wider my-10 text-white">
@@ -386,15 +357,15 @@ const Register = () => {
             className="w-full lg:w-[55%] p-6 lg:p-9"
           >
             <h1 className="text-3xl lg:text-5xl font-extrabold tracking-wider mt-6  text-center mb-5">
-              SIGN UP 🔥
+              SIGN UP
             </h1>
             <br />
             <form
               className="flex flex-col gap-6 w-full max-w-xl"
               id={form.id}
               onSubmit={async (e) => {
+                handleSubmit(e);
                 await form.onSubmit(e);
-                await handleSubmit(e);
               }}
               action={action}
             >
@@ -477,7 +448,7 @@ const Register = () => {
                   onMouseEnter={onMouseEnterUserNameRef}
                   id="userName"
                   placeholder="Your User Name e.g John123"
-                  className={`w-full text-base bg-transparent rounded-xl border-2 outline-none py-3 px-4 focus:ring-1 focus:outline-none duration-300 dark:placeholder-gray-400 text-gray-300 
+                  className={`w-full text-base bg-transparent rounded-xl border-2 outline-none py-3 px-4 focus:ring-1 focus:outline-none duration-300 dark:placeholder-gray-400 text-gray-300 dark:text-white
                   ${getBorderColor("userName", userName)}`}
                 />
                 <p className="text-[16px] text-red-500 font-bold tracking-wide text-right">
@@ -528,7 +499,7 @@ const Register = () => {
                   <input
                     type={showPassword ? "text" : "password"}
                     ref={passwordRef}
-                    name="password"
+                    name={fields.password.name}
                     value={password}
                     onChange={(e) =>
                       handleInputChange("password", e.target.value)
@@ -552,6 +523,17 @@ const Register = () => {
                     />
                   </button>
                 </div>
+                {fields.password.errors && (
+                  <motion.p
+                    initial={{ opacity: 0, y: 100 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.2, delay: 0.2 }}
+                    viewport={{ once: true }}
+                    className="text-red-500 text-sm mt-3 text-right"
+                  >
+                    {fields.password.errors}
+                  </motion.p>
+                )}
                 {errors.password && (
                   <motion.p
                     initial={{ opacity: 0, y: 100 }}
@@ -577,7 +559,7 @@ const Register = () => {
                   <input
                     type={showConfirmPassword ? "text" : "password"}
                     ref={confirmPasswordRef}
-                    name="confirm_password"
+                    name={fields.confirmPassword.name}
                     value={confirmPassword}
                     onChange={(e) =>
                       handleInputChange("confirmPassword", e.target.value)
@@ -601,6 +583,17 @@ const Register = () => {
                     />
                   </button>
                 </div>
+                {fields.confirmPassword.errors && (
+                  <motion.p
+                    initial={{ opacity: 0, y: 100 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.2, delay: 0.2 }}
+                    viewport={{ once: true }}
+                    className="text-red-500 text-sm mt-3 text-right"
+                  >
+                    {fields.confirmPassword.errors}
+                  </motion.p>
+                )}
                 {errors.confirmPassword && (
                   <motion.p
                     initial={{ opacity: 0, y: 100 }}
@@ -635,7 +628,7 @@ const Register = () => {
         </motion.section>
       </div>
 
-      {/* Footer  */}
+      {/* Footer */}
       <Footer />
     </main>
   );

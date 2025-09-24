@@ -21,61 +21,36 @@ const EmailVerificationForm = () => {
   const searchParams = useSearchParams();
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // Get email from URL parameters when component mounts
+  // Get email from URL parameters 
   useEffect(() => {
     const emailParam = searchParams.get("email");
     if (emailParam) {
       setEmail(emailParam);
+    } else {
+      setError("No email address provided. Please register first.");
     }
   }, [searchParams]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
-    setSuccess("");
     setIsLoading(true);
 
     if (!email.trim()) {
-      setError("Please enter an Email Address");
-      setIsLoading(false);
+      setError("Please register first to get your email address");
       return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      setError("Please enter a valid email address");
-      setIsLoading(false);
+      setError("Invalid email address");
       return;
     }
 
-    try {
-      const response = await fetch("/api/send-verification-code", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setSuccess("Verification code sent successfully! Check your email.");
-        setTimeout(() => {
-          router.push(`/verification-code?email=${encodeURIComponent(email)}`);
-        }, 2000);
-      } else {
-        setError(data.error || "Failed to send verification code");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      setError("Network error. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
+    // Redirect to verification code page with email
+    router.push(`/verification-code?email=${encodeURIComponent(email)}`);
   };
 
   return (
@@ -112,29 +87,17 @@ const EmailVerificationForm = () => {
                 type="email"
                 ref={emailRef}
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={isLoading}
+                readOnly
+                disabled
                 className={`w-full text-base rounded-xl border-2 ${
-                  error
-                    ? "border-red-500"
-                    : success
-                    ? "border-green-500"
-                    : "border-blue-600"
-                } py-3 px-4 focus:ring-1 focus:ring-blue-500 outline-none focus:outline-none duration-300 mt-3 text-slate-900  bg-transparent dark:placeholder-gray-400 dark:text-white  ${
-                  isLoading ? "opacity-50" : ""
-                }`}
-                placeholder="Enter your email address"
+                  error ? "border-red-500" : "border-blue-600"
+                } py-3 px-4 focus:ring-1 focus:ring-blue-500 outline-none focus:outline-none duration-300 mt-3 text-slate-900 bg-gray-200 dark:bg-gray-600 dark:placeholder-gray-400 dark:text-white cursor-not-allowed opacity-75`}
+                placeholder="Your email address"
               />
 
               {error && (
                 <p className="text-red-500 mt-2 text-right font-medium">
                   {error}
-                </p>
-              )}
-
-              {success && (
-                <p className="text-green-500 mt-2 text-right font-medium">
-                  {success}
                 </p>
               )}
             </div>
@@ -155,10 +118,10 @@ const EmailVerificationForm = () => {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.7, delay: 0.7 }}
               className={`mx-[10%] mt-7 mb-4 py-4 flex justify-center items-center bg-blue-500 text-white ease-in-out duration-200 hover:bg-blue-600 hover:rounded-2xl text-xl font-bold tracking-wide w-[80%] sm:text-2xl md:text-3xl ${
-                isLoading ? "opacity-50 cursor-not-allowed" : ""
+                !email || error ? "opacity-50 cursor-not-allowed" : ""
               }`}
               type="submit"
-              disabled={isLoading}
+              disabled={!email || error}
             >
               {isLoading ? (
                 <>
