@@ -7,7 +7,11 @@ import { useRouter } from "next/navigation";
 import globalStyle from "../globals.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faPhone,
+  faSpinner,
+} from "@fortawesome/free-solid-svg-icons";
 
 import Metadata from "../components/Metadata";
 
@@ -16,12 +20,12 @@ import { motion } from "motion/react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-
 const Forgot_Password = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const emailRef = useRef();
+  const [isLoading, setIsLoading] = useState(false);
 
   const onMouseEnterEmailRef = () => {
     emailRef.current.focus();
@@ -34,9 +38,11 @@ const Forgot_Password = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     if (!email.trim()) {
       setError("Please enter an Email Address");
+      setIsLoading(false);
       return;
     }
 
@@ -44,6 +50,7 @@ const Forgot_Password = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setError("Please enter a valid email address");
+      setIsLoading(false);
       return;
     }
 
@@ -139,7 +146,9 @@ const Forgot_Password = () => {
                     onMouseEnter={onMouseEnterEmailRef}
                     placeholder="Enter Your Email Address"
                     className={`w-full text-base bg-transparent rounded-xl border-2 ${
-                      error ? "border-red-500" : "border-black dark:border-[gold]"
+                      error
+                        ? "border-red-500"
+                        : "border-black dark:border-[gold]"
                     } py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300 placeholder-gray-500 dark:placeholder-white`}
                   />
                 </div>
@@ -154,7 +163,17 @@ const Forgot_Password = () => {
                 type="submit"
                 className="mt-3 bg-gradient-to-r from-blue-600  via-slate-700 to-blue-600  w-full hover:from-blue-500  hover:via-slate-600 hover:to-blue-500  text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center tracking-wider"
               >
-                Reset Password
+                {isLoading ? (
+                  <>
+                    <FontAwesomeIcon
+                      icon={faSpinner}
+                      className="mr-2 animate-spin"
+                    />
+                    Resetting...
+                  </>
+                ) : (
+                  "Reset Password"
+                )}
               </button>
             </form>
 

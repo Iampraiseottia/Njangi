@@ -6,7 +6,7 @@ import Link from "next/link";
 import globalStyle from "../globals.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLock } from "@fortawesome/free-solid-svg-icons";
+import { faLock, faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 import Metadata from "../components/Metadata";
 
@@ -19,7 +19,15 @@ const Verify = () => {
   const router = useRouter();
   const [error, setError] = useState("");
   const [codeValues, setCodeValues] = useState(["", "", "", "", "", ""]);
-  const [codeErrors, setCodeErrors] = useState([false, false, false, false, false, false]);
+  const [codeErrors, setCodeErrors] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const metadata = {
     title: "Verify | Njangi Web Application",
@@ -62,6 +70,7 @@ const Verify = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     const isEmpty = codeValues.some((val) => val === "");
 
@@ -70,6 +79,8 @@ const Verify = () => {
 
       const newCodeErrors = codeValues.map((val) => val === "");
       setCodeErrors(newCodeErrors);
+
+      setIsLoading(false); 
 
       return;
     }
@@ -155,7 +166,7 @@ const Verify = () => {
                       className={`w-[25%] text-center text-base bg-transparent rounded-xl border-2  ${
                         codeErrors[index]
                           ? "border-red-500"
-                          : "border-blue-600 "
+                          : "border-[#d1ce89] "
                       } py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300 placeholder-slate-500 dark:placeholder-slate-400 ${
                         index < 5 ? "mr-3" : ""
                       }`}
@@ -172,7 +183,17 @@ const Verify = () => {
                 className="mt-3 bg-gradient-to-r from-blue-600  via-slate-700 to-blue-600  w-full hover:from-blue-500  hover:via-slate-600 hover:to-blue-500  text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center tracking-wider"
               >
                 <FontAwesomeIcon icon={faLock} className="mr-1 w-6 h-6" />{" "}
-                VERIFY
+                {isLoading ? (
+                  <>
+                    <FontAwesomeIcon
+                      icon={faSpinner}
+                      className="mr-2 animate-spin"
+                    />
+                    VERIFYING...
+                  </>
+                ) : (
+                  "VERIFY"
+                )}
               </motion.button>
             </form>
 

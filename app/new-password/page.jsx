@@ -9,6 +9,7 @@ import {
   faArrowRight,
   faEye,
   faEyeSlash,
+  faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 
 import Metadata from "../components/Metadata";
@@ -49,6 +50,7 @@ const New_Password = () => {
   });
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmNewPassword, setShowConfirmNewPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const metadata = {
     title: "New Password | Njangi Web Application",
@@ -171,6 +173,7 @@ const New_Password = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     setErrors({ newPassword: "", confirmNewPassword: "" });
 
@@ -180,6 +183,8 @@ const New_Password = () => {
         ...prev,
         newPassword: newPasswordErrors.join(". "),
       }));
+      setIsLoading(false);
+
       return;
     }
 
@@ -188,6 +193,8 @@ const New_Password = () => {
         ...prev,
         confirmNewPassword: "Passwords do not match",
       }));
+      setIsLoading(false);
+
       return;
     }
 
@@ -339,7 +346,17 @@ const New_Password = () => {
                 type="submit"
                 className="mt-10 bg-gradient-to-r from-blue-600  via-slate-700 to-blue-600  w-full hover:from-blue-500  hover:via-slate-600 hover:to-blue-500  text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center tracking-wider"
               >
-                Continue{" "}
+                {isLoading ? (
+                  <>
+                    <FontAwesomeIcon
+                      icon={faSpinner}
+                      className="mr-2 animate-spin"
+                    />
+                    Continuing...
+                  </>
+                ) : (
+                  "Continue"
+                )}{" "}
                 <FontAwesomeIcon icon={faArrowRight} className="ml-1 w-6 h-6" />
               </button>
             </motion.form>
