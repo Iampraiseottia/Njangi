@@ -6,6 +6,7 @@ import { useActionState, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import globalStyle from "../globals.css";
+
 import Link from "next/link";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,6 +15,7 @@ import {
   faCircleUser,
   faEyeSlash,
   faEye,
+  faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { CreateUser01Page } from "../actions";
@@ -45,7 +47,7 @@ const Login = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
-  // Validation states 
+  // Validation states
   const [fieldValidation, setFieldValidation] = useState({
     userName: { isValid: null, hasInteracted: false },
     password: { isValid: null, hasInteracted: false },
@@ -56,6 +58,8 @@ const Login = () => {
     description:
       "Sign In and continue enjoying all the amazing features of this application",
   };
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const userNameRef = useRef();
   const onMouseEnterUserNameRef = () => {
@@ -98,11 +102,11 @@ const Login = () => {
   };
 
   // Get border color based on validation state
-  const getBorderColor = (fieldName) => {
+  const getBorderColor = (fieldName, fieldValue) => {
     const field = fieldValidation[fieldName];
 
     if (!field.hasInteracted) {
-      return "border-blue-600 focus:ring-blue-600";
+      return "dark:border-[#d1ce89] border-slate-700 focus:ring-slate-800 dark:focus:ring-[#d1ce89]";
     }
 
     if (field.isValid === true) {
@@ -111,7 +115,7 @@ const Login = () => {
       return "border-red-500 focus:ring-red-500";
     }
 
-    return "border-blue-600 focus:ring-blue-600";
+    return "dark:border-[#d1ce89] border-slate-700 focus:ring-slate-800 dark:focus:ring-[#d1ce89]";
   };
 
   // Handle input changes with validation
@@ -164,35 +168,62 @@ const Login = () => {
   };
 
   const handleSubmit = (e) => {
+  setErrors({ password: "" });
+
+  // Validate userName
+  const isUserNameValid = validateField("userName", userName);
+  if (!isUserNameValid || userName.trim().length < 5) {
+    setFieldValidation((prev) => ({
+      ...prev,
+      userName: {
+        isValid: false,
+        hasInteracted: true,
+      },
+    }));
     e.preventDefault();
+    return; 
+  }
 
-    setErrors({ password: "" });
+  // Validate password
+  const passwordErrors = validatePassword(password);
+  if (passwordErrors.length > 0) {
+    setErrors((prev) => ({
+      ...prev,
+      password: passwordErrors.join(". "),
+    }));
+    setFieldValidation((prev) => ({
+      ...prev,
+      password: {
+        isValid: false,
+        hasInteracted: true,
+      },
+    }));
+    e.preventDefault();
+    return; 
+  }
 
-    const passwordErrors = validatePassword(password);
-    if (passwordErrors.length > 0) {
-      setErrors((prev) => ({
-        ...prev,
-        password: passwordErrors.join(". "),
-      }));
-      return;
+  setIsLoading(true);
+  setFormSubmitted(true);
+};
+
+
+ useEffect(() => {
+  if (formSubmitted) {
+    const isValid =
+      userName.trim().length >= 5 &&
+      password.trim().length >= 8 &&
+      validatePassword(password).length === 0;
+
+    if (isValid) {
+      setFormIsValid(true);
+      router.push("/dashboard");
+    } else {
+      setIsLoading(false);
+      setFormSubmitted(false);
     }
+  }
+}, [formSubmitted, userName, password, router]);
 
-    setFormSubmitted(true);
-  };
-
-  useEffect(() => {
-    if (formSubmitted) {
-      const isValid =
-        userName.trim().length >= 5 && 
-        password.trim().length >= 8 &&
-        validatePassword(password).length === 0;
-
-      if (isValid) {
-        setFormIsValid(true);
-        router.push("/dashboard");
-      }
-    }
-  }, [formSubmitted, userName, password, router]);
 
   return (
     <main>
@@ -244,17 +275,22 @@ const Login = () => {
                   onMouseEnter={onMouseEnterUserNameRef}
                   type="text"
                   name={fields.userName?.name}
-                  onChange={(e) => handleInputChange("userName", e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange("userName", e.target.value)
+                  }
                   value={userName}
                   id="userName"
                   placeholder="Your User Name"
-                  className={`w-full text-base bg-transparent rounded-xl outline-none border-2 py-3 px-4 focus:ring-1 duration-300 dark:placeholder-gray-300 placeholder-slate-400 text-black dark:text-white ${getBorderColor("userName")}`}
+                  className={`w-full text-base bg-transparent rounded-xl outline-none border-2 py-3 px-4 focus:ring-1 duration-300 dark:placeholder-gray-300 placeholder-slate-400 text-black dark:text-white ${getBorderColor(
+                    "userName"
+                  )}`}
                 />
-                {fieldValidation.userName.hasInteracted && fieldValidation.userName.isValid === false && (
-                  <p className="text-[16px] text-red-500 font-bold tracking-wide text-right">
-                    Username must be at least 5 characters long
-                  </p>
-                )}
+                {fieldValidation.userName.hasInteracted &&
+                  fieldValidation.userName.isValid === false && (
+                    <p className="text-[16px] text-red-500 font-bold tracking-wide text-right">
+                      Username must be at least 5 characters long
+                    </p>
+                  )}
               </div>
 
               <div className="flex flex-col gap-2">
@@ -274,11 +310,15 @@ const Login = () => {
                     ref={passwordRef}
                     name="password"
                     value={password}
-                    onChange={(e) => handleInputChange("password", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("password", e.target.value)
+                    }
                     onMouseEnter={onMouseEnterPasswordRef}
                     id="password"
                     placeholder="Your Password"
-                    className={`w-full text-base bg-transparent outline-none focus:outline-none rounded-xl border-2 py-3 px-4 focus:ring-1 duration-300 dark:placeholder-gray-300 placeholder-slate-400 text-black dark:text-white pr-10 ${getBorderColor("password")}`}
+                    className={`w-full text-base bg-transparent outline-none focus:outline-none rounded-xl border-2 py-3 px-4 focus:ring-1 duration-300 dark:placeholder-gray-300 placeholder-slate-400 text-black dark:text-white pr-10 ${getBorderColor(
+                      "password"
+                    )}`}
                   />
                   <button
                     type="button"
@@ -317,7 +357,17 @@ const Login = () => {
                 type="submit"
                 className="mt-3 bg-gradient-to-r from-blue-600 via-[#8c8803] to-blue-600 w-full hover:from-blue-500 hover:via-[#c1bb21] hover:to-blue-500 text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center tracking-wider"
               >
-                LOGIN
+                {isLoading ? (
+                  <>
+                    <FontAwesomeIcon
+                      icon={faSpinner}
+                      className="mr-2 animate-spin"
+                    />
+                    LOGGING IN...
+                  </>
+                ) : (
+                  "LOGIN"
+                )}
               </button>
             </form>
 
@@ -325,7 +375,7 @@ const Login = () => {
               Don't Yet Have An Account? <br />
               <Link
                 href="/register"
-                className="text-blue-600 font-extrabold hover:cursor-pointer hover:underline duration-300 dark:text-white" 
+                className="text-blue-600 font-extrabold hover:cursor-pointer hover:underline duration-300 dark:text-white"
               >
                 REGISTER
               </Link>

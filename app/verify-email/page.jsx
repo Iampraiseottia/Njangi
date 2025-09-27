@@ -21,9 +21,8 @@ const EmailVerificationForm = () => {
   const searchParams = useSearchParams();
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
 
-  // Get email from URL parameters 
+  // Get email from URL parameters
   useEffect(() => {
     const emailParam = searchParams.get("email");
     if (emailParam) {
@@ -89,9 +88,9 @@ const EmailVerificationForm = () => {
                 value={email}
                 readOnly
                 disabled
-                className={`w-full text-base rounded-xl border-2 ${
-                  error ? "border-red-500" : "border-blue-600"
-                } py-3 px-4 focus:ring-1 focus:ring-blue-500 outline-none focus:outline-none duration-300 mt-3 text-slate-900 bg-gray-200 dark:bg-gray-600 dark:placeholder-gray-400 dark:text-white cursor-not-allowed opacity-75`}
+                className={`w-full text-[18px] rounded-xl border-2 ${
+                  error ? "border-red-500" : "border-[#d1ce89]"
+                } py-4 px-4 outline-none focus:outline-none duration-300 mt-3 text-slate-900 bg-gray-200 dark:bg-gray-600 dark:placeholder-gray-400 dark:text-white cursor-not-allowed opacity-75`}
                 placeholder="Your email address"
               />
 

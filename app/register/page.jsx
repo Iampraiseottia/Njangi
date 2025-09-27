@@ -11,7 +11,11 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEyeSlash,
+  faEye,
+  faSpinner,
+} from "@fortawesome/free-solid-svg-icons";
 
 import { CreateUser01Page } from "../actions";
 import { useForm } from "@conform-to/react";
@@ -65,6 +69,7 @@ const Register = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   // on-typing validation states
   const [fieldValidation, setFieldValidation] = useState({
@@ -242,6 +247,43 @@ const Register = () => {
   const handleSubmit = (e) => {
     setErrors({ password: "", confirmPassword: "" });
 
+    // Map field names to their state values
+    const fieldValues = {
+      fullName,
+      email,
+      userName,
+      phoneNumber,
+      password,
+      confirmPassword,
+    };
+
+    const requiredFields = ["fullName", "email", "userName", "phoneNumber"];
+    let allFieldsValid = true;
+
+    // Validate all non-password fields
+    for (const fieldName of requiredFields) {
+      const value = fieldValues[fieldName];
+      const isValid = validateField(fieldName, value);
+
+      if (!isValid) {
+        allFieldsValid = false;
+        setFieldValidation((prev) => ({
+          ...prev,
+          [fieldName]: {
+            isValid: false,
+            hasInteracted: true,
+          },
+        }));
+      }
+    }
+
+    if (!allFieldsValid) {
+      e.preventDefault();
+      setIsLoading(false);
+      return;
+    }
+
+    // Validate password fields
     const passwordErrors = validatePassword(password);
     if (passwordErrors.length > 0) {
       setErrors((prev) => ({
@@ -249,6 +291,7 @@ const Register = () => {
         password: passwordErrors.join(". "),
       }));
       e.preventDefault();
+      setIsLoading(false);
       return;
     }
 
@@ -258,8 +301,11 @@ const Register = () => {
         confirmPassword: "Passwords do not match",
       }));
       e.preventDefault();
+      setIsLoading(false);
       return;
     }
+
+    // setIsLoading(true);
   };
 
   const togglePasswordVisibility = () => {
@@ -271,14 +317,14 @@ const Register = () => {
   };
 
   useEffect(() => {
-    // Check if the form submission was successful and the email is available
-    if (lastResult && lastResult.status !== "error" && email) {
-      router.push(`/verify-email?email=${encodeURIComponent(email)}`);
-    } else if (lastResult && lastResult.status === "error") {
-      console.error("Server Action Error:", lastResult.error);
-    } else if (lastResult && lastResult.submission) {
+    if (lastResult) {
+      setIsLoading(false);
+
+      if (lastResult.status === "error") {
+        console.error("Form Validation Error:", lastResult);
+      }
     }
-  }, [lastResult, email, router]);
+  }, [lastResult]);
 
   return (
     <main>
@@ -566,7 +612,7 @@ const Register = () => {
                     }
                     onMouseEnter={onMouseEnterConfirmPasswordRef}
                     id="confirm_password"
-                    placeholder="Confirm Your New Password"
+                    placeholder="Confirm Your Password"
                     className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 dark:placeholder-gray-300 pr-10 ${getBorderColor(
                       "confirmPassword",
                       confirmPassword
@@ -609,9 +655,20 @@ const Register = () => {
 
               <button
                 type="submit"
+                disabled={isLoading}
                 className="mt-3 bg-gradient-to-r from-blue-600  via-[#8c8803] to-blue-600  w-full hover:from-blue-500  hover:via-[#c1bb21] hover:to-blue-500   text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center tracking-wider"
               >
-                REGISTER
+                {isLoading ? (
+                  <>
+                    <FontAwesomeIcon
+                      icon={faSpinner}
+                      className="mr-2 animate-spin"
+                    />
+                    REGISTERING...
+                  </>
+                ) : (
+                  "REGISTER"
+                )}
               </button>
             </form>
 
