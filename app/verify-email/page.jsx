@@ -21,6 +21,7 @@ const EmailVerificationForm = () => {
   const searchParams = useSearchParams();
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   // Get email from URL parameters
   useEffect(() => {

@@ -165,8 +165,8 @@ const VerificationCodes = () => {
                       className={`w-[25%] text-center text-base bg-transparent rounded-xl border-2  ${
                         codeErrors[index]
                           ? "border-red-500"
-                          : "border-[#d1ce89] "
-                      } py-3 px-4 focus:ring-1 focus:ring-[#d1ce89] focus:outline-none duration-300 placeholder-slate-500 dark:placeholder-slate-400 ${
+                          : "dark:border-[#d1ce89] border-blue-5"
+                      } py-3 px-4 focus:ring-1 focus:ring-[#d1ce89] focus:outline-none duration-300 placeholder-slate-400 dark:placeholder-slate-400 ${
                         index < 5 ? "mr-3" : ""
                       }`}
                     />
@@ -193,7 +193,7 @@ const VerificationCodes = () => {
                 ) : (
                   "VERIFY"
                 )}
-              </motion.button> 
+              </motion.button>
             </form>
 
             <motion.p

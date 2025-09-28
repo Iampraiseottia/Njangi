@@ -7,7 +7,11 @@ import { useRouter } from "next/navigation";
 import globalStyle from "../globals.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMessage, faPhoneVolume } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMessage,
+  faPhoneVolume,
+  faSpinner,
+} from "@fortawesome/free-solid-svg-icons";
 
 import Metadata from "../components/Metadata";
 
@@ -25,27 +29,78 @@ const Try_With_Phone = () => {
   const router = useRouter();
   const [phoneNumber, setPhoneNumber] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleEmailChange = (e) => {
-    setPhoneNumber(e.target.value);
-    setError("");
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!phoneNumber.trim()) {
-      setError("Please enter a Phone Number in the format 679638673");
-      return;
-    }
-
-    router.push("/verify");
-  };
+  const [fieldValidation, setFieldValidation] = useState({
+    phoneNumber: { isValid: null, hasInteracted: false },
+  });
 
   const phoneNumberRef = useRef();
 
   const onMouseEnterPhoneNumberRef = () => {
     phoneNumberRef.current.focus();
+  };
+
+  const validatePhoneNumber = (value) => {
+    if (!value) return false;
+
+    const cleaned = value.replace(/[\s-]/g, "");
+
+    const cmrFormat = /^\d{9}$/;
+
+    return cmrFormat.test(cleaned);
+  };
+
+  const getBorderColor = () => {
+    const field = fieldValidation.phoneNumber;
+
+    if (!field.hasInteracted) {
+      return "border-black dark:border-[gold]";
+    }
+
+    if (field.isValid === true) {
+      return "border-green-500 focus:ring-green-500";
+    } else if (field.isValid === false) {
+      return "border-red-500 focus:ring-red-500";
+    }
+
+    return "border-black dark:border-[gold]";
+  };
+
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setPhoneNumber(value);
+    setError("");
+
+    // Validate phone number as user types
+    const isValid = validatePhoneNumber(value);
+
+    setFieldValidation({
+      phoneNumber: {
+        isValid: value.length > 0 ? isValid : null,
+        hasInteracted: true,
+      },
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const isValid = validatePhoneNumber(phoneNumber);
+
+    if (!phoneNumber.trim() || !isValid) {
+      setError("Please enter a valid 9-digit Phone Number (e.g., 679638673)");
+      setFieldValidation({
+        phoneNumber: {
+          isValid: false,
+          hasInteracted: true,
+        },
+      });
+      return;
+    }
+
+    setIsLoading(true);
+    router.push("/verify");
   };
 
   return (
@@ -110,7 +165,7 @@ const Try_With_Phone = () => {
               onSubmit={handleSubmit}
               className="flex flex-col gap-6 w-full max-w-xl"
             >
-              <div div className="ease-in-out transition-all w-full">
+              <div className="ease-in-out transition-all w-full">
                 <label
                   htmlFor="phoneNumber"
                   className="font-semibold text-lg tracking-wider flex items-center ml-4"
@@ -131,11 +186,7 @@ const Try_With_Phone = () => {
                     onChange={handleEmailChange}
                     onMouseEnter={onMouseEnterPhoneNumberRef}
                     placeholder="Enter Your Phone Number"
-                    className={`w-full text-base bg-transparent rounded-xl border-2 ${
-                      error
-                        ? "border-red-500"
-                        : "border-black dark:border-[gold]"
-                    } py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300  placeholder-gray-500 dark:placeholder-white`}
+                    className={`w-full text-base bg-transparent rounded-xl border-2 ${getBorderColor()} py-3 px-4 focus:ring-1 focus:ring-blue-600 focus:outline-none duration-300 placeholder-gray-500 dark:placeholder-white`}
                   />
                 </div>
                 {error && (
@@ -147,9 +198,20 @@ const Try_With_Phone = () => {
 
               <button
                 type="submit"
+                disabled={isLoading}
                 className="mt-3 bg-gradient-to-r from-blue-600  via-slate-700 to-blue-600  w-full hover:from-blue-500  hover:via-slate-600 hover:to-blue-500   text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center tracking-wider"
               >
-                Reset Password
+                {isLoading ? (
+                  <>
+                    <FontAwesomeIcon
+                      icon={faSpinner}
+                      className="mr-2 animate-spin"
+                    />
+                    Resetting...
+                  </>
+                ) : (
+                  "Reset Password"
+                )}
               </button>
             </form>
 

@@ -166,7 +166,7 @@ const Verify = () => {
                       className={`w-[25%] text-center text-base bg-transparent rounded-xl border-2  ${
                         codeErrors[index]
                           ? "border-red-500"
-                          : "border-[#d1ce89] "
+                          : "dark:border-[#d1ce89] border-blue-500"
                       } py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300 placeholder-slate-500 dark:placeholder-slate-400 ${
                         index < 5 ? "mr-3" : ""
                       }`}

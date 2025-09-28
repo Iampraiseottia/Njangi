@@ -266,7 +266,7 @@ const Login = () => {
                 >
                   <FontAwesomeIcon
                     icon={faCircleUser}
-                    className="werey2 mr-2 text-white mt-1"
+                    className="werey2 mr-2 text-blue-500 mt-1 dark:text-white" 
                   />{" "}
                   User Name:
                 </label>
@@ -300,7 +300,7 @@ const Login = () => {
                 >
                   <FontAwesomeIcon
                     icon={faLock}
-                    className="werey2 mr-2 text-white mt-1"
+                    className="werey2 mr-2 text-blue-500 mt-1 dark:text-white"
                   />{" "}
                   Password:
                 </label>
