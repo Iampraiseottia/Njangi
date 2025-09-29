@@ -23,7 +23,7 @@ const Blog = () => {
       title: "Revolutionizing Financial Growth Through NJANGIFY",
       excerpt:
         "Discover how NJANGIFY's innovative platform transforms your finances leading to a more stable and better standard of living.",
-      author: "Sarah Mbah",
+      author: "Sarah Mbah", 
       date: "March 15, 2025",
       readTime: "5 min read",
       category: "Finance",
