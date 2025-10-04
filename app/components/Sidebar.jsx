@@ -153,7 +153,7 @@ const DashBoardContent = () => {
 
       {/* Dashboard Left Section (Side Bar) */}
       <div
-        className={`bg-[lightseagreen] duration-500 fixed z-20 dashboard-sidebar-border h-[100vh] top-0 left-0 border-2 border-[lightseagreen] border-solid text-center text-white text-2xl font-semibold transition-all ease-in-out ${
+        className={`bg-blue-700 duration-500 fixed z-20 dashboard-sidebar-border h-[100vh] top-0 left-0 border-2 border-blue-700 border-solid text-center text-white text-2xl font-semibold transition-all ease-in-out ${
           expandedSideBar
             ? isMobile
               ? "w-4/5 md:w-1/6 left-0"
@@ -191,7 +191,7 @@ const DashBoardContent = () => {
           </div>
           <button
             onClick={() => setExpandedSideBar((current) => !current)}
-            className="absolute p-1.5 rounded-lg text-[lightseagreen] bg-gray-100 top-7 right-5 hover:cursor-pointer ease-in-out z-10"
+            className="absolute p-1.5 rounded-lg text-blue-700 bg-gray-100 top-7 right-5 hover:cursor-pointer ease-in-out z-10"
           >
             {expandedSideBar ? (
               <ChevronFirst size={30} />
@@ -204,12 +204,12 @@ const DashBoardContent = () => {
         <div
           onClick={() => handleComponentChange("dashboardMain")}
           title="Dashboard"
-          className={`mb-2 flex items-center px-4 py-2 rounded-lg ease-in-out hover:bg-white hover:text-teal-500 cursor-pointer transition-all ${
+          className={`mb-2 flex items-center px-4 py-2 rounded-lg ease-in-out hover:bg-white hover:text-blue-500 cursor-pointer transition-all ${
             expandedSideBar
               ? "mt-[-5px] justify-start"
               : "mt-[-30px] justify-center"
           } ${
-            activeComponent === "dashboardMain" ? "bg-white text-teal-500" : ""
+            activeComponent === "dashboardMain" ? "bg-white text-blue-600" : ""
           }`}
         >
           <FontAwesomeIcon
@@ -230,13 +230,13 @@ const DashBoardContent = () => {
         <div className="relative mb-4">
           <div
             title="Complete"
-            className={`flex items-center px-4 py-2 rounded-lg hover:bg-white hover:text-teal-500 ease-in-out cursor-pointer transition-all ${
+            className={`flex items-center px-4 py-2 rounded-lg hover:bg-white hover:text-blue-500 ease-in-out cursor-pointer transition-all ${
               expandedSideBar ? "justify-between" : "justify-center"
             } ${isOpen ? "mb-1" : ""} ${
               ["about-you", "income", "identity", "survey"].includes(
                 activeComponent
               )
-                ? "bg-white text-teal-500"
+                ? "bg-white text-blue-500"
                 : ""
             }`}
             onClick={toggleDropdown}
@@ -266,14 +266,14 @@ const DashBoardContent = () => {
           </div>
 
           {isOpen && (
-            <ul className="mt-1 w-full rounded-lg overflow-hidden ease-in-out transition-all bg-teal-600">
+            <ul className="mt-1 w-full rounded-lg overflow-hidden ease-in-out transition-all bg-blue-600">
               <li
                 title="About You"
-                className={`py-2 pl-4 pr-4 hover:bg-white ease-in-out hover:text-teal-500 cursor-pointer transition-all ${
+                className={`py-2 pl-4 pr-4 hover:bg-white ease-in-out hover:text-blue-500 cursor-pointer transition-all ${
                   expandedSideBar ? "text-left pl-8" : "text-center"
                 } ${
                   activeComponent === "about-you"
-                    ? "bg-white text-teal-500"
+                    ? "bg-white text-blue-500"
                     : ""
                 }`}
                 onClick={() => handleComponentChange("about-you")}
@@ -296,10 +296,10 @@ const DashBoardContent = () => {
               <li
                 onClick={() => handleComponentChange("income")}
                 title="Income"
-                className={`py-2 pl-4 pr-4 hover:bg-white ease-in-out hover:text-teal-500 cursor-pointer transition-all ${
+                className={`py-2 pl-4 pr-4 hover:bg-white ease-in-out hover:text-blue-500 cursor-pointer transition-all ${
                   expandedSideBar ? "text-left pl-8" : "text-center"
                 } ${
-                  activeComponent === "income" ? "bg-white text-teal-500" : ""
+                  activeComponent === "income" ? "bg-white text-blue-600" : ""
                 }`}
               >
                 <FontAwesomeIcon
@@ -320,10 +320,10 @@ const DashBoardContent = () => {
               <li
                 onClick={() => handleComponentChange("identity")}
                 title="Identity"
-                className={`py-2 pl-4 pr-4 hover:bg-white ease-in-out hover:text-teal-500 cursor-pointer transition-all ${
+                className={`py-2 pl-4 pr-4 hover:bg-white ease-in-out hover:text-blue-500 cursor-pointer transition-all ${
                   expandedSideBar ? "text-left pl-8" : "text-center"
                 } ${
-                  activeComponent === "identity" ? "bg-white text-teal-500" : ""
+                  activeComponent === "identity" ? "bg-white text-blue-600" : ""
                 }`}
               >
                 <FontAwesomeIcon
@@ -344,10 +344,10 @@ const DashBoardContent = () => {
               <li
                 onClick={() => handleComponentChange("survey")}
                 title="Survey"
-                className={`py-2 pl-4 pr-4 hover:bg-white ease-in-out hover:text-teal-500 cursor-pointer transition-all ${
+                className={`py-2 pl-4 pr-4 hover:bg-white ease-in-out hover:text-blue-500 cursor-pointer transition-all ${
                   expandedSideBar ? "text-left pl-8" : "text-center"
                 } ${
-                  activeComponent === "survey" ? "bg-white text-teal-500" : ""
+                  activeComponent === "survey" ? "bg-white text-blue-600" : ""
                 }`}
               >
                 <FontAwesomeIcon
@@ -371,9 +371,9 @@ const DashBoardContent = () => {
         <div
           onClick={() => handleComponentChange("groups")}
           title="Groups"
-          className={`mb-2 flex items-center px-4 py-2 ease-in-out rounded-lg hover:bg-white hover:text-teal-500 cursor-pointer transition-all ${
+          className={`mb-2 flex items-center px-4 py-2 ease-in-out rounded-lg hover:bg-white hover:text-blue-500 cursor-pointer transition-all ${
             expandedSideBar ? "justify-start" : "justify-center"
-          } ${activeComponent === "groups" ? "bg-white text-teal-500" : ""}`}
+          } ${activeComponent === "groups" ? "bg-white text-blue-600" : ""}`}
         >
           <FontAwesomeIcon
             icon={faPeopleGroup}
@@ -393,10 +393,10 @@ const DashBoardContent = () => {
         <div
           onClick={() => handleComponentChange("transactions")}
           title="Transactions"
-          className={`mb-2 flex items-center px-4 py-2 ease-in-out rounded-lg hover:bg-white hover:text-teal-500 cursor-pointer transition-all ${
+          className={`mb-2 flex items-center px-4 py-2 ease-in-out rounded-lg hover:bg-white hover:text-blue-500 cursor-pointer transition-all ${
             expandedSideBar ? "justify-start" : "justify-center"
           } ${
-            activeComponent === "transactions" ? "bg-white text-teal-500" : ""
+            activeComponent === "transactions" ? "bg-white text-blue-600" : ""
           }`}
         >
           <FontAwesomeIcon
@@ -417,9 +417,9 @@ const DashBoardContent = () => {
         <div
           onClick={() => handleComponentChange("logout")}
           title="Logout"
-          className={`mb-2 mt-[0px] flex items-center px-4 py-2 rounded-lg hover:bg-white hover:text-teal-500 cursor-pointer transition-all ${
+          className={`mb-2 mt-[0px] flex items-center px-4 py-2 rounded-lg hover:bg-white hover:text-blue-500 cursor-pointer transition-all ${
             expandedSideBar ? "justify-start" : "justify-center"
-          } ${activeComponent === "logout" ? "bg-white text-teal-500" : ""}`}
+          } ${activeComponent === "logout" ? "bg-white text-blue-600" : ""}`}
         >
           <FontAwesomeIcon
             icon={faRightFromBracket}
