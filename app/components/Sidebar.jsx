@@ -148,7 +148,7 @@ const DashBoardContent = () => {
   };
 
   return (
-    <section className="w-full relative flex">
+    <section className="w-full relative flex bg-white">
       <Metadata title={metadata.title} description={metadata.description} />
 
       {/* Dashboard Left Section (Side Bar) */}

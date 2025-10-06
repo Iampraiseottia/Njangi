@@ -513,7 +513,7 @@ const BlogPostDetails1 = () => {
                           {post.title}
                         </Link>
 
-                        <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm">
+                        <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm  mt-1">
                           {post.excerpt}
                         </p>
 
