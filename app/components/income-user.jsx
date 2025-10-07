@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import globalStyle from "../globals.css";
 
@@ -14,7 +14,29 @@ import {
 
 import { motion } from "motion/react";
 
+import { Sun, Moon } from "lucide-react";
+
 const Income_User = ({ setActiveComponent }) => {
+  if (!setActiveComponent || typeof setActiveComponent !== "function") {
+    console.error("setActiveComponent is not a function or is undefined.");
+    return null;
+  }
+
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window !== "undefined") {
+      const savedMode = localStorage.getItem("darkMode");
+      return savedMode === "true";
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    document.body.classList.toggle("dark", isDarkMode);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("darkMode", isDarkMode.toString());
+    }
+  }, [isDarkMode]);
+
   const OccupationRef = useRef();
 
   const onMouseEnterOccupationRef = () => {
@@ -125,9 +147,36 @@ const Income_User = ({ setActiveComponent }) => {
   };
 
   return (
-    <main className="flex justify-center relative items-center w-full min-h-screen bg-gray-800 text-white p-4">
+    <main
+      className={`flex relative justify-center items-center w-full min-h-screen p-4 transition-colors duration-300 ${
+        isDarkMode ? "bg-gray-900 text-white" : "bg-white-800 text-white"
+      }`}
+    >
       <p className="dance absolute"></p>
       <p className=" dance2 absolute"></p>
+
+      {/* Dark Mode Toggle Button */}
+      <div className="absolute top-4 right-4 z-10">
+        <button
+          onClick={() => setIsDarkMode((prev) => !prev)}
+          title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          className={`relative w-20 h-10 rounded-full transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+            isDarkMode ? "bg-blue-700" : "bg-blue-600"
+          }`}
+        >
+          <div
+            className={`absolute top-1 left-1 w-8 h-8 rounded-full bg-white shadow-md transform transition-transform duration-300 ease-in-out flex items-center justify-center ${
+              isDarkMode ? "translate-x-10" : "translate-x-0"
+            }`}
+          >
+            {isDarkMode ? (
+              <Moon className="w-5 h-5 text-blue-700" />
+            ) : (
+              <Sun className="w-5 h-5 text-blue-600" />
+            )}
+          </div>
+        </button>
+      </div>
 
       <motion.section
         initial={{ opacity: 0, y: 100 }}
@@ -165,7 +214,11 @@ const Income_User = ({ setActiveComponent }) => {
           transition={{ duration: 0.7, delay: 0.7 }}
           className="w-full lg:w-[55%] p-6 lg:p-9"
         >
-          <h1 className="text-3xl lg:text-5xl font-extrabold tracking-wider mt-6  text-center mb-5">
+          <h1
+            className={`text-3xl lg:text-5xl font-extrabold tracking-wider mt-6 text-center mb-5 ${
+              isDarkMode ? "text-white" : "text-gray-800"
+            }`}
+          >
             Financial Freedom 🔥
           </h1>
           <br />
@@ -176,7 +229,9 @@ const Income_User = ({ setActiveComponent }) => {
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="Occupation"
-                className="font-semibold text-lg tracking-wide flex"
+                className={`font-semibold text-lg tracking-wide flex ${
+                  isDarkMode ? "text-white" : "text-yellow-600"
+                }`}
               >
                 <FontAwesomeIcon
                   icon={faUserTie}
@@ -193,7 +248,11 @@ const Income_User = ({ setActiveComponent }) => {
                 onChange={handleInputChange}
                 id="Occupation"
                 placeholder="Your Occupation / Profession eg Doctor "
-                className={`w-full text-base bg-transparent rounded-xl outline-none border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 placeholder-white 
+                className={`w-full text-base rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
+                  isDarkMode
+                    ? "bg-gray-700 text-white placeholder-gray-400"
+                    : "bg-transparent text-black placeholder-gray-900"
+                }
             ${
               formData.Occupation && formData.Occupation.trim().length >= 3
                 ? "border-green-500 focus:ring-green-500"
@@ -202,7 +261,7 @@ const Income_User = ({ setActiveComponent }) => {
             ${
               errors.Occupation
                 ? "border-red-500 focus:ring-red-500]"
-                : "border-blue-600  focus:ring-blue-600 "
+                : "border-yellow-600  focus:ring-yellow-600 "
             } `}
               />
               {errors.Occupation &&
@@ -224,7 +283,9 @@ const Income_User = ({ setActiveComponent }) => {
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="income_stream"
-                className="font-semibold text-lg tracking-wide "
+                className={`font-semibold text-lg tracking-wide flex ${
+                  isDarkMode ? "text-white" : "text-yellow-600"
+                }`}
               >
                 🤑 Income Stream per Month:
               </label>
@@ -237,7 +298,11 @@ const Income_User = ({ setActiveComponent }) => {
                 onChange={handleInputChange}
                 id="income_stream"
                 placeholder="Your Income Stream Per Month eg 200k as salary or 400k form rent, etc "
-                className={`w-full text-base bg-transparent rounded-xl outline-none border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 placeholder-white 
+                className={`w-full text-base rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
+                  isDarkMode
+                    ? "bg-gray-700 text-white placeholder-gray-400"
+                    : "bg-transparent text-black placeholder-gray-900"
+                }
             ${
               formData.income_stream &&
               formData.income_stream.trim().length >= 3
@@ -247,7 +312,7 @@ const Income_User = ({ setActiveComponent }) => {
             ${
               errors.income_stream
                 ? "border-red-500 focus:ring-red-500]"
-                : "border-blue-600  focus:ring-blue-600 "
+                : "border-yellow-600  focus:ring-yellow-600 "
             }`}
               />
               {errors.income_stream &&
@@ -270,7 +335,9 @@ const Income_User = ({ setActiveComponent }) => {
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="primary_source"
-                className="font-semibold text-lg tracking-wide "
+                className={`font-semibold text-lg tracking-wide flex ${
+                  isDarkMode ? "text-white" : "text-yellow-600"
+                }`}
               >
                 <FontAwesomeIcon
                   icon={faMoneyBill}
@@ -287,7 +354,11 @@ const Income_User = ({ setActiveComponent }) => {
                 name="primary_source"
                 id="primary_source"
                 placeholder="What is your primary source of income currently? "
-                className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 outline-none focus:outline-none duration-300 placeholder-white
+                className={`w-full text-base rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
+                  isDarkMode
+                    ? "bg-gray-700 text-white placeholder-gray-400"
+                    : "bg-transparent text-black placeholder-gray-700"
+                }
             ${
               formData.primary_source &&
               formData.primary_source.trim().length >= 3
@@ -297,7 +368,7 @@ const Income_User = ({ setActiveComponent }) => {
               ${
                 errors.primary_source
                   ? "border-red-500 focus:ring-red-500]"
-                  : "border-blue-600  focus:ring-blue-600 "
+                  : "border-yellow-600  focus:ring-yellow-600 "
               }`}
               />
               {errors.primary_source &&
@@ -320,11 +391,15 @@ const Income_User = ({ setActiveComponent }) => {
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="email"
-                className="font-semibold text-lg tracking-wide flex"
+                className={`font-semibold text-lg tracking-wide flex ${
+                  isDarkMode ? "text-white" : "text-yellow-600"
+                }`}
               >
                 <FontAwesomeIcon
                   icon={faLocationDot}
-                  className="werey2 mr-2 text-yellow-300"
+                  className={`font-semibold text-lg mr-2 tracking-wide flex ${
+                    isDarkMode ? "text-white" : "text-yellow-600"
+                  }`}
                 />{" "}
                 Place of Work:
               </label>
@@ -337,7 +412,11 @@ const Income_User = ({ setActiveComponent }) => {
                 onChange={handleInputChange}
                 id="work_place"
                 placeholder="Your Location of your work place"
-                className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 outline-none focus:outline-none duration-300 placeholder-white  
+                className={`w-full text-base rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
+                  isDarkMode
+                    ? "bg-gray-700 text-white placeholder-gray-400"
+                    : "bg-transparent text-black placeholder-gray-500"
+                }
             ${
               formData.work_place && formData.work_place.trim().length >= 3
                 ? "border-green-500 focus:ring-green-500"
@@ -346,7 +425,7 @@ const Income_User = ({ setActiveComponent }) => {
             ${
               errors.work_place
                 ? "border-red-500 focus:ring-red-500]"
-                : "border-blue-600  focus:ring-blue-600 "
+                : "border-yellow-600  focus:ring-yellow-600 "
             }`}
               />
               {errors.work_place &&
@@ -368,7 +447,9 @@ const Income_User = ({ setActiveComponent }) => {
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="employment_status"
-                className="font-semibold text-lg tracking-wide "
+                className={`font-semibold text-lg tracking-wide flex ${
+                  isDarkMode ? "text-white" : "text-yellow-600"
+                }`}
               >
                 <FontAwesomeIcon
                   icon={faAddressBook}
@@ -379,7 +460,11 @@ const Income_User = ({ setActiveComponent }) => {
               <select
                 name="employment_status"
                 id="employment_status"
-                className={`w-full text-base bg-transparent rounded-xl border-2 outline-none py-3 px-4 focus:ring-1 focus:outline-none duration-300 text-white bg-slate-800 
+                className={`w-full text-base rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
+                  isDarkMode
+                    ? "bg-gray-700 text-white"
+                    : "bg-transparent text-black placeholder:text-gray-500"
+                }
             ${
               formData.employment_status &&
               formData.employment_status.trim().length >= 3
@@ -389,7 +474,7 @@ const Income_User = ({ setActiveComponent }) => {
             ${
               errors.employment_status
                 ? "border-red-500 focus:ring-red-500]"
-                : "border-blue-600  focus:ring-blue-600 "
+                : "border-yellow-600  focus:ring-yellow-600 "
             }`}
                 ref={employment_statusRef}
                 onChange={handleInputChange}
@@ -436,7 +521,9 @@ const Income_User = ({ setActiveComponent }) => {
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="income_change"
-                className="font-semibold text-lg tracking-wide "
+                className={`font-semibold text-lg tracking-wide flex ${
+                  isDarkMode ? "text-white" : "text-yellow-600"
+                }`}
               >
                 🫰 How has your income changed over the past 3-5 years?{" "}
               </label>
@@ -449,7 +536,11 @@ const Income_User = ({ setActiveComponent }) => {
                 value={formData.income_change}
                 id="income_change"
                 placeholder="How has your income changed over the past 3-5 years?"
-                className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 outline-none focus:outline-none duration-300 placeholder-white 
+                className={`w-full text-base rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
+                  isDarkMode
+                    ? "bg-gray-700 text-white placeholder-gray-400"
+                    : "bg-transparent text-black placeholder-gray-500"
+                }
             ${
               formData.income_change &&
               formData.income_change.trim().length >= 3
@@ -459,7 +550,7 @@ const Income_User = ({ setActiveComponent }) => {
             ${
               errors.income_change
                 ? "border-red-500 focus:ring-red-500]"
-                : "border-blue-600  focus:ring-blue-600 "
+                : "border-yellow-600  focus:ring-yellow-600 "
             }`}
               />
               {errors.income_change &&
@@ -482,7 +573,9 @@ const Income_User = ({ setActiveComponent }) => {
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="track_income"
-                className="font-semibold text-lg tracking-wide "
+                className={`font-semibold text-lg tracking-wide flex ${
+                  isDarkMode ? "text-white" : "text-yellow-600"
+                }`}
               >
                 💵 Do you track your income sources separately, and if so, how?{" "}
               </label>
@@ -495,7 +588,11 @@ const Income_User = ({ setActiveComponent }) => {
                 onChange={handleInputChange}
                 id="track_income"
                 placeholder="Do you track your income sources separately, and if so, how?"
-                className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 outline-none focus:outline-none duration-300 placeholder-white 
+                className={`w-full text-base rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
+                  isDarkMode
+                    ? "bg-gray-700 text-white placeholder-gray-400"
+                    : "bg-transparent text-black placeholder-gray-500"
+                }
             ${
               formData.track_income && formData.track_income.trim().length >= 3
                 ? "border-green-500 focus:ring-green-500"
@@ -504,7 +601,7 @@ const Income_User = ({ setActiveComponent }) => {
             ${
               errors.track_income
                 ? "border-red-500 focus:ring-red-500]"
-                : "border-blue-600  focus:ring-blue-600 "
+                : "border-yellow-600  focus:ring-yellow-600 "
             }`}
               />
               {errors.track_income &&

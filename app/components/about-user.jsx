@@ -1,8 +1,9 @@
 "use client";
 
 import { React, useState, useEffect, useRef } from "react";
-import { useActionState } from "react";
+
 import globalStyle from "../globals.css";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
@@ -11,7 +12,9 @@ import {
   faCalendar,
 } from "@fortawesome/free-solid-svg-icons";
 import { Sun, Moon } from "lucide-react";
+
 import { useForm } from "@conform-to/react";
+
 import { motion } from "motion/react";
 
 const About_User = ({ setActiveComponent }) => {
@@ -175,7 +178,7 @@ const About_User = ({ setActiveComponent }) => {
             : "bg-transparent border-2 border-blue-600"
         }`}
       >
-        {/* About User Component Left Section */}
+        {/* Left Section */}
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -203,7 +206,7 @@ const About_User = ({ setActiveComponent }) => {
           <FontAwesomeIcon icon={faUser} className="werey" />
         </motion.div>
 
-        {/* About User Component Right Section */}
+        {/* Right Section */}
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ y: 0, opacity: 1 }}
