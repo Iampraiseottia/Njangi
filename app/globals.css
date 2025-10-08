@@ -100,8 +100,8 @@ body.dark {
 
 .dark .recent-activity-item:hover,
 .dark .transaction_list:hover {
-  background-color: transparent !important;
-  cursor: default;
+   background: rgb(66, 66, 66);
+  transition: ease-in-out;
 }
 
 .dark .transaction_list2 {
@@ -123,7 +123,8 @@ body.dark {
 }
 
 .dark .tableContent:hover {
-  background: transparent;
+  background: rgb(66, 66, 66);
+  transition: ease-in-out;
 }
 
 /* Dark Mode End */

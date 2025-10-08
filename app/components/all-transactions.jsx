@@ -2,14 +2,14 @@
 
 import { React, useState, useEffect, useRef } from "react";
 
-import { ArrowRight, Bell, Calendar, Search } from "lucide-react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGear, faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+import { Bell, Search, Menu, Sun, Moon } from "lucide-react";
+
 import globalStyle from "../globals.css";
 
 import { motion } from "motion/react";
 
 const All_Transactions = ({ setActiveComponent }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== "undefined") {
@@ -30,80 +30,98 @@ const All_Transactions = ({ setActiveComponent }) => {
     searchReg.current.focus();
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div className="p-4 md:p-8">
-      {/* Header Section - Responsive */}
+      {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.7, delay: 0.7 }}
         viewport={{ once: true, amount: 0.05 }}
-        className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4"
+        transition={{ duration: 0.7, delay: 0.7 }}
+        className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 gap-4"
       >
-        <div className="w-full sm:w-auto">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">
-            Good Day 👋,
-            <span className="block sm:inline text-[lightseagreen] text-[28px] sm:text-[32px] md:text-[42px] sm:pl-1">
+        <div className="pt-2 md:pt-4 w-full md:w-auto">
+          <h1
+            className={`text-2xl md:text-3xl lg:text-4xl font-bold ${
+              isDarkMode ? "text-white" : "text-gray-800"
+            } break-words flex flex-col md:flex-row`}
+          >
+            <span>Welcome Back!!!,</span>
+            <span className="text-blue-600 text-[28px] md:text-[36px] lg:text-[42px] pl-1">
               Ottia Praise
             </span>
-          </h1> 
+          </h1>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3 sm:space-x-5 w-full sm:w-auto justify-end">
+        {/* Mobile menu button */}
+        <div className="md:hidden w-full flex justify-end">
+          <button
+            onClick={toggleMenu}
+            className={`p-2 rounded-lg transition-colors ${
+              isDarkMode
+                ? "bg-gray-800 hover:bg-gray-700 text-white"
+                : "bg-gray-100 hover:bg-gray-200 text-gray-800"
+            }`}
+          >
+            <Menu size={24} />
+          </button>
+        </div>
+
+        {/* Desktop header items / Mobile menu */}
+        <div
+          className={`${
+            isMenuOpen ? "flex " : "hidden"
+          } md:flex flex-col md:flex-row items-center w-full md:w-auto gap-4 md:space-x-5`}
+        >
           {/* Notification */}
           <div
-            className="relative cursor-pointer ease-in-out duration-100"
+            className="relative cursor-pointer transition-transform hover:scale-110"
             title="Notifications"
           >
-            <Bell className="text-gray-600 cursor-pointer" size={24} />
+            <Bell
+              className={`${
+                isDarkMode ? "text-gray-300" : "text-gray-600"
+              } cursor-pointer`}
+              size={28}
+            />
             <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-extrabold">
               3
             </span>
           </div>
 
-         
           {/* User Avatar */}
           <div
             onClick={() => setActiveComponent("profile")}
-            className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold cursor-pointer ease-in-out duration-100"
+            className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold cursor-pointer transition-transform hover:scale-110"
             title="Profile"
           >
             OP
           </div>
 
-          {/* Light and Dark Mode */}
-          <div
-            onClick={() => setIsDarkMode((prevMode) => !prevMode)}
-            title="Modes"
-            className={`w-20 md:w-24 h-9 md:h-10 rounded-full bg-teal-500 justify-between flex items-center ${
-              isDarkMode ? "bg-white" : "bg-lightseagreen"
-            } transition-colors duration-300 cursor-pointer`}
+          {/* Light and Dark Mode Toggle */}
+          <button
+            onClick={() => setIsDarkMode((prev) => !prev)}
+            title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+            className={`relative w-20 h-10 rounded-full transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+              isDarkMode ? "bg-blue-700" : "bg-blue-600"
+            }`}
           >
             <div
-              className={`w-[49%] h-full flex items-center justify-center rounded-full transition-transform duration-300 ${
-                isDarkMode ? "translate-x-full bg-white" : "bg-teal-500"
+              className={`absolute top-1 left-1 w-8 h-8 rounded-full bg-white shadow-md transform transition-transform duration-300 ease-in-out flex items-center justify-center ${
+                isDarkMode ? "translate-x-10" : "translate-x-0"
               }`}
             >
-              <FontAwesomeIcon
-                icon={faMoon}
-                className={`w-5 h-5 md:w-7 md:h-7 ${
-                  isDarkMode ? "text-lightseagreen" : "text-white"
-                }`}
-              />
+              {isDarkMode ? (
+                <Moon className="w-5 h-5 text-white-700" />
+              ) : (
+                <Sun className="w-5 h-5 text-blue-600" />
+              )}
             </div>
-            <div
-              className={`w-[49%] mr-1 h-full flex items-center justify-center rounded-full transition-transform duration-300 ${
-                isDarkMode ? "bg-teal-500" : "bg-white"
-              }`}
-            >
-              <FontAwesomeIcon
-                icon={faSun}
-                className={`w-5 h-5 md:w-7 md:h-7 ${
-                  isDarkMode ? "text-white" : "text-teal-500"
-                }`}
-              />
-            </div>
-          </div>
+          </button>
         </div>
       </motion.div>
 
@@ -115,56 +133,60 @@ const All_Transactions = ({ setActiveComponent }) => {
         transition={{ duration: 0.7, delay: 0.7 }}
         viewport={{ once: true, amount: 0.05 }}
       >
-        <h1 className="text-2xl sm:text-3xl md:text-4xl mt-6 md:mt-10 font-bold text-gray-800 mb-4 md:mb-6 text-center">
+        <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-gray-800 mb-4 sm:mb-6 lg:mb-14 text-center">
           Transactions History
         </h1>
 
-        {/* Search and Filter Section - Responsive */}
-        <div className="bg-white p-4 md:p-6 rounded-lg shadow-sm border border-gray-100 mb-6 hover:shadow ease-in-out duration-300">
-          <div className="flex flex-col md:flex-row justify-between gap-4">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:space-x-4 w-full">
-              <div className="relative w-full sm:w-64">
-                <input
-                  type="text"
-                  ref={searchReg}
-                  onMouseEnter={onMouseEnterSearch}
-                  placeholder="Search transactions"
-                  className="px-4 py-2 pl-10 duration-300 ease-in-out rounded-lg border border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-teal-500 w-full searchTranc"
-                /> 
-                <Search
-                  className="absolute left-3 top-2.5 text-gray-400"
-                  size={18}
-                />
-              </div>
-
-              <select className="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none searchTranc focus:ring-2 focus:ring-teal-500 w-full sm:w-auto">
-                <option className="singleCol" value="All Types">
-                  All Types
-                </option>
-                <option className="singleCol" value="Contributions">
-                  Contributions
-                </option>
-                <option className="singleCol" value="Received">
-                  Received
-                </option>
-              </select>
+        {/* Search & Filter Controls */}
+        <div className="flex flex-col sm:flex-row justify-between items-center mb-4 sm:mb-6 gap-4">
+          <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+            <div className="relative w-full md:w-auto">
+              <input
+                type="text"
+                ref={searchReg}
+                onMouseEnter={onMouseEnterSearch}
+                placeholder="Search..."
+                className={`px-4 py-2 pl-10 w-full md:w-64 lg:w-96 rounded-lg border transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-600 ${
+                  isDarkMode
+                    ? "bg-gray-700 border-gray-700 text-white placeholder-gray-400"
+                    : "bg-white border-gray-300 text-gray-800 placeholder-gray-500"
+                }`}
+              />
+              <Search
+                className={`absolute left-3 top-2.5 ${
+                  isDarkMode ? "text-gray-400" : "text-gray-400"
+                }`}
+                size={18}
+              />
             </div>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:space-x-4 w-full md:w-auto">
-              <button className="flex items-center justify-center space-x-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 w-full sm:w-[200px] searchTranc ">
-                <Calendar size={16} />
-                <span>Filter by Date</span>
-              </button>
-
-              <button className="flex items-center justify-center space-x-1 px-4 py-2 bg-teal-500 text-white rounded-lg hover:bg-teal-600 w-full sm:w-auto">
-                <ArrowRight size={16} />
-                <span>Download</span> 
-              </button>
-            </div>
+            <select
+              className={`px-4 py-2 transaction_list transaction_list2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full sm:w-auto ${
+                isDarkMode
+                  ? "bg-gray-400 text-white"
+                  : "bg-transparent text-black "
+              }`}
+            >
+              <option className="singleCol" value="All Types">
+                All Types
+              </option>
+              <option className="singleCol" value="Ascending Order">
+                Ascending Order
+              </option>
+              <option className="singleCol" value="Descending Order">
+                Descending Order
+              </option>
+              <option className="singleCol" value="Filter By Date">
+                Filter By Date
+              </option>
+              <option className="singleCol" value="Alphabetic Order">
+                Alphabetic Order(A - Z)
+              </option>
+            </select>
           </div>
         </div>
 
-        {/* Transaction Table - Responsive */}
+        {/* Transaction Table */}
         <div className="bg-white rounded-lg shadow-sm border-2 border-gray-100 overflow-hidden hover:shadow-md ease-in-out duration-300">
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
@@ -274,8 +296,8 @@ const All_Transactions = ({ setActiveComponent }) => {
                       {transaction.transaction_id}
                     </td>
                     <td className="px-3 md:px-6 py-3 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500">
-                      <button className="text-teal-600 hover:text-teal-800 font-medium">
-                        Details
+                      <button className="bg-blue-500 hover:bg-blue-600 text-white px-2 md:px-3 py-1 rounded-lg text-xs md:text-sm transition-colors">
+                        View Details
                       </button>
                     </td>
                   </tr>
@@ -283,7 +305,6 @@ const All_Transactions = ({ setActiveComponent }) => {
               </tbody>
             </table>
           </div>
-
         </div>
       </motion.div>
     </div>

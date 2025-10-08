@@ -76,26 +76,6 @@ const Njangi_Groups = ({ setActiveComponent }) => {
             isMenuOpen ? "flex " : "hidden"
           } md:flex flex-col md:flex-row items-center w-full md:w-auto gap-4 md:space-x-5`}
         >
-          <div className="relative w-full md:w-auto">
-            <input
-              type="text"
-              ref={searchReg}
-              onMouseEnter={onMouseEnterSearch}
-              placeholder="Search..."
-              className={`px-4 py-2 pl-10 w-full md:w-64 lg:w-96 rounded-lg border transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-600 ${
-                isDarkMode
-                  ? "bg-gray-800 border-gray-700 text-white placeholder-gray-400"
-                  : "bg-white border-gray-300 text-gray-800 placeholder-gray-500"
-              }`}
-            />
-            <Search
-              className={`absolute left-3 top-2.5 ${
-                isDarkMode ? "text-gray-400" : "text-gray-400"
-              }`}
-              size={18}
-            />
-          </div>
-
           {/* Notification */}
           <div
             className="relative cursor-pointer transition-transform hover:scale-110"
@@ -152,28 +132,40 @@ const Njangi_Groups = ({ setActiveComponent }) => {
         viewport={{ once: true, amount: 0.05 }}
         className="p-2 sm:p-4 md:p-6 lg:p-8"
       >
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 sm:mb-6 text-center">
+        <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-gray-800 mb-4 sm:mb-6 lg:mb-14 text-center">
           Njangi Groups
         </h1>
 
         {/* Search & Filter Controls */}
         <div className="flex flex-col sm:flex-row justify-between items-center mb-4 sm:mb-6 gap-4">
           <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
-            <div className="relative w-full sm:w-64">
+            <div className="relative w-full md:w-auto">
               <input
                 type="text"
                 ref={searchReg}
                 onMouseEnter={onMouseEnterSearch}
-                placeholder="Search transactions"
-                className="px-4 py-2 pl-10 rounded-lg duration-300 ease-in-out border border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-teal-500 w-full"
+                placeholder="Search..."
+                className={`px-4 py-2 pl-10 w-full md:w-64 lg:w-96 rounded-lg border transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-600 ${
+                  isDarkMode
+                    ? "bg-gray-700 border-gray-700 text-white placeholder-gray-400"
+                    : "bg-white border-gray-300 text-gray-800 placeholder-gray-500"
+                }`}
               />
               <Search
-                className="absolute left-3 top-2.5 text-gray-400"
+                className={`absolute left-3 top-2.5 ${
+                  isDarkMode ? "text-gray-400" : "text-gray-400"
+                }`}
                 size={18}
               />
             </div>
 
-            <select className="px-4 py-2 transaction_list transaction_list2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500 w-full sm:w-auto">
+            <select
+              className={`px-4 py-2 transaction_list transaction_list2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full sm:w-auto ${
+                isDarkMode
+                  ? "bg-gray-400 text-white"
+                  : "bg-transparent text-black "
+              }`}
+            >
               <option className="singleCol" value="All Types">
                 All Types
               </option>
@@ -192,7 +184,7 @@ const Njangi_Groups = ({ setActiveComponent }) => {
             </select>
           </div>
 
-          <button className="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-lg flex items-center justify-center w-full sm:w-auto">
+          <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center justify-center w-full sm:w-auto">
             <PlusCircle size={18} className="mr-2" /> Create New Group
           </button>
         </div>
