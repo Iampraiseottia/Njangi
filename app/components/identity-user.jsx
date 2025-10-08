@@ -1,14 +1,38 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import { React, useState, useEffect, useRef } from "react";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faIdCard,
-  faCircleExclamation,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
+import { Sun, Moon } from "lucide-react";
+
+import { useForm } from "@conform-to/react";
+
 import { motion } from "motion/react";
 
+import globalStyle from "../globals.css";
+
 const Identity_User = ({ setActiveComponent }) => {
+  if (!setActiveComponent || typeof setActiveComponent !== "function") {
+    console.error("setActiveComponent is not a function or is undefined.");
+    return null;
+  }
+
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window !== "undefined") {
+      const savedMode = localStorage.getItem("darkMode");
+      return savedMode === "true";
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    document.body.classList.toggle("dark", isDarkMode);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("darkMode", isDarkMode.toString());
+    }
+  }, [isDarkMode]);
+
   const uploadBCInput = useRef(null);
   const uploadIDInput = useRef(null);
   const uploadPictureInput = useRef(null);
@@ -70,15 +94,46 @@ const Identity_User = ({ setActiveComponent }) => {
   };
 
   return (
-    <main className="flex relative justify-center items-center w-full min-h-screen bg-gray-800 text-white p-4">
+    <main
+      className={`flex relative justify-center items-center w-full min-h-screen p-4 transition-colors duration-300 ${
+        isDarkMode ? "bg-gray-900 text-white" : "bg-white-800 text-white"
+      }`}
+    >
       <p className="dance absolute"></p>
       <p className="dance2 absolute"></p>
+
+      {/* Dark Mode Toggle Button */}
+      <div className="absolute top-4 right-4 z-10">
+        <button
+          onClick={() => setIsDarkMode((prev) => !prev)}
+          title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          className={`relative w-20 h-10 rounded-full transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+            isDarkMode ? "bg-blue-700" : "bg-blue-600"
+          }`}
+        >
+          <div
+            className={`absolute top-1 left-1 w-8 h-8 rounded-full bg-white shadow-md transform transition-transform duration-300 ease-in-out flex items-center justify-center ${
+              isDarkMode ? "translate-x-10" : "translate-x-0"
+            }`}
+          >
+            {isDarkMode ? (
+              <Moon className="w-5 h-5 text-blue-700" />
+            ) : (
+              <Sun className="w-5 h-5 text-blue-600" />
+            )}
+          </div>
+        </button>
+      </div>
 
       <motion.section
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
-        className="w-full max-w-7xl bg-transparent border-2 border-blue-600  overflow-hidden rounded-lg wrapper my-8"
+        className={`w-full max-w-7xl overflow-hidden rounded-lg wrapper my-8 transition-all duration-300 ${
+          isDarkMode
+            ? "bg-gray-800 border-2 border-blue-600"
+            : "bg-transparent border-2 border-blue-600"
+        }`}
       >
         <h1 className="text-3xl lg:text-5xl font-extrabold tracking-wider mt-6 pt-9 text-center mb-12">
           Your Unique Identity 🔥
@@ -116,7 +171,7 @@ const Identity_User = ({ setActiveComponent }) => {
                     />
                     <button
                       type="button"
-                      className="bg-blue-600 px-4 sm:px-6 py-2 text-white rounded-md font-semibold cursor-pointer duration-300 ease-in-out hover:shadow hover:bg-blue-700 w-full sm:w-auto"
+                      className="bg-yellow-600 px-4 sm:px-6 py-2 text-white rounded-md font-semibold cursor-pointer duration-300 ease-in-out hover:shadow hover:bg-yellow-700 w-full sm:w-auto"
                       onClick={() => uploadBCInput.current?.click()}
                       disabled={isUploading}
                     >
@@ -124,7 +179,7 @@ const Identity_User = ({ setActiveComponent }) => {
                     </button>
                   </div>
                 </div>
-                <div className="w-full text-base bg-transparent h-56 rounded-xl border-2 border-blue-600  py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300"></div>
+                <div className="w-full text-base bg-transparent h-56 rounded-xl border-2 border-yellow-600  py-3 px-4 focus:ring-1 focus:ring-yellow-600  focus:outline-none duration-300"></div>
               </div>{" "}
               <br />
               <div className="flex flex-col gap-3">
@@ -148,14 +203,14 @@ const Identity_User = ({ setActiveComponent }) => {
                     />
                     <button
                       type="button"
-                      className="bg-blue-600 px-4 sm:px-6 py-2 text-white rounded-md font-semibold cursor-pointer duration-300 ease-in-out hover:shadow hover:bg-blue-700 w-full sm:w-auto"
+                      className="bg-yellow-600 px-4 sm:px-6 py-2 text-white rounded-md font-semibold cursor-pointer duration-300 ease-in-out hover:shadow hover:bg-yellow-700 w-full sm:w-auto"
                       onClick={() => uploadIDInput.current?.click()}
                     >
                       Upload ID
                     </button>
                   </div>
                 </div>
-                <div className="w-full text-base bg-transparent h-60 rounded-xl border-2 border-blue-600  py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300"></div>
+                <div className="w-full text-base bg-transparent h-60 rounded-xl border-2 border-yellow-600  py-3 px-4 focus:ring-1 focus:ring-yellow-600  focus:outline-none duration-300"></div>
               </div>{" "}
               <br />
               <div className="flex flex-col gap-3">
@@ -179,14 +234,14 @@ const Identity_User = ({ setActiveComponent }) => {
                     />
                     <button
                       type="button"
-                      className="bg-blue-600 px-4 sm:px-6 py-2 text-white rounded-md font-semibold cursor-pointer duration-300 ease-in-out hover:shadow hover:bg-blue-700 w-full sm:w-auto"
+                      className="bg-yellow-600 px-4 sm:px-6 py-2 text-white rounded-md font-semibold cursor-pointer duration-300 ease-in-out hover:shadow hover:bg-yellow-700 w-full sm:w-auto"
                       onClick={() => uploadPictureInput.current?.click()}
                     >
                       Upload Picture
                     </button>
                   </div>
                 </div>
-                <div className="w-full text-base bg-transparent h-60 rounded-xl border-2 border-blue-600  py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300"></div>
+                <div className="w-full text-base bg-transparent h-60 rounded-xl border-2 border-yellow-600  py-3 px-4 focus:ring-1 focus:ring-yellow-600  focus:outline-none duration-300"></div>
               </div>{" "}
               <br />
             </form>

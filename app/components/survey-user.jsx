@@ -18,91 +18,91 @@ import { motion } from "motion/react";
 const Survey_User = () => {
   const hear_about_usRef = useRef();
 
-  const onMouseEnterhear_about_usRef = () => {
+  const onMouseEnterHear_about_usRef = () => {
     hear_about_usRef.current.focus();
   };
 
   const level_of_educationRef = useRef();
 
-  const onMouseEnterlevel_of_educationRef = () => {
+  const onMouseEnterLevel_of_educationRef = () => {
     level_of_educationRef.current.focus();
   };
 
-  const ever_perticipatedRef = useRef();
+  const ever_ParticipatedRef = useRef();
 
-  const onMouseEnterever_perticipatedRef = () => {
-    ever_perticipatedRef.current.focus();
+  const onMouseEnterEver_ParticipatedRef = () => {
+    ever_ParticipatedRef.current.focus();
   };
 
   const preferred_methodREf = useRef();
 
-  const onMouseEnterpreferred_methodREf = () => {
+  const onMouseEnterPreferred_methodREf = () => {
     preferred_methodREf.current.focus();
   };
 
   const motivation_contributionRef = useRef();
 
-  const onMouseEntermotivation_contributionRef = () => {
+  const onMouseEnterMotivation_contributionRef = () => {
     motivation_contributionRef.current.focus();
   };
 
   const suggestionsRef = useRef();
 
-  const onMouseEntersuggestionsRef = () => {
+  const onMouseEnterSuggestionsRef = () => {
     suggestionsRef.current.focus();
   };
 
   const receive_financial_educationRef = useRef();
 
-  const onMouseEnterreceive_financial_educationRef = () => {
+  const onMouseEnterReceive_financial_educationRef = () => {
     receive_financial_educationRef.current.focus();
   };
 
   const primary_njangi_goalRef = useRef();
 
-  const onMouseEnterprimary_njangi_goalRef = () => {
+  const onMouseEnterPrimary_njangi_goalRef = () => {
     primary_njangi_goalRef.current.focus();
   };
 
   const comfortabilityRef = useRef();
 
-  const onMouseEntercomfortabilityRef = () => {
+  const onMouseEnterComfortabilityRef = () => {
     comfortabilityRef.current.focus();
   };
 
   const often_check_mailsRef = useRef();
 
-  const onMouseEnteroften_check_mailsRef = () => {
+  const onMouseEnterOften_check_mailsRef = () => {
     often_check_mailsRef.current.focus();
   };
 
   const previous_challengesRef = useRef();
 
-  const onMouseEnterprevious_challengesRef = () => {
+  const onMouseEnterPrevious_challengesRef = () => {
     previous_challengesRef.current.focus();
   };
 
   const recommend_PlatformRef = useRef();
 
-  const onMouseEnterrecommend_PlatformRef = () => {
+  const onMouseEnterCommend_PlatformRef = () => {
     recommend_PlatformRef.current.focus();
   };
 
-  const saving_pecentageRef = useRef();
+  const saving_PercentageRef = useRef();
 
-  const onMouseEntersaving_pecentageRef = () => {
-    saving_pecentageRef.current.focus();
+  const onMouseEnterSaving_PercentageRef = () => {
+    saving_PercentageRef.current.focus();
   };
 
   const manage_financesREf = useRef();
 
-  const onMouseEntermanage_financesREf = () => {
+  const onMouseEnterManage_financesREf = () => {
     manage_financesREf.current.focus();
   };
 
   const often_contributionRef = useRef();
 
-  const onMouseEnteroften_contributionRef = () => {
+  const onMouseEnterOften_contributionRef = () => {
     often_contributionRef.current.focus();
   };
 
@@ -140,7 +140,7 @@ const Survey_User = () => {
                 </label>
                 <input
                   ref={hear_about_usRef}
-                  onMouseEnter={onMouseEnterhear_about_usRef}
+                  onMouseEnter={onMouseEnterHear_about_usRef}
                   type="text"
                   name="hear_about_us"
                   id="hear_about_us"
@@ -158,7 +158,7 @@ const Survey_User = () => {
                 </label>
                 <input
                   ref={level_of_educationRef}
-                  onMouseEnter={onMouseEnterlevel_of_educationRef}
+                  onMouseEnter={onMouseEnterLevel_of_educationRef}
                   type="text"
                   name="level_of_education"
                   id="level_of_education"
@@ -169,7 +169,7 @@ const Survey_User = () => {
 
               <div className="flex flex-col gap-2">
                 <label
-                  htmlFor="ever_perticipated"
+                  htmlFor="ever_Participated"
                   className="font-semibold text-lg tracking-wide flex"
                 >
                   <FontAwesomeIcon
@@ -179,11 +179,11 @@ const Survey_User = () => {
                   Have you participated in a Njangi group before?{" "}
                 </label>
                 <select
-                  name="ever_perticipated"
-                  id="ever_perticipated"
+                  name="ever_Participated"
+                  id="ever_Participated"
                   className="w-full text-base bg-transparent rounded-xl border-2 border-blue-600  py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300 text-black "
-                  ref={ever_perticipatedRef}
-                  onMouseEnter={onMouseEnterever_perticipatedRef}
+                  ref={ever_ParticipatedRef}
+                  onMouseEnter={onMouseEnterEver_ParticipatedRef}
                 >
                   <option className="singleCol" value="Select an Option ">
                     {" "}
@@ -210,7 +210,7 @@ const Survey_User = () => {
                   id="preferred_method"
                   className="w-full text-base bg-transparent rounded-xl border-2 border-blue-600  py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300 text-black "
                   ref={preferred_methodREf}
-                  onMouseEnter={onMouseEnterpreferred_methodREf}
+                  onMouseEnter={onMouseEnterPreferred_methodREf}
                 >
                   <option className="singleCol" value="Select an Option ">
                     {" "}
@@ -238,7 +238,7 @@ const Survey_User = () => {
                 </label>
                 <input
                   ref={often_contributionRef}
-                  onMouseEnter={onMouseEnteroften_contributionRef}
+                  onMouseEnter={onMouseEnterOften_contributionRef}
                   type="text"
                   name="often_contribution"
                   id="often_contribution"
@@ -256,7 +256,7 @@ const Survey_User = () => {
                 </label>
                 <input
                   ref={primary_njangi_goalRef}
-                  onMouseEnter={onMouseEnterprimary_njangi_goalRef}
+                  onMouseEnter={onMouseEnterPrimary_njangi_goalRef}
                   type="text"
                   name="primary_njangi_goal"
                   id="primary_njangi_goal"
@@ -275,7 +275,7 @@ const Survey_User = () => {
                 </label>
                 <input
                   ref={comfortabilityRef}
-                  onMouseEnter={onMouseEntercomfortabilityRef}
+                  onMouseEnter={onMouseEnterComfortabilityRef}
                   type="number"
                   name="comfortability"
                   id="comfortability"
@@ -293,7 +293,7 @@ const Survey_User = () => {
                 </label>
                 <input
                   ref={often_check_mailsRef}
-                  onMouseEnter={onMouseEnteroften_check_mailsRef}
+                  onMouseEnter={onMouseEnterOften_check_mailsRef}
                   type="text"
                   name="often_check_mails"
                   id="often_check_mails"
@@ -326,7 +326,7 @@ const Survey_User = () => {
                 </label>
                 <input
                   ref={previous_challengesRef}
-                  onMouseEnter={onMouseEnterprevious_challengesRef}
+                  onMouseEnter={onMouseEnterPrevious_challengesRef}
                   type="text"
                   name="previous_challenges"
                   id="previous_challenges"
@@ -352,7 +352,7 @@ const Survey_User = () => {
                   id="recommend_Platform"
                   className="w-full text-base bg-transparent rounded-xl border-2 border-blue-600   py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300 text-white bg-slate-800 "
                   ref={recommend_PlatformRef}
-                  onMouseEnter={onMouseEnterrecommend_PlatformRef}
+                  onMouseEnter={onMouseEnterCommend_PlatformRef}
                 >
                   <option className="singleCol" value="Select an Option ">
                     {" "}
@@ -404,7 +404,7 @@ const Survey_User = () => {
                 </label>
                 <input
                   ref={manage_financesREf}
-                  onMouseEnter={onMouseEntermanage_financesREf}
+                  onMouseEnter={onMouseEnterManage_financesREf}
                   type="text"
                   name="manage_finances"
                   id="manage_finances"
@@ -426,7 +426,7 @@ const Survey_User = () => {
                   id="receive_financial_education"
                   className="w-full text-base bg-transparent rounded-xl border-2 border-blue-600   py-3 px-4 focus:ring-1 focus:ring-blue-600  focus:outline-none duration-300 text-white bg-slate-800 "
                   ref={receive_financial_educationRef}
-                  onMouseEnter={onMouseEnterreceive_financial_educationRef}
+                  onMouseEnter={onMouseEnterReceive_financial_educationRef}
                 >
                   <option className="singleCol" value="Select an Option ">
                     {" "}
@@ -452,7 +452,7 @@ const Survey_User = () => {
                 </label>
                 <input
                   ref={suggestionsRef}
-                  onMouseEnter={onMouseEntersuggestionsRef}
+                  onMouseEnter={onMouseEnterSuggestionsRef}
                   type="TEXT"
                   name="suggestions"
                   id="suggestions"
@@ -473,8 +473,8 @@ const Survey_User = () => {
                   What percentage of your income do you typically save?
                 </label>
                 <input
-                  ref={saving_pecentageRef}
-                  onMouseEnter={onMouseEntersaving_pecentageRef}
+                  ref={saving_PercentageRef}
+                  onMouseEnter={onMouseEnterSaving_PercentageRef}
                   type="text"
                   name="saving_pecentage"
                   id="saving_pecentage"
@@ -497,7 +497,7 @@ const Survey_User = () => {
                 </label>
                 <input
                   ref={motivation_contributionRef}
-                  onMouseEnter={onMouseEntermotivation_contributionRef}
+                  onMouseEnter={onMouseEnterMotivation_contributionRef}
                   type="text"
                   name="motivation_contribution"
                   id="motivation_contribution"

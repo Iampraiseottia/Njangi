@@ -481,23 +481,47 @@ const Income_User = ({ setActiveComponent }) => {
                 value={formData.employment_status}
                 onMouseEnter={onMouseEnterEmploymentStatusRef}
               >
-                <option className="singleCol" value="Select an Option ">
+                <option  className={`${
+                  isDarkMode
+                    ? "text-white"
+                    : "text-black"
+                }`} value="Select an Option ">
                   {" "}
                   Select an Option
                 </option>
-                <option className="singleCol" value="Employed">
+                <option  className={`${
+                  isDarkMode
+                    ? "text-white"
+                    : "text-black"
+                }`} value="Employed">
                   Employed
                 </option>
-                <option className="singleCol" value="Self-Employed">
+                <option  className={`${
+                  isDarkMode
+                    ? "text-white"
+                    : "text-black"
+                }`} value="Self-Employed">
                   Self-Employed
                 </option>
-                <option className="singleCol" value="Unemployed">
+                <option  className={`${
+                  isDarkMode
+                    ? "text-white"
+                    : "text-black"
+                }`} value="Unemployed"> 
                   Unemployed
                 </option>
-                <option className="singleCol" value="Student">
+                <option  className={`${
+                  isDarkMode
+                    ? "text-white"
+                    : "text-black"
+                }`} value="Student">
                   Student
                 </option>
-                <option className="singleCol" value="Retired">
+                <option  className={`${
+                  isDarkMode
+                    ? "text-white"
+                    : "text-black"
+                }`} value="Retired">
                   Retired
                 </option>
               </select>

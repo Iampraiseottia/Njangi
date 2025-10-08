@@ -310,13 +310,25 @@ const About_User = ({ setActiveComponent }) => {
                     : "border-yellow-600 focus:ring-yellow-600"
                 }`}
               >
-                <option value="Choose Gender" className="text-black">
+                <option value="Choose Gender"  className={`${
+                  isDarkMode
+                    ? "text-white"
+                    : "text-black"
+                }`}>
                   Choose Your Gender
                 </option>
-                <option value="Male" className="text-black">
+                <option value="Male" className={`${
+                  isDarkMode
+                    ? "text-white"
+                    : "text-black"
+                }`}>
                   Male
                 </option>
-                <option value="Female" className="text-black">
+                <option value="Female"  className={`${
+                  isDarkMode
+                    ? "text-white"
+                    : "text-black"
+                }`}>
                   Female
                 </option>
               </select>
