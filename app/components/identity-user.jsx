@@ -150,13 +150,13 @@ const Identity_User = ({ setActiveComponent }) => {
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
-        className={`w-full max-w-7xl overflow-hidden rounded-lg wrapper my-8 transition-all duration-300 ${
+        className={`w-full max-w-7xl overflow-hidden rounded-lg wrapper my-8 transition-all duration-300 mt-14 ${
           isDarkMode
             ? "bg-gray-800 border-2 border-blue-600"
             : "bg-transparent border-2 border-blue-600"
         }`}
       >
-        <h1 className="text-3xl lg:text-5xl font-extrabold tracking-wider mt-6 pt-9 text-center mb-12">
+        <h1 className="text-3xl lg:text-5xl font-extrabold tracking-wider mt-6 pt-9 text-center mb-12 sm:mb-8 ">
           Your Unique Identity 🔥
         </h1>
 
@@ -174,7 +174,8 @@ const Identity_User = ({ setActiveComponent }) => {
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 w-full">
                   <label
                     htmlFor="birth_certificate"
-                    className="font-semibold text-lg tracking-wide mb-1 sm:mb-0"
+                    className={`font-semibold text-lg tracking-wide mb-1 sm:mb-0
+                      ${isDarkMode ? "text-white" : " text-gray-900"}`}
                   >
                     🚼 Upload Your Birth Certificate:
                   </label>
@@ -198,13 +199,18 @@ const Identity_User = ({ setActiveComponent }) => {
                   </div>
                 </div>
                 <div
-                  className={`w-full text-base bg-transparent h-56 rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
-                    formData.birth_certificate
-                      ? "border-green-500"
-                      : errors.birth_certificate
-                      ? "border-red-500"
-                      : "border-yellow-600"
-                  }`}
+                  className={`w-full text-base bg-transparent h-56 rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all  ${
+                    isDarkMode
+                      ? "bg-slate-700 text-white placeholder-gray-400"
+                      : "bg-slate-200 text-black placeholder:text-gray-500"
+                  } 
+                    ${
+                      formData.birth_certificate
+                        ? "border-green-500"
+                        : errors.birth_certificate
+                        ? "border-red-500"
+                        : "border-slate-400"
+                    }`}
                 >
                   {formData.birth_certificate && (
                     <p className="text-sm text-green-500 font-semibold">
@@ -230,7 +236,9 @@ const Identity_User = ({ setActiveComponent }) => {
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 w-full">
                   <label
                     htmlFor="identification_card"
-                    className="font-semibold text-lg tracking-wide mb-1 sm:mb-0"
+                    className={`font-semibold text-lg tracking-wide mb-1 sm:mb-0 ${
+                      isDarkMode ? "text-white" : " text-gray-900"
+                    }`}
                   >
                     🪪 Upload Your ID Card:
                   </label>
@@ -254,13 +262,19 @@ const Identity_User = ({ setActiveComponent }) => {
                   </div>
                 </div>
                 <div
-                  className={`w-full text-base bg-transparent h-60 rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
-                    formData.identification_card
-                      ? "border-green-500"
-                      : errors.identification_card
-                      ? "border-red-500"
-                      : "border-yellow-600"
-                  }`}
+                  className={`w-full text-base bg-transparent h-60 rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all
+                    ${
+                      isDarkMode
+                        ? "bg-slate-700 text-white placeholder-gray-400"
+                        : "bg-slate-200 text-black placeholder:text-gray-500"
+                    } 
+                    ${
+                      formData.identification_card
+                        ? "border-green-500"
+                        : errors.identification_card
+                        ? "border-red-500"
+                        : "border-slate-400"
+                    }`}
                 >
                   {formData.identification_card && (
                     <p className="text-sm text-green-500 font-semibold">
@@ -287,7 +301,9 @@ const Identity_User = ({ setActiveComponent }) => {
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 w-full">
                   <label
                     htmlFor="uploaded_pic"
-                    className="font-semibold text-lg tracking-wide mb-1 sm:mb-0"
+                    className={`font-semibold text-lg tracking-wide mb-1 sm:mb-0 ${
+                      isDarkMode ? "text-white" : " text-gray-900"
+                    }`}
                   >
                     📸 Upload Your Picture:
                   </label>
@@ -309,13 +325,19 @@ const Identity_User = ({ setActiveComponent }) => {
                   </div>
                 </div>
                 <div
-                  className={`w-full text-base bg-transparent h-60 rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
-                    formData.uploaded_pic
-                      ? "border-green-500"
-                      : errors.uploaded_pic
-                      ? "border-red-500"
-                      : "border-yellow-600"
-                  }`}
+                  className={`w-full text-base bg-transparent h-60 rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all
+                    ${
+                      isDarkMode
+                        ? "bg-slate-700 text-white placeholder-gray-400"
+                        : "bg-slate-200 text-black placeholder:text-gray-500"
+                    } 
+                    ${
+                      formData.uploaded_pic
+                        ? "border-green-500"
+                        : errors.uploaded_pic
+                        ? "border-red-500"
+                        : "border-slate-400"
+                    }`}
                 >
                   {formData.uploaded_pic && (
                     <p className="text-sm text-green-500 font-semibold">
@@ -351,7 +373,9 @@ const Identity_User = ({ setActiveComponent }) => {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="disability_status"
-                  className="font-semibold text-lg tracking-wide text-yellow-600"
+                  className={`font-semibold text-lg tracking-wide ${
+                    isDarkMode ? "text-white" : " text-gray-900"
+                  }`}
                 >
                   🦽 Do You Have Any Disability?
                 </label>
@@ -367,14 +391,14 @@ const Identity_User = ({ setActiveComponent }) => {
                   className={`w-full text-base rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
                     isDarkMode
                       ? "bg-gray-700 text-white placeholder-gray-400"
-                      : "bg-transparent text-black placeholder:text-gray-500"
+                      : "bg-gray-100 text-black placeholder:text-gray-500"
                   } ${
                     formData.disability_status &&
                     formData.disability_status.trim().length >= 2
                       ? "border-green-500 focus:ring-green-500"
                       : errors.disability_status
                       ? "border-red-500 focus:ring-red-500"
-                      : "border-yellow-600 focus:ring-yellow-600"
+                      : "border-white-600 focus:ring-white-600"
                   }`}
                 />
                 {errors.disability_status &&
@@ -397,20 +421,27 @@ const Identity_User = ({ setActiveComponent }) => {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="marital_status"
-                  className="font-semibold text-lg tracking-wide text-yellow-600"
+                  className={`font-semibold text-lg tracking-wide ${
+                    isDarkMode ? "text-white" : " text-gray-900"
+                  }`}
                 >
                   💒 What is your marital status?:
                 </label>
                 <select
                   name="marital_status"
                   id="marital_status"
-                  className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all text-white bg-slate-800 ${
+                  className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all
+                    ${
+                      isDarkMode
+                        ? "bg-gray-700 text-white placeholder-gray-400"
+                        : "bg-slate-100 text-black placeholder:text-slate-500"
+                    } ${
                     formData.marital_status &&
                     formData.marital_status !== "Select an Option"
                       ? "border-green-500 focus:ring-green-500"
                       : errors.marital_status
                       ? "border-red-500 focus:ring-red-500"
-                      : "border-yellow-600 focus:ring-yellow-600"
+                      : "border-white-600 focus:ring-white-600"
                   }`}
                   ref={marital_statusRef}
                   value={formData.marital_status}
@@ -447,7 +478,9 @@ const Identity_User = ({ setActiveComponent }) => {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="sickness"
-                  className="font-semibold text-lg tracking-wide text-yellow-600"
+                  className={`font-semibold text-lg tracking-wide ${
+                    isDarkMode ? "text-white" : " text-gray-900"
+                  }`}
                 >
                   😷 Are You Suffering of any sickness or disease?
                 </label>
@@ -460,12 +493,16 @@ const Identity_User = ({ setActiveComponent }) => {
                   value={formData.sickness}
                   onChange={handleInputChange}
                   placeholder="If none, type NO but If YES, Name them"
-                  className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all placeholder-white ${
+                  className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
+                    isDarkMode
+                      ? "bg-gray-700 text-white placeholder-gray-400"
+                      : "bg-slate-100 text-black placeholder:text-slate-500"
+                  }  ${
                     formData.sickness && formData.sickness.trim().length >= 2
                       ? "border-green-500 focus:ring-green-500"
                       : errors.sickness
                       ? "border-red-500 focus:ring-red-500"
-                      : "border-yellow-600 focus:ring-yellow-600"
+                      : "border-white-600 focus:ring-white-600"
                   }`}
                 />
                 {errors.sickness &&
@@ -487,7 +524,9 @@ const Identity_User = ({ setActiveComponent }) => {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="debt_status"
-                  className="font-semibold text-lg tracking-wide flex"
+                  className={`font-semibold text-lg tracking-wide flex ${
+                    isDarkMode ? "text-white" : " text-gray-900"
+                  }`}
                 >
                   <FontAwesomeIcon
                     icon={faCircleExclamation}
@@ -498,13 +537,17 @@ const Identity_User = ({ setActiveComponent }) => {
                 <select
                   name="debt_status"
                   id="debt_status"
-                  className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all text-white bg-slate-800 ${
+                  className={`w-full text-base bg-transparent rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
+                    isDarkMode
+                      ? "bg-gray-700 text-white placeholder-gray-400"
+                      : "bg-slate-100 text-black placeholder:text-slate-500"
+                  }  ${
                     formData.debt_status &&
                     formData.debt_status !== "Select an Option"
                       ? "border-green-500 focus:ring-green-500"
                       : errors.debt_status
                       ? "border-red-500 focus:ring-red-500"
-                      : "border-yellow-600 focus:ring-yellow-600"
+                      : "border-white-600 focus:ring-white-600"
                   }`}
                   ref={debt_statusRef}
                   value={formData.debt_status}
@@ -541,7 +584,9 @@ const Identity_User = ({ setActiveComponent }) => {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="camera_pic"
-                  className="font-semibold text-lg tracking-wide text-yellow-600"
+                  className={`font-semibold text-lg tracking-wide ${
+                    isDarkMode ? "text-white" : " text-gray-900"
+                  }`}
                 >
                   📷 Take a Picture of Yourself:
                 </label>
@@ -553,12 +598,17 @@ const Identity_User = ({ setActiveComponent }) => {
                   id="camera_pic"
                   onChange={(e) => handleFileChange(e, "camera_pic")}
                   className={`w-full text-base bg-transparent h-52 md:h-80 rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all placeholder-white ${
-                    formData.camera_pic
-                      ? "border-green-500 focus:ring-green-500"
-                      : errors.camera_pic
-                      ? "border-red-500 focus:ring-red-500"
-                      : "border-yellow-600 focus:ring-yellow-600"
-                  }`}
+                    isDarkMode
+                      ? "bg-slate-700 text-white placeholder-gray-400"
+                      : "bg-slate-200 text-black placeholder:text-gray-500"
+                  } 
+                   ${
+                     formData.camera_pic
+                       ? "border-green-500 focus:ring-green-500"
+                       : errors.camera_pic
+                       ? "border-red-500 focus:ring-red-500"
+                       : "border-white-600 focus:ring-white-600"
+                   }`}
                 />
                 {errors.camera_pic && !formData.camera_pic && (
                   <motion.p
@@ -574,7 +624,7 @@ const Identity_User = ({ setActiveComponent }) => {
               </div>
 
               <button
-                className="mt-3 bg-gradient-to-r from-yellow-600 via-slate-700 to-yellow-600 w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center"
+                className="mt-3 bg-gradient-to-r from-blue-600 via-slate-700 to-blue-600 w-full text-white py-4 px-6 font-extrabold text-xl lg:text-2xl duration-500 rounded-sm hover:rounded-[40px] hover:opacity-95 cursor-pointer flex justify-center items-center"
                 type="button"
                 onClick={handleSubmit}
               >

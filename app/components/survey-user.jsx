@@ -242,7 +242,7 @@ const Survey_User = ({ setActiveComponent }) => {
         </h1>
 
         <div className="flex flex-col lg:flex-row justify-between items-center mt-[-50px]">
-          {/* Left Section */}
+          {/* Left Section */} 
           <motion.div
             initial={{ opacity: 0, y: 100 }}
             viewport={{ once: true, amount: 0.05 }}
