@@ -30,11 +30,11 @@ import DashMain from "./dashMain";
 import { FileText, ChevronDown, ChevronFirst, ChevronLast } from "lucide-react";
 
 const DashBoardContent = () => {
-
   const [activeComponent, setActiveComponent] = useState("dashboardMain");
   const [isOpen, setIsOpen] = useState(true);
   const [expandedSideBar, setExpandedSideBar] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [metadata, setMetadata] = useState({
     title: "Dashboard - Njangi Web Application",
     description:
@@ -45,6 +45,25 @@ const DashBoardContent = () => {
 
   const searchParams = useSearchParams();
   const componentParam = searchParams.get("component");
+
+  useEffect(() => {
+    const checkDarkMode = () => {
+      if (typeof window !== "undefined") {
+        const saved = localStorage.getItem("darkMode");
+        setIsDarkMode(saved === "true");
+      }
+    };
+
+    checkDarkMode();
+    window.addEventListener("storage", checkDarkMode);
+
+    const interval = setInterval(checkDarkMode, 100);
+
+    return () => {
+      window.removeEventListener("storage", checkDarkMode);
+      clearInterval(interval);
+    };
+  }, []);
 
   // Update metadata based on active component
   const updateMetadata = (component) => {
@@ -209,7 +228,11 @@ const DashBoardContent = () => {
               ? "mt-[-5px] justify-start"
               : "mt-[-30px] justify-center"
           } ${
-            activeComponent === "dashboardMain" ? "bg-white text-blue-600" : ""
+            activeComponent === "dashboardMain"
+              ? isDarkMode
+                ? "bg-gray-800 text-white"
+                : "bg-white text-blue-600"
+              : ""
           }`}
         >
           <FontAwesomeIcon
@@ -236,7 +259,9 @@ const DashBoardContent = () => {
               ["about-you", "income", "identity", "survey"].includes(
                 activeComponent
               )
-                ? "bg-white text-blue-500"
+                ? isDarkMode
+                  ? "bg-gray-800 text-white"
+                  : "bg-white text-blue-500"
                 : ""
             }`}
             onClick={toggleDropdown}
@@ -273,7 +298,9 @@ const DashBoardContent = () => {
                   expandedSideBar ? "text-left pl-8" : "text-center"
                 } ${
                   activeComponent === "about-you"
-                    ? "bg-white text-blue-500"
+                    ? isDarkMode
+                      ? "bg-gray-800 text-white"
+                      : "bg-white text-blue-500"
                     : ""
                 }`}
                 onClick={() => handleComponentChange("about-you")}
@@ -299,7 +326,11 @@ const DashBoardContent = () => {
                 className={`py-2 pl-4 pr-4 hover:bg-white ease-in-out hover:text-blue-500 cursor-pointer transition-all ${
                   expandedSideBar ? "text-left pl-8" : "text-center"
                 } ${
-                  activeComponent === "income" ? "bg-white text-blue-600" : ""
+                  activeComponent === "income"
+                    ? isDarkMode
+                      ? "bg-gray-800 text-white"
+                      : "bg-white text-blue-600"
+                    : ""
                 }`}
               >
                 <FontAwesomeIcon
@@ -323,7 +354,11 @@ const DashBoardContent = () => {
                 className={`py-2 pl-4 pr-4 hover:bg-white ease-in-out hover:text-blue-500 cursor-pointer transition-all ${
                   expandedSideBar ? "text-left pl-8" : "text-center"
                 } ${
-                  activeComponent === "identity" ? "bg-white text-blue-600" : ""
+                  activeComponent === "identity"
+                    ? isDarkMode
+                      ? "bg-gray-800 text-white"
+                      : "bg-white text-blue-600"
+                    : ""
                 }`}
               >
                 <FontAwesomeIcon
@@ -347,7 +382,11 @@ const DashBoardContent = () => {
                 className={`py-2 pl-4 pr-4 hover:bg-white ease-in-out hover:text-blue-500 cursor-pointer transition-all ${
                   expandedSideBar ? "text-left pl-8" : "text-center"
                 } ${
-                  activeComponent === "survey" ? "bg-white text-blue-600" : ""
+                  activeComponent === "survey"
+                    ? isDarkMode
+                      ? "bg-gray-800 text-white"
+                      : "bg-white text-blue-600"
+                    : ""
                 }`}
               >
                 <FontAwesomeIcon
@@ -373,7 +412,13 @@ const DashBoardContent = () => {
           title="Groups"
           className={`mb-2 flex items-center px-4 py-2 ease-in-out rounded-lg hover:bg-white hover:text-blue-500 cursor-pointer transition-all ${
             expandedSideBar ? "justify-start" : "justify-center"
-          } ${activeComponent === "groups" ? "bg-white text-blue-600" : ""}`}
+          } ${
+            activeComponent === "groups"
+              ? isDarkMode
+                ? "bg-gray-800 text-white"
+                : "bg-white text-blue-600"
+              : ""
+          }`}
         >
           <FontAwesomeIcon
             icon={faPeopleGroup}
@@ -396,7 +441,11 @@ const DashBoardContent = () => {
           className={`mb-2 flex items-center px-4 py-2 ease-in-out rounded-lg hover:bg-white hover:text-blue-500 cursor-pointer transition-all ${
             expandedSideBar ? "justify-start" : "justify-center"
           } ${
-            activeComponent === "transactions" ? "bg-white text-blue-600" : ""
+            activeComponent === "transactions"
+              ? isDarkMode
+                ? "bg-gray-800 text-white"
+                : "bg-white text-blue-600"
+              : ""
           }`}
         >
           <FontAwesomeIcon
@@ -419,7 +468,13 @@ const DashBoardContent = () => {
           title="Logout"
           className={`mb-2 mt-[0px] flex items-center px-4 py-2 rounded-lg hover:bg-white hover:text-blue-500 cursor-pointer transition-all ${
             expandedSideBar ? "justify-start" : "justify-center"
-          } ${activeComponent === "logout" ? "bg-white text-blue-600" : ""}`}
+          } ${
+            activeComponent === "logout"
+              ? isDarkMode
+                ? "bg-gray-800 text-white"
+                : "bg-white text-blue-600"
+              : ""
+          }`}
         >
           <FontAwesomeIcon
             icon={faRightFromBracket}

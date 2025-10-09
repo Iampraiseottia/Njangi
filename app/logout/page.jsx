@@ -8,6 +8,8 @@ import { LogOut, AlertTriangle, CheckCircle } from "lucide-react";
 
 import { useRouter } from "next/navigation";
 
+import { Sun, Moon } from "lucide-react";
+
 const Logout = () => {
   const [status, setStatus] = useState("confirming");
   const router = useRouter();
@@ -36,25 +38,50 @@ const Logout = () => {
     router.back();
   };
 
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window !== "undefined") {
+      const savedMode = localStorage.getItem("darkMode");
+      return savedMode === "true";
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    document.body.classList.toggle("dark", isDarkMode);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("darkMode", isDarkMode.toString());
+    }
+  }, [isDarkMode]);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.5 }}
       viewport={{ once: true, amount: 0.1 }}
-      className="min-h-screen bg-gray-50 flex items-center justify-center p-4"
+      className={`min-h-screen  flex items-center justify-center p-4 ${
+        isDarkMode ? "bg-gray-900 text-white" : "bg-white-800 text-white"
+      }`}
     >
-      <div className="bg-white  rounded-lg shadow-md p-8 max-w-2xl w-full">
+      <div
+        className={`${
+          isDarkMode ? "bg-gray-400" : "bg-gray-300"
+        }  rounded-2xl shadow-md p-8 max-w-2xl h-96 w-full`}
+      >
         {status === "confirming" && (
           <>
             <div className="flex flex-col items-center justify-center mb-6">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4">
+              <div className="w-20 h-20 mt-5 bg-orange-100 rounded-full flex items-center justify-center mb-4">
                 <AlertTriangle size={32} className="text-orange-500" />
               </div>
-              <h2 className="text-2xl font-bold text-slate-800 mb-2">
+              <h2 className="text-3xl font-bold text-slate-900 mb-4">
                 Log Out
               </h2>
-              <p className="text-slate-600  text-center">
+              <p
+                className={` text-center text-xl mb-4 ${
+                  isDarkMode ? "text-slate-800 " : "text-slate-900 "
+                }`}
+              >
                 Are you sure you want to log out of your NJANGIFY account?
               </p>
             </div>
@@ -62,13 +89,15 @@ const Logout = () => {
             <div className="flex flex-col sm:flex-row gap-3 mt-6">
               <button
                 onClick={cancelLogout}
-                className="flex-1 py-2 px-4 rounded-lg border border-slate-300 text-slate-700  font-medium hover:bg-slate-50 transition-colors"
+                className={`flex-1 py-3 px-4 rounded-lg border-2 border-slate-300 text-slate-700  transition-colors text-xl tracking-wide font-semibold  ${
+                  isDarkMode ? "text-slate-800 hover:bg-slate-300" : "text-slate-900 border-slate-100 hover:bg-slate-300"
+                }`} 
               >
                 Cancel
               </button>
               <button
                 onClick={handleLogout}
-                className="flex-1 py-2 px-4 rounded-lg bg-teal-500 text-white font-medium hover:bg-teal-600  transition-colors flex items-center justify-center"
+                className="flex-1 py-3 px-4 rounded-lg text-xl tracking-wide bg-blue-500 text-white font-semibold hover:bg-blue-600  transition-colors flex items-center justify-center"
               >
                 <LogOut size={18} className="mr-2" />
                 Log Out
@@ -79,7 +108,7 @@ const Logout = () => {
 
         {status === "processing" && (
           <div className="flex flex-col items-center justify-center py-8">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-teal-500 mb-4"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mb-4"></div>
             <p className="text-slate-600 ">Logging you out...</p>
           </div>
         )}
@@ -96,7 +125,7 @@ const Logout = () => {
               Successfully Logged Out
             </h2>
             <p className="text-slate-600  text-center">
-              You have been successfully logged out of your account. 
+              You have been successfully logged out of your account.
             </p>
             <p className="text-slate-500 dark:text-slate-500 text-sm mt-4">
               Redirecting to home page...
@@ -117,7 +146,7 @@ const Logout = () => {
             </p>
             <button
               onClick={handleLogout}
-              className="py-2 px-6 rounded-lg bg-teal-500  text-white font-medium hover:bg-teal-600 transition-colors"
+              className="py-2 px-6 rounded-lg bg-blue-500  text-white font-medium hover:bg-blue-600 transition-colors"
             >
               Try Again
             </button>
