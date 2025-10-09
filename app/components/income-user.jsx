@@ -182,7 +182,7 @@ const Income_User = ({ setActiveComponent }) => {
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
-        className="flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl bg-transparent border-2 border-blue-600  overflow-hidden rounded-lg wrapper my-8 "
+        className="flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl bg-transparent border-2 border-blue-600  overflow-hidden rounded-lg wrapper my-8 mt-14"
       >
         {/* Left Section */}
         <motion.div
@@ -230,7 +230,7 @@ const Income_User = ({ setActiveComponent }) => {
               <label
                 htmlFor="Occupation"
                 className={`font-semibold text-lg tracking-wide flex ${
-                  isDarkMode ? "text-white" : "text-yellow-600"
+                  isDarkMode ? "text-white" : "text-slate-900"
                 }`}
               >
                 <FontAwesomeIcon
@@ -251,7 +251,7 @@ const Income_User = ({ setActiveComponent }) => {
                 className={`w-full text-base rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
                   isDarkMode
                     ? "bg-gray-700 text-white placeholder-gray-400"
-                    : "bg-transparent text-black placeholder-gray-900"
+                    : "bg-gray-100 text-black placeholder-gray-900"
                 }
             ${
               formData.Occupation && formData.Occupation.trim().length >= 3
@@ -261,7 +261,7 @@ const Income_User = ({ setActiveComponent }) => {
             ${
               errors.Occupation
                 ? "border-red-500 focus:ring-red-500]"
-                : "border-yellow-600  focus:ring-yellow-600 "
+                : "border-slate-200 focus:ring-slate-300"
             } `}
               />
               {errors.Occupation &&
@@ -284,7 +284,7 @@ const Income_User = ({ setActiveComponent }) => {
               <label
                 htmlFor="income_stream"
                 className={`font-semibold text-lg tracking-wide flex ${
-                  isDarkMode ? "text-white" : "text-yellow-600"
+                  isDarkMode ? "text-white" : "text-slate-900"
                 }`}
               >
                 🤑 Income Stream per Month:
@@ -301,7 +301,7 @@ const Income_User = ({ setActiveComponent }) => {
                 className={`w-full text-base rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
                   isDarkMode
                     ? "bg-gray-700 text-white placeholder-gray-400"
-                    : "bg-transparent text-black placeholder-gray-900"
+                    : "bg-gray-100 text-black placeholder-gray-900"
                 }
             ${
               formData.income_stream &&
@@ -312,7 +312,7 @@ const Income_User = ({ setActiveComponent }) => {
             ${
               errors.income_stream
                 ? "border-red-500 focus:ring-red-500]"
-                : "border-yellow-600  focus:ring-yellow-600 "
+                : "border-slate-200 focus:ring-slate-300"
             }`}
               />
               {errors.income_stream &&
@@ -336,7 +336,7 @@ const Income_User = ({ setActiveComponent }) => {
               <label
                 htmlFor="primary_source"
                 className={`font-semibold text-lg tracking-wide flex ${
-                  isDarkMode ? "text-white" : "text-yellow-600"
+                  isDarkMode ? "text-white" : "text-slate-900"
                 }`}
               >
                 <FontAwesomeIcon
@@ -357,7 +357,7 @@ const Income_User = ({ setActiveComponent }) => {
                 className={`w-full text-base rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
                   isDarkMode
                     ? "bg-gray-700 text-white placeholder-gray-400"
-                    : "bg-transparent text-black placeholder-gray-700"
+                    : "bg-gray-100 text-black placeholder-gray-700"
                 }
             ${
               formData.primary_source &&
@@ -368,7 +368,7 @@ const Income_User = ({ setActiveComponent }) => {
               ${
                 errors.primary_source
                   ? "border-red-500 focus:ring-red-500]"
-                  : "border-yellow-600  focus:ring-yellow-600 "
+                  : "border-slate-200 focus:ring-slate-300"
               }`}
               />
               {errors.primary_source &&
@@ -392,13 +392,13 @@ const Income_User = ({ setActiveComponent }) => {
               <label
                 htmlFor="email"
                 className={`font-semibold text-lg tracking-wide flex ${
-                  isDarkMode ? "text-white" : "text-yellow-600"
+                  isDarkMode ? "text-white" : "text-slate-900"
                 }`}
               >
                 <FontAwesomeIcon
                   icon={faLocationDot}
                   className={`font-semibold text-lg mr-2 tracking-wide flex ${
-                    isDarkMode ? "text-white" : "text-yellow-600"
+                    isDarkMode ? "text-white" : "text-slate-900"
                   }`}
                 />{" "}
                 Place of Work:
@@ -415,7 +415,7 @@ const Income_User = ({ setActiveComponent }) => {
                 className={`w-full text-base rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
                   isDarkMode
                     ? "bg-gray-700 text-white placeholder-gray-400"
-                    : "bg-transparent text-black placeholder-gray-500"
+                    : "bg-gray-100 text-black placeholder-gray-500"
                 }
             ${
               formData.work_place && formData.work_place.trim().length >= 3
@@ -425,7 +425,7 @@ const Income_User = ({ setActiveComponent }) => {
             ${
               errors.work_place
                 ? "border-red-500 focus:ring-red-500]"
-                : "border-yellow-600  focus:ring-yellow-600 "
+                : "border-slate-200 focus:ring-slate-300"
             }`}
               />
               {errors.work_place &&
@@ -448,7 +448,7 @@ const Income_User = ({ setActiveComponent }) => {
               <label
                 htmlFor="employment_status"
                 className={`font-semibold text-lg tracking-wide flex ${
-                  isDarkMode ? "text-white" : "text-yellow-600"
+                  isDarkMode ? "text-white" : "text-slate-900"
                 }`}
               >
                 <FontAwesomeIcon
@@ -463,7 +463,7 @@ const Income_User = ({ setActiveComponent }) => {
                 className={`w-full text-base rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
                   isDarkMode
                     ? "bg-gray-700 text-white"
-                    : "bg-transparent text-black placeholder:text-gray-500"
+                    : "bg-gray-100 text-black placeholder:text-gray-500"
                 }
             ${
               formData.employment_status &&
@@ -474,7 +474,7 @@ const Income_User = ({ setActiveComponent }) => {
             ${
               errors.employment_status
                 ? "border-red-500 focus:ring-red-500]"
-                : "border-yellow-600  focus:ring-yellow-600 "
+                : "border-slate-200 focus:ring-slate-300"
             }`}
                 ref={employment_statusRef}
                 onChange={handleInputChange}
@@ -546,7 +546,7 @@ const Income_User = ({ setActiveComponent }) => {
               <label
                 htmlFor="income_change"
                 className={`font-semibold text-lg tracking-wide flex ${
-                  isDarkMode ? "text-white" : "text-yellow-600"
+                  isDarkMode ? "text-white" : "text-slate-900"
                 }`}
               >
                 🫰 How has your income changed over the past 3-5 years?{" "}
@@ -563,7 +563,7 @@ const Income_User = ({ setActiveComponent }) => {
                 className={`w-full text-base rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
                   isDarkMode
                     ? "bg-gray-700 text-white placeholder-gray-400"
-                    : "bg-transparent text-black placeholder-gray-500"
+                    : "bg-gray-100 text-black placeholder-gray-500"
                 }
             ${
               formData.income_change &&
@@ -574,7 +574,7 @@ const Income_User = ({ setActiveComponent }) => {
             ${
               errors.income_change
                 ? "border-red-500 focus:ring-red-500]"
-                : "border-yellow-600  focus:ring-yellow-600 "
+                : "border-slate-200 focus:ring-slate-300"
             }`}
               />
               {errors.income_change &&
@@ -598,7 +598,7 @@ const Income_User = ({ setActiveComponent }) => {
               <label
                 htmlFor="track_income"
                 className={`font-semibold text-lg tracking-wide flex ${
-                  isDarkMode ? "text-white" : "text-yellow-600"
+                  isDarkMode ? "text-white" : "text-slate-900"
                 }`}
               >
                 💵 Do you track your income sources separately, and if so, how?{" "}
@@ -615,7 +615,7 @@ const Income_User = ({ setActiveComponent }) => {
                 className={`w-full text-base rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
                   isDarkMode
                     ? "bg-gray-700 text-white placeholder-gray-400"
-                    : "bg-transparent text-black placeholder-gray-500"
+                    : "bg-gray-100 text-black placeholder-gray-500"
                 }
             ${
               formData.track_income && formData.track_income.trim().length >= 3
@@ -625,7 +625,7 @@ const Income_User = ({ setActiveComponent }) => {
             ${
               errors.track_income
                 ? "border-red-500 focus:ring-red-500]"
-                : "border-yellow-600  focus:ring-yellow-600 "
+                : "border-slate-200 focus:ring-slate-300"
             }`}
               />
               {errors.track_income &&

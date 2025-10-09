@@ -172,10 +172,10 @@ const About_User = ({ setActiveComponent }) => {
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
-        className={`flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl overflow-hidden rounded-lg wrapper my-8 transition-all duration-300 ${
+        className={`flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl overflow-hidden rounded-lg wrapper my-8 transition-all mt-14 duration-300 ${
           isDarkMode
             ? "bg-gray-800 border-2 border-blue-600"
-            : "bg-transparent border-2 border-blue-600"
+            : "bg-gray-100 border-2 border-blue-600"
         }`}
       >
         {/* Left Section */}
@@ -230,7 +230,7 @@ const About_User = ({ setActiveComponent }) => {
               <label
                 htmlFor="dateOfBirth"
                 className={`font-semibold text-lg tracking-wide flex ${
-                  isDarkMode ? "text-white" : "text-yellow-600"
+                  isDarkMode ? "text-white" : "text-slate-900"
                 }`}
               >
                 <FontAwesomeIcon
@@ -250,14 +250,14 @@ const About_User = ({ setActiveComponent }) => {
                 className={`w-full text-base rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
                   isDarkMode
                     ? "bg-gray-700 text-white placeholder-gray-400"
-                    : "bg-transparent text-black placeholder-gray-500"
+                    : "bg-gray-100 text-black placeholder-gray-500"
                 } ${
                   formData.dateOfBirth &&
                   formData.dateOfBirth.trim().length >= 3
                     ? "border-green-500 focus:ring-green-500"
                     : errors.dateOfBirth
                     ? "border-red-500 focus:ring-red-500"
-                    : "border-yellow-600 focus:ring-yellow-600"
+                    : "border-slate-200 focus:ring-slate-300"
                 }`}
               />
               {errors.dateOfBirth &&
@@ -282,7 +282,7 @@ const About_User = ({ setActiveComponent }) => {
               <label
                 htmlFor="gender"
                 className={`font-semibold text-lg tracking-wide flex ${
-                  isDarkMode ? "text-white" : "text-yellow-600"
+                  isDarkMode ? "text-white" : "text-slate-900"
                 }`}
               >
                 <FontAwesomeIcon
@@ -301,13 +301,13 @@ const About_User = ({ setActiveComponent }) => {
                 className={`w-full text-base rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
                   isDarkMode
                     ? "bg-gray-700 text-white"
-                    : "bg-transparent text-black placeholder:text-gray-500"
+                    : "bg-gray-100 text-black placeholder:text-gray-500"
                 } ${
                   formData.gender && formData.gender.trim().length >= 3
                     ? "border-green-500 focus:ring-green-500"
                     : errors.gender
                     ? "border-red-500 focus:ring-red-500"
-                    : "border-yellow-600 focus:ring-yellow-600"
+                    : "border-slate-200 focus:ring-slate-300"
                 }`}
               >
                 <option value="Choose Gender"  className={`${
@@ -351,7 +351,7 @@ const About_User = ({ setActiveComponent }) => {
               <label
                 htmlFor="country"
                 className={`font-semibold text-lg tracking-wide ${
-                  isDarkMode ? "text-white" : "text-yellow-600"
+                  isDarkMode ? "text-white" : "text-slate-900"
                 }`}
               >
                 🏴 Country:
@@ -368,13 +368,13 @@ const About_User = ({ setActiveComponent }) => {
                 className={`w-full text-base rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
                   isDarkMode
                     ? "bg-gray-700 text-white placeholder-gray-400"
-                    : "bg-transparent text-black placeholder:text-gray-500"
+                    : "bg-gray-100 text-black placeholder:text-gray-500"
                 } ${
                   formData.country && formData.country.trim().length >= 3
                     ? "border-green-500 focus:ring-green-500"
                     : errors.country
                     ? "border-red-500 focus:ring-red-500"
-                    : "border-yellow-600 focus:ring-yellow-600"
+                    : "border-slate-200 focus:ring-slate-300"
                 }`}
               />
               {errors.country &&
@@ -396,7 +396,7 @@ const About_User = ({ setActiveComponent }) => {
               <label
                 htmlFor="stateRegion"
                 className={`font-semibold text-lg tracking-wide ${
-                  isDarkMode ? "text-white" : "text-yellow-600"
+                  isDarkMode ? "text-white" : "text-slate-900"
                 }`}
               >
                 🌆 State or Region:
@@ -413,14 +413,14 @@ const About_User = ({ setActiveComponent }) => {
                 className={`w-full text-base rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
                   isDarkMode
                     ? "bg-gray-700 text-white placeholder-gray-400"
-                    : "bg-transparent text-black placeholder-gray-500"
+                    : "bg-gray-100 text-black placeholder-gray-500"
                 } ${
                   formData.stateRegion &&
                   formData.stateRegion.trim().length >= 3
                     ? "border-green-500 focus:ring-green-500"
                     : errors.stateRegion
                     ? "border-red-500 focus:ring-red-500"
-                    : "border-yellow-600 focus:ring-yellow-600"
+                    : "border-slate-200 focus:ring-slate-300"
                 }`}
               />
               {errors.stateRegion &&
@@ -445,7 +445,7 @@ const About_User = ({ setActiveComponent }) => {
               <label
                 htmlFor="city"
                 className={`font-semibold text-lg tracking-wide flex ${
-                  isDarkMode ? "text-white" : "text-yellow-600"
+                  isDarkMode ? "text-white" : "text-slate-900"
                 }`}
               >
                 <FontAwesomeIcon
@@ -466,13 +466,13 @@ const About_User = ({ setActiveComponent }) => {
                 className={`w-full text-base rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
                   isDarkMode
                     ? "bg-gray-700 text-white placeholder-gray-400"
-                    : "bg-transparent text-black placeholder-gray-500"
+                    : "bg-gray-100 text-black placeholder-gray-500"
                 } ${
                   formData.city && formData.city.trim().length >= 3
                     ? "border-green-500 focus:ring-green-500"
                     : errors.city
                     ? "border-red-500 focus:ring-red-500"
-                    : "border-yellow-600 focus:ring-yellow-600"
+                    : "border-slate-200 focus:ring-slate-300"
                 }`}
               />
               {errors.city &&
@@ -494,7 +494,7 @@ const About_User = ({ setActiveComponent }) => {
               <label
                 htmlFor="homeAddress"
                 className={`font-semibold text-lg tracking-wide ${
-                  isDarkMode ? "text-white" : "text-yellow-600"
+                  isDarkMode ? "text-white" : "text-slate-900"
                 }`}
               >
                 🏠 Home Address:
@@ -511,14 +511,14 @@ const About_User = ({ setActiveComponent }) => {
                 className={`w-full text-base rounded-xl border-2 py-3 px-4 focus:ring-1 focus:outline-none duration-300 transition-all ${
                   isDarkMode
                     ? "bg-gray-700 text-white placeholder-gray-400"
-                    : "bg-transparent text-black placeholder-gray-500"
+                    : "bg-gray-100 text-black placeholder-gray-500"
                 } ${
                   formData.homeAddress &&
                   formData.homeAddress.trim().length >= 3
                     ? "border-green-500 focus:ring-green-500"
                     : errors.homeAddress
                     ? "border-red-500 focus:ring-red-500"
-                    : "border-yellow-600 focus:ring-yellow-600"
+                    : "border-slate-200 focus:ring-slate-300"
                 }`}
               />
               {errors.homeAddress &&

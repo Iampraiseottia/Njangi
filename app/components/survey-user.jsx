@@ -278,7 +278,7 @@ const Survey_User = ({ setActiveComponent }) => {
                       ? "border-green-500 focus:ring-green-500"
                       : errors.hear_about_us
                       ? "border-red-500 focus:ring-red-500"
-                      : "border-white-600 focus:ring-white-600"
+                      : "border-slate-200 focus:ring-slate-300"
                   }`}
                 />
 
@@ -327,7 +327,7 @@ const Survey_User = ({ setActiveComponent }) => {
                       ? "border-green-500 focus:ring-green-500"
                       : errors.level_of_education
                       ? "border-red-500 focus:ring-red-500"
-                      : "border-white-600 focus:ring-white-600"
+                      : "border-slate-200 focus:ring-slate-300"
                   }`}
                 />
                 {errors.level_of_education &&
@@ -375,7 +375,7 @@ const Survey_User = ({ setActiveComponent }) => {
                       ? "border-green-500 focus:ring-green-500"
                       : errors.ever_Participated
                       ? "border-red-500 focus:ring-red-500"
-                      : "border-white-600 focus:ring-white-600"
+                      : "border-slate-200 focus:ring-slate-300"
                   }`}
                   ref={ever_ParticipatedRef}
                   onMouseEnter={() => ever_ParticipatedRef.current?.focus()}
@@ -431,7 +431,7 @@ const Survey_User = ({ setActiveComponent }) => {
                       ? "border-green-500 focus:ring-green-500"
                       : errors.preferred_method
                       ? "border-red-500 focus:ring-red-500"
-                      : "border-white-600 focus:ring-white-600"
+                      : "border-slate-200 focus:ring-slate-300"
                   }`}
                   ref={preferred_methodRef}
                   onMouseEnter={() => preferred_methodRef.current?.focus()}
@@ -495,7 +495,7 @@ const Survey_User = ({ setActiveComponent }) => {
                       ? "border-green-500 focus:ring-green-500"
                       : errors.often_contribution
                       ? "border-red-500 focus:ring-red-500"
-                      : "border-white-600 focus:ring-white-600"
+                      : "border-slate-200 focus:ring-slate-300"
                   }`}
                 />
                 {errors.often_contribution &&
@@ -542,7 +542,7 @@ const Survey_User = ({ setActiveComponent }) => {
                       ? "border-green-500 focus:ring-green-500"
                       : errors.primary_njangi_goal
                       ? "border-red-500 focus:ring-red-500"
-                      : "border-white-600 focus:ring-white-600"
+                      : "border-slate-200 focus:ring-slate-300"
                   }`}
                 />
                 {errors.primary_njangi_goal &&
@@ -590,7 +590,7 @@ const Survey_User = ({ setActiveComponent }) => {
                       ? "border-green-500 focus:ring-green-500"
                       : errors.comfortability
                       ? "border-red-500 focus:ring-red-500"
-                      : "border-white-600 focus:ring-white-600"
+                      : "border-slate-200 focus:ring-slate-300"
                   }`}
                 />
                 {errors.comfortability &&
@@ -637,7 +637,7 @@ const Survey_User = ({ setActiveComponent }) => {
                       ? "border-green-500 focus:ring-green-500"
                       : errors.often_check_mails
                       ? "border-red-500 focus:ring-red-500"
-                      : "border-white-600 focus:ring-white-600"
+                      : "border-slate-200 focus:ring-slate-300"
                   }`}
                 />
                 {errors.often_check_mails &&
@@ -700,7 +700,7 @@ const Survey_User = ({ setActiveComponent }) => {
                       ? "border-green-500 focus:ring-green-500"
                       : errors.previous_challenges
                       ? "border-red-500 focus:ring-red-500"
-                      : "border-white-600 focus:ring-white-600"
+                      : "border-slate-200 focus:ring-slate-300"
                   }`}
                 />
                 {errors.previous_challenges &&
@@ -749,7 +749,7 @@ const Survey_User = ({ setActiveComponent }) => {
                       ? "border-green-500 focus:ring-green-500"
                       : errors.recommend_Platform
                       ? "border-red-500 focus:ring-red-500"
-                      : "border-white-600 focus:ring-white-600"
+                      : "border-slate-200 focus:ring-slate-300"
                   }`}
                   ref={recommend_PlatformRef}
                   onMouseEnter={() => recommend_PlatformRef.current?.focus()}
@@ -837,7 +837,7 @@ const Survey_User = ({ setActiveComponent }) => {
                       ? "border-green-500 focus:ring-green-500"
                       : errors.manage_finances
                       ? "border-red-500 focus:ring-red-500"
-                      : "border-white-600 focus:ring-white-600"
+                      : "border-slate-200 focus:ring-slate-300"
                   }`}
                 />
                 {errors.manage_finances &&
@@ -882,7 +882,7 @@ const Survey_User = ({ setActiveComponent }) => {
                       ? "border-green-500 focus:ring-green-500"
                       : errors.receive_financial_education
                       ? "border-red-500 focus:ring-red-500"
-                      : "border-white-600 focus:ring-white-600"
+                      : "border-slate-200 focus:ring-slate-300"
                   }`}
                   ref={receive_financial_educationRef}
                   onMouseEnter={() =>
@@ -945,7 +945,7 @@ const Survey_User = ({ setActiveComponent }) => {
                       ? "border-green-500 focus:ring-green-500"
                       : errors.suggestions
                       ? "border-red-500 focus:ring-red-500"
-                      : "border-white-600 focus:ring-white-600"
+                      : "border-slate-200 focus:ring-slate-300"
                   }`}
                 />
                 {errors.suggestions &&
@@ -997,7 +997,7 @@ const Survey_User = ({ setActiveComponent }) => {
                       ? "border-green-500 focus:ring-green-500"
                       : errors.saving_percentage
                       ? "border-red-500 focus:ring-red-500"
-                      : "border-white-600 focus:ring-white-600"
+                      : "border-slate-200 focus:ring-slate-300"
                   }`}
                 />
                 {errors.saving_percentage &&
@@ -1051,7 +1051,7 @@ const Survey_User = ({ setActiveComponent }) => {
                       ? "border-green-500 focus:ring-green-500"
                       : errors.motivation_contribution
                       ? "border-red-500 focus:ring-red-500"
-                      : "border-white-600 focus:ring-white-600"
+                      : "border-slate-200 focus:ring-slate-300"
                   }`}
                 />
                 {errors.motivation_contribution &&
